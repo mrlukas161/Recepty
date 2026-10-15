@@ -16,6 +16,7 @@ export function Viac() {
     ['#/vedomosti', '📚', 'Vedomosti', 'Krátke karty a stav zdrojov'],
     ['#/skener', '📷', 'Skener zloženia', 'Odfoť zloženie výrobku a získaj hodnotenie'],
     ['#/ruleta', '🎰', 'Ruleta', 'Náhodný recept dňa'],
+    ['#/prenos', '📲', 'Preniesť do druhého mobilu', 'Odkaz alebo QR kód, bez servera'],
     ['#/nastavenia', '⚙️', 'Nastavenia', 'Domácnosť, obmedzenia, téma, export'],
   ];
   return (
@@ -182,6 +183,7 @@ export function Nastavenia({ uvod }: { uvod?: boolean }) {
           </div>
           <label class="pol"><input type="checkbox" checked={n.vibracia} onChange={(e) => nastavNastavenia({ vibracia: (e.target as HTMLInputElement).checked })} /> Vibrácia pri rulete</label>
           <h2>Údaje</h2>
+          <p class="maly"><a href="#/prenos">📲 Preniesť do druhého mobilu</a> (odkaz alebo QR kód)</p>
           <div class="rad">
             <button onClick={() => { const b = new Blob([exportuj()], { type: 'application/json' }); const a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = 'recepty-zaloha.json'; a.click(); }}>⬇ Export JSON</button>
             <label class="tlacidlo" style="display:inline-flex;align-items:center">⬆ Import JSON<input type="file" accept="application/json" hidden onChange={async (e) => { const f = (e.target as HTMLInputElement).files?.[0]; if (!f) return; try { importuj(await f.text()); setSprava('Import hotový.'); } catch { setSprava('Súbor sa nepodarilo načítať.'); } }} /></label>
