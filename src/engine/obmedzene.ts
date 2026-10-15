@@ -67,3 +67,16 @@ export function zobrazenyNazov(r: Pick<Recept, 'nazov'>, db: Map<string, Surovin
 export function nazovPreDomacnost(r: Recept, n: Nastavenia, db: Map<string, Surovina>, pridane: string[] = []): string {
   return zobrazenyNazov(r, db, vynechaneVolitelne(r, n, db, pridane));
 }
+
+/** Postup receptu: ak krok hovorí o vynechanej voliteľnej surovine (podľa kmeňa názvu), pridá poznámku. Dáta receptu sa nemenia. */
+export function postupPreDomacnost(postup: string[], db: Map<string, Surovina>, vynechane: string[]): string[] {
+  if (!vynechane.length) return postup;
+  const kmene = vynechane.flatMap((id) => {
+    const s = db.get(id);
+    return s ? s.nazov.split(/[\s/(),]+/).map(norm).filter((w) => w.length >= 4).map((w) => w.slice(0, Math.max(4, w.length - 2))) : [];
+  });
+  return postup.map((p) => {
+    const slova = norm(p).split(/[^a-z0-9]+/);
+    return kmene.some((k) => slova.some((w) => w.startsWith(k))) ? `${p} (voliteľné – máš obmedzené)` : p;
+  });
+}

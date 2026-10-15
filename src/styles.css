@@ -56,10 +56,10 @@ button:disabled { opacity: .5; }
 .rad { display: flex; gap: 8px; flex-wrap: wrap; margin: 8px 0; }
 input, select, textarea { font: inherit; min-height: 46px; padding: 8px 12px; border-radius: 12px; border: 2px solid var(--text); background: var(--karta); color: var(--text); max-width: 100%; }
 input[type=search], input[type=text] { width: 100%; }
-input[type=checkbox] { min-height: 0; width: 22px; height: 22px; accent-color: var(--paradajka); }
+input[type=checkbox] { min-height: 0; width: 22px; height: 22px; flex: none; accent-color: var(--paradajka); }
 label.pol { display: flex; align-items: center; gap: 10px; min-height: 44px; }
 .zalozky { display: flex; gap: 6px; flex-wrap: wrap; padding: 4px 0 10px; }
-.zalozky button { flex: none; min-height: 44px; border-radius: 99px; padding: 6px 14px; }
+.zalozky button { display: inline-flex; align-items: center; gap: 6px; flex: none; min-height: 44px; border-radius: 99px; padding: 6px 14px; }
 .zalozky button[aria-pressed="true"] { background: var(--text); color: var(--papier); }
 .faktor { margin: 0 0 12px; }
 .faktor .lista { height: 10px; background: var(--ciara); border-radius: 5px; overflow: hidden; }
@@ -109,3 +109,6 @@ ul.casovace .cas-nazov { flex: 1; font-size: .85rem; color: var(--tlmene); }
 ul.casovace li.cas-hotovo { background: var(--zle); color: #fff; }
 ul.casovace li.cas-hotovo .cas-nazov { color: #fff; }
 .cas-ponuka { margin: 8px 0; }
+/* dotykové plochy: samostatné odkazy v odsekoch a rozbaľovače aspoň 44 px */
+p.maly > a:only-child, p > a.dlhy { display: inline-block; padding: 12px 0; }
+details > summary.maly { min-height: 44px; display: flex; align-items: center; }

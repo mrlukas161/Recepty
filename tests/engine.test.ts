@@ -118,3 +118,15 @@ describe('nákup', () => {
     expect(g(b)).toBeCloseTo(2 * g(a), 3);
   });
 });
+
+describe('postupPreDomacnost', () => {
+  it('pridá poznámku ku kroku s vynechanou surovinou, ostatné nechá', async () => {
+    const { postupPreDomacnost } = await import('../src/engine/obmedzene');
+    const s = [...SUROVINA.values()].find((x) => x.priznaky.includes('spracovane-maso'))!;
+    const kmen = s.nazov.split(/[\s/(),]+/)[0].toLowerCase();
+    const out = postupPreDomacnost([`Pridaj ${kmen}.`, 'Zamiešaj.'], SUROVINA, [s.id]);
+    expect(out[0]).toContain('(voliteľné – máš obmedzené)');
+    expect(out[1]).toBe('Zamiešaj.');
+    expect(postupPreDomacnost(['Pridaj.'], SUROVINA, [])).toEqual(['Pridaj.']);
+  });
+});

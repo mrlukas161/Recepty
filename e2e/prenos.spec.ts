@@ -6,7 +6,7 @@ const STAV_A = {
 };
 
 async function prvyMobil(browser: Browser) {
-  const ctx = await browser.newContext({ viewport: { width: 412, height: 915 }, baseURL: 'http://localhost:4173/Recepty/', hasTouch: true, isMobile: true });
+  const ctx = await browser.newContext({ viewport: { width: 412, height: 915 }, baseURL: `http://localhost:${process.env.PW_PORT ?? 4173}/Recepty/`, hasTouch: true, isMobile: true });
   await ctx.addInitScript((s) => { if (!localStorage.getItem('recepty-v1')) localStorage.setItem('recepty-v1', JSON.stringify(s)); }, STAV_A);
   const page = await ctx.newPage();
   await page.goto('./#/prenos');
@@ -14,7 +14,7 @@ async function prvyMobil(browser: Browser) {
   return { ctx, page };
 }
 const druhyMobil = async (browser: Browser, stav?: object) => {
-  const ctx = await browser.newContext({ viewport: { width: 412, height: 915 }, baseURL: 'http://localhost:4173/Recepty/', hasTouch: true, isMobile: true });
+  const ctx = await browser.newContext({ viewport: { width: 412, height: 915 }, baseURL: `http://localhost:${process.env.PW_PORT ?? 4173}/Recepty/`, hasTouch: true, isMobile: true });
   if (stav) await ctx.addInitScript((s) => { if (!localStorage.getItem('recepty-v1')) localStorage.setItem('recepty-v1', JSON.stringify(s)); }, stav);
   return { ctx, page: await ctx.newPage() };
 };

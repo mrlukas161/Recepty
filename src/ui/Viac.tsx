@@ -8,6 +8,7 @@ import { KATEGORIE, type Kategoria, type Uroven } from '../engine/types';
 import { Hlavicka, Upozornenie, Zalozky } from './kom';
 import type { Alergen } from '../data/types';
 import { ZdrojeK, VsetkyZdroje } from './Zdroje';
+import { IkonaKarty } from './ilustracia';
 
 export function Viac() {
   const odk = [
@@ -22,7 +23,7 @@ export function Viac() {
   return (
     <>
       <Hlavicka nazov="Viac" />
-      {odk.map(([h, i, n, p]) => <a class="karta" href={h} key={h}><div class="riadok"><div class="emoji">{i}</div><div class="rozt"><h3 style="margin:0">{n}</h3><div class="maly">{p}</div></div></div></a>)}
+      {odk.map(([h, i, n, p]) => <a class="karta" href={h} key={h}><div class="riadok"><div class="emoji" aria-hidden="true"><IkonaKarty e={i} velkost={34} /></div><div class="rozt"><h3 style="margin:0">{n}</h3><div class="maly">{p}</div></div></div></a>)}
       <Upozornenie />
     </>
   );
@@ -34,7 +35,7 @@ export function Nahrady() {
   return (
     <>
       <Hlavicka nazov="Náhrady" />
-      <Zalozky hodnoty={NAHRADY.map((x) => ({ id: x.id, nazov: `${x.ikona} ${x.nazov}` }))} vybrane={sk} zmen={setSk} />
+      <Zalozky hodnoty={NAHRADY.map((x) => ({ id: x.id, nazov: <><IkonaKarty e={x.ikona} velkost={20} /> {x.nazov}</> }))} vybrane={sk} zmen={setSk} />
       <p>{g.uvod}</p>
       {g.nahrady.map((n) => (
         <div class="karta" key={n.za}>
@@ -97,7 +98,7 @@ export function Vedomosti() {
       <p class="upoz">{OVERENIE_POZNAMKA}</p>
       {VEDOMOSTI.map((k) => (
         <details class="karta" key={k.id}>
-          <summary style="min-height:44px;display:flex;align-items:center;gap:8px;font-weight:700"><span aria-hidden="true">{k.ikona}</span>{k.nazov}<span class="tag war" style="margin-left:auto">úroveň: {k.uroven}</span></summary>
+          <summary style="min-height:44px;display:flex;align-items:center;gap:8px;font-weight:700"><span aria-hidden="true"><IkonaKarty e={k.ikona} velkost={28} /></span>{k.nazov}<span class="tag war" style="margin-left:auto">úroveň: {k.uroven}</span></summary>
           {k.text.map((t) => <p>{t}</p>)}
           <ZdrojeK kind="karty" id={k.id} />
         </details>
@@ -179,11 +180,11 @@ export function Nastavenia({ uvod }: { uvod?: boolean }) {
           <h2>Vzhľad</h2>
           <div class="rad">
             <select aria-label="Téma" value={n.tema} onChange={(e) => nastavNastavenia({ tema: (e.target as HTMLSelectElement).value as 'auto' })}><option value="auto">Automaticky</option><option value="svetla">Svetlá</option><option value="tmava">Tmavá</option></select>
-            <button onClick={celaObrazovka}>⛶ Na celú obrazovku</button>
+            <button onClick={celaObrazovka}>Na celú obrazovku</button>
           </div>
           <label class="pol"><input type="checkbox" checked={n.vibracia} onChange={(e) => nastavNastavenia({ vibracia: (e.target as HTMLInputElement).checked })} /> Vibrácia pri rulete</label>
           <h2>Údaje</h2>
-          <p class="maly"><a href="#/prenos">📲 Preniesť do druhého mobilu</a> (odkaz alebo QR kód)</p>
+          <p class="maly"><a href="#/prenos" style="display:inline-block;padding:12px 0">Preniesť do druhého mobilu</a> (odkaz alebo QR kód)</p>
           <div class="rad">
             <button onClick={() => { const b = new Blob([exportuj()], { type: 'application/json' }); const a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = 'recepty-zaloha.json'; a.click(); }}>⬇ Export JSON</button>
             <label class="tlacidlo" style="display:inline-flex;align-items:center">⬆ Import JSON<input type="file" accept="application/json" hidden onChange={async (e) => { const f = (e.target as HTMLInputElement).files?.[0]; if (!f) return; try { importuj(await f.text()); setSprava('Import hotový.'); } catch { setSprava('Súbor sa nepodarilo načítať.'); } }} /></label>
@@ -218,7 +219,7 @@ function OAppke() {
     <>
       <p class="maly">Verzia: <code>{__SHA__.slice(0, 7)}</code> · zostavené {__CAS__.slice(0, 16).replace('T', ' ')} UTC ({new Date(__CAS__).toLocaleString('sk-SK')} tvoj čas)</p>
       <p class="maly">Nové verzie sa sťahujú samy pri otvorení appky a pri návrate z pozadia.</p>
-      <button class="male" onClick={skontroluj}>🔄 Skontrolovať aktualizáciu</button>
+      <button class="male" onClick={skontroluj}>Skontrolovať aktualizáciu</button>
       <p role="status" class="maly">{stav}</p>
     </>
   );

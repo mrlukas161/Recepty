@@ -34,7 +34,7 @@ const KRESBY: Record<string, () => ComponentChildren> = {
   zemiaky: () => <><path d="M8 24c0-10 8-17 18-17 9 0 15 6 14 15-1 10-9 19-19 19-8 0-13-7-13-17z" fill={H} /><path d="M15 18l2 1M27 14l2 2M32 26l2 1M19 31h2M26 36l1 2M12 28l1 2" fill="none" stroke={N} /></>,
   hrniec: () => <><path d="M8 18h32v16c0 6-5 10-10 10H18c-5 0-10-4-10-10z" fill={P} /><rect x="6" y="14" width="36" height="6" rx="3" fill={N} /><path d="M15 9c-2 2 2 3 0 5M24 7c-2 2 2 3 0 5M33 9c-2 2 2 3 0 5" fill="none" /><path d="M14 26v10" fill="none" stroke={K} /></>,
   syr: () => <><path d="M4 32L40 14c3 4 4 10 4 18z" fill={H} /><path d="M4 32v8h40v-8z" fill={N} /><circle cx="22" cy="31" r="3" fill={K} /><circle cx="34" cy="28" r="2.2" fill={K} /><circle cx="15" cy="37" r="1.5" fill={K} stroke="none" /></>,
-  orechy: () => <><path d="M24 8c9 0 15 7 15 15 0 10-8 18-15 18S9 33 9 23c0-8 6-15 15-15z" fill={N} /><path d="M24 8v33M24 8c-6 3-9 9-9 15 0 8 4 14 9 18" fill="none" stroke={K} /><path d="M24 8c1-3 3-5 6-5" fill="none" /></>,
+  orechy: () => <><path d="M24 44c-8 0-13-7-13-16 0-3 1-5 2-7h22c1 2 2 4 2 7 0 9-5 16-13 16z" fill={N} /><path d="M24 44c-3-4-4-10-4-16M24 44c3-4 4-10 4-16" fill="none" stroke={K} /><path d="M9 21c0-8 7-13 15-13s15 5 15 13z" fill={K} /><path d="M15 21l4-9M23 21l-2-12M31 21l-4-10M37 19l-5-6" fill="none" stroke={N} /><path d="M24 8c0-3 2-5 5-5" fill="none" /></>,
   chlieb: () => <><path d="M7 20c-2-8 6-13 17-13s19 5 17 13c-1 3-3 3-3 6v12c0 3-2 5-5 5H15c-3 0-5-2-5-5V26c0-3-2-3-3-6z" fill={N} /><path d="M17 15l5 8M26 14l5 8" fill="none" stroke={K} /></>,
   napoj: () => <><path d="M10 12h28l-3 30H13z" fill={R} /><path d="M11 20h26" fill="none" /><path d="M24 12L30 3h6" fill="none" /><circle cx="22" cy="30" r="2.2" fill={K} stroke="none" /><circle cx="28" cy="35" r="1.8" fill={K} stroke="none" /></>,
   // navigácia a ruleta
@@ -43,6 +43,24 @@ const KRESBY: Record<string, () => ComponentChildren> = {
   'nav-jedalnicek': () => <><rect x="6" y="9" width="36" height="33" rx="4" fill={K} /><rect x="6" y="9" width="36" height="10" rx="4" fill={P} /><path d="M15 5v8M33 5v8" fill="none" /><circle cx="16" cy="27" r="2.2" fill={O} /><circle cx="24" cy="27" r="2.2" fill={H} /><circle cx="32" cy="27" r="2.2" fill={O} /><circle cx="16" cy="35" r="2.2" fill={H} /><circle cx="24" cy="35" r="2.2" fill={P} /></>,
   'nav-nakup': () => <><path d="M5 8h6l5 24h22l4-17H13" fill={K} /><circle cx="19" cy="40" r="3" fill={H} /><circle cx="35" cy="40" r="3" fill={H} /><path d="M20 20h18M21 26h16" fill="none" stroke={P} /></>,
   'nav-viac': () => <><circle cx="10" cy="24" r="4" fill={H} /><circle cx="24" cy="24" r="4" fill={P} /><circle cx="38" cy="24" r="4" fill={O} /></>,
+  // odkazy v ponuke Viac a ikony kariet
+  'nav-nahrady': () => <><path d="M9 20a15 15 0 0 1 27-6" fill="none" stroke-width="3" /><path d="M39 5v10H29z" fill={H} /><path d="M39 28a15 15 0 0 1-27 6" fill="none" stroke-width="3" /><path d="M9 43V33h10z" fill={O} /><circle cx="24" cy="24" r="4" fill={P} /></>,
+  'nav-diety': () => <><circle cx="24" cy="26" r="16" fill={K} /><circle cx="24" cy="26" r="9" fill={O} /><path d="M24 10c0-4 3-6 7-6 0 4-3 6-7 6z" fill={O} /></>,
+  'nav-skener': () => <><rect x="5" y="14" width="38" height="26" rx="5" fill={K} /><path d="M16 14l3-6h10l3 6" fill={H} /><circle cx="24" cy="27" r="8" fill={M} /><circle cx="24" cy="27" r="3" fill={P} /></>,
+  'nav-prenos': () => <><rect x="13" y="4" width="22" height="40" rx="4" fill={K} /><path d="M18 10h12M22 39h4" fill="none" /><path d="M4 22l6-5v3h6v4h-6v3zM44 30l-6 5v-3h-6v-4h6v-3z" fill={H} /></>,
+  'nav-nastavenia': () => <><path d="M21 4h6l1 5 4 2 5-3 4 4-3 5 2 4 5 1v6l-5 1-2 4 3 5-4 4-5-3-4 2-1 5h-6l-1-5-4-2-5 3-4-4 3-5-2-4-5-1v-6l5-1 2-4-3-5 4-4 5 3 4-2z" fill={H} transform="scale(.9) translate(2.6 2.6)" /><circle cx="24" cy="24" r="6" fill={K} /></>,
+  mlieko: () => <><path d="M14 18h20l-2 24H16z" fill={K} /><path d="M12 8h24v10H12z" fill={M} /><path d="M15 28h18" fill="none" stroke={M} /></>,
+  paradajka: () => <><path d="M24 12c-12-3-19 5-18 15 1 9 8 15 18 15s17-6 18-15c1-10-6-18-18-15z" fill={P} /><path d="M24 12l-6-5M24 12l6-5M24 12l-9 1M24 12l9 1M24 12V6" fill="none" stroke={O} stroke-width="3" /><path d="M14 26c0-4 2-6 5-7" fill="none" stroke={K} /></>,
+  avokado: () => <><path d="M26 4c-6 0-9 6-10 11-1 5-7 8-7 17 0 8 6 12 13 12s13-4 13-12c0-12-5-28-9-28z" fill={O} /><path d="M26 12c-4 0-6 5-6 9s-5 5-5 11c0 5 4 8 9 8s9-3 9-8c0-8-3-20-7-20z" fill={K} /><circle cx="25" cy="31" r="6" fill={N} /></>,
+  muka: () => <><path d="M12 12h24l4 30H8z" fill={K} /><path d="M12 12c4-6 20-6 24 0" fill={N} /><path d="M16 26h16M18 32h12" fill="none" stroke={N} /><path d="M24 8v-4" fill="none" /></>,
+  cukor: () => <><rect x="8" y="22" width="16" height="16" rx="2" fill={K} /><rect x="24" y="26" width="16" height="12" rx="2" fill={K} /><rect x="14" y="8" width="14" height="14" rx="2" fill={K} transform="rotate(-10 21 15)" /><path d="M12 28h8M28 32h8" fill="none" stroke={M} /></>,
+  udeniny: () => <><path d="M8 34C2 28 6 14 16 12l22 20c-4 10-18 10-30 2z" fill={P} /><path d="M38 32l6 4M12 14l-4-6" fill="none" /><path d="M18 18c6 6 10 12 14 14M14 24c4 4 8 8 10 10" fill="none" stroke={K} /></>,
+  vyprazane: () => <><path d="M8 20h32l-4 24H12z" fill={P} /><rect x="12" y="6" width="5" height="16" rx="1" fill={H} transform="rotate(-8 14 14)" /><rect x="19" y="4" width="5" height="18" rx="1" fill={H} /><rect x="26" y="6" width="5" height="16" rx="1" fill={H} transform="rotate(8 28 14)" /><rect x="32" y="9" width="5" height="13" rx="1" fill={H} transform="rotate(16 34 15)" /></>,
+  balik: () => <><path d="M24 5L6 14v20l18 9 18-9V14z" fill={N} /><path d="M6 14l18 9 18-9M24 23v20" fill="none" stroke={K} /><path d="M15 9l18 9" fill="none" stroke={K} /></>,
+  sol: () => <><path d="M14 18h20l3 24H11z" fill={K} /><path d="M14 18c0-8 4-12 10-12s10 4 10 12z" fill={M} /><circle cx="20" cy="11" r="1.1" fill={K} stroke="none" /><circle cx="24" cy="10" r="1.1" fill={K} stroke="none" /><circle cx="28" cy="11" r="1.1" fill={K} stroke="none" /><path d="M17 30h14" fill="none" stroke={M} /></>,
+  brucho: () => <><path d="M14 8c-6 6-8 16-4 24 3 6 9 10 16 10 8 0 14-6 14-14 0-8-6-12-10-14-4-1-8-4-16-6z" fill={R} /><path d="M26 26c-2-3-6-3-8 0" fill="none" stroke={K} /></>,
+  plamen: () => <><path d="M24 3c2 8 12 12 12 24 0 9-6 16-12 16S12 36 12 28c0-5 3-8 5-11 1 4 3 5 4 5 0-8 0-14 3-19z" fill={P} /><path d="M24 43c-4 0-7-4-7-8 0-4 4-6 7-12 3 6 7 8 7 12 0 4-3 8-7 8z" fill={H} /></>,
+  dieta: () => <><circle cx="24" cy="25" r="17" fill={H} /><circle cx="18" cy="22" r="2" fill="var(--il-ln)" stroke="none" /><circle cx="30" cy="22" r="2" fill="var(--il-ln)" stroke="none" /><path d="M17 30c4 5 10 5 14 0" fill="none" /><path d="M20 8c2-4 8-4 8 0" fill="none" /></>,
   ruleta: () => <><circle cx="24" cy="24" r="18" fill={K} /><path d="M24 24V6a18 18 0 0 1 18 18z" fill={P} /><path d="M24 24h18a18 18 0 0 1-18 18z" fill={H} /><path d="M24 24v18A18 18 0 0 1 6 24z" fill={O} /><circle cx="24" cy="24" r="4" fill={K} /></>,
 };
 
@@ -51,14 +69,16 @@ export const TYPY_ILUSTRACII = Object.keys(KRESBY) as TypIlustracie[];
 
 // Pôvodné emoji receptov -> typ ilustrácie (údaje receptov ostávajú, appka zobrazuje ilustráciu).
 const Z_EMOJI: Record<string, string> = {
-  '🌮': 'wrap', '🌯': 'wrap', '🥙': 'wrap', '🫓': 'wrap', '🌶️': 'zelenina', '🌾': 'kasa', '🍄': 'huby', '🍅': 'zelenina', '🍆': 'zelenina',
+  '🌮': 'wrap', '🌯': 'wrap', '🥙': 'wrap', '🫓': 'wrap', '🌶️': 'zelenina', '🌾': 'kasa', '🍄': 'huby', '🍅': 'paradajka', '🍆': 'zelenina',
   '🍊': 'ovocie', '🍌': 'ovocie', '🍎': 'ovocie', '🍐': 'ovocie', '🍑': 'ovocie', '🍓': 'ovocie', '🥭': 'ovocie', '🫐': 'ovocie',
   '🍔': 'sendvic', '🥪': 'sendvic', '🍕': 'pizza', '🍖': 'maso', '🍗': 'maso', '🍚': 'ryza', '🍛': 'ryza', '🍱': 'ryza', '🥢': 'ryza',
   '🍜': 'cestoviny', '🍝': 'cestoviny', '🍞': 'chlieb', '🍠': 'zemiaky', '🥔': 'zemiaky', '🍦': 'dezert', '🍨': 'dezert', '🍩': 'dezert',
   '🍰': 'dezert', '🧁': 'dezert', '🥧': 'dezert', '🥮': 'susienka', '🍫': 'dezert', '🧡': 'dezert', '🍪': 'susienka', '🍲': 'hrniec', '🥘': 'hrniec', '🫙': 'hrniec',
   '🍳': 'vajicka', '🥚': 'vajicka', '🥞': 'palacinky', '🐟': 'ryba', '🐠': 'ryba', '🫘': 'strukoviny', '🧆': 'placky', '🥟': 'placky',
-  '🥗': 'salat', '🥬': 'salat', '🥛': 'syr', '🧀': 'syr', '🥜': 'orechy', '🥤': 'napoj', '🥣': 'kasa', '🫑': 'zelenina', '🥒': 'zelenina',
-  '🥕': 'zelenina', '🥦': 'zelenina', '🎃': 'zelenina', '🧄': 'zelenina', '🥑': 'zelenina',
+  '🥗': 'salat', '🥬': 'salat', '🥛': 'mlieko', '🧀': 'syr', '🥜': 'orechy', '🥤': 'napoj', '🥣': 'kasa', '🫑': 'zelenina', '🥒': 'zelenina',
+  '🔁': 'nav-nahrady', '📚': 'nav-recepty', '📷': 'nav-skener', '🎰': 'ruleta', '📲': 'nav-prenos', '⚙️': 'nav-nastavenia', '🔄': 'nav-nahrady',
+  '🍬': 'cukor', '🥓': 'udeniny', '🍟': 'vyprazane', '📦': 'balik', '🧂': 'sol', '🫄': 'brucho', '🔥': 'plamen', '👶': 'dieta',
+  '🥕': 'zelenina', '🥦': 'zelenina', '🎃': 'zelenina', '🧄': 'zelenina', '🥑': 'avokado',
 };
 
 /** Typ ilustrácie pre recept: podľa pôvodného emoji, inak podľa kategórie jedla. */
@@ -83,4 +103,14 @@ export function Ilustracia({ typ, velkost = 40, nazov }: { typ: TypIlustracie | 
 /** Ilustrácia receptu. */
 export function IlustraciaReceptu({ r, velkost }: { r: { typ: string; ilustracia?: string }; velkost?: number }) {
   return <Ilustracia typ={typIlustracie(r)} velkost={velkost} />;
+}
+
+const KARTA: Record<string, string> = { '🌾': 'muka', '🥗': 'nav-diety' };
+
+export const KARTA_IKONY = (e: string): string | undefined => KARTA[e] ?? Z_EMOJI[e];
+
+/** Ikona karty z textového kľúča (emoji v dátach) -> ilustrácia; neznáme emoji ostane textom. */
+export function IkonaKarty({ e, velkost = 32 }: { e: string; velkost?: number }) {
+  const t = KARTA_IKONY(e);
+  return t ? <Ilustracia typ={t} velkost={velkost} /> : <span aria-hidden="true">{e}</span>;
 }

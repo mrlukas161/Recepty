@@ -3,7 +3,10 @@ import type { ComponentChildren } from 'preact';
 import type { Info } from '../engine/filtre';
 import { PASMO_TEXT } from '../engine/score';
 import { TYP_NAZOV, SUROVINA } from '../ctx';
-import { nazovPreDomacnost } from '../engine/obmedzene';
+import { useMemo } from 'preact/hooks';
+import { nazovPreDomacnost, vynechaneVolitelne } from '../engine/obmedzene';
+import { vypocitajSkore } from '../engine/score';
+import { aplikujUpravy, ZIADNE_UPRAVY } from '../engine/upravy';
 import { useStav, nastav } from '../store';
 import { DIETA } from '../data/diety';
 
@@ -19,6 +22,9 @@ export function Pecat({ skore, pasmo }: { skore: number; pasmo: keyof typeof PAS
 export function KartaReceptu({ i, dovod }: { i: Info; dovod?: string[] }) {
   const s = useStav();
   const fav = s.oblubene.includes(i.r.id);
+  // skóre karty zohľadní vynechané voliteľné obmedzované suroviny (rovnako ako Detail)
+  const vyn = vynechaneVolitelne(i.r, s.nastavenia, SUROVINA, s.pridaneVolitelne[i.r.id]);
+  const sk = useMemo(() => (vyn.length ? vypocitajSkore(i.r, aplikujUpravy(i.r, { ...ZIADNE_UPRAVY, odobrane: vyn }), SUROVINA) : i.skore), [i, vyn.join()]);
   return (
     <a class="karta" href={`#/recept/${i.r.id}`}>
       <div class="riadok">
@@ -30,13 +36,13 @@ export function KartaReceptu({ i, dovod }: { i: Info; dovod?: string[] }) {
           {i.r.vlastny && <span class="tag">vlastný</span>}
           {(dovod ?? []).map((d) => <span class="tag">{d}</span>)}
         </div>
-        <Pecat skore={i.skore.celkom} pasmo={i.skore.pasmo} />
+        <Pecat skore={sk.celkom} pasmo={sk.pasmo} />
       </div>
     </a>
   );
 }
 
-export function Zalozky<T extends string>({ hodnoty, vybrane, zmen }: { hodnoty: { id: T; nazov: string }[]; vybrane: T; zmen: (v: T) => void }) {
+export function Zalozky<T extends string>({ hodnoty, vybrane, zmen }: { hodnoty: { id: T; nazov: ComponentChildren }[]; vybrane: T; zmen: (v: T) => void }) {
   return (
     <div class="zalozky" role="group">
       {hodnoty.map((h) => (

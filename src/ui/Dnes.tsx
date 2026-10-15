@@ -46,7 +46,7 @@ export function Dnes() {
         <a class="tlacidlo hl" href="#/ruleta" style="text-decoration:none;display:inline-flex;align-items:center">🎰 Ruleta</a>
       </div>
       <h2 style="margin-top:20px">Tento týždeň</h2>
-      {tyzden.pocetJedal === 0 ? <p class="maly">Jedálniček je prázdny. <a href="#/jedalnicek">Vygenerovať</a></p> : (
+      {tyzden.pocetJedal === 0 ? <p class="maly">Jedálniček je prázdny. <a href="#/jedalnicek" style="display:inline-block;padding:12px 4px">Vygenerovať</a></p> : (
         <div class="karta">
           {KATEGORIE.map((k) => (
             <div key={k.id} class="riadok" style="justify-content:space-between">

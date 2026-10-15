@@ -5,7 +5,7 @@ import { useStav, nastav, dnesKluc } from '../store';
 import { vypocitajSkore, POZNAMKA_SKORE } from '../engine/score';
 import { aplikujUpravy, ZIADNE_UPRAVY, type StavUprav } from '../engine/upravy';
 import { naGramy } from '../engine/units';
-import { obmedzeneVolitelne, vynechaneVolitelne, zobrazenyNazov } from '../engine/obmedzene';
+import { obmedzeneVolitelne, vynechaneVolitelne, zobrazenyNazov, postupPreDomacnost } from '../engine/obmedzene';
 import { kolkoPorcii } from '../engine/filtre';
 import { DNI, kluc } from '../engine/planner';
 import { LEPSIE } from '../data/lepsie';
@@ -67,10 +67,11 @@ function DetailVnutro({ id }: { id: string }) {
     if (LEPSIE[id]) return [];
     return INFOS.filter((i) => !i.r.klasika && i.r.typ === r.typ && i.skore.celkom > info.skore.celkom && i.r.id !== id).sort((a, b) => b.skore.celkom - a.skore.celkom).slice(0, 3);
   }, [id]);
-  const celkomKrokov = r.postup.length;
+  const postup = postupPreDomacnost(r.postup, SUROVINA, vynech);
+  const celkomKrokov = postup.length;
 
   if (varenie !== null) {
-    return <Varenie postup={r.postup} i={varenie} set={setVarenie} nazov={nazov} />;
+    return <Varenie postup={postup} i={varenie} set={setVarenie} nazov={nazov} />;
   }
   return (
     <>
@@ -182,7 +183,7 @@ function DetailVnutro({ id }: { id: string }) {
       )}
 
       <h2>Postup</h2>
-      <ol class="postup">{r.postup.map((p) => <li>{p}</li>)}</ol>
+      <ol class="postup">{postup.map((p) => <li>{p}</li>)}</ol>
       <button class="hl" onClick={() => setVarenie(0)}>👨‍🍳 Režim varenia</button>
       {r.vybavenie.length > 0 && <p class="maly" style="margin-top:8px">Vybavenie: {r.vybavenie.join(', ')}</p>}
       {r.skladovanie && <p class="maly">Skladovanie: {r.skladovanie}</p>}
