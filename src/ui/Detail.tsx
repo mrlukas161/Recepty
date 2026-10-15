@@ -5,6 +5,7 @@ import { useStav, nastav, dnesKluc } from '../store';
 import { vypocitajSkore, POZNAMKA_SKORE } from '../engine/score';
 import { aplikujUpravy, ZIADNE_UPRAVY, type StavUprav } from '../engine/upravy';
 import { naGramy } from '../engine/units';
+import { obmedzeneVolitelne, vynechaneVolitelne, zobrazenyNazov } from '../engine/obmedzene';
 import { kolkoPorcii } from '../engine/filtre';
 import { DNI, kluc } from '../engine/planner';
 import { LEPSIE } from '../data/lepsie';
@@ -36,9 +37,18 @@ function DetailVnutro({ id }: { id: string }) {
   const r = info.r;
   const domac = Math.round(kolkoPorcii(s.nastavenia) * 2) / 2;
   const cielPorcie = porcie || domac;
-  const sur = useMemo(() => aplikujUpravy(r, st), [id, JSON.stringify(st)]);
-  const nove = useMemo(() => vypocitajSkore(r, sur, SUROVINA), [id, JSON.stringify(st)]);
-  const rozdiel = nove.celkom - info.skore.celkom;
+  // obmedzované voliteľné suroviny (napr. klobása, keď máme obmedzené údeniny) sú predvolene vynechané, kým ich používateľ nepridá
+  const pridV = s.pridaneVolitelne[id] ?? [];
+  const obm = obmedzeneVolitelne(r, s.nastavenia, SUROVINA);
+  const vynech = vynechaneVolitelne(r, s.nastavenia, SUROVINA, pridV);
+  const stEf: StavUprav = { ...st, odobrane: [...new Set([...st.odobrane, ...vynech])] };
+  const kluc2 = JSON.stringify(stEf);
+  const zaklad = useMemo(() => vypocitajSkore(r, aplikujUpravy(r, { ...ZIADNE_UPRAVY, odobrane: vynech }), SUROVINA), [id, vynech.join()]);
+  const sur = useMemo(() => aplikujUpravy(r, stEf), [id, kluc2]);
+  const nove = useMemo(() => vypocitajSkore(r, sur, SUROVINA), [id, kluc2]);
+  const rozdiel = nove.celkom - zaklad.celkom;
+  const nazov = zobrazenyNazov(r, SUROVINA, vynech);
+  const prepniVolitelnu = (sid: string) => nastav((x) => { const a = x.pridaneVolitelne[id] ?? []; const n2 = a.includes(sid) ? a.filter((y) => y !== sid) : [...a, sid]; if (n2.length) x.pridaneVolitelne[id] = n2; else delete x.pridaneVolitelne[id]; });
   const f = cielPorcie / r.porcie;
   const upravene = st.odobrane.length + Object.keys(st.vymenene).length + st.pridane.length > 0;
   const dopl = r.upravy.map((u, idx) => ({ u, idx }));
@@ -46,7 +56,7 @@ function DetailVnutro({ id }: { id: string }) {
   const hod = s.hodnotenie[id];
   const poRoz = (() => {
     if (!upravene) return '';
-    const dif = nove.faktory.map((x, k) => ({ n: x.nazov, d: x.body - info.skore.faktory[k].body })).filter((x) => Math.abs(x.d) >= 5).sort((a, b) => Math.abs(b.d) - Math.abs(a.d)).slice(0, 2);
+    const dif = nove.faktory.map((x, k) => ({ n: x.nazov, d: x.body - zaklad.faktory[k].body })).filter((x) => Math.abs(x.d) >= 5).sort((a, b) => Math.abs(b.d) - Math.abs(a.d)).slice(0, 2);
     return dif.map((x) => `${x.d > 0 ? 'lepšie' : 'horšie'}: ${x.n.toLowerCase()}`).join(', ');
   })();
   const pridajDo = (den: number) => nastav((x) => { x.jedalnicek[kluc(den, r.typ === 'polievka' ? 'obed' : r.typ === 'dezert' ? 'desiata' : r.typ)] = id; });
@@ -59,14 +69,14 @@ function DetailVnutro({ id }: { id: string }) {
   const celkomKrokov = r.postup.length;
 
   if (varenie !== null) {
-    return <Varenie postup={r.postup} i={varenie} set={setVarenie} nazov={r.nazov} />;
+    return <Varenie postup={r.postup} i={varenie} set={setVarenie} nazov={nazov} />;
   }
   return (
     <>
       <a href="#/recepty" class="maly">← Recepty</a>
       <div class="riadok" style="margin:8px 0">
         <div class="emoji" aria-hidden="true"><IlustraciaReceptu r={r} velkost={38} /></div>
-        <div class="rozt"><h1 style="margin:0">{r.nazov}</h1><div class="maly">{TYP_NAZOV[r.typ]} · {r.kuchyna} · príprava {r.casPripravy} + varenie {r.casVarenia} min</div></div>
+        <div class="rozt"><h1 style="margin:0">{nazov}</h1><div class="maly">{TYP_NAZOV[r.typ]} · {r.kuchyna} · príprava {r.casPripravy} + varenie {r.casVarenia} min</div></div>
       </div>
       <div class="rad">
         <button class="male" aria-pressed={fav} onClick={() => prepniOblubene(id)}>{fav ? '★ Obľúbené' : '☆ Obľúbené'}</button>
@@ -110,7 +120,8 @@ function DetailVnutro({ id }: { id: string }) {
       <div class="karta">
         <ul class="cisty suroviny">
           {r.suroviny.map((x) => {
-            const odobrata = st.odobrane.includes(x.id);
+            const odobrata = stEf.odobrane.includes(x.id);
+            const obmedz = obm.includes(x.id);
             const idNove = st.vymenene[x.id] ?? x.id;
             const sv = SUROVINA.get(idNove);
             const mn = x.mnozstvo * f;
@@ -119,10 +130,10 @@ function DetailVnutro({ id }: { id: string }) {
               <li key={x.id} style={odobrata ? 'opacity:.45;text-decoration:line-through' : ''}>
                 <span class="mn">{fmt(mn, x.jednotka)}</span>
                 <span class="rozt">
-                  {sv?.nazov ?? idNove}{x.nevyhnutna && <span class="tag" style="margin-left:6px">bez tohto to nejde</span>}{volna && <span class="tag" style="margin-left:6px">voliteľné</span>}
+                  {sv?.nazov ?? idNove}{x.nevyhnutna && <span class="tag" style="margin-left:6px">bez tohto to nejde</span>}{volna && <span class="tag" style="margin-left:6px">{obmedz && odobrata ? 'voliteľne (máš obmedzené)' : 'voliteľné'}</span>}
                   {x.jednotka !== 'g' && sv && <span class="maly"> (~{Math.round(naGramy(sv, mn, x.jednotka))} g)</span>}
                 </span>
-                {volna && <button class="male" onClick={() => setSt({ ...st, odobrane: odobrata ? st.odobrane.filter((y) => y !== x.id) : [...st.odobrane, x.id] })}>{odobrata ? 'Vrátiť' : 'Vynechať'}</button>}
+                {volna && <button class="male" onClick={() => (obmedz ? prepniVolitelnu(x.id) : setSt({ ...st, odobrane: odobrata ? st.odobrane.filter((y) => y !== x.id) : [...st.odobrane, x.id] }))}>{odobrata ? (obmedz ? 'Pridať' : 'Vrátiť') : 'Vynechať'}</button>}
               </li>
             );
           })}

@@ -5,7 +5,7 @@ import { SUROVINA } from '../data';
 import { useStav, dnesKluc } from '../store';
 import { dietyOk, vylucene } from '../engine/filtre';
 import { KartaReceptu, Hlavicka, Zalozky, Upozornenie, AktivneDiety } from './kom';
-import { KATEGORIE } from '../engine/types';
+import { KATEGORIE, casNaDen } from '../engine/types';
 import { suhrn } from '../engine/planner';
 import { INFO } from '../ctx';
 
@@ -21,7 +21,7 @@ export function Dnes() {
         let b = i.skore.celkom;
         if (s.oblubene.includes(i.r.id)) b += 6;
         if (s.hodnotenie[i.r.id] === -1) b -= 40;
-        if (i.cas > n.maxCas) b -= 8;
+        if (i.cas > casNaDen(n, (new Date().getDay() + 6) % 7)) b -= 8;
         for (const k of Object.keys(i.kat) as (keyof typeof i.kat)[]) if (i.kat[k] && n.obmedzenia[k] === 'obmedzit') b -= 6;
         return { i, b };
       })

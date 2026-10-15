@@ -163,7 +163,10 @@ export function Nastavenia({ uvod }: { uvod?: boolean }) {
       <div class="cipy">{([['ranajky', 'Raňajky'], ['desiata', 'Desiata'], ['obed', 'Obed'], ['vecera', 'Večera']] as const).map(([id, nz]) => <button class="chip" aria-pressed={n.jedla.includes(id)} onClick={() => { const poradie = ['ranajky', 'desiata', 'obed', 'vecera']; const novy = n.jedla.includes(id) ? n.jedla.filter((x) => x !== id) : [...n.jedla, id]; nastavNastavenia({ jedla: novy.sort((a, b) => poradie.indexOf(a) - poradie.indexOf(b)) }); }}>{nz}</button>)}</div>
       <h2>Čas a vybavenie</h2>
       <div class="karta">
-        <label class="pol">Čas na varenie cez týždeň: <input type="number" min="10" max="180" step="5" style="width:90px" value={n.maxCas} onChange={(e) => nastavNastavenia({ maxCas: +(e.target as HTMLInputElement).value || 45 })} /> min</label>
+        <label class="pol">Čas na varenie cez týždeň (po–pi): <input type="number" min="10" max="180" step="5" style="width:90px" value={n.casTyzden} onChange={(e) => nastavNastavenia({ casTyzden: Math.max(10, +(e.target as HTMLInputElement).value || 45) })} /> min</label>
+        <label class="pol">Čas na varenie cez víkend (so–ne): <input type="number" min="10" max="240" step="5" style="width:90px" value={n.casVikend} onChange={(e) => nastavNastavenia({ casVikend: Math.max(10, +(e.target as HTMLInputElement).value || 90) })} /> min</label>
+        <label class="pol"><input type="checkbox" checked={n.varimNa2Dni} onChange={(e) => nastavNastavenia({ varimNa2Dni: (e.target as HTMLInputElement).checked })} /> Varím na 2 dni (večera sa uvarí dvojnásobne a na ďalší deň je z nej obed)</label>
+        <p class="maly" style="margin:4px 0">Čas = príprava + varenie. Jedálniček ho drží pri obedoch a večerách (zvyšky sa nevaria, tam sa limit nepoužije). Na viac dní sa hodia recepty so značkou „Na viac dní“.</p>
         <div class="cipy">{VYBAVENIE.map(([v, nz]) => <button class="chip" aria-pressed={n.vybavenie.includes(v)} onClick={() => nastavNastavenia({ vybavenie: toggle(n.vybavenie, v) })}>{nz}</button>)}</div>
       </div>
       {!uvod && (

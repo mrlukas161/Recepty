@@ -1,17 +1,21 @@
 import { useState } from 'preact/hooks';
 import { RECEPT, SUROVINA } from '../ctx';
 import { useStav, nastav } from '../store';
-import { zostavNakup, ODDELENIA } from '../engine/nakup';
+import { zostavNakup, zoskupRecepty, ODDELENIA, SKONTROLUJ, SKONTROLUJ_NAZOV } from '../engine/nakup';
+import { POZNAMKA_BALENI } from '../engine/baleni';
+import { nazovPreDomacnost } from '../engine/obmedzene';
 import { kolkoPorcii } from '../engine/filtre';
 import { Hlavicka } from './kom';
 
 export function Nakup() {
   const s = useStav();
   const [nova, setNova] = useState('');
-  const recepty = s.nakupRecepty.map((id) => RECEPT.get(id)).filter(Boolean).map((r) => ({ r: r!, krat: 1 }));
+  const recepty = zoskupRecepty(s.nakupRecepty, (id) => RECEPT.get(id));
   const por = kolkoPorcii(s.nastavenia);
-  const sk = zostavNakup(recepty, por, SUROVINA, new Set(s.nastavenia.mamDoma));
-  const text = () => Object.entries(sk).map(([o, p]) => `${ODDELENIA[o as keyof typeof ODDELENIA]}:\n` + p.map((x) => `- ${x.nazov} ${x.text}`).join('\n')).join('\n\n') + (s.nakupVlastne.length ? '\n\nĎalšie:\n' + s.nakupVlastne.map((x) => '- ' + x).join('\n') : '');
+  const sk = zostavNakup(recepty, por, SUROVINA, new Set(s.nastavenia.mamDoma), { pridane: s.pridaneVolitelne });
+  const nazovO = (o: string) => (o === SKONTROLUJ ? SKONTROLUJ_NAZOV : ODDELENIA[o as keyof typeof ODDELENIA]);
+  const skupiny = Object.entries(sk).sort(([a], [b]) => (a === SKONTROLUJ ? 1 : 0) - (b === SKONTROLUJ ? 1 : 0));
+  const text = () => skupiny.map(([o, p]) => `${nazovO(o)}:\n` + p.map((x) => `- ${x.nazov}${x.text ? ' ' + x.text : ''}${x.potreba ? ` (${x.potreba})` : ''}`).join('\n')).join('\n\n') + (s.nakupVlastne.length ? '\n\nĎalšie:\n' + s.nakupVlastne.map((x) => '- ' + x).join('\n') : '');
   const zdielaj = async () => {
     try { if (navigator.share) { await navigator.share({ title: 'Nákup', text: text() }); return; } } catch { /* zrušené */ }
     try { await navigator.clipboard.writeText(text()); alert('Skopírované'); } catch { alert(text()); }
@@ -20,16 +24,17 @@ export function Nakup() {
   return (
     <>
       <Hlavicka nazov="Nákup" />
-      {recepty.length > 0 && <p class="maly">{recepty.length} receptov · prepočítané na {por} dospelých porcií · zásoby „mám doma“ (Nastavenia) sa odpočítavajú.</p>}
+      {recepty.length > 0 && <p class="maly">{recepty.reduce((a, x) => a + x.krat, 0)} jedál · prepočítané na {por} dospelých porcií · zásoby „mám doma“ (Nastavenia) sa odpočítavajú. Množstvá sú zaokrúhlené na bežné balenia. {POZNAMKA_BALENI} Voda sa nenakupuje.</p>}
       <div class="rad"><button onClick={zdielaj}>📤 Zdieľať / kopírovať</button><button onClick={() => nastav((x) => { x.nakupRecepty = []; x.nakupOdskrtnute = []; x.nakupVlastne = []; })}>Vyčistiť</button></div>
-      {recepty.length > 0 && <details><summary style="min-height:44px;display:flex;align-items:center">Recepty v nákupe</summary>{recepty.map(({ r }) => <div class="slot" key={r.id}><span class="rozt">{r.nazov}</span><button class="male" aria-label={`Odobrať ${r.nazov}`} onClick={() => nastav((x) => { x.nakupRecepty = x.nakupRecepty.filter((y) => y !== r.id); })}>✕</button></div>)}</details>}
+      {recepty.length > 0 && <details><summary style="min-height:44px;display:flex;align-items:center">Recepty v nákupe</summary>{recepty.map(({ r, krat }) => <div class="slot" key={r.id}><span class="rozt">{nazovPreDomacnost(r, s.nastavenia, SUROVINA, s.pridaneVolitelne[r.id])}{krat > 1 ? ` (${krat}×, varené naraz)` : ''}</span><button class="male" aria-label={`Odobrať ${r.nazov}`} onClick={() => nastav((x) => { x.nakupRecepty = x.nakupRecepty.filter((y) => y !== r.id); })}>✕</button></div>)}</details>}
       {!recepty.length && !s.nakupVlastne.length && <p>Zoznam je prázdny. Pridaj recept tlačidlom „Do nákupu“ alebo vytvor <a href="#/jedalnicek">jedálniček</a>.</p>}
-      {Object.entries(sk).map(([o, p]) => (
+      {skupiny.map(([o, p]) => (
         <div class="karta" key={o}>
-          <h3>{ODDELENIA[o as keyof typeof ODDELENIA]}</h3>
+          <h3>{nazovO(o)}</h3>
+          {o === SKONTROLUJ && <p class="maly" style="margin-top:0">Soľ, koreniny a drobnosti (pod ~10 g): zvyčajne ich máš. Zaškrtni, čo treba dokúpiť.</p>}
           {p.map((x) => (
             <div class={`nakup-pol ${s.nakupOdskrtnute.includes(x.id) ? 'hotovo' : ''}`} key={x.id}>
-              <label><input type="checkbox" checked={s.nakupOdskrtnute.includes(x.id)} onChange={() => tog(x.id)} /><span>{x.nazov} – <strong>{x.text}</strong></span></label>
+              <label><input type="checkbox" checked={s.nakupOdskrtnute.includes(x.id)} onChange={() => tog(x.id)} /><span>{x.nazov}{x.text && <> – <strong>{x.text}</strong></>}{x.potreba && <span class="maly"> ({x.potreba})</span>}</span></label>
             </div>
           ))}
         </div>

@@ -1,5 +1,7 @@
 import type { Surovina, Typ } from '../data/types';
 import type { Kategoria, Nastavenia } from './types';
+import { casNaDen } from './types';
+import { kategorieZPridanych } from './obmedzene';
 import { dietyOk, vylucene, type Info } from './filtre';
 
 export const DNI = ['Pondelok', 'Utorok', 'Streda', 'Štvrtok', 'Piatok', 'Sobota', 'Nedeľa'];
@@ -13,6 +15,8 @@ export function rng(seed: number) {
 export interface PlanVstup {
   infos: Info[]; n: Nastavenia; db: Map<string, Surovina>;
   zamknute?: Record<string, string | null>; seed?: number;
+  /** voliteľné obmedzované suroviny, ktoré používateľ do receptov pridal (id receptu -> id surovín) */
+  pridane?: Record<string, string[]>;
 }
 
 function hlavnyBielkovina(i: Info, db: Map<string, Surovina>): string {
@@ -27,6 +31,11 @@ function hlavnyBielkovina(i: Info, db: Map<string, Surovina>): string {
 }
 const jeRyba = (i: Info, db: Map<string, Surovina>) => i.r.suroviny.some((s) => db.get(s.id)?.priznaky.includes('ryba'));
 
+/** Je slot zvyškom? (varím na 2 dni: obed je z včerajšej večere – rovnaký recept) */
+export function jeZvysok(plan: Record<string, string | null>, den: number, typ: Typ, n: Pick<Nastavenia, 'varimNa2Dni'>): boolean {
+  return n.varimNa2Dni && typ === 'obed' && den > 0 && !!plan[kluc(den, 'obed')] && plan[kluc(den, 'obed')] === plan[kluc(den - 1, 'vecera')];
+}
+
 /** Vygeneruje týždenný jedálniček. Zamknuté sloty ostanú. */
 export function generujJedalnicek(v: PlanVstup): Record<string, string | null> {
   const { infos, n, db } = v;
@@ -36,7 +45,11 @@ export function generujJedalnicek(v: PlanVstup): Record<string, string | null> {
   const pocet: Record<Kategoria, number> = { muka: 0, cukor: 0, udeniny: 0, vyprazane: 0, tazke: 0 };
   let ryby = 0;
   const bielkoviny: string[] = [];
-  const dopln = (i: Info) => { (Object.keys(pocet) as Kategoria[]).forEach((k) => { if (i.kat[k]) pocet[k]++; }); if (jeRyba(i, db)) ryby++; };
+  const efKat = (i: Info): Kategoria[] => {
+    const z = kategorieZPridanych(i.r, db, v.pridane?.[i.r.id]);
+    return (Object.keys(pocet) as Kategoria[]).filter((k) => i.kat[k] || z.includes(k));
+  };
+  const dopln = (i: Info) => { efKat(i).forEach((k) => { pocet[k]++; }); if (jeRyba(i, db)) ryby++; };
   for (const [k, id] of Object.entries(v.zamknute ?? {})) {
     if (!id) continue;
     out[k] = id;
@@ -44,32 +57,36 @@ export function generujJedalnicek(v: PlanVstup): Record<string, string | null> {
   }
   const povolene = infos.filter((i) => !vylucene(i, n) && dietyOk(i, n, db));
   const typyHlavne = new Set<Typ>(['obed', 'vecera']);
+  const naViacDni = (i: Info) => i.r.tagy.includes('na-viac-dni');
+  const dvaDni = n.varimNa2Dni && n.jedla.includes('vecera') && n.jedla.includes('obed');
   for (let d = 0; d < 7; d++) {
-    const vikend = d >= 5;
     for (const typ of n.jedla) {
       const k = kluc(d, typ);
       if (out[k]) { continue; }
       const poolTyp: Typ[] = typ === 'obed' ? ['obed', 'polievka'] : typ === 'desiata' ? ['desiata', 'dezert'] : [typ];
-      const pool = povolene.filter((i) => poolTyp.includes(i.r.typ) && (typ !== 'obed' || i.r.typ === 'obed'));
-      const kand = pool.filter((i) => {
-        for (const kat of Object.keys(pocet) as Kategoria[]) {
-          if (!i.kat[kat]) continue;
+      const pool = povolene.filter((i) => (poolTyp.includes(i.r.typ) || (dvaDni && typ === 'vecera' && i.r.typ === 'obed' && naViacDni(i))) && (typ !== 'obed' || i.r.typ === 'obed'));
+      const limitCasu = typyHlavne.has(typ) ? casNaDen(n, d) : Infinity;
+      const dost = (i: Info) => i.cas <= limitCasu;
+      const volne = pool.filter((i) => !pouzite.has(i.r.id));
+      const kand = volne.filter((i) => {
+        for (const kat of efKat(i)) {
           if (n.obmedzenia[kat] === 'obmedzit' && pocet[kat] >= n.maxTyzdenne[kat]) return false;
         }
-        const last = pouzite.get(i.r.id);
-        if (last !== undefined) return false; // nepoužiť dvakrát v týždni
-        if (!vikend && typyHlavne.has(typ) && i.cas > n.maxCas) return false;
+        if (!dost(i)) return false;
         if (jeRyba(i, db) && ryby >= 2) return false;
         return true;
       });
-      const zdroj = kand.length ? kand : pool.filter((i) => !pouzite.has(i.r.id));
+      // ak nič nevyhovuje všetkému, aspoň čas (ak sa dá), potom čokoľvek nepoužité
+      const zdroj = kand.length ? kand : (volne.filter(dost).length ? volne.filter(dost) : volne);
       if (!zdroj.length) { out[k] = null; continue; }
       const pred = bielkoviny[bielkoviny.length - 1];
+      const dvojita = dvaDni && typ === 'vecera' && d < 6 && !out[kluc(d + 1, 'obed')];
       const vazene = zdroj.map((i) => {
         let w = Math.pow(Math.max(5, i.skore.celkom) / 100, 3) + 0.01;
         const b = hlavnyBielkovina(i, db);
         if (b === pred && b !== 'ine') w *= 0.35;
         if (jeRyba(i, db) && ryby < 1 && d >= 2) w *= 2.5;
+        if (dvojita && naViacDni(i)) w *= d % 2 === 0 ? 8 : 3;   // dvojité varenie najmä po, st, pi
         return w;
       });
       let t = rand() * vazene.reduce((a, b) => a + b, 0), idx = 0;
@@ -77,19 +94,22 @@ export function generujJedalnicek(v: PlanVstup): Record<string, string | null> {
       const pick = zdroj[idx];
       out[k] = pick.r.id; pouzite.set(pick.r.id, d); dopln(pick);
       if (typyHlavne.has(typ)) bielkoviny.push(hlavnyBielkovina(pick, db));
+      // večera na 2 dni → zvyšky na obed nasledujúceho dňa (recept s tagom „na viac dní“)
+      if (dvojita && naViacDni(pick)) { out[kluc(d + 1, 'obed')] = pick.r.id; dopln(pick); }
     }
   }
   return out;
 }
 
 export interface SuhrnTyzdna { kat: Record<Kategoria, number>; rastliny: number; vlakninaPriemer: number; ryby: number; pocetJedal: number }
-export function suhrn(plan: Record<string, string | null>, infos: Map<string, Info>, db: Map<string, Surovina>): SuhrnTyzdna {
+export function suhrn(plan: Record<string, string | null>, infos: Map<string, Info>, db: Map<string, Surovina>, pridane: Record<string, string[]> = {}): SuhrnTyzdna {
   const kat: Record<Kategoria, number> = { muka: 0, cukor: 0, udeniny: 0, vyprazane: 0, tazke: 0 };
   const rast = new Set<string>(); let vl = 0, ryby = 0, pocet = 0;
   for (const id of Object.values(plan)) {
     if (!id) continue; const i = infos.get(id); if (!i) continue;
     pocet++; vl += i.skore.na100porcia.vlak;
-    (Object.keys(kat) as Kategoria[]).forEach((k) => { if (i.kat[k]) kat[k]++; });
+    const z = kategorieZPridanych(i.r, db, pridane[id]);
+    (Object.keys(kat) as Kategoria[]).forEach((k) => { if (i.kat[k] || z.includes(k)) kat[k]++; });
     if (jeRyba(i, db)) ryby++;
     for (const s of i.r.suroviny) { const x = db.get(s.id); if (x && x.priznaky.some((p) => ['zelenina', 'ovocie', 'strukovina', 'orechy', 'semienka', 'celozrnne'].includes(p))) rast.add(s.id); }
   }

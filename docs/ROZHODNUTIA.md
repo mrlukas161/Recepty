@@ -29,3 +29,11 @@ Emoji pri receptoch, kategóriách, v navigácii a na rulete nahradila vlastná 
 
 ## R-a1 – Aktualizácie, úpravy ako prepínače, časovač
 Service worker: autoUpdate + skipWaiting + clientsClaim + cleanupOutdatedCaches; kontrola novej verzie (`update()`) pri návrate z pozadia (najviac raz za 30 s) a raz za hodinu (`src/aktualizacia.ts`). Verzia a čas zostavenia sú v Nastaveniach → O appke, vrátane tlačidla „Skontrolovať aktualizáciu“. Úpravy receptu sú tlačidlá s `aria-pressed`. Časovač (`src/engine/casovac.ts`, `src/ui/Varenie.tsx`): pri rozsahu času sa ponúkne dolná aj horná hranica; „cez noc“ sa nerozpoznáva; časy sú údaje z postupov (kuchárska prax, nie zdravotné tvrdenie). Notifikácie sa pýtajú až po ťuknutí na štart časovača.
+## R-b1 – Nákupný zoznam: balenia, „skontroluj“, jednotky
+Voda a ľad sa do nákupu nepočítajú. Položky pod ~10 g (a koreniny pod ~50 g) idú do skupiny „Skontroluj, či máš doma“ bez gramov. Množstvá sa zaokrúhľujú nahor na bežné balenie (múka 1 kg, mlieko 1 l, vajcia po 10, konzervy po kusoch…). **Tabuľka balení (`src/engine/baleni.ts`) je odhad** typických obchodných balení, nie údaj z konkrétneho obchodu; appka to hovorí v Nákupe a vždy ukáže aj „treba ~…“. Chlieb sa ukazuje v plátkoch („~315 g ≈ 7 plátkov“), rožky/tortilly/pity v kusoch.
+
+## R-c1 – Voliteľné obmedzované suroviny
+Ak je voliteľná surovina v kategórii, ktorú má domácnosť obmedzenú alebo vylúčenú (údeniny, rafinovaná múka, pridaný cukor, vyprážané; podľa príznakov surovín), recept ju predvolene vynecháva: nepočíta sa do limitu, nákupu ani skóre a v detaile je „voliteľne (máš obmedzené)“. Názov sa odvodzuje vo funkcii `zobrazenyNazov` (dáta sa neprepisujú): „Fazuľový prívarok (klobása voliteľne)“. Keď ju používateľ pridá, uloží sa do `pridaneVolitelne` (stav v. 2) a počíta sa všade. Známe obmedzenie: skóre a kategórie v zoznamoch kariet (`Info`) sa počítajú staticky so všetkými surovinami, presné skóre je v detaile.
+
+## R-f1 – Plánovač: zvyšky a čas
+Nastavenia majú `casTyzden` (po–pi), `casVikend` a `varimNa2Dni` (stav verzia 2; migrácia `maxCas` → `casTyzden`, víkend predvolene 90 min). Pri „varím na 2 dni“ sa večera s tagom `na-viac-dni` zopakuje ako obed ďalšieho dňa (zvyšky sa nevaria, limit času sa tam nepoužije). Nákup spočíta recept podľa počtu výskytov v pláne, takže kúpi raz za obe jedlá v jednom riadku.

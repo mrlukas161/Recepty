@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'preact/hooks';
-import { PREDVOLENE, type UlozenyStav, type Nastavenia } from './engine/types';
+import { PREDVOLENE, VERZIA_STAVU, type UlozenyStav, type Nastavenia } from './engine/types';
 
 const KEY = 'recepty-v1';
 const prazdny = (): UlozenyStav => ({
+  verzia: VERZIA_STAVU,
   nastavenia: structuredClone(PREDVOLENE), oblubene: [], hodnotenie: {}, historia: [], jedalnicek: {}, zamknute: [],
-  nakupOdskrtnute: [], nakupVlastne: [], nakupRecepty: [], dnes: {},
+  nakupOdskrtnute: [], nakupVlastne: [], nakupRecepty: [], dnes: {}, pridaneVolitelne: {},
 });
 
 function nacitaj(): UlozenyStav {
@@ -14,9 +15,17 @@ function nacitaj(): UlozenyStav {
   } catch { /* poškodené alebo nedostupné */ }
   return prazdny();
 }
+/** Zlúči uložený (prípadne starší) stav s predvoleným; migruje staré tvary (v1 → v2: maxCas → casTyzden). */
 export function zluc(x: Partial<UlozenyStav>): UlozenyStav {
   const p = prazdny();
-  return { ...p, ...x, nastavenia: { ...p.nastavenia, ...(x.nastavenia ?? {}), obmedzenia: { ...p.nastavenia.obmedzenia, ...(x.nastavenia?.obmedzenia ?? {}) }, maxTyzdenne: { ...p.nastavenia.maxTyzdenne, ...(x.nastavenia?.maxTyzdenne ?? {}) } } };
+  const ns = { ...(x.nastavenia ?? {}) } as Partial<Nastavenia> & { maxCas?: number };
+  if (ns.casTyzden === undefined && typeof ns.maxCas === 'number' && ns.maxCas > 0) ns.casTyzden = ns.maxCas;
+  delete ns.maxCas;
+  return {
+    ...p, ...x, verzia: VERZIA_STAVU,
+    nastavenia: { ...p.nastavenia, ...ns, obmedzenia: { ...p.nastavenia.obmedzenia, ...(ns.obmedzenia ?? {}) }, maxTyzdenne: { ...p.nastavenia.maxTyzdenne, ...(ns.maxTyzdenne ?? {}) } },
+    pridaneVolitelne: { ...(x.pridaneVolitelne ?? {}) },
+  };
 }
 
 let stav: UlozenyStav = nacitaj();
