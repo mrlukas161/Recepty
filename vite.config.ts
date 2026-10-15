@@ -18,7 +18,7 @@ export default defineConfig({
     },
     VitePWA({
       registerType: 'autoUpdate',
-      workbox: { globPatterns: ['**/*.{js,css,html,svg,png,woff2,json}'], navigateFallback: '/Recepty/index.html', globIgnores: ['version.json'] },
+      workbox: { globPatterns: ['**/*.{js,css,html,svg,png,woff2,json}'], navigateFallback: '/Recepty/index.html', globIgnores: ['version.json', 'ocr/**'], runtimeCaching: [{ urlPattern: ({ url }) => url.pathname.includes('/ocr/'), handler: 'CacheFirst', options: { cacheName: 'skener-ocr', expiration: { maxEntries: 12 } } }] },
       manifest: {
         name: 'Recepty', short_name: 'Recepty', lang: 'sk', description: 'Čo variť, keď chceme menej múky, cukru a údenín.',
         start_url: '/Recepty/', scope: '/Recepty/', display: 'standalone', display_override: ['fullscreen', 'standalone'],

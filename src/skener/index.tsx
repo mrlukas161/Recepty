@@ -8,6 +8,7 @@ import { rozbor } from './rozbor';
 import { vypocitajSkoreVyrobku } from './skore';
 import { nacitajHistoriu, pridajDoHistorie, zmazZaznam, vymazHistoriu, type Zaznam } from './historia';
 import { Porovnanie } from './Porovnanie';
+import { Foto } from './Foto';
 import type { Vyziva } from './typy';
 import { PASMO_TEXT } from '../engine/score';
 
@@ -49,7 +50,8 @@ export function Skener() {
 
       {zal === 'sken' && (
         <>
-          <p class="maly">Vlož alebo napíš zloženie z obalu. Všetko sa vyhodnotí len v tvojom mobile.</p>
+          <Foto naText={(t) => { setText(t); setHotovy(null); setUlozene(false); }} />
+          <p class="maly">Alebo vlož či napíš zloženie z obalu (rozpoznaný text sa dá opraviť). Všetko sa vyhodnotí len v tvojom mobile.</p>
           <label for="sk-text"><b>Zloženie výrobku</b></label>
           <textarea id="sk-text" class="sk-text" value={text} onInput={(e) => setText((e.target as HTMLTextAreaElement).value)} placeholder="Napr.: múka pšeničná, cukor, palmový tuk, emulgátor (E 322)…" />
           <div class="rad">
