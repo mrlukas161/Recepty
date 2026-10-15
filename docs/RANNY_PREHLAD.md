@@ -4,7 +4,7 @@
 
 ## Kontrola z 15.10. 11:48 UTC (commit b7dae2a)
 - Overené spustením: 177 unit testov, build, 23 e2e na 412×915 (vrátane Nutelly z fixtúry: nízke pásmo „Občas“, nikdy „Dobré“/„Výborné“; OCR syntetickej etikety; prenos do druhého mobilu; jedálniček so zvyškami; nákup bez vody).
-- Migrácia: stav uložený verziou af713bd ostal po aktualizácii v localStorage a service worker novej verzie sa v prehliadači (Chromium) sám vymenil ( sa zmenil na b7dae2a). Skutočný Xiaomi/iPhone ani sieť (PubMed, github.io) z cloudu nedostupné – zdroje ostávajú na úrovni „overené vyhľadávaním“.
+- Migrácia: stav uložený verziou af713bd ostal po aktualizácii v localStorage a service worker novej verzie sa v prehliadači (Chromium) sám vymenil (`version.json` sa zmenil na b7dae2a). Skutočný Xiaomi/iPhone ani sieť (PubMed, github.io) z cloudu nedostupné – zdroje ostávajú na úrovni „overené vyhľadávaním“.
 - Chyby: nenašli sa žiadne, kód sa nemenil.
 
 ## Inštalácia na Android (Xiaomi 15) v 3 krokoch

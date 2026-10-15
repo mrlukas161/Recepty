@@ -60,4 +60,4 @@ Prešlo sa Dnes, recepty, detail s úpravami, režim varenia s časovačom, vlas
 - E2E: port sa dá zvoliť cez `PW_PORT` (predvolene 4173); `e2e/prenos.spec.ts` mal natvrdo 4173, preto na inom porte zlyhával.
 
 ## R-k1 – Kontrolný beh 15.10.
-Bez zmeny kódu: žiadna chyba nenájdená. Migrácia sa overila odseknutým stavom (verzia 1) — uložený JSON sa neprepisuje, kým používateľ niečo nezmení;  ho migruje pri načítaní (pokrýva unit test a e2e „starý uložený stav“).
+Bez zmeny kódu: žiadna chyba nenájdená. Migrácia sa overila odseknutým stavom (verzia 1) — uložený JSON sa neprepisuje, kým používateľ niečo nezmení; `zluc` ho migruje pri načítaní (pokrýva unit test a e2e „starý uložený stav“).
