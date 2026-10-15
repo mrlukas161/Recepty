@@ -17,14 +17,28 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:
+      nasadit: ${{ steps.ff.outputs.nasadit }}
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Vetva claude/* -> posun main (fast-forward)
-        if: startsWith(github.ref, 'refs/heads/claude/')
-        run: git push origin HEAD:main || echo "::warning::main sa nedal posunut fast-forwardom - nasadzujem tento commit aj tak"
+      # Vetva claude/* sa nasadí len vtedy, keď sa main dá posunúť fast-forwardom na tento commit.
+      # Inak by sa nasadila staršia verzia bez práce, ktorá je už v main (paralelní agenti).
+      - name: Rozhodnutie o nasadeni
+        id: ff
+        run: |
+          if [[ "$GITHUB_REF" == refs/heads/claude/* ]]; then
+            if git push origin HEAD:main; then
+              echo "nasadit=true" >> "$GITHUB_OUTPUT"
+            else
+              echo "::warning::main sa nedal posunut fast-forwardom - tento commit sa NEnasadi; najprv rebase na origin/main"
+              echo "nasadit=false" >> "$GITHUB_OUTPUT"
+            fi
+          else
+            echo "nasadit=true" >> "$GITHUB_OUTPUT"
+          fi
 
       - uses: actions/setup-node@v4
         if: hashFiles('package.json') != ''
@@ -50,12 +64,15 @@ jobs:
           EOF
 
       - uses: actions/configure-pages@v5
+        if: steps.ff.outputs.nasadit == 'true'
       - uses: actions/upload-pages-artifact@v3
+        if: steps.ff.outputs.nasadit == 'true'
         with:
           path: dist
 
   deploy:
     needs: build
+    if: needs.build.outputs.nasadit == 'true'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
