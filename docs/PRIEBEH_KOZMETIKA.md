@@ -20,3 +20,6 @@ Test z cloudu (curl cez proxy; WebFetch hlási „ENOTFOUND“ pre všetky domé
 
 ### 23:04 UTC – (a) databáza INCI, (b) parser, základ (c)
 Hotové: generátor `scripts/kozmetika-data.mjs` → `src/kozmetika/data` (118 látok, 35 zdrojov, ~46 kB), parser INCI + skóre + úložisko + Open Beauty Facts + obrazovka (skenovanie, história, porovnanie, nastavenia), integrácia (trasa, Viac, odkaz zo skenera). 204 unit testov a build zelené. Ďalej: e2e (d), doladenie.
+
+### 23:07 UTC – (d) e2e
+4 e2e na 412×915: ručné vloženie (Viac → rozpad, detail zložky, nastavenia, história, porovnanie), syntetická etiketa → OCR (angličtina), kód so zmockovaným Open Beauty Facts + z uloženého po výpadku, offline reload (service worker). Všetko zelené.

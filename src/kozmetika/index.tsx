@@ -11,6 +11,7 @@ import { KodK } from './KodK';
 import { PorovnanieK } from './PorovnanieK';
 import { nacitajNastavenia, ulozNastavenia, nacitajHistoriu, pridajDoHistorie, zmazZaznam, vymazHistoriu, type VyrobokObf } from './ulozisko';
 import type { Nastavenia } from './typy';
+import { datumUlozenia } from '../skener/ulozisko';
 
 const PRIKLAD = 'Aqua, Glycerin, Cetearyl Alcohol, Caprylic/Capric Triglyceride, Parfum, Phenoxyethanol, Methylparaben, Limonene, Linalool, Titanium Dioxide (nano), Sodium Lauryl Sulfate, CI 77891';
 type Zalozka = 'sken' | 'historia' | 'porovnat';
@@ -79,7 +80,7 @@ export function Kozmetika() {
               {obf && obf.zlozenie && (
                 <div class="upoz">
                   <b>{obf.nazov}</b>{obf.znacka ? ` (${obf.znacka})` : ''} – údaje z Open Beauty Facts (ODbL), <a href={obf.url} target="_blank" rel="noopener noreferrer">karta výrobku</a>.
-                  {obf.zCache && <> <b>Uložené {new Date(obf.ulozene ?? 0).toLocaleDateString('sk-SK')}</b> v tomto mobile (bez internetu) – údaje môžu byť staršie.</>}
+                  {obf.zCache && <> <b>Uložené {datumUlozenia(obf.ulozene)}</b> v tomto mobile (bez internetu) – údaje môžu byť staršie.</>}
                   {obf.jazyk && <> Zloženie je v {obf.jazyk}.</>} <span class="maly">Zloženie od používateľov môže byť zastarané – porovnaj s obalom.</span>
                 </div>
               )}
