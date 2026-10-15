@@ -1,3 +1,4 @@
+import { IlustraciaReceptu } from './ilustracia';
 import { useMemo, useState, useEffect } from 'preact/hooks';
 import { INFO, SUROVINA, TYP_NAZOV, INFOS } from '../ctx';
 import { useStav, nastav, dnesKluc } from '../store';
@@ -63,7 +64,7 @@ function DetailVnutro({ id }: { id: string }) {
     <>
       <a href="#/recepty" class="maly">← Recepty</a>
       <div class="riadok" style="margin:8px 0">
-        <div class="emoji" aria-hidden="true">{r.ilustracia}</div>
+        <div class="emoji" aria-hidden="true"><IlustraciaReceptu r={r} velkost={38} /></div>
         <div class="rozt"><h1 style="margin:0">{r.nazov}</h1><div class="maly">{TYP_NAZOV[r.typ]} · {r.kuchyna} · príprava {r.casPripravy} + varenie {r.casVarenia} min</div></div>
       </div>
       <div class="rad">

@@ -1,3 +1,4 @@
+import { IlustraciaReceptu } from './ilustracia';
 import type { ComponentChildren } from 'preact';
 import type { Info } from '../engine/filtre';
 import { PASMO_TEXT } from '../engine/score';
@@ -20,7 +21,7 @@ export function KartaReceptu({ i, dovod }: { i: Info; dovod?: string[] }) {
   return (
     <a class="karta" href={`#/recept/${i.r.id}`}>
       <div class="riadok">
-        <div class="emoji" aria-hidden="true">{i.r.ilustracia}</div>
+        <div class="emoji" aria-hidden="true"><IlustraciaReceptu r={i.r} velkost={38} /></div>
         <div class="rozt">
           <h3 style="margin:0">{fav ? '★ ' : ''}{i.r.nazov}</h3>
           <div class="maly">{TYP_NAZOV[i.r.typ]} · {i.cas} min · {'●'.repeat(i.r.narocnost)}{'○'.repeat(3 - i.r.narocnost)}</div>
@@ -43,7 +44,7 @@ export function Zalozky<T extends string>({ hodnoty, vybrane, zmen }: { hodnoty:
   );
 }
 
-export function Hlavicka({ nazov, vpravo }: { nazov: string; vpravo?: ComponentChildren }) {
+export function Hlavicka({ nazov, vpravo }: { nazov: ComponentChildren; vpravo?: ComponentChildren }) {
   return <div class="horna"><h1>{nazov}</h1>{vpravo}</div>;
 }
 

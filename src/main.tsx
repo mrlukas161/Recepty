@@ -1,3 +1,4 @@
+import { Ilustracia } from './ui/ilustracia';
 import { render } from 'preact';
 import { useEffect, useState } from 'preact/hooks';
 import './styles.css';
@@ -20,7 +21,7 @@ function useHash() {
   return h;
 }
 
-const NAV = [['#/', '🏠', 'Dnes'], ['#/recepty', '📖', 'Recepty'], ['#/jedalnicek', '📅', 'Jedálniček'], ['#/nakup', '🛒', 'Nákup'], ['#/viac', '☰', 'Viac']] as const;
+const NAV = [['#/', 'nav-dnes', 'Dnes'], ['#/recepty', 'nav-recepty', 'Recepty'], ['#/jedalnicek', 'nav-jedalnicek', 'Jedálniček'], ['#/nakup', 'nav-nakup', 'Nákup'], ['#/viac', 'nav-viac', 'Viac']] as const;
 
 function App() {
   const s = useStav();
@@ -49,7 +50,7 @@ function App() {
     <>
       <main>{obsah}</main>
       <nav class="spodna" aria-label="Hlavná navigácia">
-        {NAV.map(([href, ik, nz]) => <a href={href} key={href} aria-current={akt === href || (href === '#/viac' && ['#/nahrady', '#/diety', '#/vedomosti', '#/nastavenia', '#/ruleta', '#/skener'].includes(akt)) ? 'page' : undefined}><span class="ik" aria-hidden="true">{ik}</span>{nz}</a>)}
+        {NAV.map(([href, ik, nz]) => <a href={href} key={href} aria-current={akt === href || (href === '#/viac' && ['#/nahrady', '#/diety', '#/vedomosti', '#/nastavenia', '#/ruleta', '#/skener'].includes(akt)) ? 'page' : undefined}><span class="ik" aria-hidden="true"><Ilustracia typ={ik} velkost={26} /></span>{nz}</a>)}
       </nav>
     </>
   );

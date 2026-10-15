@@ -10,4 +10,3 @@ export function typPodlaCasu(d = new Date()): 'ranajky' | 'obed' | 'vecera' {
   return h < 11 ? 'ranajky' : h < 16 ? 'obed' : 'vecera';
 }
 export const TYP_NAZOV: Record<string, string> = { ranajky: 'Raňajky', obed: 'Obed', vecera: 'Večera', polievka: 'Polievka', desiata: 'Desiata', dezert: 'Dezert' };
-export const TYP_IKONA: Record<string, string> = { ranajky: '🍳', obed: '🍲', vecera: '🥗', polievka: '🥣', desiata: '🍎', dezert: '🍰' };

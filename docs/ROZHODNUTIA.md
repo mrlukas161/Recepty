@@ -23,3 +23,6 @@ Stavia samostatný agent v `src/skener/**`; hlavná appka má len trasu `#/skene
 
 ## R6 – Kontrolný beh 15.10.2026 (03:40 UTC)
 Bez zmien kódu: testy, build a e2e zelené, nasadenie úspešné. Opätovná WebSearch rešerš sa nerobila – zdroje už prešli adversariálnym overením (docs/vyskum/OVERENIE.md) a opakovanie by nepridalo novú úroveň dôkazov; úroveň `original` čaká na otvorenie siete.
+
+## R-i1 – Vlastné ilustrácie a ikona
+Emoji pri receptoch, kategóriách, v navigácii a na rulete nahradila vlastná sada SVG (`src/ui/ilustracia.tsx`, farby cez premenné `--il-*`, svetlá aj tmavá téma). Dáta receptov ostávajú s emoji v poli `ilustracia`; appka ho mapuje na typ ilustrácie (inak podľa kategórie jedla), takže nové recepty nič nerozbijú. Test kontroluje pokrytie. Ikona appky (tanier s paradajkou) sa generuje cez `node scripts/ikony.mjs`.

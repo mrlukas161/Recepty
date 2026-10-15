@@ -1,5 +1,6 @@
+import { Ilustracia } from './ilustracia';
 import { useMemo, useState } from 'preact/hooks';
-import { INFOS, typPodlaCasu, TYP_NAZOV, TYP_IKONA } from '../ctx';
+import { INFOS, typPodlaCasu, TYP_NAZOV } from '../ctx';
 import { SUROVINA } from '../data';
 import { useStav, dnesKluc } from '../store';
 import { dietyOk, vylucene } from '../engine/filtre';
@@ -34,7 +35,7 @@ export function Dnes() {
   const dovody = (i: (typeof INFOS)[number]) => [...i.skore.prinosy.slice(0, 1), ...(i.skore.slabiny.length ? [] : [])];
   return (
     <>
-      <Hlavicka nazov={`${TYP_IKONA[typ]} ${TYP_NAZOV[typ]}`} vpravo={<span class="maly">{new Date().toLocaleDateString('sk-SK', { weekday: 'long', day: 'numeric', month: 'long' })}</span>} />
+      <Hlavicka nazov={<span style="display:inline-flex;align-items:center;gap:8px"><Ilustracia typ={typ} velkost={34} />{TYP_NAZOV[typ]}</span>} vpravo={<span class="maly">{new Date().toLocaleDateString('sk-SK', { weekday: 'long', day: 'numeric', month: 'long' })}</span>} />
       <Zalozky hodnoty={[{ id: 'ranajky', nazov: 'Raňajky' }, { id: 'obed', nazov: 'Obed' }, { id: 'vecera', nazov: 'Večera' }]} vybrane={typ} zmen={(t) => { setTyp(t); setStrana(0); }} />
       <AktivneDiety />
       <p class="maly">Zoradené podľa skóre zdravosti (naša heuristika) a tvojich preferencií.</p>

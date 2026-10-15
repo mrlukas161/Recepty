@@ -1,5 +1,6 @@
+import { Ilustracia } from './ilustracia';
 import { useState } from 'preact/hooks';
-import { INFOS, INFO, TYP_NAZOV, TYP_IKONA } from '../ctx';
+import { INFOS, INFO, TYP_NAZOV } from '../ctx';
 import { SUROVINA } from '../data';
 import { useStav, nastav } from '../store';
 import { DNI, kluc, generujJedalnicek, suhrn } from '../engine/planner';
@@ -41,7 +42,7 @@ export function Jedalnicek() {
             const zam = s.zamknute.includes(k);
             return (
               <div class="slot" key={typ}>
-                <span aria-hidden="true">{TYP_IKONA[typ]}</span>
+                <Ilustracia typ={typ} velkost={22} />
                 <div class="rozt">
                   <div class="maly">{TYP_NAZOV[typ]}</div>
                   {i ? <a href={`#/recept/${i.r.id}`}>{i.r.nazov}</a> : <span class="maly">— prázdne —</span>}

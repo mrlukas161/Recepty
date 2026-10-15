@@ -1,3 +1,4 @@
+import { Ilustracia, IlustraciaReceptu } from './ilustracia';
 import { useMemo, useState } from 'preact/hooks';
 import { INFOS, TYP_NAZOV } from '../ctx';
 import { SUROVINA } from '../data';
@@ -13,7 +14,7 @@ export function Ruleta() {
   const [uhol, setUhol] = useState(0);
   const [vyber, setVyber] = useState<string | null>(null);
   const [toci, setToci] = useState(false);
-  const [emoji, setEmoji] = useState('🎰');
+  const [emoji, setEmoji] = useState<{ typ: string; ilustracia?: string } | null>(null);
   const pool = useMemo(() => INFOS.filter((i) => (typ === 'vsetko' || i.r.typ === typ) && !vylucene(i, n) && dietyOk(i, n, SUROVINA) && s.hodnotenie[i.r.id] !== -1), [typ, JSON.stringify(n)]);
   const tocit = () => {
     if (!pool.length || toci) return;
@@ -21,8 +22,8 @@ export function Ruleta() {
     const i = pool[Math.floor(Math.random() * pool.length)];
     setUhol(uhol + 1080 + Math.floor(Math.random() * 360));
     if (n.vibracia) navigator.vibrate?.(30);
-    const t = setInterval(() => setEmoji(pool[Math.floor(Math.random() * pool.length)].r.ilustracia), 120);
-    setTimeout(() => { clearInterval(t); setEmoji(i.r.ilustracia); setVyber(i.r.id); setToci(false); if (n.vibracia) navigator.vibrate?.([60, 40, 60]); }, 3200);
+    const t = setInterval(() => setEmoji(pool[Math.floor(Math.random() * pool.length)].r), 120);
+    setTimeout(() => { clearInterval(t); setEmoji(i.r); setVyber(i.r.id); setToci(false); if (n.vibracia) navigator.vibrate?.([60, 40, 60]); }, 3200);
   };
   const v = INFOS.find((i) => i.r.id === vyber);
   return (
@@ -31,9 +32,9 @@ export function Ruleta() {
       <Zalozky hodnoty={[{ id: 'ranajky', nazov: 'Raňajky' }, { id: 'obed', nazov: 'Obed' }, { id: 'vecera', nazov: 'Večera' }, { id: 'vsetko', nazov: 'Všetko' }]} vybrane={typ} zmen={setTyp} />
       <p class="maly">Rešpektuje tvoje vylúčenia, alergie a diétu. Na výber: {pool.length} receptov.</p>
       <div class="sipka" aria-hidden="true">▼</div>
-      <div class="koleso" style={`transform:rotate(${uhol}deg)`} aria-hidden="true"><div class="stred" style={`transform:rotate(${-uhol}deg)`}>{emoji}</div></div>
+      <div class="koleso" style={`transform:rotate(${uhol}deg)`} aria-hidden="true"><div class="stred" style={`transform:rotate(${-uhol}deg)`}>{emoji ? <IlustraciaReceptu r={emoji} velkost={120} /> : <Ilustracia typ="ruleta" velkost={120} />}</div></div>
       {!pool.length && <p class="upoz">Žiadne recepty nevyhovujú tvojim nastaveniam (alergie, vylúčenia, diéty). <a href="#/nastavenia">Nastavenia</a> · <a href="#/diety">Diéty</a></p>}
-      <div class="rad" style="justify-content:center"><button class="hl" onClick={tocit} disabled={toci || !pool.length} style="min-height:56px;font-size:1.15rem">{toci ? 'Točí sa…' : '🎰 Roztočiť'}</button></div>
+      <div class="rad" style="justify-content:center"><button class="hl" onClick={tocit} disabled={toci || !pool.length} style="min-height:56px;font-size:1.15rem">{toci ? 'Točí sa…' : 'Roztočiť'}</button></div>
       <div aria-live="polite">
         {v && (
           <>

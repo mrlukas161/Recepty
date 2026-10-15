@@ -1,3 +1,4 @@
+import { IlustraciaReceptu } from '../ui/ilustracia';
 import { PASMO_TEXT } from '../engine/score';
 import { ZDROJ } from '../data/zdroje';
 import { ZdrojKarta } from '../ui/Zdroje';
@@ -101,7 +102,7 @@ export function Vysledok({ r, s, deti, nazov = '', naOpravu }: { r: Rozbor; s: S
         {alt && (
           <>
             <h3>Domáca alternatíva ({alt.druh.nazov})</h3>
-            {alt.recepty.map((i) => <a key={i.r.id} class="karta" style="animation:none" href={`#/recept/${i.r.id}`}><div class="riadok"><div class="emoji" aria-hidden="true">{i.r.ilustracia}</div><div class="rozt"><b>{i.r.nazov}</b><div class="maly">{i.cas} min · skóre {i.skore.celkom}</div></div></div></a>)}
+            {alt.recepty.map((i) => <a key={i.r.id} class="karta" style="animation:none" href={`#/recept/${i.r.id}`}><div class="riadok"><div class="emoji" aria-hidden="true"><IlustraciaReceptu r={i.r} velkost={38} /></div><div class="rozt"><b>{i.r.nazov}</b><div class="maly">{i.cas} min · skóre {i.skore.celkom}</div></div></div></a>)}
           </>
         )}
       </div>
