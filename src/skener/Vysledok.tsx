@@ -6,6 +6,7 @@ import { Pecat } from '../ui/kom';
 import { ALERGEN_NAZOV } from './alergeny';
 import { stupenPreDomacnost, POZNAMKA_SKORE_V, type SkoreVyrobku } from './skore';
 import { INFOS } from '../ctx';
+import { nastav, useStav } from '../store';
 import { domaceAlternativy, tipyNaVyber } from './lepsia';
 import { STUPEN_TEXT, STUPEN_IKONA, type Rozbor, type Zlozka } from './typy';
 
@@ -52,6 +53,7 @@ export function RiadokZlozky({ z, deti }: { z: Zlozka; deti: boolean }) {
 
 export function Vysledok({ r, s, deti, nazov = '', naOpravu }: { r: Rozbor; s: SkoreVyrobku; deti: boolean; nazov?: string; naOpravu?: () => void }) {
   const alt = domaceAlternativy(nazov, r, INFOS);
+  const st = useStav();
   return (
     <div>
       <div class="karta" style="animation:none">
@@ -114,7 +116,12 @@ export function Vysledok({ r, s, deti, nazov = '', naOpravu }: { r: Rozbor; s: S
         {alt && (
           <>
             <h3>Domáca alternatíva ({alt.druh.nazov})</h3>
-            {alt.recepty.map((i) => <a key={i.r.id} class="karta" style="animation:none" href={`#/recept/${i.r.id}`}><div class="riadok"><div class="emoji" aria-hidden="true"><IlustraciaReceptu r={i.r} velkost={38} /></div><div class="rozt"><b>{i.r.nazov}</b><div class="maly">{i.cas} min · skóre {i.skore.celkom}</div></div></div></a>)}
+            {alt.recepty.map((i) => (
+              <div key={i.r.id} class="karta" style="animation:none">
+                <a href={`#/recept/${i.r.id}`} style="display:block;text-decoration:none;color:inherit"><div class="riadok"><div class="emoji" aria-hidden="true"><IlustraciaReceptu r={i.r} velkost={38} /></div><div class="rozt"><b>{i.r.nazov}</b><div class="maly">{i.cas} min · skóre {i.skore.celkom}</div></div></div></a>
+                <div class="rad"><button class="male" onClick={() => nastav((x) => { if (!x.nakupRecepty.includes(i.r.id)) x.nakupRecepty.push(i.r.id); })}>{st.nakupRecepty.includes(i.r.id) ? '✓ V nákupe' : '🛒 Do nákupu'}</button></div>
+              </div>
+            ))}
           </>
         )}
       </div>

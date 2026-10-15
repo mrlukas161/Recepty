@@ -150,3 +150,26 @@ test('skener: diéta bezlepková a bez laktózy → upozornenia so zdrojmi', asy
   await expect(page.getByText(/vyzret/)).toBeVisible();
   await page.screenshot({ path: 'test-results/skener-7-dieta.png', fullPage: true });
 });
+
+test('skener: história → „Kupujem“, filter, „Do nákupu“; lepšia voľba → recept do nákupu', async ({ page }) => {
+  await page.route('https://world.openfoodfacts.org/api/v2/product/**', (r) => r.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({ status: 1, product: { product_name: 'Müsli čokoládové', brands: 'Test', ingredients_text_sk: 'ovsené vločky, cukor, glukózovo-fruktózový sirup, kakao, aróma', nutriments: { sugars_100g: 28 } } }) }));
+  await page.goto('./');
+  await page.getByRole('button', { name: 'Hotovo, ukáž návrhy' }).click();
+  await page.goto('./#/skener');
+  await page.getByLabel('Čiarový kód (čísla)').fill('4006381333931');
+  await page.getByRole('button', { name: 'Nájsť' }).click();
+  await expect(page.getByText(/Domáca alternatíva/)).toBeVisible();
+  await page.getByRole('button', { name: '🛒 Do nákupu' }).first().click();
+  await expect(page.getByRole('button', { name: '✓ V nákupe' })).toBeVisible();
+  await page.getByRole('button', { name: /Uložiť do histórie/ }).click();
+  await page.getByRole('button', { name: /História/ }).click();
+  await page.getByRole('button', { name: '☆ Kupujem' }).click();
+  await expect(page.getByRole('button', { name: '★ Kupujem' })).toBeVisible();
+  await page.getByLabel('Len výrobky, ktoré kupujem').check();
+  await expect(page.getByRole('heading', { name: /★ Test – Müsli čokoládové/ })).toBeVisible();
+  await page.getByRole('button', { name: '🛒 Do nákupu' }).click();
+  await expect(page.getByRole('button', { name: '✓ V nákupe' })).toBeVisible();
+  await page.goto('./#/nakup');
+  await expect(page.getByText('Test – Müsli čokoládové')).toBeVisible();
+  await expect(page.getByText('Recepty v nákupe')).toBeVisible();
+});

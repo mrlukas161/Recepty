@@ -6,7 +6,8 @@ import { Hlavicka, Zalozky, Upozornenie } from '../ui/kom';
 import { Vysledok } from './Vysledok';
 import { rozbor } from './rozbor';
 import { vypocitajSkoreVyrobku } from './skore';
-import { nacitajHistoriu, pridajDoHistorie, zmazZaznam, vymazHistoriu, type Zaznam } from './historia';
+import { nacitajHistoriu, pridajDoHistorie, zmazZaznam, vymazHistoriu, prepniKupujem, type Zaznam } from './historia';
+import { nastav } from '../store';
 import { Porovnanie } from './Porovnanie';
 import { Foto } from './Foto';
 import { Kod } from './Kod';
@@ -30,6 +31,7 @@ export function Skener() {
   const [vyziva, setVyziva] = useState<Vyziva>({});
   const [hist, setHist] = useState<Zaznam[]>(() => nacitajHistoriu());
   const [ulozene, setUlozene] = useState(false);
+  const [lenKupujem, setLenKupujem] = useState(false);
   const [off, setOff] = useState<OffVyrobok | null>(null);
   const [doplnok, setDoplnok] = useState<Doplnok | undefined>(undefined);
   const deti = s.nastavenia.deti.length > 0;
@@ -103,13 +105,18 @@ export function Skener() {
       {zal === 'historia' && (
         <>
           {!hist.length && <p>Zatiaľ nič uložené. Vyhodnoť zloženie a ulož ho do histórie.</p>}
-          {hist.map((h) => (
+          {hist.some((h) => h.kupujem) && (
+            <label class="rad" style="align-items:center;min-height:44px"><input type="checkbox" checked={lenKupujem} onChange={(e) => setLenKupujem((e.target as HTMLInputElement).checked)} style="width:auto" /> Len výrobky, ktoré kupujem</label>
+          )}
+          {hist.filter((h) => !lenKupujem || h.kupujem).map((h) => (
             <div class="karta" key={h.id} style="animation:none">
               <div class="riadok">
-                <div class="rozt"><h3 style="margin:0">{h.nazov}</h3><div class="maly">{new Date(h.cas).toLocaleString('sk-SK')} · {PASMO_TEXT[h.pasmo as keyof typeof PASMO_TEXT]} {h.skore}/100</div></div>
+                <div class="rozt"><h3 style="margin:0">{h.kupujem ? '★ ' : ''}{h.nazov}</h3><div class="maly">{new Date(h.cas).toLocaleString('sk-SK')} · {PASMO_TEXT[h.pasmo as keyof typeof PASMO_TEXT]} {h.skore}/100</div></div>
               </div>
               <div class="rad">
                 <button class="male" onClick={() => { setText(h.text); setHotovy(h.text); setVyziva(h.vyziva ?? {}); setDoplnok(h.doplnok); setOff(null); setNazov(h.nazov); setUlozene(true); setZal('sken'); }}>Otvoriť</button>
+                <button class="male" aria-pressed={!!h.kupujem} onClick={() => { prepniKupujem(h.id); setHist(nacitajHistoriu()); }}>{h.kupujem ? '★ Kupujem' : '☆ Kupujem'}</button>
+                <button class="male" onClick={() => nastav((x) => { if (!x.nakupVlastne.includes(h.nazov)) x.nakupVlastne.push(h.nazov); })}>{s.nakupVlastne.includes(h.nazov) ? '✓ V nákupe' : '🛒 Do nákupu'}</button>
                 <button class="male" onClick={() => { zmazZaznam(h.id); setHist(nacitajHistoriu()); }}>Zmazať</button>
               </div>
             </div>
