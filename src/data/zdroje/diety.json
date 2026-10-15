@@ -1,0 +1,235 @@
+[
+ {
+  "id": "estruch-2018",
+  "citacia": "Estruch R. a kol. (2018). Primary prevention of cardiovascular disease with a Mediterranean diet supplemented with extra-virgin olive oil or nuts. New England Journal of Medicine, 378(25):e34.",
+  "doi": "10.1056/NEJMoa1800389",
+  "url": "https://doi.org/10.1056/NEJMoa1800389",
+  "uroven": "silné",
+  "tvrdenie": "Vo vysokorizikovej španielskej populácii (55–80 rokov) mala stredomorská strava doplnená olivovým olejom alebo orechmi menej veľkých kardiovaskulárnych príhod než kontrolná strava s radou znížiť tuk. Štúdia bola v roku 2013 stiahnutá pre chybu v randomizácii a v roku 2018 zopakovaná s upravenou analýzou.",
+  "cisla": "n=7 447; HR 0,69 (olivový olej) a 0,72 (orechy) vs. kontrola; medián 4,8 roka",
+  "overene": "2026-10-15",
+  "overenie": "vyhladavanie",
+  "faktory": [
+   "rastliny",
+   "tuky"
+  ],
+  "karty": [
+   "omega3"
+  ],
+  "diety": [
+   "stredomorska"
+  ]
+ },
+ {
+  "id": "sacks-2001",
+  "citacia": "Sacks F. M., Svetkey L. P., Vollmer W. M. a kol. (2001). Effects on blood pressure of reduced dietary sodium and the Dietary Approaches to Stop Hypertension (DASH) diet. New England Journal of Medicine, 344(1):3–10.",
+  "doi": "10.1056/NEJM200101043440101",
+  "url": "https://doi.org/10.1056/NEJM200101043440101",
+  "uroven": "silné",
+  "tvrdenie": "V kontrolovanej štúdii DASH strava znížila systolický tlak na každej úrovni soli a nižší príjem soli ho znížil ďalej, u ľudí s vysokým tlakom aj bez neho. Štúdia trvala len niekoľko týždňov a jedlo sa dodávalo.",
+  "cisla": "n=412; 30 dní na každej úrovni soli; pri prechode zo strednej na nízku soľ ďalší pokles systolického tlaku o 4,6 (kontrola) a 1,7 mm Hg (DASH)",
+  "overene": "2026-10-15",
+  "overenie": "vyhladavanie",
+  "faktory": [
+   "sol",
+   "rastliny"
+  ],
+  "karty": [
+   "sol"
+  ],
+  "diety": [
+   "dash"
+  ]
+ },
+ {
+  "id": "morris-2015",
+  "citacia": "Morris M. C., Tangney C. C., Wang Y., Sacks F. M., Bennett D. A., Aggarwal N. T. (2015). MIND diet associated with reduced incidence of Alzheimer's disease. Alzheimer's & Dementia, 11(9):1007–1014.",
+  "doi": "10.1016/j.jalz.2014.11.009",
+  "url": "https://doi.org/10.1016/j.jalz.2014.11.009",
+  "uroven": "stredné",
+  "tvrdenie": "V kohorte starších ľudí sa vyššia zhoda s MIND stravou spájala s nižším výskytom Alzheimerovej choroby. Je to observačná štúdia, príčinnosť nedokazuje (autori sami žiadali potvrdenie v RCT).",
+  "cisla": "n=923, vek 58–98, priemerne 4,5 roka; podľa sekundárnych správ pokles rizika o 53 % pri vysokej a o 35 % pri strednej zhode",
+  "overene": "2026-10-15",
+  "overenie": "vyhladavanie",
+  "faktory": [
+   "rastliny"
+  ],
+  "karty": [],
+  "diety": [
+   "mind"
+  ]
+ },
+ {
+  "id": "barnes-2023",
+  "citacia": "Barnes L. L. a kol. (2023). Trial of the MIND diet for prevention of cognitive decline in older persons. New England Journal of Medicine, 389(7):602–611.",
+  "doi": "10.1056/NEJMoa2302368",
+  "url": "https://doi.org/10.1056/NEJMoa2302368",
+  "uroven": "silné",
+  "tvrdenie": "V trojročnom RCT sa MIND strava s miernym obmedzením kalórií nelíšila od kontrolnej v kognitívnych testoch ani v MRI mozgu. Neutrálny výsledok, ktorý oslabuje pozorovania z kohort.",
+  "cisla": "",
+  "overene": "2026-10-15",
+  "overenie": "vyhladavanie",
+  "faktory": [
+   "rastliny"
+  ],
+  "karty": [],
+  "diety": [
+   "mind"
+  ]
+ },
+ {
+  "id": "massara-2022",
+  "citacia": "Massara P., Zurbau A., Glenn A. J. a kol. (2022). Nordic dietary patterns and cardiometabolic outcomes: a systematic review and meta-analysis of prospective cohort studies and randomised controlled trials. Diabetologia, 65(12):2011–2031.",
+  "doi": "10.1007/s00125-022-05760-z",
+  "url": "https://doi.org/10.1007/s00125-022-05760-z",
+  "uroven": "silné",
+  "tvrdenie": "Metaanalýza: severský stravovací vzorec sa spájal s malými, ale významnými poklesmi rizika kardiovaskulárnych ochorení a cukrovky a s nižším LDL; dôveryhodnosť dôkazov je nízka až stredná.",
+  "cisla": "",
+  "overene": "2026-10-15",
+  "overenie": "vyhladavanie",
+  "faktory": [
+   "rastliny",
+   "vlaknina"
+  ],
+  "karty": [
+   "celozrnne"
+  ],
+  "diety": [
+   "severska"
+  ]
+ },
+ {
+  "id": "melina-2016",
+  "citacia": "Melina V., Craig W., Levin S. (2016). Position of the Academy of Nutrition and Dietetics: Vegetarian diets. Journal of the Academy of Nutrition and Dietetics, 116(12):1970–1980.",
+  "doi": null,
+  "url": "https://digitalcommons.andrews.edu/pubs/648",
+  "uroven": "stredné",
+  "tvrdenie": "Odborné stanovisko: správne zostavená vegetariánska aj vegánska strava je zdravá, výživovo primeraná a vhodná vo všetkých životných obdobiach; vegáni potrebujú spoľahlivý zdroj vitamínu B12 (doplnok alebo obohatené potraviny).",
+  "cisla": "",
+  "overene": "2026-10-15",
+  "overenie": "vyhladavanie",
+  "faktory": [
+   "rastliny",
+   "vlaknina"
+  ],
+  "karty": [
+   "strukoviny"
+  ],
+  "diety": [
+   "vegetarianska",
+   "veganska",
+   "flexitarianska"
+  ]
+ },
+ {
+  "id": "chawla-2020",
+  "citacia": "Chawla S. a kol. (2020). The effect of low-fat and low-carbohydrate diets on weight loss and lipid levels: a systematic review and meta-analysis. Nutrients, 12(12):3774.",
+  "doi": "10.3390/nu12123774",
+  "url": "https://doi.org/10.3390/nu12123774",
+  "uroven": "silné",
+  "tvrdenie": "Metaanalýza RCT: nízkosacharidová strava mala po 6–12 mesiacoch mierne väčší úbytok hmotnosti, lepšie HDL a triglyceridy, no horšie LDL a celkový cholesterol než nízkotučná.",
+  "cisla": "38 štúdií, n=6 499; rozdiel v hmotnosti ok. 1,3 kg",
+  "overene": "2026-10-15",
+  "overenie": "vyhladavanie",
+  "faktory": [
+   "gl"
+  ],
+  "karty": [
+   "muka",
+   "cukor"
+  ],
+  "diety": [
+   "nizkosacharidova",
+   "menej-muky"
+  ]
+ },
+ {
+  "id": "patikorn-2023",
+  "citacia": "Patikorn C. a kol. (2023). Effects of ketogenic diet on health outcomes: an umbrella review of meta-analyses of randomized clinical trials. BMC Medicine.",
+  "doi": "10.1186/s12916-023-02874-y",
+  "url": "https://doi.org/10.1186/s12916-023-02874-y",
+  "uroven": "stredné",
+  "tvrdenie": "Prehľad metaanalýz RCT: ketogénna strava znižuje triglyceridy a frekvenciu záchvatov pri epilepsii, ale zvyšuje LDL-cholesterol; väčšina štúdií bola krátka a dôkazy sú prevažne slabé.",
+  "cisla": "17 metaanalýz, 68 RCT; medián sledovania ok. 13 týždňov",
+  "overene": "2026-10-15",
+  "overenie": "vyhladavanie",
+  "faktory": [],
+  "karty": [],
+  "diety": [
+   "ketogenna",
+   "nizkosacharidova"
+  ]
+ },
+ {
+  "id": "rubio-tapia-2023",
+  "citacia": "Rubio-Tapia A. a kol. (2023). American College of Gastroenterology guidelines update: diagnosis and management of celiac disease. American Journal of Gastroenterology, 118(1):59–76.",
+  "doi": "10.14309/ajg.0000000000002075",
+  "url": "https://doi.org/10.14309/ajg.0000000000002075",
+  "uroven": "silné",
+  "tvrdenie": "Smernica: liečbou celiakie je dôsledná celoživotná bezlepková diéta s lekárskym sledovaním; diagnóza sa potvrdzuje sérológiou a biopsiou, nie vlastným vylúčením lepku.",
+  "cisla": "",
+  "overene": "2026-10-15",
+  "overenie": "vyhladavanie",
+  "faktory": [],
+  "karty": [],
+  "diety": [
+   "bezlepkova"
+  ]
+ },
+ {
+  "id": "rubio-tapia-2013",
+  "citacia": "Rubio-Tapia A., Hill I. D., Kelly C. P., Calderwood A. H., Murray J. A. (2013). ACG clinical guidelines: diagnosis and management of celiac disease. American Journal of Gastroenterology, 108(5):656–676.",
+  "doi": null,
+  "url": "https://www.unboundmedicine.com/medline/citation/23609613/full_citation",
+  "uroven": "silné",
+  "tvrdenie": "Staršia smernica (nahradená verziou z 2023): liečba celiakie je predovšetkým bezlepková diéta vyžadujúca edukáciu a sledovanie.",
+  "cisla": "",
+  "overene": "2026-10-15",
+  "overenie": "vyhladavanie",
+  "faktory": [],
+  "karty": [],
+  "diety": [
+   "bezlepkova"
+  ]
+ },
+ {
+  "id": "halmos-2014",
+  "citacia": "Halmos E. P., Power V. A., Shepherd S. J., Gibson P. R., Muir J. G. (2014). A diet low in FODMAPs reduces symptoms of irritable bowel syndrome. Gastroenterology, 146(1):67–75.",
+  "doi": null,
+  "url": "https://mdedge.com/internalmedicine/article/79320/gastroenterology/low-fodmap-diet-reduced-ibs-symptoms",
+  "uroven": "stredné",
+  "tvrdenie": "Malý skrížený RCT: u ľudí s dráždivým črevom low-FODMAP strava znížila symptómy výraznejšie než bežná austrálska strava; jedlo sa dodávalo, v praxi je adherencia ťažšia.",
+  "cisla": "30 pacientov s IBS; skóre symptómov 22,8 vs. 44,9 mm; 21 dní",
+  "overene": "2026-10-15",
+  "overenie": "vyhladavanie",
+  "faktory": [
+   "tazkost"
+  ],
+  "karty": [
+   "fodmap"
+  ],
+  "diety": [
+   "low-fodmap"
+  ]
+ },
+ {
+  "id": "vanlanen-2021",
+  "citacia": "van Lanen A.-S., de Bree A., Greyling A. (2021). Efficacy of a low-FODMAP diet in adult irritable bowel syndrome: a systematic review and meta-analysis. European Journal of Nutrition, 60(6):3505–3522.",
+  "doi": "10.1007/s00394-020-02473-0",
+  "url": "https://doi.org/10.1007/s00394-020-02473-0",
+  "uroven": "silné",
+  "tvrdenie": "Metaanalýza: low-FODMAP strava znížila závažnosť IBS a zlepšila kvalitu života oproti kontrolným diétam; dlhodobý vplyv na výživovú primeranosť a mikrobióm treba ešte skúmať.",
+  "cisla": "12 prác; SMD −0,66 pre závažnosť IBS",
+  "overene": "2026-10-15",
+  "overenie": "vyhladavanie",
+  "faktory": [
+   "tazkost"
+  ],
+  "karty": [
+   "fodmap"
+  ],
+  "diety": [
+   "low-fodmap"
+  ]
+ }
+]

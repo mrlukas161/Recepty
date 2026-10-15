@@ -1,0 +1,43 @@
+[
+ {
+  "id": "shivappa-2014",
+  "citacia": "Shivappa N., Steck S. E., Hurley T. G., Hussey J. R., Hébert J. R. (2014). Designing and developing a literature-derived, population-based dietary inflammatory index. Public Health Nutrition, 17(8):1689–1696.",
+  "doi": "10.1017/S1368980013002115",
+  "url": "https://doi.org/10.1017/S1368980013002115",
+  "uroven": "slabé",
+  "tvrdenie": "Autori zostavili index (DII), ktorý prisudzuje jednotlivým zložkám stravy prozápalový či protizápalový skóre podľa publikovanej literatúry o šiestich zápalových markeroch. Ide o heuristiku odvodenú z literatúry, nie o priamy dôkaz účinku jedla.",
+  "cisla": "1 943 článkov do roku 2010; 45 potravinových parametrov; 6 markerov (IL-1β, IL-4, IL-6, IL-10, TNF-α, CRP)",
+  "overene": "2026-10-15",
+  "overenie": "vyhladavanie",
+  "faktory": [
+   "zapal"
+  ],
+  "karty": [
+   "zapal"
+  ],
+  "diety": [
+   "protizapalova",
+   "stredomorska"
+  ]
+ },
+ {
+  "id": "tabung-2016",
+  "citacia": "Tabung F. K., Smith-Warner S. A., Chavarro J. E. a kol. (2016). Development and validation of an empirical dietary inflammatory index. Journal of Nutrition, 146(8):1560–1570.",
+  "doi": null,
+  "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4958288",
+  "uroven": "stredné",
+  "tvrdenie": "Z dotazníkov o jedle v kohortách zostavili skóre (pôvodne EDII, dnes EDIP) z potravinových skupín, ktoré predpovedajú zápalové markery IL-6, CRP a TNFαR2; platnosť overili v nezávislých kohortách žien a mužov. Je to observačné, nie dôkaz príčinnosti.",
+  "cisla": "39 potravinových skupín na vstupe; validácia NHS-II n=1002 žien, HPFS n=2632 mužov",
+  "overene": "2026-10-15",
+  "overenie": "vyhladavanie",
+  "faktory": [
+   "zapal"
+  ],
+  "karty": [
+   "zapal"
+  ],
+  "diety": [
+   "protizapalova"
+  ]
+ }
+]

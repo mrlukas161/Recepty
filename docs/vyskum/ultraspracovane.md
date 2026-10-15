@@ -1,0 +1,6 @@
+# Ultraspracované potraviny (NOVA)
+Dátum: 2026-10-15 · Overenie: vyhladavanie (originál nečítaný)
+
+- **Definícia:** Monteiro a kol. 2019, Public Health Nutrition 22(5):936–941, DOI 10.1017/S1368980018003762 (USP, UDEA, USAL, PMC10260459). Praktický test: v zložení je ingrediencia typická pre ultraspracované (glukózo-fruktózový sirup, hydrolyzované bielkoviny, arómy, emulgátory, sladidlá). Úroveň: `prax` (klasifikácia, nie účinok). Poznámka: NOVA je diskutovaná klasifikácia.
+- **RCT:** Hall a kol. 2019, Cell Metabolism 30(1):67–77.e3, DOI 10.1016/j.cmet.2019.05.008, PMID 31105044 (NIH, ClinicalTrials.gov, PubMed, ďalšie). 20 dospelých, crossover 2+2 týždne, o 508 ± 106 kcal denne viac pri ultraspracovanej strave a prírastok hmotnosti. Úroveň: `silné` ako dizajn, ale malá a krátka štúdia; nerozlíši konkrétny mechanizmus. Existuje korekcia (PMID 31269427) týkajúca sa poradia diét u jedného účastníka.
+- **Prehľad:** Lane a kol. 2024, BMJ 384:e077310, DOI 10.1136/bmj-2023-077310 (bmj.com, PMC10899807, Bond a JCU repozitáre). 45 metaanalýz, n = 9 888 373, priame asociácie s 32 (71 %) ukazovateľmi; najsilnejšie pre úmrtnosť, duševné poruchy, obezitu, cukrovku 2. typu. Úroveň: `stredné`; observačné, nie dôkaz príčinnosti. Počet výsledkov a percentá sa v sekundárnych správach líšili, uvádzame z BMJ abstraktu.

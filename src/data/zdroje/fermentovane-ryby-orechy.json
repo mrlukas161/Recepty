@@ -1,0 +1,83 @@
+[
+ {
+  "id": "wastyk-2021",
+  "citacia": "Wastyk H. C. a kol. (2021). Gut-microbiota-targeted diets modulate human immune status. Cell.",
+  "doi": null,
+  "url": "https://scholars.duke.edu/publication/1639511",
+  "uroven": "stredné",
+  "tvrdenie": "V malej 17-týždňovej randomizovanej štúdii zdravých dospelých strava bohatá na fermentované potraviny postupne zvyšovala rozmanitosť črevných baktérií a znižovala zápalové markery; vysokovláknitá strava primárny cieľ (cytokínové skóre) nezmenila.",
+  "cisla": "36 účastníkov (18 v ramene); 17 týždňov",
+  "overene": "2026-10-15",
+  "overenie": "vyhladavanie",
+  "faktory": [
+   "zapal"
+  ],
+  "karty": [
+   "fermentovane",
+   "zapal"
+  ],
+  "diety": [
+   "protizapalova"
+  ]
+ },
+ {
+  "id": "mozaffarian-2006",
+  "citacia": "Mozaffarian D., Rimm E. B. (2006). Fish intake, contaminants, and human health: evaluating the risks and the benefits. JAMA, 296(15):1885–1899.",
+  "doi": null,
+  "url": "https://dash.harvard.edu/entities/publication/200f3d68-0a40-4d1c-a914-7dfe304dee98",
+  "uroven": "stredné",
+  "tvrdenie": "Prehľad: u dospelých prevažujú prínosy pravidelného jedenia rýb (1–2 porcie týždenne, najmä mastné s EPA a DHA) nad rizikami kontaminantov; v tehotenstve a pri deťoch treba voliť druhy opatrne.",
+  "cisla": "podľa tlačových správ: o 36 % nižšie riziko smrti na koronárne ochorenie a o 17 % nižšia celková úmrtnosť",
+  "overene": "2026-10-15",
+  "overenie": "vyhladavanie",
+  "faktory": [
+   "tuky"
+  ],
+  "karty": [
+   "omega3"
+  ],
+  "diety": [
+   "stredomorska",
+   "severska"
+  ]
+ },
+ {
+  "id": "abdelhamid-2020",
+  "citacia": "Abdelhamid A. S., Brown T. J., Brainard J. S. a kol. (2020). Omega-3 fatty acids for the primary and secondary prevention of cardiovascular disease. Cochrane Database of Systematic Reviews, (3):CD003177.",
+  "doi": "10.1002/14651858.CD003177.pub5",
+  "url": "https://doi.org/10.1002/14651858.CD003177.pub5",
+  "uroven": "silné",
+  "tvrdenie": "Cochrane prehľad RCT: doplnky omega-3 mali na celkovú a kardiovaskulárnu úmrtnosť malý alebo žiadny vplyv, mierne znížili koronárne príhody a znížili triglyceridy; dôkaz hovorí o doplnkoch, nie o rybách ako potravine.",
+  "cisla": "86 RCT; triglyceridy ok. −15 %; NNT 334 pre koronárnu príhodu",
+  "overene": "2026-10-15",
+  "overenie": "vyhladavanie",
+  "faktory": [
+   "tuky"
+  ],
+  "karty": [
+   "omega3"
+  ],
+  "diety": []
+ },
+ {
+  "id": "aune-2016",
+  "citacia": "Aune D. a kol. (2016). Nut consumption and risk of cardiovascular disease, total cancer, all-cause and cause-specific mortality: a systematic review and dose-response meta-analysis of prospective studies. BMC Medicine, 14:207.",
+  "doi": "10.1186/s12916-016-0730-3",
+  "url": "https://doi.org/10.1186/s12916-016-0730-3",
+  "uroven": "stredné",
+  "tvrdenie": "Metaanalýza kohort: vyšší príjem orechov sa spájal s nižším rizikom ochorení srdca a celkovej úmrtnosti; ide o observačné dáta, nad ok. 20 g denne už prínos rástol málo.",
+  "cisla": "20 štúdií; na 28 g/deň RR 0,71 (koronárna choroba srdca), 0,79 (kardiovaskulárne ochorenia), 0,78 (celková úmrtnosť)",
+  "overene": "2026-10-15",
+  "overenie": "vyhladavanie",
+  "faktory": [
+   "tuky",
+   "vlaknina"
+  ],
+  "karty": [
+   "omega3"
+  ],
+  "diety": [
+   "stredomorska"
+  ]
+ }
+]
