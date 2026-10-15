@@ -20,3 +20,6 @@ Ovos je v databáze označený ako `lepok` (riziko krížovej kontaminácie, EÚ
 
 ## R5 – Skener zloženia
 Stavia samostatný agent v `src/skener/**`; hlavná appka má len trasu `#/skener` a položku v menu (`src/skener-vstup.tsx` načíta `src/skener/index.tsx`, export `Skener`).
+
+## R6 – Kontrolný beh 15.10.2026 (03:40 UTC)
+Bez zmien kódu: testy, build a e2e zelené, nasadenie úspešné. Opätovná WebSearch rešerš sa nerobila – zdroje už prešli adversariálnym overením (docs/vyskum/OVERENIE.md) a opakovanie by nepridalo novú úroveň dôkazov; úroveň `original` čaká na otvorenie siete.
