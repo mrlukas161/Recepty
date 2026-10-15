@@ -12,3 +12,4 @@
 | 2026-10-15 08:40 | beží | Hotová (c): upozornenia pre diétu Bezlepková a Bez laktózy a alergie (lepok, mlieko) so zdrojmi (EÚ 828/2014, 1169/2011 príl. II, AOECS), unit + e2e. Ďalej: (d) nákup z histórie. |
 | 2026-10-15 08:41 | beží | Hotová (d): v histórii tlačidlá „Do nákupu“ a značka „Kupujem“ s filtrom (migrácia tvaru záznamov + test), recept z „lepšej voľby“ do nákupu, unit + e2e. Ďalej: (e) čistenie OCR. |
 | 2026-10-15 08:45 | beží | Hotová (e): slovníková oprava OCR (Levenshtein, diakritika), spájanie slov na konci riadka, druhý prechod OCR s orezom na pás textu, testy na zašumených vzorkách + e2e. Ďalej: ranný prehľad, kontrola nasadenia. |
+| 2026-10-15 08:46 | beží | Ranný prehľad doplnený (sekcia „Novinky 15.10. – skener“ + úprava „Skener zloženia“). Posledný krok: push a kontrola workflow Nasadenie. |
