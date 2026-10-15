@@ -58,3 +58,6 @@ Prešlo sa Dnes, recepty, detail s úpravami, režim varenia s časovačom, vlas
 - Postup receptu: krok, ktorý spomína vynechanú voliteľnú surovinu (podľa kmeňa názvu), dostane poznámku „(voliteľné – máš obmedzené)“; texty receptov v dátach sa nemenia (`postupPreDomacnost`).
 - Opravy rozloženia: záložky s ikonou, zmršťujúce sa checkboxy v nákupe (`flex: none`), dotykové plochy odkazov a rozbaľovača aspoň 44 px.
 - E2E: port sa dá zvoliť cez `PW_PORT` (predvolene 4173); `e2e/prenos.spec.ts` mal natvrdo 4173, preto na inom porte zlyhával.
+
+## R-k1 – Kontrolný beh 15.10.
+Bez zmeny kódu: žiadna chyba nenájdená. Migrácia sa overila odseknutým stavom (verzia 1) — uložený JSON sa neprepisuje, kým používateľ niečo nezmení;  ho migruje pri načítaní (pokrýva unit test a e2e „starý uložený stav“).
