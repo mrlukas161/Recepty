@@ -41,7 +41,7 @@ test('nastavenia: čas cez týždeň a víkend, varím na 2 dni sa prenesie do j
   await expect(page.locator('.slot a').first()).toBeVisible();
   await page.screenshot({ path: 'test-results/11-jedalnicek-2dni.png', fullPage: true });
   const ulozene = await page.evaluate(() => JSON.parse(localStorage.getItem('recepty-v1') ?? '{}'));
-  expect(ulozene.verzia).toBe(2);
+  expect(ulozene.verzia).toBe(3);
   expect(ulozene.nastavenia.casTyzden).toBe(30);
   expect(ulozene.nastavenia.casVikend).toBe(120);
   expect(ulozene.nastavenia.varimNa2Dni).toBe(true);
