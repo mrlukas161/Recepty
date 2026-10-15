@@ -11,3 +11,12 @@ Rodinná PWA appka: radí, čo variť, keď chceme obmedziť múku, cukor, úden
 - **Commit a push často** (aspoň po každej fáze) + zápis do `docs/PRIEBEH.md`. Nič s červenými testami — workflow vtedy nenasadí.
 - **Over spustením**, nie len kompiláciou: unit testy, e2e na mobilnom viewporte, prechod appkou v prehliadači, živá adresa (`version.json`).
 - Do repa žiadne tajomstvá, tokeny ani osobné údaje.
+
+## Sieť v cloude a úrovne overenia zdrojov (doplnené 15.10.2026 02:25)
+- Zo sandboxu cloudu ide len **GitHub** (git, raw.githubusercontent.com) a **npm**. PubMed, doi.org, EFSA, EUR-Lex, WHO, Open Food Facts a nástroj WebFetch sú blokované (test 15.10.2026 00:21 UTC). **WebSearch funguje** (vracia súhrny výsledkov).
+- Preto **3 úrovne overenia zdroja**, appka pri každom tvrdení ukáže, na akej úrovni je:
+  - `original` — originál otvorený a prečítaný (zatiaľ nedostupné; doplní sa, keď sa sieť otvorí),
+  - `vyhladavanie` — existencia, bibliografia (autori, rok, časopis, DOI) a hlavný záver potvrdené aspoň z 2 nezávislých výsledkov WebSearch (napr. vydavateľ + PubMed alebo repozitár); čísla len ak sú vo výsledkoch doslova,
+  - `neoverene` — do appky nejde ako tvrdenie.
+- Tvrdenia s úrovňou `vyhladavanie` smú ísť do appky s viditeľným označením („overené vyhľadávaním, originál nečítaný"). Toto upravuje rozhodnutie R1 v `docs/ROZHODNUTIA.md`: zdroje nemusia ostať len „odhad".
+- Na začiatku každého behu over sieť (`curl -s -o /dev/null -w '%{http_code}' --max-time 10 https://doi.org/10.1136/bmj.i2716`). Ak je otvorená, overuj v origináli a zvyšuj úroveň na `original`.
