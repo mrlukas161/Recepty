@@ -85,7 +85,8 @@ export function vypocitajSkore(
   ];
   const vahySum = faktory.reduce((a, x) => a + x.vaha, 0);
   let celkom = Math.round(faktory.reduce((a, x) => a + x.body * x.vaha, 0) / vahySum);
-  celkom = clamp(celkom);
+  // roztiahnutie škály, aby sa bežné jedlá nezhlukli v pásme 70–90 (monotónne, len kalibrácia)
+  celkom = Math.round(clamp(58 + (celkom - 66) * 1.3));
   const pm = pasmo(celkom);
 
   const prinosy: string[] = [];

@@ -23,8 +23,8 @@ let stav: UlozenyStav = nacitaj();
 const poslucha = new Set<() => void>();
 export const dajStav = () => stav;
 export function nastav(f: (s: UlozenyStav) => UlozenyStav | void) {
-  const novy = f(structuredClone(stav)) ?? stav;
-  stav = novy;
+  const kopia = structuredClone(stav);
+  stav = f(kopia) ?? kopia;
   try { localStorage.setItem(KEY, JSON.stringify(stav)); } catch { /* bez ukladania */ }
   poslucha.forEach((p) => p());
 }
