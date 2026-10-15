@@ -11,6 +11,7 @@ import { Jedalnicek } from './ui/Jedalnicek';
 import { Nakup } from './ui/Nakup';
 import { Viac, Nahrady, Diety, Vedomosti, Nastavenia } from './ui/Viac';
 import { SkenerTrasa } from './skener-vstup';
+import { KozmetikaTrasa } from './kozmetika-vstup';
 import { VlastnyReceptForm, MojeRecepty } from './ui/VlastnyRecept';
 import { Prenos } from './ui/Prenos';
 import { registerSW } from 'virtual:pwa-register';
@@ -52,6 +53,7 @@ function App() {
   else if (a === 'vlastny') obsah = <VlastnyReceptForm key={b ?? 'novy'} id={b} />;
   else if (a === 'moje') obsah = <MojeRecepty />;
   else if (a === 'skener') obsah = <SkenerTrasa />;
+  else if (a === 'kozmetika') obsah = <KozmetikaTrasa />;
   else if (a === 'viac') obsah = <Viac />;
   else obsah = <Dnes />;
   const akt = a === '' || a === undefined ? '#/' : `#/${a === 'recept' || a === 'vlastny' || a === 'moje' ? 'recepty' : a}`;
@@ -59,7 +61,7 @@ function App() {
     <>
       <main>{obsah}</main>
       <nav class="spodna" aria-label="Hlavná navigácia">
-        {NAV.map(([href, ik, nz]) => <a href={href} key={href} aria-current={akt === href || (href === '#/viac' && ['#/nahrady', '#/diety', '#/vedomosti', '#/nastavenia', '#/ruleta', '#/skener', '#/prenos'].includes(akt)) ? 'page' : undefined}><span class="ik" aria-hidden="true"><Ilustracia typ={ik} velkost={26} /></span>{nz}</a>)}
+        {NAV.map(([href, ik, nz]) => <a href={href} key={href} aria-current={akt === href || (href === '#/viac' && ['#/nahrady', '#/diety', '#/vedomosti', '#/nastavenia', '#/ruleta', '#/skener', '#/kozmetika', '#/prenos'].includes(akt)) ? 'page' : undefined}><span class="ik" aria-hidden="true"><Ilustracia typ={ik} velkost={26} /></span>{nz}</a>)}
       </nav>
     </>
   );

@@ -16,6 +16,7 @@ export function Viac() {
     ['#/diety', '🥗', 'Diéty', 'Popisy a tlačidlo „Použiť“'],
     ['#/vedomosti', '📚', 'Vedomosti', 'Krátke karty a stav zdrojov'],
     ['#/skener', '📷', 'Skener zloženia', 'Odfoť zloženie výrobku a získaj hodnotenie'],
+    ['#/kozmetika', '🧴', 'Skener kozmetiky', 'Hodnotenie zloženia INCI podľa predpisov EÚ'],
     ['#/ruleta', '🎰', 'Ruleta', 'Náhodný recept dňa'],
     ['#/prenos', '📲', 'Preniesť do druhého mobilu', 'Odkaz alebo QR kód, bez servera'],
     ['#/nastavenia', '⚙️', 'Nastavenia', 'Domácnosť, obmedzenia, téma, export'],

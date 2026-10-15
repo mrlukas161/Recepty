@@ -3,7 +3,7 @@
 import type { Worker as TessWorker } from 'tesseract.js';
 import { opravSlova, spojRozdeleneSlova, kvalitaTextu, pasmoTextu, type OpravaSlova } from './slovnik';
 
-export type JazykOcr = 'slk+eng' | 'ces+eng' | 'slk+ces+eng';
+export type JazykOcr = 'slk+eng' | 'ces+eng' | 'slk+ces+eng' | 'eng';
 export const JAZYKY_OCR: { id: JazykOcr; nazov: string }[] = [
   { id: 'slk+eng', nazov: 'Slovenčina + angličtina' },
   { id: 'ces+eng', nazov: 'Čeština + angličtina' },

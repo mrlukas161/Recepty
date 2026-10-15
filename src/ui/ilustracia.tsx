@@ -46,6 +46,7 @@ const KRESBY: Record<string, () => ComponentChildren> = {
   // odkazy v ponuke Viac a ikony kariet
   'nav-nahrady': () => <><path d="M9 20a15 15 0 0 1 27-6" fill="none" stroke-width="3" /><path d="M39 5v10H29z" fill={H} /><path d="M39 28a15 15 0 0 1-27 6" fill="none" stroke-width="3" /><path d="M9 43V33h10z" fill={O} /><circle cx="24" cy="24" r="4" fill={P} /></>,
   'nav-diety': () => <><circle cx="24" cy="26" r="16" fill={K} /><circle cx="24" cy="26" r="9" fill={O} /><path d="M24 10c0-4 3-6 7-6 0 4-3 6-7 6z" fill={O} /></>,
+  'nav-kozmetika': () => <><rect x="18" y="6" width="12" height="8" rx="2" fill={H} /><path d="M20 14h8v4l5 5v17a3 3 0 0 1-3 3H18a3 3 0 0 1-3-3V23l5-5z" fill={K} /><circle cx="24" cy="31" r="5" fill={M} /></>,
   'nav-skener': () => <><rect x="5" y="14" width="38" height="26" rx="5" fill={K} /><path d="M16 14l3-6h10l3 6" fill={H} /><circle cx="24" cy="27" r="8" fill={M} /><circle cx="24" cy="27" r="3" fill={P} /></>,
   'nav-prenos': () => <><rect x="13" y="4" width="22" height="40" rx="4" fill={K} /><path d="M18 10h12M22 39h4" fill="none" /><path d="M4 22l6-5v3h6v4h-6v3zM44 30l-6 5v-3h-6v-4h6v-3z" fill={H} /></>,
   'nav-nastavenia': () => <><path d="M21 4h6l1 5 4 2 5-3 4 4-3 5 2 4 5 1v6l-5 1-2 4 3 5-4 4-5-3-4 2-1 5h-6l-1-5-4-2-5 3-4-4 3-5-2-4-5-1v-6l5-1 2-4-3-5 4-4 5 3 4-2z" fill={H} transform="scale(.9) translate(2.6 2.6)" /><circle cx="24" cy="24" r="6" fill={K} /></>,
@@ -76,7 +77,7 @@ const Z_EMOJI: Record<string, string> = {
   '🍰': 'dezert', '🧁': 'dezert', '🥧': 'dezert', '🥮': 'susienka', '🍫': 'dezert', '🧡': 'dezert', '🍪': 'susienka', '🍲': 'hrniec', '🥘': 'hrniec', '🫙': 'hrniec',
   '🍳': 'vajicka', '🥚': 'vajicka', '🥞': 'palacinky', '🐟': 'ryba', '🐠': 'ryba', '🫘': 'strukoviny', '🧆': 'placky', '🥟': 'placky',
   '🥗': 'salat', '🥬': 'salat', '🥛': 'mlieko', '🧀': 'syr', '🥜': 'orechy', '🥤': 'napoj', '🥣': 'kasa', '🫑': 'zelenina', '🥒': 'zelenina',
-  '🔁': 'nav-nahrady', '📚': 'nav-recepty', '📷': 'nav-skener', '🎰': 'ruleta', '📲': 'nav-prenos', '⚙️': 'nav-nastavenia', '🔄': 'nav-nahrady',
+  '🔁': 'nav-nahrady', '📚': 'nav-recepty', '📷': 'nav-skener', '🧴': 'nav-kozmetika', '🎰': 'ruleta', '📲': 'nav-prenos', '⚙️': 'nav-nastavenia', '🔄': 'nav-nahrady',
   '🍬': 'cukor', '🥓': 'udeniny', '🍟': 'vyprazane', '📦': 'balik', '🧂': 'sol', '🫄': 'brucho', '🔥': 'plamen', '👶': 'dieta',
   '🥕': 'zelenina', '🥦': 'zelenina', '🎃': 'zelenina', '🧄': 'zelenina', '🥑': 'avokado',
 };

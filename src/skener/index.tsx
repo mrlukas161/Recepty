@@ -54,6 +54,7 @@ export function Skener() {
   return (
     <>
       <Hlavicka nazov="Skener zloženia" />
+      <p class="maly">Hodnotíš kozmetiku alebo drogériu? Použi <a href="#/kozmetika">Skener kozmetiky</a> (zloženie INCI).</p>
       <Zalozky hodnoty={[{ id: 'sken', nazov: '📷 Skenovať' }, { id: 'historia', nazov: `🕘 História${hist.length ? ` ${hist.length}` : ''}` }, { id: 'porovnat', nazov: '⚖️ Porovnať' }]} vybrane={zal} zmen={setZal} />
 
       {zal === 'sken' && (
