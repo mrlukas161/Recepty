@@ -1,0 +1,65 @@
+name: Nasadenie na GitHub Pages
+
+on:
+  push:
+    branches: [main, 'claude/**']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Vetva claude/* -> posun main (fast-forward)
+        if: startsWith(github.ref, 'refs/heads/claude/')
+        run: git push origin HEAD:main || echo "::warning::main sa nedal posunut fast-forwardom - nasadzujem tento commit aj tak"
+
+      - uses: actions/setup-node@v4
+        if: hashFiles('package.json') != ''
+        with:
+          node-version: 22
+
+      - name: Instalacia, testy, build
+        if: hashFiles('package.json') != ''
+        env:
+          GIT_SHA: ${{ github.sha }}
+        run: |
+          if [ -f package-lock.json ]; then npm ci; else npm install; fi
+          npm test --if-present
+          npm run build
+
+      - name: Docasna stranka (appka sa este stavia)
+        if: hashFiles('package.json') == ''
+        run: |
+          mkdir -p dist
+          cat > dist/index.html <<'EOF'
+          <!doctype html><html lang="sk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Recepty</title></head>
+          <body style="font-family:system-ui,sans-serif;padding:24px;line-height:1.5"><h1>Recepty</h1><p>Appka sa práve stavia v cloude. Skús to ráno.</p></body></html>
+          EOF
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
