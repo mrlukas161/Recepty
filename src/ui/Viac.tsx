@@ -159,6 +159,8 @@ export function Nastavenia({ uvod }: { uvod?: boolean }) {
       <h2>Diéta</h2>
       <div class="cipy">{DIETY.map((d) => <button class="chip" aria-pressed={n.diety.includes(d.id)} onClick={() => nastavNastavenia({ diety: toggle(n.diety, d.id) })}>{d.nazov}</button>)}</div>
       <p class="maly"><a href="#/diety">Popisy diét</a></p>
+      <h2>Jedlá v jedálničku</h2>
+      <div class="cipy">{([['ranajky', 'Raňajky'], ['desiata', 'Desiata'], ['obed', 'Obed'], ['vecera', 'Večera']] as const).map(([id, nz]) => <button class="chip" aria-pressed={n.jedla.includes(id)} onClick={() => { const poradie = ['ranajky', 'desiata', 'obed', 'vecera']; const novy = n.jedla.includes(id) ? n.jedla.filter((x) => x !== id) : [...n.jedla, id]; nastavNastavenia({ jedla: novy.sort((a, b) => poradie.indexOf(a) - poradie.indexOf(b)) }); }}>{nz}</button>)}</div>
       <h2>Čas a vybavenie</h2>
       <div class="karta">
         <label class="pol">Čas na varenie cez týždeň: <input type="number" min="10" max="180" step="5" style="width:90px" value={n.maxCas} onChange={(e) => nastavNastavenia({ maxCas: +(e.target as HTMLInputElement).value || 45 })} /> min</label>
