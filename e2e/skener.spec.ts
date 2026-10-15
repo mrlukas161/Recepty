@@ -173,3 +173,24 @@ test('skener: história → „Kupujem“, filter, „Do nákupu“; lepšia vo�
   await expect(page.getByText('Test – Müsli čokoládové')).toBeVisible();
   await expect(page.getByText('Recepty v nákupe')).toBeVisible();
 });
+
+test('skener: zašumená fotka (zalomené riadky, rozmazanie, náklon) → OCR → slovníková oprava', async ({ page, context }) => {
+  await page.goto('./');
+  await page.getByRole('button', { name: 'Hotovo, ukáž návrhy' }).click();
+  const p2 = await context.newPage();
+  await p2.setViewportSize({ width: 700, height: 520 });
+  await p2.setContent(`<body style="margin:0;background:#f4f1ea"><div style="width:380px;margin:40px;font:27px/1.45 'DejaVu Sans', Arial, sans-serif;color:#222;transform:rotate(1.2deg);filter:blur(0.7px);hyphens:auto" lang="sk">Zloženie: pšeničná múka, cukor, palmový tuk, emulgátor (E471), sladidlo (E950), kakao 4,5 %, soľ, aróma.</div></body>`);
+  const png = await p2.screenshot();
+  await p2.close();
+  await page.goto('./#/skener');
+  await page.locator('#sk-foto').setInputFiles({ name: 'zasumena.png', mimeType: 'image/png', buffer: png });
+  await page.getByRole('button', { name: 'Rozpoznať text' }).click();
+  await expect(page.getByText(/Hotovo – text skontroluj/)).toBeVisible({ timeout: 120000 });
+  const text = (await page.locator('#sk-text').inputValue()).toLowerCase();
+  console.log('OCR zašumené:', text);
+  expect(text).toContain('cukor');
+  expect(text).toMatch(/palmov/);
+  expect(text).not.toContain('\n');
+  await page.getByRole('button', { name: 'Vyhodnotiť' }).click();
+  await expect(page.getByText(/E471 · /).first()).toBeVisible();
+});

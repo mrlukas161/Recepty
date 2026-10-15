@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
 import { nacitajObrazok, vykresli, PREDVOLENA_UPRAVA, type Uprava, type Zdroj } from './obrazok';
-import { rozpoznajText, vycistiOcrText, podporujeOcr, JAZYKY_OCR, type JazykOcr } from './ocr';
+import { rozpoznajText, spracujOcrText, podporujeOcr, JAZYKY_OCR, type JazykOcr } from './ocr';
 
 const NAH_STRANA = 1000;
 
@@ -12,6 +12,8 @@ export function Foto({ naText }: { naText: (t: string) => void }) {
   const [podiel, setPodiel] = useState(0);
   const [bezi, setBezi] = useState(false);
   const [chyba, setChyba] = useState('');
+  const [druhy, setDruhy] = useState(true);
+  const [opravy, setOpravy] = useState<{ z: string; na: string }[]>([]);
   const plocha = useRef<HTMLCanvasElement>(null);
   const ocrOk = podporujeOcr();
 
@@ -30,10 +32,11 @@ export function Foto({ naText }: { naText: (t: string) => void }) {
     setBezi(true); setChyba(''); setStav('Pripravujem…'); setPodiel(0);
     try {
       const c = vykresli(z, u);
-      const t = await rozpoznajText(c, jazyk, (p) => { setStav(p.stav); setPodiel(p.podiel); });
-      const cisty = vycistiOcrText(t);
+      const v = await rozpoznajText(c, jazyk, (p) => { setStav(p.stav); setPodiel(p.podiel); }, druhy);
+      const { text: cisty, opravy: op } = spracujOcrText(v.text);
+      setOpravy(op);
       if (!cisty) setChyba('Nenašiel sa žiadny text. Skús fotku zblízka, rovno, s dobrým svetlom, alebo zvýš kontrast.');
-      else { naText(cisty); setStav('Hotovo – text skontroluj nižšie a oprav chyby.'); }
+      else { naText(cisty); setStav(`Hotovo – text skontroluj nižšie a oprav chyby.${v.druhyPrechod ? ' (Použili sme druhý prechod s orezom na pás textu.)' : ''}`); }
     } catch (err) {
       setChyba('OCR zlyhalo (pri prvom použití treba internet na stiahnutie jazykových dát). Zloženie môžeš vložiť ručne. ' + (err instanceof Error ? err.message : ''));
     } finally { setBezi(false); }
@@ -75,10 +78,12 @@ export function Foto({ naText }: { naText: (t: string) => void }) {
           <select id="sk-jazyk" value={jazyk} onChange={(e) => setJazyk((e.target as HTMLSelectElement).value as JazykOcr)} style="width:100%">
             {JAZYKY_OCR.map((j) => <option key={j.id} value={j.id}>{j.nazov}</option>)}
           </select>
+          <label class="pol maly"><input type="checkbox" checked={druhy} onChange={(e) => setDruhy((e.target as HTMLInputElement).checked)} /> Druhý prechod, ak je výsledok slabý (presnejšie, pomalšie)</label>
           <div class="rad"><button class="hl" onClick={rozpoznaj} disabled={bezi || !ocrOk}>{bezi ? 'Rozpoznávam…' : 'Rozpoznať text'}</button></div>
         </>
       )}
       {(bezi || stav) && <div class="sk-stav" role="status">{stav}{bezi && <progress class="sk" value={podiel} max="1" />}</div>}
+      {opravy.length > 0 && !bezi && <p class="maly" role="status">Slovník opravil {opravy.length} {opravy.length === 1 ? 'slovo' : opravy.length < 5 ? 'slová' : 'slov'}: {opravy.slice(0, 8).map((o) => `${o.z} → ${o.na}`).join('; ')}{opravy.length > 8 ? '…' : ''}. Skontroluj to s obalom.</p>}
       {chyba && <p class="sk-varovanie" role="alert">{chyba}</p>}
     </div>
   );

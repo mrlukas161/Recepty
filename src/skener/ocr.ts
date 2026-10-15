@@ -1,6 +1,7 @@
 /** OCR offline: Tesseract.js, súbory (worker, jadro, jazykové dáta) sú súčasťou appky v /ocr/ a načítajú sa až pri prvom rozpoznávaní.
  *  Service worker ich po prvom stiahnutí uchová (pozri vite.config.ts, runtimeCaching `skener-ocr`). */
 import type { Worker as TessWorker } from 'tesseract.js';
+import { opravSlova, spojRozdeleneSlova, kvalitaTextu, pasmoTextu, type OpravaSlova } from './slovnik';
 
 export type JazykOcr = 'slk+eng' | 'ces+eng' | 'slk+ces+eng';
 export const JAZYKY_OCR: { id: JazykOcr; nazov: string }[] = [
@@ -39,19 +40,48 @@ async function dajWorker(j: JazykOcr): Promise<TessWorker> {
   return worker;
 }
 
-/** Rozpozná text z canvasu. */
-export async function rozpoznajText(c: HTMLCanvasElement, j: JazykOcr, naPostup: (p: { stav: string; podiel: number }) => void): Promise<string> {
+/** Prah kvality (podiel známych slov), pod ktorým sa pri zapnutom druhom prechode skúsi orez na pás textu. */
+export const PRAH_DRUHEHO_PRECHODU = 0.8;
+
+export interface VysledokOcr { text: string; druhyPrechod: boolean; kvalita: number }
+
+/** Rozpozná text z canvasu; voliteľne druhý prechod s orezom na pás textu (PSM 6), ak je prvý výsledok slabý. */
+export async function rozpoznajText(c: HTMLCanvasElement, j: JazykOcr, naPostup: (p: { stav: string; podiel: number }) => void, druhyPrechod = true): Promise<VysledokOcr> {
   postup = naPostup;
   try {
     const w = await dajWorker(j);
-    const r = await w.recognize(c);
-    return r.data.text;
+    const r1 = await w.recognize(c, {}, { blocks: true });
+    let text = r1.data.text;
+    let kvalita = kvalitaTextu(vycistiOcrText(text));
+    let pouzity = false;
+    if (druhyPrechod && kvalita < PRAH_DRUHEHO_PRECHODU) {
+      const riadky = (r1.data.blocks ?? []).flatMap((b) => b.paragraphs.flatMap((p) => p.lines)).map((l) => ({ text: l.text, confidence: l.confidence, bbox: l.bbox }));
+      const pas = pasmoTextu(riadky, c.width, c.height);
+      if (pas) {
+        const o = document.createElement('canvas');
+        o.width = pas.width; o.height = pas.height;
+        o.getContext('2d')!.drawImage(c, pas.left, pas.top, pas.width, pas.height, 0, 0, pas.width, pas.height);
+        naPostup({ stav: 'Druhý prechod: čítam pás textu…', podiel: 0 });
+        await w.setParameters({ tessedit_pageseg_mode: '6' as never });
+        try {
+          const r2 = await w.recognize(o);
+          const k2 = kvalitaTextu(vycistiOcrText(r2.data.text));
+          if (k2 > kvalita) { text = r2.data.text; kvalita = k2; pouzity = true; }
+        } finally { await w.setParameters({ tessedit_pageseg_mode: '3' as never }); }
+      }
+    }
+    return { text, druhyPrechod: pouzity, kvalita };
   } finally { postup = null; }
 }
 
 export async function ukonciOcr() { if (worker) { const w = worker; worker = null; jazyk = null; await w.terminate(); } }
 
-/** Zloží text z OCR do jedného riadka zloženia (spojí zalomenia riadkov, opraví medzery pred čiarkou). */
+/** Zloží text z OCR do jedného riadka zloženia (spojí slová rozdelené na konci riadku, zalomenia, opraví medzery pred čiarkou). */
 export function vycistiOcrText(t: string): string {
-  return t.replace(/(\p{L})-\n(\p{L})/gu, '$1$2').replace(/\s*\n\s*/g, ' ').replace(/\s+([,.;:])/g, '$1').replace(/\s{2,}/g, ' ').trim();
+  return spojRozdeleneSlova(t).replace(/\s*\n\s*/g, ' ').replace(/\s+([,.;:])/g, '$1').replace(/\s{2,}/g, ' ').trim();
+}
+
+/** Čistenie + slovníková oprava (preklepy, diakritika). `opravy` sa ukážu používateľovi. */
+export function spracujOcrText(t: string): { text: string; opravy: OpravaSlova[] } {
+  return opravSlova(vycistiOcrText(t));
 }
