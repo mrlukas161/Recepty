@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { zluc } from '../src/store';
 import { PREDVOLENE } from '../src/engine/types';
+import type { VlastnyRecept } from '../src/engine/vlastne';
 import { POLITIKA, VYLUCENE, zabal, rozbal, zostavBalik, rozdiel, pouzi, vytiahniDataText, odkazZDat, zmestiSaDoQr, naBase64url, over, PrenosChyba } from '../src/engine/prenos';
 
 const stavA = () => zluc({
@@ -77,10 +78,10 @@ describe('prenos – odolnosť voči chybám', () => {
     expect(() => over({ a: 'recepty-prenos', v: 0, s: {} })).toThrow(PrenosChyba);
   });
   it('zlé typy v časti sa preskočia s varovaním, ostatné ostanú', () => {
-    const { balik, varovania } = over({ a: 'recepty-prenos', v: 1, c: 1, s: { oblubene: 'nie pole', hodnotenie: { a: 5, b: 1, __proto__: 1 }, nastavenia: { dospeli: 'x', tema: 'tmava', maxCas: 30 }, nakupVlastne: ['ok', 3, null] } });
+    const { balik, varovania } = over({ a: 'recepty-prenos', v: 1, c: 1, s: { oblubene: 'nie pole', hodnotenie: { a: 5, b: 1, __proto__: 1 }, nastavenia: { dospeli: 'x', tema: 'tmava', casTyzden: 30 }, nakupVlastne: ['ok', 3, null] } });
     expect(varovania.length).toBe(1);
     expect(balik.s.hodnotenie).toEqual({ b: 1 });
-    expect(balik.s.nastavenia).toEqual({ tema: 'tmava', maxCas: 30 });
+    expect(balik.s.nastavenia).toEqual({ tema: 'tmava', casTyzden: 30 });
     expect(balik.s.nakupVlastne).toEqual(['ok']);
     expect(balik.s).not.toHaveProperty('oblubene');
     expect(({} as Record<string, unknown>).polluted).toBeUndefined();
@@ -127,5 +128,34 @@ describe('prenos – náhľad a zlúčenie', () => {
     const r = pouzi(lok, bal, 'zlucit');
     expect(lok).toEqual(kopia);
     expect(r).not.toHaveProperty('cudzi');
+  });
+});
+
+describe('prenos – vlastné recepty a pridané voliteľné', () => {
+  const mk = (id: string, upravene: string, nazov = 'Omeleta'): VlastnyRecept => ({
+    id, nazov, typ: 'obed', casPripravy: 10, casVarenia: 10, porcie: 2,
+    suroviny: [{ id: 'vajce-slepacie', mnozstvo: 4, jednotka: 'ks' }], volne: ['hrsť petržlenu'], postup: ['Upeč.'], tagy: [],
+    vytvorene: '2026-10-01T08:00:00.000Z', upravene,
+  });
+  it('prenesie sa, zlúči podľa id a novší vyhrá', async () => {
+    const a = zluc({ vlastne: [mk('v-1', '2026-10-10T00:00:00.000Z', 'Nová verzia'), mk('v-2', '2026-10-10T00:00:00.000Z')], pridaneVolitelne: { r1: ['x'] } });
+    const b = zluc({ vlastne: [mk('v-1', '2026-10-05T00:00:00.000Z', 'Stará verzia'), mk('v-3', '2026-10-05T00:00:00.000Z')], pridaneVolitelne: { r1: ['y'] } });
+    const { balik } = await rozbal(await zabal(a));
+    expect((balik.s.vlastne as VlastnyRecept[]).map((x) => x.id)).toEqual(['v-1', 'v-2']);
+    const d = rozdiel(b, balik).kluce.find((k) => k.kluc === 'vlastne')!;
+    expect(d).toMatchObject({ nove: 1, konflikty: 1, lenLokalne: 1, vysledokZlucit: 3 });
+    const r = pouzi(b, balik, 'zlucit');
+    const v = r.vlastne as VlastnyRecept[];
+    expect(v.map((x) => x.id).sort()).toEqual(['v-1', 'v-2', 'v-3']);
+    expect(v.find((x) => x.id === 'v-1')!.nazov).toBe('Nová verzia');
+    expect(r.pridaneVolitelne).toEqual({ r1: ['y', 'x'] });
+    expect((pouzi(b, balik, 'nahradit').vlastne as unknown[]).length).toBe(2);
+  });
+  it('chybné vlastné recepty v prenose sa zahodia', () => {
+    const { balik } = over({ a: 'recepty-prenos', v: 1, s: { vlastne: [mk('v-1', '2026-10-10T00:00:00.000Z'), { zle: 1 }, null] } });
+    expect(balik.s.vlastne).toHaveLength(1);
+  });
+  it('starší tvar nastavení (maxCas) sa premietne do casTyzden', () => {
+    expect((over({ a: 'recepty-prenos', v: 1, s: { nastavenia: { maxCas: 30 } } }).balik.s.nastavenia as { casTyzden: number }).casTyzden).toBe(30);
   });
 });
