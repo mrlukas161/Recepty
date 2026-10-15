@@ -13,10 +13,7 @@
       "bielkoviny"
     ],
     "karty": [],
-    "diety": [
-      "nizkosacharidova",
-      "flexitarianska"
-    ]
+    "diety": []
   },
   {
     "id": "sievert-2019",
@@ -28,9 +25,7 @@
     "cisla": "13 štúdií; hmotnosť pri raňajkách o 0,44 kg vyššia (95 % CI 0,07 až 0,82); príjem energie o 259,79 kcal/deň vyšší (95 % CI 78,87 až 440,71).",
     "overene": "2026-10-15",
     "overenie": "vyhladavanie",
-    "faktory": [
-      "bielkoviny"
-    ],
+    "faktory": [],
     "karty": [],
     "diety": []
   }

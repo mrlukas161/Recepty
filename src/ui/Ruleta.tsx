@@ -32,6 +32,7 @@ export function Ruleta() {
       <p class="maly">Rešpektuje tvoje vylúčenia, alergie a diétu. Na výber: {pool.length} receptov.</p>
       <div class="sipka" aria-hidden="true">▼</div>
       <div class="koleso" style={`transform:rotate(${uhol}deg)`} aria-hidden="true"><div class="stred" style={`transform:rotate(${-uhol}deg)`}>{emoji}</div></div>
+      {!pool.length && <p class="upoz">Žiadne recepty nevyhovujú tvojim nastaveniam (alergie, vylúčenia, diéty). <a href="#/nastavenia">Nastavenia</a> · <a href="#/diety">Diéty</a></p>}
       <div class="rad" style="justify-content:center"><button class="hl" onClick={tocit} disabled={toci || !pool.length} style="min-height:56px;font-size:1.15rem">{toci ? 'Točí sa…' : '🎰 Roztočiť'}</button></div>
       <div aria-live="polite">
         {v && (

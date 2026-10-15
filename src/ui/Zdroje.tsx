@@ -7,7 +7,7 @@ export function ZdrojKarta({ z }: { z: Zdroj }) {
       <div class="maly">{z.citacia}</div>
       <p style="margin:4px 0">{z.tvrdenie}{z.cisla ? ` (${z.cisla})` : ''}</p>
       <span class="tag">dôkazy: {z.uroven}</span><span class="tag war">{OVERENIE_TEXT[z.overenie]}</span><span class="tag">overené {z.overene}</span>
-      <div class="maly"><a href={z.url} target="_blank" rel="noopener noreferrer">{z.doi ? `DOI ${z.doi}` : z.url}</a></div>
+      <div class="maly zdroj"><a href={z.url} target="_blank" rel="noopener noreferrer">{z.doi ? `DOI ${z.doi}` : z.url}</a></div>
     </div>
   );
 }

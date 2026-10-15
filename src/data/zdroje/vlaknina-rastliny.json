@@ -19,10 +19,7 @@
       "vlaknina"
     ],
     "diety": [
-      "stredomorska",
-      "dash",
-      "mind",
-      "menej-muky"
+      "stredomorska"
     ]
   },
   {
@@ -37,18 +34,13 @@
     "overenie": "vyhladavanie",
     "faktory": [
       "vlaknina",
-      "rastliny",
-      "zapal"
+      "rastliny"
     ],
     "karty": [
       "vlaknina"
     ],
     "diety": [
-      "stredomorska",
-      "dash",
-      "mind",
-      "flexitarianska",
-      "vegetarianska"
+      "stredomorska"
     ]
   },
   {
@@ -57,8 +49,8 @@
     "doi": "10.1128/mSystems.00031-18",
     "url": "https://doi.org/10.1128/mSystems.00031-18",
     "uroven": "slabé",
-    "tvrdenie": "Pozorovacia štúdia občianskej vedy: ľudia, ktorí jedli viac druhov rastlín týždenne, mali pestrejšie črevné mikróbio. Ide o súvislosť v dotazníkových dátach; číslo 30 druhov týždenne je orientačný údaj, nie overený cieľ zdravia.",
-    "cisla": "Skupina viac ako 30 druhov rastlín týždenne vs. 10 a menej: pestrejšie črevné mikróbio (vzorka 41 vs. 44 ľudí v porovnaní).",
+    "tvrdenie": "Pozorovacia štúdia občianskej vedy: ľudia, ktorí jedli viac druhov rastlín týždenne, mali pestrejšie črevné mikróbio. Ide o súvislosť v dotazníkových dátach; číslo 30 druhov týždenne je orientačný údaj, nie overený cieľ zdravia. Malá podskupina a nepotvrdený cieľ; neskoršia nerecenzovaná reanalýza väčšej vzorky našla zanedbateľný rozdiel.",
+    "cisla": "Skupina viac ako 30 druhov rastlín týždenne (41 ľudí) vs. 10 a menej (44 ľudí): pestrejšie črevné mikróbio (podľa správy univerzity UCSD; práca sama nečítaná).",
     "overene": "2026-10-15",
     "overenie": "vyhladavanie",
     "faktory": [
@@ -69,7 +61,6 @@
       "vlaknina"
     ],
     "diety": [
-      "stredomorska",
       "flexitarianska",
       "vegetarianska",
       "veganska"
@@ -95,7 +86,6 @@
       "vlaknina"
     ],
     "diety": [
-      "stredomorska",
       "vegetarianska",
       "veganska",
       "flexitarianska"

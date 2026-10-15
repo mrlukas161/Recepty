@@ -3,6 +3,7 @@ import type { Info } from '../engine/filtre';
 import { PASMO_TEXT } from '../engine/score';
 import { TYP_NAZOV } from '../ctx';
 import { useStav, nastav } from '../store';
+import { DIETA } from '../data/diety';
 
 export function Pecat({ skore, pasmo }: { skore: number; pasmo: keyof typeof PASMO_TEXT }) {
   return (
@@ -44,6 +45,13 @@ export function Zalozky<T extends string>({ hodnoty, vybrane, zmen }: { hodnoty:
 
 export function Hlavicka({ nazov, vpravo }: { nazov: string; vpravo?: ComponentChildren }) {
   return <div class="horna"><h1>{nazov}</h1>{vpravo}</div>;
+}
+
+export function AktivneDiety() {
+  const s = useStav();
+  const d = s.nastavenia.diety;
+  if (!d.length) return null;
+  return <p class="upoz">Aktívne diéty: <strong>{d.map((x) => DIETA.get(x)?.nazov ?? x).join(', ')}</strong> · <a href="#/nastavenia" class="odkaz">zmeniť</a>. Ak sa diéty vylučujú, zostane málo receptov.</p>;
 }
 
 export const Upozornenie = () => (

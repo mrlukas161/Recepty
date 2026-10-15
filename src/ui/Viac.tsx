@@ -40,7 +40,7 @@ export function Nahrady() {
           <h3>{n.za}</h3><div class="maly">{n.kontext}</div>
           <p class="plus" style="margin:6px 0 0">＋ {n.zisk}</p>
           <p class="minus" style="margin:0">－ {n.strata}</p>
-          {n.ides && <p class="maly" style="margin:4px 0 0">Suroviny: {n.ides.map((i) => SUROVINA.get(i)?.nazov ?? i).join(', ')}</p>}
+          {n.ides && <p class="maly" style="margin:4px 0 0">Suroviny: {n.ides.map((i) => SUROVINA.get(i)?.nazov).filter(Boolean).join(', ')}</p>}
         </div>
       ))}
       <p class="upoz">Všetky tipy sú praktické odhady (kuchárska prax a výživová logika), nie citované dôkazy.</p>
@@ -108,7 +108,7 @@ export function Vedomosti() {
 }
 
 const ALERGENY: [Alergen, string][] = [['lepok', 'Lepok'], ['mlieko', 'Mlieko'], ['vajcia', 'Vajcia'], ['orechy', 'Orechy'], ['arasidy', 'Arašidy'], ['soja', 'Sója'], ['ryby', 'Ryby'], ['sezam', 'Sezam'], ['korovce', 'Kôrovce'], ['zeler', 'Zeler'], ['horcica', 'Horčica'], ['siricitany', 'Siričitany'], ['vlcibob', 'Vlčí bôb'], ['makkyse', 'Mäkkýše']];
-const VYBAVENIE = ['rura', 'panvica', 'hrniec', 'mixer', 'airfryer', 'pomaly-hrniec', 'tlakovy-hrniec'];
+const VYBAVENIE: [string, string][] = [['rura', 'Rúra'], ['panvica', 'Panvica'], ['hrniec', 'Hrniec'], ['mixer', 'Mixér'], ['airfryer', 'Airfryer'], ['pomaly-hrniec', 'Pomalý hrniec'], ['tlakovy-hrniec', 'Tlakový hrniec']];
 
 export function Nastavenia({ uvod }: { uvod?: boolean }) {
   const s = useStav();
@@ -164,7 +164,7 @@ export function Nastavenia({ uvod }: { uvod?: boolean }) {
       <h2>Čas a vybavenie</h2>
       <div class="karta">
         <label class="pol">Čas na varenie cez týždeň: <input type="number" min="10" max="180" step="5" style="width:90px" value={n.maxCas} onChange={(e) => nastavNastavenia({ maxCas: +(e.target as HTMLInputElement).value || 45 })} /> min</label>
-        <div class="cipy">{VYBAVENIE.map((v) => <button class="chip" aria-pressed={n.vybavenie.includes(v)} onClick={() => nastavNastavenia({ vybavenie: toggle(n.vybavenie, v) })}>{v}</button>)}</div>
+        <div class="cipy">{VYBAVENIE.map(([v, nz]) => <button class="chip" aria-pressed={n.vybavenie.includes(v)} onClick={() => nastavNastavenia({ vybavenie: toggle(n.vybavenie, v) })}>{nz}</button>)}</div>
       </div>
       {!uvod && (
         <>

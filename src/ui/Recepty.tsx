@@ -4,7 +4,7 @@ import { SUROVINA } from '../data';
 import { DIETY } from '../data/diety';
 import { useStav } from '../store';
 import { filtruj, FILTRE0, type FiltreRecept, type Zoradenie } from '../engine/filtre';
-import { KartaReceptu, Hlavicka } from './kom';
+import { KartaReceptu, Hlavicka, AktivneDiety } from './kom';
 
 let ulozeneFiltre: FiltreRecept = { ...FILTRE0 };
 
@@ -12,11 +12,13 @@ export function Recepty() {
   const s = useStav();
   const [f, setF] = useState<FiltreRecept>(ulozeneFiltre);
   const [ukaz, setUkaz] = useState(false);
+  const [limit, setLimit] = useState(80);
   const zmen = (p: Partial<FiltreRecept>) => { ulozeneFiltre = { ...f, ...p }; setF(ulozeneFiltre); };
   const zoznam = useMemo(() => filtruj(INFOS, f, s.nastavenia, SUROVINA, s.oblubene), [JSON.stringify(f), JSON.stringify(s.nastavenia), s.oblubene.length]);
   return (
     <>
       <Hlavicka nazov="Recepty" vpravo={<span class="maly">{zoznam.length} z {INFOS.length}</span>} />
+      <AktivneDiety />
       <input type="search" placeholder="Hľadať recept alebo surovinu…" aria-label="Hľadať" value={f.hladat} onInput={(e) => zmen({ hladat: (e.target as HTMLInputElement).value })} />
       <div class="rad">
         <button class="male" onClick={() => setUkaz(!ukaz)} aria-expanded={ukaz}>⚙ Filtre a zoradenie</button>
@@ -46,9 +48,9 @@ export function Recepty() {
           <button class="male" onClick={() => { ulozeneFiltre = { ...FILTRE0 }; setF(ulozeneFiltre); }}>Zrušiť filtre</button>
         </div>
       )}
-      {zoznam.slice(0, 80).map((i) => <KartaReceptu key={i.r.id} i={i} />)}
-      {zoznam.length > 80 && <p class="maly">Zobrazených prvých 80. Spresni hľadanie.</p>}
-      {!zoznam.length && <p>Nič sa nenašlo.</p>}
+      {zoznam.slice(0, limit).map((i) => <KartaReceptu key={i.r.id} i={i} />)}
+      {zoznam.length > limit && <button onClick={() => setLimit(limit + 80)}>Zobraziť ďalších 80</button>}
+      {!zoznam.length && <div><p>Nič sa nenašlo. Skús zrušiť filtre alebo vypnúť „Bez vylúčených surovín a alergénov“ (aktívne diéty a alergie tiež zužujú výber).</p><button onClick={() => { ulozeneFiltre = { ...FILTRE0 }; setF(ulozeneFiltre); }}>Zrušiť filtre</button></div>}
     </>
   );
 }

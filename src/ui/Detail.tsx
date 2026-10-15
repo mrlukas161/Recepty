@@ -10,6 +10,8 @@ import { LEPSIE } from '../data/lepsie';
 import { ZdrojeK } from './Zdroje';
 import { Pecat, prepniOblubene, Upozornenie, KartaReceptu } from './kom';
 
+const TAG_NAZOV: Record<string, string> = { detske: 'Detské', rychle: 'Rýchle', 'do-krabicky': 'Do krabičky', lacne: 'Lacné', bezmasite: 'Bezmäsité', 'bez-peciva': 'Bez pečiva', bezlepkove: 'Bezlepkové', vegansky: 'Vegánske', 'vyvarene-z-zvyskov': 'Zo zvyškov', 'na-viac-dni': 'Na viac dní', sladke: 'Sladké' };
+
 function fmt(g: number, jednotka: string, s?: { jednotky: { ks?: number } }): string {
   if (jednotka === 'ks') return `${Math.round(g * 10) / 10} ks`.replace('.', ',');
   if (jednotka === 'lyzica') return `${Math.round(g * 2) / 2} PL`.replace('.', ',');
@@ -69,7 +71,7 @@ function DetailVnutro({ id }: { id: string }) {
         <button class="male" aria-pressed={hod === 1} onClick={() => nastav((x) => { if (x.hodnotenie[id] === 1) delete x.hodnotenie[id]; else x.hodnotenie[id] = 1; })}>👍</button>
         <button class="male" aria-pressed={hod === -1} onClick={() => nastav((x) => { if (x.hodnotenie[id] === -1) delete x.hodnotenie[id]; else x.hodnotenie[id] = -1; })}>👎</button>
       </div>
-      {r.tagy.map((t) => <span class="tag">{t}</span>)}
+      <div>{r.tagy.map((t) => <span class="tag" key={t}>{TAG_NAZOV[t] ?? t}</span>)}</div>
       <div class="karta">
         <div class="riadok">
           <Pecat skore={nove.celkom} pasmo={nove.pasmo} />

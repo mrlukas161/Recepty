@@ -98,6 +98,7 @@ export function filtruj(infos: Info[], f: FiltreRecept, n: Nastavenia, db: Map<s
     if (f.tag && !r.tagy.includes(f.tag)) return false;
     if (f.bezVylucenych && vylucene(i, n)) return false;
     if (!f.diety.every((d) => vyhovujeDiete(i, d, db))) return false;
+    if (f.bezVylucenych && !dietyOk(i, n, db)) return false;
     if (f.mamDoma) {
       const doma = new Set(n.mamDoma);
       if (!r.suroviny.filter((s) => !s.volitelna).every((s) => doma.has(s.id))) return false;

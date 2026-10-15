@@ -13,7 +13,7 @@ test('prvé spustenie → nastavenie → raňajky → detail → úprava → jed
   await page.screenshot({ path: 'test-results/02-dnes.png', fullPage: false });
   // detail
   await page.locator('a.karta').first().click();
-  await expect(page.getByText('Ako sme to spočítali')).toBeVisible();
+  await expect(page.locator('summary', { hasText: 'Ako sme to spočítali' })).toBeVisible();
   const skoreP = await page.locator('.pecat').first().innerText();
   await page.screenshot({ path: 'test-results/03-detail.png', fullPage: true });
   // úprava
@@ -68,4 +68,10 @@ test('diéta Vegánska skryje recepty s mäsom a alergia na lepok vylúči peči
   await page.getByRole('button', { name: 'Použiť' }).click();
   await page.goto('./#/recepty');
   await expect(page.locator('a.karta').first()).toBeVisible();
+  // aktívna diéta sa premietne do zoznamu (kým sa neuvoľní filter)
+  await expect(page.getByText(/Aktívne diéty/)).toBeVisible();
+  const pocet = await page.locator('a.karta').count();
+  expect(pocet).toBeGreaterThan(0);
+  const texty = (await page.locator('a.karta h3').allInnerTexts()).join(' | ');
+  expect(texty).not.toMatch(/halušky|Pizza Margherita/);
 });

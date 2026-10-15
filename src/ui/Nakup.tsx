@@ -20,7 +20,7 @@ export function Nakup() {
   return (
     <>
       <Hlavicka nazov="Nákup" />
-      <p class="maly">{recepty.length} receptov · prepočítané na {por} dospelých porcií · zásoby „mám doma“ (Nastavenia) sa odpočítavajú.</p>
+      {recepty.length > 0 && <p class="maly">{recepty.length} receptov · prepočítané na {por} dospelých porcií · zásoby „mám doma“ (Nastavenia) sa odpočítavajú.</p>}
       <div class="rad"><button onClick={zdielaj}>📤 Zdieľať / kopírovať</button><button onClick={() => nastav((x) => { x.nakupRecepty = []; x.nakupOdskrtnute = []; x.nakupVlastne = []; })}>Vyčistiť</button></div>
       {recepty.length > 0 && <details><summary style="min-height:44px;display:flex;align-items:center">Recepty v nákupe</summary>{recepty.map(({ r }) => <div class="slot" key={r.id}><span class="rozt">{r.nazov}</span><button class="male" aria-label={`Odobrať ${r.nazov}`} onClick={() => nastav((x) => { x.nakupRecepty = x.nakupRecepty.filter((y) => y !== r.id); })}>✕</button></div>)}</details>}
       {!recepty.length && !s.nakupVlastne.length && <p>Zoznam je prázdny. Pridaj recept tlačidlom „Do nákupu“ alebo vytvor <a href="#/jedalnicek">jedálniček</a>.</p>}

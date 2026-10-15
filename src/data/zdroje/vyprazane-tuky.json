@@ -1,17 +1,22 @@
 [
   {
     "id": "qin-2021",
-    "citacia": "Qin P, Zhang M, Han M a kol. (2021). Fried-food consumption and risk of cardiovascular disease and all-cause mortality: a meta-analysis of observational studies. Heart, 107(19):1567–1575.",
+    "citacia": "Qin P a kol. (2021). Fried-food consumption and risk of cardiovascular disease and all-cause mortality: a meta-analysis of observational studies. Heart, 107(19):1567–1575.",
     "doi": "10.1136/heartjnl-2020-317883",
     "url": "https://doi.org/10.1136/heartjnl-2020-317883",
     "uroven": "stredné",
-    "tvrdenie": "Metaanalýza observačných štúdií: najvyšší príjem vyprážaných jedál súvisel s vyšším rizikom veľkých kardiovaskulárnych príhod, ischemickej choroby srdca a srdcového zlyhania (lineárna závislosť). Pri mŕtvici, kardiovaskulárnej a celkovej úmrtnosti nebol vzťah štatisticky významný. Je to súvislosť, nie dôkaz príčinnosti.",
-    "cisla": "najvyšší vs. najnižší príjem: RR 1,28 (veľké kardiovaskulárne príhody), 1,22 (ICHS), 1,37 (srdcové zlyhanie); celková úmrtnosť RR 1,03 (95 % CI 0,96–1,12), nevýznamné",
+    "tvrdenie": "Metaanalýza observačných štúdií: najvyšší príjem vyprážaných jedál súvisel s vyšším rizikom veľkých kardiovaskulárnych príhod, ischemickej choroby srdca a srdcového zlyhania. Súvislosť s úmrtnosťou sa podľa dostupných správ nepotvrdila (presné čísla nečítané). Je to súvislosť z pamäťových dotazníkov, nie dôkaz príčinnosti.",
+    "cisla": "Najvyšší vs. najnižší príjem: veľké kardiovaskulárne príhody o 28 % vyššie riziko, ICHS o 22 %, srdcové zlyhanie o 37 %; každých 114 g týždenne: približne +3 %, +2 %, +12 %.",
     "overene": "2026-10-15",
     "overenie": "vyhladavanie",
-    "faktory": ["tuky", "zapal"],
-    "karty": ["vyprazane"],
-    "diety": ["stredomorska", "protizapalova"]
+    "faktory": [
+      "tuky",
+      "zapal"
+    ],
+    "karty": [
+      "vyprazane"
+    ],
+    "diety": []
   },
   {
     "id": "who-replace-2018",
@@ -23,8 +28,12 @@
     "cisla": "trans-tuky < 1 % energie (asi 2,2 g denne pri 2000 kcal); WHO odhaduje ročne viac ako 500 000 úmrtí z kardiovaskulárnych chorôb súvisiacich s trans-tukmi",
     "overene": "2026-10-15",
     "overenie": "vyhladavanie",
-    "faktory": ["tuky"],
-    "karty": ["vyprazane", "ultraspracovane"],
+    "faktory": [
+      "tuky"
+    ],
+    "karty": [
+      "vyprazane"
+    ],
     "diety": []
   }
 ]

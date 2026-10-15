@@ -9,8 +9,13 @@
     "cisla": "dospelí: < 2 g sodíka (5 g soli) denne; deti 2 – 15 rokov: dospelú hodnotu znížiť podľa energetickej potreby",
     "overene": "2026-10-15",
     "overenie": "vyhladavanie",
-    "faktory": ["sol"],
-    "karty": ["sol", "deti"],
-    "diety": ["dash"]
+    "faktory": [
+      "sol"
+    ],
+    "karty": [
+      "sol",
+      "deti"
+    ],
+    "diety": []
   }
 ]

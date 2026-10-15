@@ -9,8 +9,13 @@
     "cisla": "< 10 % energie; < 5 % energie (asi 25 g denne)",
     "overene": "2026-10-15",
     "overenie": "vyhladavanie",
-    "faktory": ["cukor"],
-    "karty": ["cukor", "deti"],
+    "faktory": [
+      "cukor"
+    ],
+    "karty": [
+      "cukor",
+      "deti"
+    ],
     "diety": []
   },
   {
@@ -20,11 +25,15 @@
     "url": "https://doi.org/10.2337/dc10-1079",
     "uroven": "stredné",
     "tvrdenie": "Metaanalýza prospektívnych kohort: vyšší príjem sladených nápojov súvisí s vyšším rizikom metabolického syndrómu a cukrovky 2. typu. Ide o observačné dáta, súvislosť nie je dôkaz príčinnosti, hoci autori ju pokladajú za pravdepodobne príčinnú.",
-    "cisla": "11 štúdií (3 metabolický syndróm, 8 cukrovka 2. typu); riziko cukrovky o 26 % vyššie pri najvyššom vs. najnižšom príjme; RR 1,20 (95 % CI 1,02–1,42) pre metabolický syndróm",
+    "cisla": "11 štúdií, viac ako 300 000 účastníkov; 1–2 sladené nápoje denne vs. menej ako 1 mesačne: riziko cukrovky 2. typu o 26 % vyššie, metabolického syndrómu o 20 % vyššie.",
     "overene": "2026-10-15",
     "overenie": "vyhladavanie",
-    "faktory": ["cukor", "gl"],
-    "karty": ["cukor"],
+    "faktory": [
+      "cukor"
+    ],
+    "karty": [
+      "cukor"
+    ],
     "diety": []
   }
 ]

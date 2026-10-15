@@ -5,8 +5,8 @@
   "doi": "10.1017/S1368980013002115",
   "url": "https://doi.org/10.1017/S1368980013002115",
   "uroven": "slabé",
-  "tvrdenie": "Autori zostavili index (DII), ktorý prisudzuje jednotlivým zložkám stravy prozápalový či protizápalový skóre podľa publikovanej literatúry o šiestich zápalových markeroch. Ide o heuristiku odvodenú z literatúry, nie o priamy dôkaz účinku jedla.",
-  "cisla": "1 943 článkov do roku 2010; 45 potravinových parametrov; 6 markerov (IL-1β, IL-4, IL-6, IL-10, TNF-α, CRP)",
+  "tvrdenie": "Autori zostavili index (DII), ktorý prisudzuje jednotlivým zložkám stravy prozápalové či protizápalové skóre podľa publikovanej literatúry o zápalových markeroch. Ide o heuristiku odvodenú z literatúry, nie o priamy dôkaz účinku jedla.",
+  "cisla": "1 943 článkov; 45 potravinových parametrov",
   "overene": "2026-10-15",
   "overenie": "vyhladavanie",
   "faktory": [
@@ -16,8 +16,7 @@
    "zapal"
   ],
   "diety": [
-   "protizapalova",
-   "stredomorska"
+   "protizapalova"
   ]
  },
  {
@@ -27,7 +26,7 @@
   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4958288",
   "uroven": "stredné",
   "tvrdenie": "Z dotazníkov o jedle v kohortách zostavili skóre (pôvodne EDII, dnes EDIP) z potravinových skupín, ktoré predpovedajú zápalové markery IL-6, CRP a TNFαR2; platnosť overili v nezávislých kohortách žien a mužov. Je to observačné, nie dôkaz príčinnosti.",
-  "cisla": "39 potravinových skupín na vstupe; validácia NHS-II n=1002 žien, HPFS n=2632 mužov",
+  "cisla": "39 potravinových skupín na vstupe; vývoj v NHS n=5 230; validácia NHS-II n=1 002 žien, HPFS n=2 632 mužov",
   "overene": "2026-10-15",
   "overenie": "vyhladavanie",
   "faktory": [

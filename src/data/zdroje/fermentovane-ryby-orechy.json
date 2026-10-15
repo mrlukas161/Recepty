@@ -47,8 +47,8 @@
   "doi": "10.1002/14651858.CD003177.pub5",
   "url": "https://doi.org/10.1002/14651858.CD003177.pub5",
   "uroven": "silné",
-  "tvrdenie": "Cochrane prehľad RCT: doplnky omega-3 mali na celkovú a kardiovaskulárnu úmrtnosť malý alebo žiadny vplyv, mierne znížili koronárne príhody a znížili triglyceridy; dôkaz hovorí o doplnkoch, nie o rybách ako potravine.",
-  "cisla": "86 RCT; triglyceridy ok. −15 %; NNT 334 pre koronárnu príhodu",
+  "tvrdenie": "Cochrane prehľad RCT: doplnky dlhorétazcových omega-3 mali na celkovú a kardiovaskulárnu úmrtnosť malý alebo žiadny vplyv; koronárne príhody a koronárnu úmrtnosť znížili len veľmi mierne. Dôkaz hovorí o doplnkoch, nie o rybách ako potravine.",
+  "cisla": "86 RCT, 162 796 účastníkov; celková úmrtnosť RR 0,98 (0,90–1,03); kardiovaskulárna úmrtnosť RR 0,95 (0,87–1,03)",
   "overene": "2026-10-15",
   "overenie": "vyhladavanie",
   "faktory": [
@@ -65,17 +65,15 @@
   "doi": "10.1186/s12916-016-0730-3",
   "url": "https://doi.org/10.1186/s12916-016-0730-3",
   "uroven": "stredné",
-  "tvrdenie": "Metaanalýza kohort: vyšší príjem orechov sa spájal s nižším rizikom ochorení srdca a celkovej úmrtnosti; ide o observačné dáta, nad ok. 20 g denne už prínos rástol málo.",
-  "cisla": "20 štúdií; na 28 g/deň RR 0,71 (koronárna choroba srdca), 0,79 (kardiovaskulárne ochorenia), 0,78 (celková úmrtnosť)",
+  "tvrdenie": "Metaanalýza kohort: vyšší príjem orechov sa spájal s nižším rizikom ochorení srdca a celkovej úmrtnosti; ide o observačné dáta, príčinnosť nedokazujú.",
+  "cisla": "20 štúdií; na 28 g/deň RR 0,71 (koronárna choroba srdca), 0,78 (celková úmrtnosť)",
   "overene": "2026-10-15",
   "overenie": "vyhladavanie",
   "faktory": [
    "tuky",
    "vlaknina"
   ],
-  "karty": [
-   "omega3"
-  ],
+  "karty": [],
   "diety": [
    "stredomorska"
   ]

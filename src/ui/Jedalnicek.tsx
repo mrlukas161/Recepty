@@ -60,6 +60,7 @@ export function Jedalnicek() {
           )}
         </div>
       ))}
+      {Object.keys(s.jedalnicek).length > 0 && Object.values(s.jedalnicek).every((v) => !v) && <p class="upoz">Žiadne recepty nevyhovujú nastaveniam (alergie, vylúčenia, diéty). <a href="#/nastavenia">Nastavenia</a> · <a href="#/diety">Diéty</a></p>}
       <h2>Súhrn týždňa</h2>
       <div class="karta">
         {KATEGORIE.map((k) => <div key={k.id} class="riadok" style="justify-content:space-between"><span>{k.nazov}</span><strong class={n.obmedzenia[k.id] === 'obmedzit' && sh.kat[k.id] > n.maxTyzdenne[k.id] ? 'minus' : ''}>{sh.kat[k.id]}× {n.obmedzenia[k.id] === 'obmedzit' ? `(limit ${n.maxTyzdenne[k.id]})` : ''}</strong></div>)}

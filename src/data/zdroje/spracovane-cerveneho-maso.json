@@ -9,9 +9,14 @@
     "cisla": "každých 50 g spracovaného mäsa denne: riziko kolorektálneho karcinómu o 18 % vyššie (podľa zhrnutia IARC)",
     "overene": "2026-10-15",
     "overenie": "vyhladavanie",
-    "faktory": ["bielkoviny", "zapal"],
-    "karty": ["udeniny"],
-    "diety": ["stredomorska", "flexitarianska", "vegetarianska", "veganska"]
+    "faktory": [
+      "bielkoviny",
+      "zapal"
+    ],
+    "karty": [
+      "udeniny"
+    ],
+    "diety": []
   },
   {
     "id": "johnston-2019",
@@ -23,8 +28,12 @@
     "cisla": "",
     "overene": "2026-10-15",
     "overenie": "vyhladavanie",
-    "faktory": ["bielkoviny"],
-    "karty": ["udeniny"],
+    "faktory": [
+      "bielkoviny"
+    ],
+    "karty": [
+      "udeniny"
+    ],
     "diety": []
   },
   {
@@ -37,8 +46,12 @@
     "cisla": "",
     "overene": "2026-10-15",
     "overenie": "vyhladavanie",
-    "faktory": ["bielkoviny"],
-    "karty": ["udeniny"],
+    "faktory": [
+      "bielkoviny"
+    ],
+    "karty": [
+      "udeniny"
+    ],
     "diety": []
   }
 ]

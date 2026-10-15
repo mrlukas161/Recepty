@@ -5,7 +5,7 @@
   "doi": "10.1056/NEJMoa1800389",
   "url": "https://doi.org/10.1056/NEJMoa1800389",
   "uroven": "silné",
-  "tvrdenie": "Vo vysokorizikovej španielskej populácii (55–80 rokov) mala stredomorská strava doplnená olivovým olejom alebo orechmi menej veľkých kardiovaskulárnych príhod než kontrolná strava s radou znížiť tuk. Štúdia bola v roku 2013 stiahnutá pre chybu v randomizácii a v roku 2018 zopakovaná s upravenou analýzou.",
+  "tvrdenie": "Vo vysokorizikovej španielskej populácii (55–80 rokov) mala stredomorská strava doplnená olivovým olejom alebo orechmi menej veľkých kardiovaskulárnych príhod než kontrolná strava s radou znížiť tuk. Pôvodná štúdia z roku 2013 bola v júni 2018 stiahnutá pre chyby v randomizácii a ten istý deň vyšla znovu s upravenou analýzou; Cochrane odporúča pri nej opatrnosť.",
   "cisla": "n=7 447; HR 0,69 (olivový olej) a 0,72 (orechy) vs. kontrola; medián 4,8 roka",
   "overene": "2026-10-15",
   "overenie": "vyhladavanie",
@@ -13,9 +13,7 @@
    "rastliny",
    "tuky"
   ],
-  "karty": [
-   "omega3"
-  ],
+  "karty": [],
   "diety": [
    "stredomorska"
   ]
@@ -65,8 +63,8 @@
   "doi": "10.1056/NEJMoa2302368",
   "url": "https://doi.org/10.1056/NEJMoa2302368",
   "uroven": "silné",
-  "tvrdenie": "V trojročnom RCT sa MIND strava s miernym obmedzením kalórií nelíšila od kontrolnej v kognitívnych testoch ani v MRI mozgu. Neutrálny výsledok, ktorý oslabuje pozorovania z kohort.",
-  "cisla": "",
+  "tvrdenie": "V trojročnom RCT (n=604) sa MIND strava s miernym obmedzením kalórií štatisticky nelíšila od kontrolnej (tiež s miernym obmedzením kalórií) v kognitívnych testoch ani v MRI mozgu; obe skupiny schudli. Neutrálny výsledok, ktorý oslabuje pozorovania z kohort (autori namietajú, že 3 roky môžu byť krátko).",
+  "cisla": "n=604; 3 roky",
   "overene": "2026-10-15",
   "overenie": "vyhladavanie",
   "faktory": [
@@ -83,17 +81,14 @@
   "doi": "10.1007/s00125-022-05760-z",
   "url": "https://doi.org/10.1007/s00125-022-05760-z",
   "uroven": "silné",
-  "tvrdenie": "Metaanalýza: severský stravovací vzorec sa spájal s malými, ale významnými poklesmi rizika kardiovaskulárnych ochorení a cukrovky a s nižším LDL; dôveryhodnosť dôkazov je nízka až stredná.",
+  "tvrdenie": "Metaanalýza kohort a RCT: severský stravovací vzorec sa spájal s miernym poklesom rizika kardiovaskulárnych ochorení a cukrovky a s nižším LDL. Istotu dôkazov pre túto prácu sme nepotvrdili (väčšinou observačné dáta).",
   "cisla": "",
   "overene": "2026-10-15",
   "overenie": "vyhladavanie",
   "faktory": [
-   "rastliny",
-   "vlaknina"
+   "rastliny"
   ],
-  "karty": [
-   "celozrnne"
-  ],
+  "karty": [],
   "diety": [
    "severska"
   ]
@@ -112,13 +107,10 @@
    "rastliny",
    "vlaknina"
   ],
-  "karty": [
-   "strukoviny"
-  ],
+  "karty": [],
   "diety": [
    "vegetarianska",
-   "veganska",
-   "flexitarianska"
+   "veganska"
   ]
  },
  {
@@ -134,10 +126,7 @@
   "faktory": [
    "gl"
   ],
-  "karty": [
-   "muka",
-   "cukor"
-  ],
+  "karty": [],
   "diety": [
    "nizkosacharidova",
    "menej-muky"
@@ -145,19 +134,18 @@
  },
  {
   "id": "patikorn-2023",
-  "citacia": "Patikorn C. a kol. (2023). Effects of ketogenic diet on health outcomes: an umbrella review of meta-analyses of randomized clinical trials. BMC Medicine.",
+  "citacia": "Patikorn C. a kol. (2023). Effects of ketogenic diet on health outcomes: an umbrella review of meta-analyses of randomized clinical trials. BMC Medicine, 21:196.",
   "doi": "10.1186/s12916-023-02874-y",
   "url": "https://doi.org/10.1186/s12916-023-02874-y",
   "uroven": "stredné",
-  "tvrdenie": "Prehľad metaanalýz RCT: ketogénna strava znižuje triglyceridy a frekvenciu záchvatov pri epilepsii, ale zvyšuje LDL-cholesterol; väčšina štúdií bola krátka a dôkazy sú prevažne slabé.",
-  "cisla": "17 metaanalýz, 68 RCT; medián sledovania ok. 13 týždňov",
+  "tvrdenie": "Prehľad metaanalýz RCT: ketogénna strava znížila frekvenciu záchvatov pri epilepsii a zvýšila LDL-cholesterol; autori uvádzajú, že sila dôkazov bola vo všeobecnosti slabá.",
+  "cisla": "17 metaanalýz, 68 RCT, 115 asociácií",
   "overene": "2026-10-15",
   "overenie": "vyhladavanie",
   "faktory": [],
   "karty": [],
   "diety": [
-   "ketogenna",
-   "nizkosacharidova"
+   "ketogenna"
   ]
  },
  {
@@ -198,7 +186,7 @@
   "doi": null,
   "url": "https://mdedge.com/internalmedicine/article/79320/gastroenterology/low-fodmap-diet-reduced-ibs-symptoms",
   "uroven": "stredné",
-  "tvrdenie": "Malý skrížený RCT: u ľudí s dráždivým črevom low-FODMAP strava znížila symptómy výraznejšie než bežná austrálska strava; jedlo sa dodávalo, v praxi je adherencia ťažšia.",
+  "tvrdenie": "Malý skrížený RCT: u ľudí s dráždivým črevom low-FODMAP strava znížila symptómy výraznejšie než bežná austrálska strava; jedlo sa dodávalo, zaslepenie bolo slabé (viac než 80 % pacientov diétu rozpoznalo) a v praxi je adherencia ťažšia.",
   "cisla": "30 pacientov s IBS; skóre symptómov 22,8 vs. 44,9 mm; 21 dní",
   "overene": "2026-10-15",
   "overenie": "vyhladavanie",

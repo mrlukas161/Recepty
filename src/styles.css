@@ -9,13 +9,13 @@
 
 :root {
   --papier: #fbf4e6; --karta: #fffaf0; --text: #2b2118; --tlmene: #6b5b4a; --ciara: #e4d5b8;
-  --paradajka: #c8472b; --oliva: #4f5d27; --horcica: #d99a1e; --bobula: #5a3d6e;
+  --paradajka: #c8472b; --odkaz: #a93a20; --hl-pozadie: #c8472b; --hl-text: #fff; --oliva: #4f5d27; --horcica: #d99a1e; --bobula: #5a3d6e;
   --dobre: #4f7a2b; --obcas: #b27a0f; --zle: #b23a24; --vyborne: #2f6b3a;
   --radius: 18px 18px 18px 6px;
   --safe-b: env(safe-area-inset-bottom, 0px); --safe-t: env(safe-area-inset-top, 0px);
 }
-@media (prefers-color-scheme: dark) { :root:not([data-tema="svetla"]) { --papier: #1f1914; --karta: #2a221b; --text: #f3e9d6; --tlmene: #bfae96; --ciara: #43382d; --paradajka: #ee7a5c; --oliva: #aebf6a; --horcica: #f0b94a; --dobre: #9fcd6a; --obcas: #e7b64c; --zle: #f08a74; --vyborne: #8fd39a; } }
-:root[data-tema="tmava"] { --papier: #1f1914; --karta: #2a221b; --text: #f3e9d6; --tlmene: #bfae96; --ciara: #43382d; --paradajka: #ee7a5c; --oliva: #aebf6a; --horcica: #f0b94a; --dobre: #9fcd6a; --obcas: #e7b64c; --zle: #f08a74; --vyborne: #8fd39a; }
+@media (prefers-color-scheme: dark) { :root:not([data-tema="svetla"]) { --papier: #1f1914; --karta: #2a221b; --text: #f3e9d6; --tlmene: #bfae96; --ciara: #43382d; --paradajka: #ee7a5c; --odkaz: #f2957c; --hl-pozadie: #9c3219; --hl-text: #fff; --oliva: #aebf6a; --horcica: #f0b94a; --dobre: #9fcd6a; --obcas: #e7b64c; --zle: #f08a74; --vyborne: #8fd39a; } }
+:root[data-tema="tmava"] { --papier: #1f1914; --karta: #2a221b; --text: #f3e9d6; --tlmene: #bfae96; --ciara: #43382d; --paradajka: #ee7a5c; --odkaz: #f2957c; --hl-pozadie: #9c3219; --hl-text: #fff; --oliva: #aebf6a; --horcica: #f0b94a; --dobre: #9fcd6a; --obcas: #e7b64c; --zle: #f08a74; --vyborne: #8fd39a; }
 
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 html, body { margin: 0; height: 100%; }
@@ -23,7 +23,8 @@ body { background: var(--papier); color: var(--text); font: 17px/1.45 'Nunito', 
 h1, h2, h3 { font-family: 'Fraunces', Georgia, serif; line-height: 1.15; margin: 0 0 .4em; font-weight: 700; }
 h1 { font-size: 1.9rem; } h2 { font-size: 1.35rem; } h3 { font-size: 1.1rem; }
 p { margin: 0 0 .7em; }
-a { color: var(--paradajka); }
+a { color: var(--odkaz); }
+.odkaz, p a, .maly a { display: inline-block; padding: 10px 0; }
 #app { height: 100dvh; display: flex; flex-direction: column; max-width: 720px; margin: 0 auto; background: var(--papier); box-shadow: 0 0 0 1px var(--ciara); }
 main { flex: 1; overflow-y: auto; padding: calc(14px + var(--safe-t)) 16px 24px; }
 .horna { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
@@ -44,15 +45,16 @@ a.karta:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--tex
 .tag { display: inline-block; font-size: .78rem; border: 1px solid var(--tlmene); border-radius: 99px; padding: 1px 8px; margin: 0 4px 4px 0; color: var(--tlmene); }
 .tag.war { border-color: var(--zle); color: var(--zle); }
 .tlacidlo, button { font: 700 1rem 'Nunito', sans-serif; min-height: 46px; padding: 8px 16px; border-radius: 12px; border: 2px solid var(--text); background: var(--karta); color: var(--text); cursor: pointer; }
-.tlacidlo.hl, button.hl { background: var(--paradajka); color: #fff; border-color: var(--text); box-shadow: 2px 2px 0 var(--text); }
-button.male { min-height: 44px; padding: 6px 12px; font-size: .92rem; }
+.tlacidlo.hl, button.hl { background: var(--hl-pozadie); color: var(--hl-text); border-color: var(--text); box-shadow: 2px 2px 0 var(--text); }
+button.male { min-height: 44px; min-width: 44px; padding: 6px 12px; font-size: .92rem; }
+.zdroj a { display: block; padding: 12px 0; min-height: 44px; overflow-wrap: anywhere; word-break: break-all; }
 button:disabled { opacity: .5; }
 .rad { display: flex; gap: 8px; flex-wrap: wrap; margin: 8px 0; }
 input, select, textarea { font: inherit; min-height: 46px; padding: 8px 12px; border-radius: 12px; border: 2px solid var(--text); background: var(--karta); color: var(--text); max-width: 100%; }
 input[type=search], input[type=text] { width: 100%; }
 input[type=checkbox] { min-height: 0; width: 22px; height: 22px; accent-color: var(--paradajka); }
 label.pol { display: flex; align-items: center; gap: 10px; min-height: 44px; }
-.zalozky { display: flex; gap: 6px; overflow-x: auto; padding: 4px 0 10px; scrollbar-width: none; }
+.zalozky { display: flex; gap: 6px; flex-wrap: wrap; padding: 4px 0 10px; }
 .zalozky button { flex: none; min-height: 44px; border-radius: 99px; padding: 6px 14px; }
 .zalozky button[aria-pressed="true"] { background: var(--text); color: var(--papier); }
 .faktor { margin: 0 0 12px; }
