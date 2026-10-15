@@ -6,6 +6,7 @@ import { aplikujUpravy, ZIADNE_UPRAVY, type StavUprav } from '../engine/upravy';
 import { naGramy } from '../engine/units';
 import { kolkoPorcii } from '../engine/filtre';
 import { DNI, kluc } from '../engine/planner';
+import { LEPSIE } from '../data/lepsie';
 import { ZdrojeK } from './Zdroje';
 import { Pecat, prepniOblubene, Upozornenie, KartaReceptu } from './kom';
 
@@ -45,9 +46,10 @@ function DetailVnutro({ id }: { id: string }) {
     return dif.map((x) => `${x.d > 0 ? 'lepšie' : 'horšie'}: ${x.n.toLowerCase()}`).join(', ');
   })();
   const pridajDo = (den: number) => nastav((x) => { x.jedalnicek[kluc(den, r.typ === 'polievka' ? 'obed' : r.typ === 'dezert' ? 'desiata' : r.typ)] = id; });
-  const lepsie = (r.lepsiaVerzia ?? []).map((x) => INFO.get(x)).filter(Boolean);
+  const lepsie = (LEPSIE[id] ?? r.lepsiaVerzia ?? []).map((x) => INFO.get(x)).filter(Boolean);
   const podobne = useMemo(() => {
     if (!r.klasika) return [];
+    if (LEPSIE[id]) return [];
     return INFOS.filter((i) => !i.r.klasika && i.r.typ === r.typ && i.skore.celkom > info.skore.celkom && i.r.id !== id).sort((a, b) => b.skore.celkom - a.skore.celkom).slice(0, 3);
   }, [id]);
   const celkomKrokov = r.postup.length;

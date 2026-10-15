@@ -1,0 +1,44 @@
+[
+  {
+    "id": "skodje-2018",
+    "citacia": "Skodje G.I. a kol. (2018). Fructan, rather than gluten, induces symptoms in patients with self-reported non-celiac gluten sensitivity. Gastroenterology, 154(3):529-539.",
+    "doi": null,
+    "url": "https://duo.uio.no/handle/10852/64618",
+    "uroven": "stredné",
+    "tvrdenie": "Dvojito zaslepená skrížená štúdia u ľudí s vlastnou diagnózou citlivosti na lepok (celiakia vylúčená): fruktány vyvolali viac ťažkostí ako lepok, lepok sa od placeba nelíšil. Malá štúdia, 7-dňové expozície.",
+    "cisla": "59 účastníkov; GSRS-IBS priemer 33,1 lepok, 38,6 fruktán, 34,3 placebo (P = 0,04).",
+    "overene": "2026-10-15",
+    "overenie": "vyhladavanie",
+    "faktory": ["tazkost"],
+    "karty": ["muka", "fodmap"],
+    "diety": ["low-fodmap", "menej-muky"]
+  },
+  {
+    "id": "biesiekierski-2013",
+    "citacia": "Biesiekierski J.R., Peters S.L., Newnham E.D., Rosella O., Muir J.G., Gibson P.R. (2013). No effects of gluten in patients with self-reported non-celiac gluten sensitivity after dietary reduction of fermentable, poorly absorbed, short-chain carbohydrates. Gastroenterology, 145(2):320-328.",
+    "doi": "10.1053/j.gastro.2013.04.051",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/23648697/",
+    "uroven": "stredné",
+    "tvrdenie": "Dvojito zaslepená skrížená štúdia u ľudí s IBS a vlastnou diagnózou citlivosti na lepok: ťažkosti sa zlepšili pri nízkom príjme FODMAP a po pridaní lepku aj srvátkového proteínu sa zhoršili podobne. Špecifický účinok lepku sa nepotvrdil.",
+    "cisla": "37 účastníkov; účinok špecifický pre lepok len u 8 %.",
+    "overene": "2026-10-15",
+    "overenie": "vyhladavanie",
+    "faktory": ["tazkost"],
+    "karty": ["muka", "fodmap"],
+    "diety": ["low-fodmap", "bezlepkova"]
+  },
+  {
+    "id": "husby-2020",
+    "citacia": "Husby S., Koletzko S., Korponay-Szabó I., Kurppa K., Mearin M.L. a kol. (2020). European Society Paediatric Gastroenterology, Hepatology and Nutrition guidelines for diagnosing coeliac disease 2020. Journal of Pediatric Gastroenterology and Nutrition, 70(1):141-157.",
+    "doi": "10.1097/MPG.0000000000002497",
+    "url": "https://doi.org/10.1097/MPG.0000000000002497",
+    "uroven": "silné",
+    "tvrdenie": "Smernica ESPGHAN: celiakia sa diagnostikuje krvným testom (celkový IgA a anti-TG2 IgA); u detí s veľmi vysokou hladinou môže byť diagnóza bez biopsie. Pri nižších hladinách je biopsia potrebná. Dôležité pre appku: bezlepkovú diétu si nezačínať bez vyšetrenia, inak sa diagnóza skomplikuje.",
+    "cisla": "Bez biopsie pri anti-TG2 IgA aspoň 10-násobok hornej hranice normy a pozitívnych EMA-IgA v druhej vzorke.",
+    "overene": "2026-10-15",
+    "overenie": "vyhladavanie",
+    "faktory": [],
+    "karty": ["muka", "deti"],
+    "diety": ["bezlepkova"]
+  }
+]

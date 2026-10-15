@@ -1,0 +1,104 @@
+[
+  {
+    "id": "reynolds-2019",
+    "citacia": "Reynolds A., Mann J., Cummings J., Winter N., Mete E., Te Morenga L. (2019). Carbohydrate quality and human health: a series of systematic reviews and meta-analyses. The Lancet, 393:434-445.",
+    "doi": "10.1016/S0140-6736(18)31809-9",
+    "url": "https://doi.org/10.1016/S0140-6736(18)31809-9",
+    "uroven": "silné",
+    "tvrdenie": "Séria systematických prehľadov a metaanalýz (pozorovania aj RCT): vyšší príjem vlákniny a celozrnných výrobkov súvisí s nižším rizikom chorôb a úmrtnosti; v štúdiách bola nižšia hmotnosť, tlak a cholesterol. Pozorovacie údaje samy o sebe nedokazujú príčinnosť.",
+    "cisla": "185 prospektívnych štúdií a 58 klinických štúdií (4635 dospelých); najvyšší vs. najnižší príjem vlákniny: o 15–30 % nižšia celková a kardiovaskulárna úmrtnosť; najväčší prínos pri 25–29 g vlákniny denne.",
+    "overene": "2026-10-15",
+    "overenie": "vyhladavanie",
+    "faktory": [
+      "vlaknina",
+      "gl"
+    ],
+    "karty": [
+      "celozrnne",
+      "muka",
+      "vlaknina"
+    ],
+    "diety": [
+      "stredomorska",
+      "dash",
+      "mind",
+      "menej-muky"
+    ]
+  },
+  {
+    "id": "aune-2017",
+    "citacia": "Aune D., Giovannucci E., Boffetta P., Fadnes L.T., Keum N., Norat T. a kol. (2017). Fruit and vegetable intake and the risk of cardiovascular disease, total cancer and all-cause mortality: a systematic review and dose-response meta-analysis of prospective studies. International Journal of Epidemiology, 46(3):1029-1056.",
+    "doi": "10.1093/ije/dyw319",
+    "url": "https://doi.org/10.1093/ije/dyw319",
+    "uroven": "stredné",
+    "tvrdenie": "Metaanalýza prospektívnych kohort: vyšší príjem ovocia a zeleniny súvisí s nižším rizikom kardiovaskulárnych chorôb a celkovej úmrtnosti; pri rakovine je súvislosť slabšia. Ide o pozorovanie, nie dôkaz príčinnosti.",
+    "cisla": "Na 200 g ovocia a zeleniny denne: RR 0,92 ischemická choroba srdca, 0,84 mozgová porážka, 0,90 celková úmrtnosť; 95 štúdií.",
+    "overene": "2026-10-15",
+    "overenie": "vyhladavanie",
+    "faktory": [
+      "vlaknina",
+      "rastliny",
+      "zapal"
+    ],
+    "karty": [
+      "vlaknina"
+    ],
+    "diety": [
+      "stredomorska",
+      "dash",
+      "mind",
+      "flexitarianska",
+      "vegetarianska"
+    ]
+  },
+  {
+    "id": "mcdonald-2018",
+    "citacia": "McDonald D., Hyde E., Debelius J.W. a kol. (2018). American Gut: an open platform for citizen science microbiome research. mSystems, 3(3):e00031-18.",
+    "doi": "10.1128/mSystems.00031-18",
+    "url": "https://doi.org/10.1128/mSystems.00031-18",
+    "uroven": "slabé",
+    "tvrdenie": "Pozorovacia štúdia občianskej vedy: ľudia, ktorí jedli viac druhov rastlín týždenne, mali pestrejšie črevné mikróbio. Ide o súvislosť v dotazníkových dátach; číslo 30 druhov týždenne je orientačný údaj, nie overený cieľ zdravia.",
+    "cisla": "Skupina viac ako 30 druhov rastlín týždenne vs. 10 a menej: pestrejšie črevné mikróbio (vzorka 41 vs. 44 ľudí v porovnaní).",
+    "overene": "2026-10-15",
+    "overenie": "vyhladavanie",
+    "faktory": [
+      "rastliny",
+      "vlaknina"
+    ],
+    "karty": [
+      "vlaknina"
+    ],
+    "diety": [
+      "stredomorska",
+      "flexitarianska",
+      "vegetarianska",
+      "veganska"
+    ]
+  },
+  {
+    "id": "sievenpiper-2009",
+    "citacia": "Sievenpiper J.L. a kol. (2009). Effect of non-oil-seed pulses on glycaemic control: a systematic review and meta-analysis of randomised controlled experimental trials in people with and without diabetes. Diabetologia, 52(8):1479-1495.",
+    "doi": "10.1007/s00125-009-1395-7",
+    "url": "https://doi.org/10.1007/s00125-009-1395-7",
+    "uroven": "stredné",
+    "tvrdenie": "Metaanalýza RCT: strukoviny (samotné aj v nízko-GI či vysokovláknitých stravovacích vzoroch) zlepšili ukazovatele glykemickej kontroly. Heterogenita výsledkov bola vysoká a nevysvetlená, preto ide o mierny a neistý efekt.",
+    "cisla": "41 štúdií; samotné strukoviny znížili glukózu nalačno (−0,82; 95 % CI −1,36 až −0,27).",
+    "overene": "2026-10-15",
+    "overenie": "vyhladavanie",
+    "faktory": [
+      "gl",
+      "vlaknina",
+      "rastliny"
+    ],
+    "karty": [
+      "strukoviny",
+      "vlaknina"
+    ],
+    "diety": [
+      "stredomorska",
+      "vegetarianska",
+      "veganska",
+      "flexitarianska"
+    ]
+  }
+]

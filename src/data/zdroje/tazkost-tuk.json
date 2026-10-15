@@ -1,0 +1,30 @@
+[
+  {
+    "id": "khodarahmi-2016",
+    "citacia": "Khodarahmi M., Azadbakht L. (2016). Dietary fat intake and functional dyspepsia. Advanced Biomedical Research, 5:76 (PMID 27195249).",
+    "doi": null,
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4863403",
+    "uroven": "slabé",
+    "tvrdenie": "Naratívny prehľad 19 prác: tučné jedlá môžu zhoršovať dyspeptické ťažkosti a zníženie tuku môže pomôcť, no autori sami uvádzajú, že treba viac štúdií.",
+    "cisla": "",
+    "overene": "2026-10-15",
+    "overenie": "vyhladavanie",
+    "faktory": ["tuky", "tazkost"],
+    "karty": ["vyprazane"],
+    "diety": []
+  },
+  {
+    "id": "duboc-2020",
+    "citacia": "Duboc H., Latrache S., Nebunu N., Coffin B. (2020). Prehľad o strave pri funkčnej dyspepsii. Frontiers in Psychiatry, 11:23.",
+    "doi": "10.3389/fpsyt.2020.00023",
+    "url": "https://www.frontiersin.org/articles/10.3389/fpsyt.2020.00023/full",
+    "uroven": "slabé",
+    "tvrdenie": "Prehľad: príjem tuku zvyšuje výskyt ťažkostí pri dyspepsii (úloha vnímania, zhoršeného prispôsobenia žalúdka a palatability). Vplyv diétnych zmien na ťažkosti nebol preukázaný randomizovanými prospektívnymi štúdiami. Tučné jedlo spomaľuje vyprázdňovanie žalúdka u zdravých, no u dyspepsie spomalenie nebolo hlavnou príčinou ťažkostí.",
+    "cisla": "Kohorta 218 pacientov s funkčnou dyspepsiou: zhoršenie ťažkostí po jedle uviedlo 79 %, oneskorené vyprázdňovanie žalúdka malo len 20 %.",
+    "overene": "2026-10-15",
+    "overenie": "vyhladavanie",
+    "faktory": ["tuky", "tazkost"],
+    "karty": ["vyprazane"],
+    "diety": []
+  }
+]

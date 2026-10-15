@@ -1,0 +1,44 @@
+[
+  {
+    "id": "bouvard-2015",
+    "citacia": "Bouvard V, Loomis D, Guyton KZ a kol. (2015). Carcinogenicity of consumption of red and processed meat. The Lancet Oncology (IARC Monographs, zv. 114), online 26. 10. 2015.",
+    "doi": "10.1016/S1470-2045(15)00444-1",
+    "url": "https://doi.org/10.1016/S1470-2045(15)00444-1",
+    "uroven": "stredné",
+    "tvrdenie": "IARC zaradila spracované mäso do skupiny 1 (karcinogénne pre ľudí; dostatočné dôkazy pre kolorektálny karcinóm) a červené mäso do skupiny 2A (pravdepodobne karcinogénne). Skupina vyjadruje silu dôkazov, nie veľkosť rizika; vychádza hlavne z veľkých prospektívnych kohort.",
+    "cisla": "každých 50 g spracovaného mäsa denne: riziko kolorektálneho karcinómu o 18 % vyššie (podľa zhrnutia IARC)",
+    "overene": "2026-10-15",
+    "overenie": "vyhladavanie",
+    "faktory": ["bielkoviny", "zapal"],
+    "karty": ["udeniny"],
+    "diety": ["stredomorska", "flexitarianska", "vegetarianska", "veganska"]
+  },
+  {
+    "id": "johnston-2019",
+    "citacia": "Johnston BC, Zeraatkar D, Han MA a kol. (2019). Unprocessed red meat and processed meat consumption: dietary guideline recommendations from the NutriRECS Consortium. Annals of Internal Medicine, 171(10):756–764.",
+    "doi": "10.7326/M19-1621",
+    "url": "https://doi.org/10.7326/M19-1621",
+    "uroven": "stredné",
+    "tvrdenie": "Panel NutriRECS (14 členov zo 7 krajín, metóda GRADE, 5 nových systematických prehľadov) navrhol dospelým ponechať súčasný príjem červeného aj spracovaného mäsa; slabé odporúčanie založené na nízkej istote dôkazov. Ide o protichodný pohľad, ktorý appka uvádza ako kritiku, nie ako vyvrátenie IARC.",
+    "cisla": "",
+    "overene": "2026-10-15",
+    "overenie": "vyhladavanie",
+    "faktory": ["bielkoviny"],
+    "karty": ["udeniny"],
+    "diety": []
+  },
+  {
+    "id": "qian-2020",
+    "citacia": "Qian F, Riddle MC, Wylie-Rosett J, Hu FB (2020). Red and processed meats and health risks: how strong is the evidence? Diabetes Care, 43(2):265–271.",
+    "doi": null,
+    "url": "https://pubmed.ncbi.nlm.nih.gov/31959642/",
+    "uroven": "stredné",
+    "tvrdenie": "Kritika NutriRECS: GRADE je navrhnuté skôr pre klinické intervencie a na výživu sa nehodí, veľké dlhodobé RCT sú pri strave nerealizovateľné; pri hodnotení cez NutriGRADE vyšla súvislosť červeného mäsa s cukrovkou 2. typu ako vysoká a s úmrtnosťou ako stredná kvalita. Ďalej autori vytýkajú, že sa neriešilo, čím sa mäso nahrádza. Kritici sú zároveň názorovo na strane obmedzovania mäsa.",
+    "cisla": "",
+    "overene": "2026-10-15",
+    "overenie": "vyhladavanie",
+    "faktory": ["bielkoviny"],
+    "karty": ["udeniny"],
+    "diety": []
+  }
+]

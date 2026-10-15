@@ -1,0 +1,30 @@
+[
+  {
+    "id": "qin-2021",
+    "citacia": "Qin P, Zhang M, Han M a kol. (2021). Fried-food consumption and risk of cardiovascular disease and all-cause mortality: a meta-analysis of observational studies. Heart, 107(19):1567–1575.",
+    "doi": "10.1136/heartjnl-2020-317883",
+    "url": "https://doi.org/10.1136/heartjnl-2020-317883",
+    "uroven": "stredné",
+    "tvrdenie": "Metaanalýza observačných štúdií: najvyšší príjem vyprážaných jedál súvisel s vyšším rizikom veľkých kardiovaskulárnych príhod, ischemickej choroby srdca a srdcového zlyhania (lineárna závislosť). Pri mŕtvici, kardiovaskulárnej a celkovej úmrtnosti nebol vzťah štatisticky významný. Je to súvislosť, nie dôkaz príčinnosti.",
+    "cisla": "najvyšší vs. najnižší príjem: RR 1,28 (veľké kardiovaskulárne príhody), 1,22 (ICHS), 1,37 (srdcové zlyhanie); celková úmrtnosť RR 1,03 (95 % CI 0,96–1,12), nevýznamné",
+    "overene": "2026-10-15",
+    "overenie": "vyhladavanie",
+    "faktory": ["tuky", "zapal"],
+    "karty": ["vyprazane"],
+    "diety": ["stredomorska", "protizapalova"]
+  },
+  {
+    "id": "who-replace-2018",
+    "citacia": "World Health Organization (2018). REPLACE: a step-by-step guide to eliminate industrially-produced trans-fatty acids from the global food supply. Ženeva: WHO.",
+    "doi": null,
+    "url": "https://www.paho.org/en/news/14-5-2018-who-plan-eliminate-industrially-produced-trans-fatty-acids-from-global-food-supply",
+    "uroven": "silné",
+    "tvrdenie": "WHO vydala v máji 2018 balík šiestich krokov na odstránenie priemyselných trans-tukov z potravín (preskúmať, nahradiť, legislatíva, monitorovať, osveta, vynucovať). WHO odporúča príjem trans-tukov pod 1 % energie. Je to politický dokument; dôkaz o škodlivosti trans-tukov sám nerozoberáme, preberáme z neho odporúčanie.",
+    "cisla": "trans-tuky < 1 % energie (asi 2,2 g denne pri 2000 kcal); WHO odhaduje ročne viac ako 500 000 úmrtí z kardiovaskulárnych chorôb súvisiacich s trans-tukmi",
+    "overene": "2026-10-15",
+    "overenie": "vyhladavanie",
+    "faktory": ["tuky"],
+    "karty": ["vyprazane", "ultraspracovane"],
+    "diety": []
+  }
+]

@@ -1,0 +1,30 @@
+[
+  {
+    "id": "who-cukry-2015",
+    "citacia": "World Health Organization (2015). Guideline: Sugars intake for adults and children. Ženeva: WHO.",
+    "doi": null,
+    "url": "https://www.who.int/news/item/04-03-2015-who-calls-on-countries-to-reduce-sugars-intake-among-adults-and-children",
+    "uroven": "silné",
+    "tvrdenie": "WHO odporúča dospelým aj deťom znížiť voľné cukry pod 10 % celkového energetického príjmu; zníženie pod 5 % (asi 25 g denne) prináša ďalší prínos, ale toto odporúčanie je len podmienené. Voľné cukry zahŕňajú pridané cukry a cukry v mede, sirupoch a ovocných šťavách; cukry v celom čerstvom ovocí, zelenine a mlieku sa nepočítajú.",
+    "cisla": "< 10 % energie; < 5 % energie (asi 25 g denne)",
+    "overene": "2026-10-15",
+    "overenie": "vyhladavanie",
+    "faktory": ["cukor"],
+    "karty": ["cukor", "deti"],
+    "diety": []
+  },
+  {
+    "id": "malik-2010",
+    "citacia": "Malik VS, Popkin BM, Bray GA, Després JP, Willett WC, Hu FB (2010). Sugar-sweetened beverages and risk of metabolic syndrome and type 2 diabetes: a meta-analysis. Diabetes Care, 33(11):2477–2483.",
+    "doi": "10.2337/dc10-1079",
+    "url": "https://doi.org/10.2337/dc10-1079",
+    "uroven": "stredné",
+    "tvrdenie": "Metaanalýza prospektívnych kohort: vyšší príjem sladených nápojov súvisí s vyšším rizikom metabolického syndrómu a cukrovky 2. typu. Ide o observačné dáta, súvislosť nie je dôkaz príčinnosti, hoci autori ju pokladajú za pravdepodobne príčinnú.",
+    "cisla": "11 štúdií (3 metabolický syndróm, 8 cukrovka 2. typu); riziko cukrovky o 26 % vyššie pri najvyššom vs. najnižšom príjme; RR 1,20 (95 % CI 1,02–1,42) pre metabolický syndróm",
+    "overene": "2026-10-15",
+    "overenie": "vyhladavanie",
+    "faktory": ["cukor", "gl"],
+    "karty": ["cukor"],
+    "diety": []
+  }
+]

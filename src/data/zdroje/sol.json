@@ -1,0 +1,16 @@
+[
+  {
+    "id": "who-sodik-2012",
+    "citacia": "World Health Organization (2012). Guideline: Sodium intake for adults and children. Ženeva: WHO. ISBN 978-92-4-150483-6.",
+    "doi": null,
+    "url": "https://www.who.int/publications-detail/9789241504836",
+    "uroven": "silné",
+    "tvrdenie": "WHO silno odporúča dospelým znížiť príjem sodíka pod 2 g denne (zodpovedá 5 g soli) kvôli krvnému tlaku a kardiovaskulárnemu riziku. Pre deti vo veku 2 – 15 rokov sa toto maximum upravuje nadol podľa ich energetickej potreby oproti dospelým; WHO pre deti nedáva jedno pevné číslo.",
+    "cisla": "dospelí: < 2 g sodíka (5 g soli) denne; deti 2 – 15 rokov: dospelú hodnotu znížiť podľa energetickej potreby",
+    "overene": "2026-10-15",
+    "overenie": "vyhladavanie",
+    "faktory": ["sol"],
+    "karty": ["sol", "deti"],
+    "diety": ["dash"]
+  }
+]

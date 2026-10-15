@@ -65,3 +65,14 @@ describe('zdroje', () => {
     }
   });
 });
+
+import { LEPSIE } from '../src/data/lepsie';
+describe('lepšie verzie klasík', () => {
+  it('všetky id existujú a lepšia verzia má vyššie skóre než klasika', async () => {
+    const { INFO } = await import('../src/ctx');
+    for (const [k, v] of Object.entries(LEPSIE)) {
+      expect(INFO.has(k), k).toBe(true);
+      for (const id of v) { expect(INFO.has(id), `${k} → ${id}`).toBe(true); expect(INFO.get(id)!.skore.celkom, `${k} → ${id}`).toBeGreaterThan(INFO.get(k)!.skore.celkom); }
+    }
+  });
+});

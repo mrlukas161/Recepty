@@ -1,0 +1,21 @@
+/** „Chuť na … ? Skús …“ – klasické múčne/ťažké jedlo → lepšie verzie (id receptov). */
+export const LEPSIE: Record<string, string[]> = {
+  'bryndzove-halusky': ['pohankove-rizoto-so-zeleninou', 'jahlova-kasa-s-hubami', 'zapekane-zemiaky-so-zeleninou'],
+  'zemiakovo-tvarohove-pirohy': ['cuketove-placky-s-tvarohom', 'zapekane-zemiaky-so-zeleninou', 'zapekany-karfiol-so-syrom'],
+  'hovadzi-gulas-s-knedlou': ['hovadzi-gulas-bez-muky', 'segedinsky-gulas-lahsi', 'tekvicovy-gulas-s-fazulou'],
+  'vyprazany-rezen-so-zemiakmi': ['kuracie-nugetky-vlocky', 'pecene-kura-so-zeleninou', 'rybie-tyckinky-pecene'],
+  'langose': ['placka-cuketa-pizza', 'cicerove-placky-zeleninove', 'pizza-celozrnna-zelenina'],
+  'palacinky-s-dzemom': ['bananove-ovsene-palacinky', 'ovsene-placky-banan', 'pohankove-lievance-jogurt'],
+  'kysnute-buchty-s-dzemom': ['muffiny-ovsene-jablko', 'jablkovy-kolac-s-ovsom', 'pecene-jablka'],
+  'zemiakove-lokse-s-makom': ['cuketove-placky-celozrnne', 'sosovicove-placky-cervene', 'ovsene-placky-banan'],
+  'strapacky-s-kapustou': ['kel-so-zemiakovou-kasou', 'kapustnica-ako-hlavne-jedlo', 'pohankove-rizoto-so-zeleninou'],
+  'zemiakove-placky': ['cuketove-placky-s-tvarohom', 'karbonatky-sosovica-vlocky', 'cicerove-placky-zeleninove'],
+  'pizza-margherita-klasicka': ['pizza-celozrnna-zelenina', 'placka-karfiol-pizza', 'placka-cuketa-pizza'],
+  'teple-sunkove-sendvice': ['quesadilla-fazula-syr', 'toast-vajce-spenat', 'sendvic-cottage-zelenina'],
+  'sunkofleky-klasicke': ['celozrnne-cestoviny-sosovicova-bolonska', 'cicerove-cestoviny-brokolica-cesnak', 'sosovicove-cestoviny-tuniak'],
+  'makovy-zavin': ['jablkovy-kolac-s-ovsom', 'ovsene-susienky-s-ovocim', 'pecene-jablka'],
+  'sisky': ['bananove-ovsene-palacinky', 'cucoriedkove-muffiny', 'tvarohovy-krem-s-ovocim'],
+  'pernik': ['ovsene-susienky-s-ovocim', 'ovocne-tycinky', 'avokadovy-cokoladovy-puding'],
+  'tvarohovy-kolac': ['tvarohovy-krem-s-ovocim', 'jogurtova-zmrzlina', 'chia-puding-s-ovocim'],
+  'kuracia-polievka-s-rezancami': ['zeleninova-polievka', 'sosovicova-polievka', 'cicerova-polievka'],
+};

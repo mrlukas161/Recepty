@@ -1,0 +1,44 @@
+[
+  {
+    "id": "monteiro-2019",
+    "citacia": "Monteiro CA, Cannon G, Levy RB, Moubarac JC, Louzada MLC, Rauber F, Khandpur N, Jaime PC a kol. (2019). Ultra-processed foods: what they are and how to identify them. Public Health Nutrition, 22(5):936–941.",
+    "doi": "10.1017/S1368980018003762",
+    "url": "https://doi.org/10.1017/S1368980018003762",
+    "uroven": "prax",
+    "tvrdenie": "Komentár definuje ultraspracované potraviny v systéme NOVA a ponúka praktický test: v zložení je aspoň jedna zložka typická pre túto skupinu (napr. glukózo-fruktózový sirup, hydrolyzované bielkoviny, arómy, emulgátory, sladidlá). Je to klasifikácia, nie dôkaz o účinku na zdravie.",
+    "cisla": "",
+    "overene": "2026-10-15",
+    "overenie": "vyhladavanie",
+    "faktory": ["nova"],
+    "karty": ["ultraspracovane"],
+    "diety": []
+  },
+  {
+    "id": "hall-2019",
+    "citacia": "Hall KD, Ayuketah A, Brychta R a kol. (2019). Ultra-processed diets cause excess calorie intake and weight gain: an inpatient randomized controlled trial of ad libitum food intake. Cell Metabolism, 30(1):67–77.e3.",
+    "doi": "10.1016/j.cmet.2019.05.008",
+    "url": "https://doi.org/10.1016/j.cmet.2019.05.008",
+    "uroven": "silné",
+    "tvrdenie": "Pobytový crossover RCT na 20 dospelých: pri ultraspracovanej strave ľudia zjedli viac kalórií a pribrali, hoci jedlá boli vyrovnané v prezentovaných kalóriách, energetickej hustote, makroživinách, cukre, sodíku a vláknine. Štúdia je malá a krátka (2 týždne na každú stravu) a nerozlíši, ktorá vlastnosť jedla za to môže.",
+    "cisla": "o 508 ± 106 kcal denne viac pri ultraspracovanej strave; 20 účastníkov, 2 + 2 týždne",
+    "overene": "2026-10-15",
+    "overenie": "vyhladavanie",
+    "faktory": ["nova"],
+    "karty": ["ultraspracovane"],
+    "diety": []
+  },
+  {
+    "id": "lane-2024",
+    "citacia": "Lane MM, Gamage E, Du S, Ashtree DN, McGuinness AJ, Gauci S, Baker P, Lawrence M, Rebholz CM, Srour B, Touvier M, Jacka FN, O'Neil A, Segasby T, Marx W (2024). Ultra-processed food exposure and adverse health outcomes: umbrella review of epidemiological meta-analyses. BMJ, 384:e077310.",
+    "doi": "10.1136/bmj-2023-077310",
+    "url": "https://doi.org/10.1136/bmj-2023-077310",
+    "uroven": "stredné",
+    "tvrdenie": "Zastrešujúci prehľad metaanalýz observačných štúdií: vyšší príjem ultraspracovaných potravín súvisel s horšími výsledkami v mnohých ukazovateľoch zdravia; najsilnejšie dôkazy boli pre celkovú a kardiovaskulárnu úmrtnosť, bežné duševné poruchy, nadváhu/obezitu a cukrovku 2. typu. Ide o asociácie, nie preukázanú príčinnosť.",
+    "cisla": "45 samostatných metaanalýz, n = 9 888 373; priame asociácie s 32 (71 %) zdravotnými ukazovateľmi",
+    "overene": "2026-10-15",
+    "overenie": "vyhladavanie",
+    "faktory": ["nova"],
+    "karty": ["ultraspracovane"],
+    "diety": []
+  }
+]

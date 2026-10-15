@@ -1,0 +1,54 @@
+[
+  {
+    "id": "aune-2016",
+    "citacia": "Aune D. a kol. (2016). Whole grain consumption and risk of cardiovascular disease, cancer, and all cause and cause specific mortality: systematic review and dose-response meta-analysis of prospective studies. BMJ, 353:i2716.",
+    "doi": "10.1136/bmj.i2716",
+    "url": "https://doi.org/10.1136/bmj.i2716",
+    "uroven": "stredné",
+    "tvrdenie": "Metaanalýza prospektívnych kohort: vyšší príjem celozrnných výrobkov súvisí s nižším rizikom srdcovocievnych chorôb a úmrtnosti; rafinované zrná a biela ryža takú súvislosť nevykazovali. Ide o pozorovanie, nie dôkaz príčinnosti.",
+    "cisla": "Na 90 g celozrnných za deň: RR 0,81 ischemická choroba srdca, 0,78 kardiovaskulárne ochorenia, 0,83 celková úmrtnosť (45 štúdií).",
+    "overene": "2026-10-15",
+    "overenie": "vyhladavanie",
+    "faktory": [
+      "vlaknina",
+      "nova"
+    ],
+    "karty": [
+      "celozrnne",
+      "muka",
+      "vlaknina"
+    ],
+    "diety": [
+      "stredomorska",
+      "dash",
+      "mind",
+      "menej-muky"
+    ]
+  },
+  {
+    "id": "reynolds-2019",
+    "citacia": "Reynolds A., Mann J., Cummings J., Winter N., Mete E., Te Morenga L. (2019). Carbohydrate quality and human health: a series of systematic reviews and meta-analyses. The Lancet, 393:434-445.",
+    "doi": "10.1016/S0140-6736(18)31809-9",
+    "url": "https://doi.org/10.1016/S0140-6736(18)31809-9",
+    "uroven": "silné",
+    "tvrdenie": "Séria systematických prehľadov a metaanalýz (pozorovania aj RCT): vyšší príjem vlákniny a celozrnných výrobkov súvisí s nižším rizikom chorôb a úmrtnosti; v štúdiách bola nižšia hmotnosť, tlak a cholesterol. Pozorovacie údaje samy o sebe nedokazujú príčinnosť.",
+    "cisla": "185 prospektívnych štúdií a 58 klinických štúdií (4635 dospelých); najvyšší vs. najnižší príjem vlákniny: o 15–30 % nižšia celková a kardiovaskulárna úmrtnosť; najväčší prínos pri 25–29 g vlákniny denne.",
+    "overene": "2026-10-15",
+    "overenie": "vyhladavanie",
+    "faktory": [
+      "vlaknina",
+      "gl"
+    ],
+    "karty": [
+      "celozrnne",
+      "muka",
+      "vlaknina"
+    ],
+    "diety": [
+      "stredomorska",
+      "dash",
+      "mind",
+      "menej-muky"
+    ]
+  }
+]
