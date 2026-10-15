@@ -1,6 +1,7 @@
 /** Open Food Facts (ODbL) – dopyt z prehliadača používateľa, len keď je internet. Údaje: Open Food Facts, licencia ODbL. */
 import type { Vyziva, Doplnok } from './typy';
 import type { Alergen } from '../data/types';
+import { najdiVUlozisku, ulozVyrobok } from './ulozisko';
 
 export type JazykZlozenia = 'sk' | 'cs' | 'en' | 'povodny';
 
@@ -18,6 +19,10 @@ export interface OffVyrobok {
   nutriscore?: string;
   nova?: number;
   url: string;
+  /** výrobok pochádza z lokálnej zásoby (bez internetu) */
+  zCache?: boolean;
+  /** ISO čas uloženia do lokálnej zásoby */
+  ulozene?: string;
 }
 
 /** Kontrolný súčet EAN-8 / EAN-13 / UPC-A (12) / GTIN-14. */
@@ -86,9 +91,23 @@ export function mapujOff(kod: string, j: unknown): OffVyrobok | null {
   };
 }
 
+/** Online: dopyt na OFF a uloženie do zásoby. Bez internetu (alebo pri chybe siete): výrobok z lokálnej zásoby. */
 export async function nacitajOff(kod: string): Promise<OffVyrobok | null> {
-  const r = await fetch(offUrl(kod), { headers: { Accept: 'application/json' } });
+  let r: Response;
+  try {
+    r = await fetch(offUrl(kod), { headers: { Accept: 'application/json' } });
+  } catch (e) {
+    const z = najdiVUlozisku(kod);
+    if (z) return z;
+    throw e;
+  }
   if (r.status === 404) return null;
-  if (!r.ok) throw new Error(`Open Food Facts odpovedal chybou ${r.status}`);
-  return mapujOff(kod, await r.json());
+  if (!r.ok) {
+    const z = najdiVUlozisku(kod);
+    if (z) return z;
+    throw new Error(`Open Food Facts odpovedal chybou ${r.status}`);
+  }
+  const v = mapujOff(kod, await r.json());
+  if (v) ulozVyrobok(v);
+  return v;
 }

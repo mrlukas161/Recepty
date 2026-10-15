@@ -10,6 +10,7 @@ import { nacitajHistoriu, pridajDoHistorie, zmazZaznam, vymazHistoriu, type Zazn
 import { Porovnanie } from './Porovnanie';
 import { Foto } from './Foto';
 import { Kod } from './Kod';
+import { datumUlozenia } from './ulozisko';
 import type { OffVyrobok } from './off';
 import type { Vyziva, Doplnok } from './typy';
 import { PASMO_TEXT } from '../engine/score';
@@ -87,6 +88,7 @@ export function Skener() {
               {off && off.zlozenie && (
                 <div class="upoz">
                   <b>{off.nazov}</b>{off.znacka ? ` (${off.znacka})` : ''} – údaje z Open Food Facts (ODbL), <a href={off.url} target="_blank" rel="noopener noreferrer">karta výrobku</a>.
+                  {off.zCache && <> <b>Uložené {datumUlozenia(off.ulozene)}</b> v tomto mobile (bez internetu) – údaje môžu byť staršie.</>}
                   {off.nutriscore && <> Nutri-Score {off.nutriscore}.</>}{off.nova && <> NOVA {off.nova}.</>}
                   {off.jazykText && <> Zloženie je v {off.jazykText}{off.jazyk === 'povodny' ? ' – rozbor je menej presný, pomáhajú nám aj štruktúrované údaje databázy (E-čísla, alergény)' : ''}.</>}
                   <span class="maly"> Nutri-Score a NOVA sú údaje z databázy, nie naše skóre; zloženie od používateľov môže byť zastarané – porovnaj s obalom.</span>

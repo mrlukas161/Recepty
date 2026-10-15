@@ -117,3 +117,22 @@ test('skener: Nutella (reálna odpoveď OFF, zloženie len en/fr) → nízke pá
   await expect(page.getByText('Palmový tuk / olej').first()).toBeVisible();
   await page.screenshot({ path: 'test-results/skener-6-nutella.png', fullPage: true });
 });
+
+test('skener: výrobok nájdený podľa kódu sa po výpadku internetu nájde z uloženého', async ({ page }) => {
+  const nutella = readFileSync(new URL('../tests/fixtures/off/nutella.json', import.meta.url), 'utf8');
+  let online = true;
+  await page.route('https://world.openfoodfacts.org/api/v2/product/**', (r) => (online ? r.fulfill({ status: 200, contentType: 'application/json', body: nutella }) : r.abort('internetdisconnected')));
+  await page.goto('./');
+  await page.getByRole('button', { name: 'Hotovo, ukáž návrhy' }).click();
+  await page.goto('./#/skener');
+  await page.getByLabel('Čiarový kód (čísla)').fill('3017620422003');
+  await page.getByRole('button', { name: 'Nájsť' }).click();
+  await expect(page.getByText(/údaje z Open Food Facts/)).toBeVisible();
+  await expect(page.getByText(/Uložené \d{2}\.\d{2}\.\d{4}/)).toHaveCount(0);
+  online = false;
+  await page.reload();
+  await page.getByLabel('Čiarový kód (čísla)').fill('3017620422003');
+  await page.getByRole('button', { name: 'Nájsť' }).click();
+  await expect(page.getByText(/Uložené \d{2}\.\d{2}\.\d{4}/)).toBeVisible();
+  await expect(page.getByText('Ako sme to spočítali')).toBeVisible();
+});

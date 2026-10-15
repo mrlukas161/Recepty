@@ -21,7 +21,7 @@ export function Kod({ naVyrobok }: { naVyrobok: (v: OffVyrobok) => void }) {
       else if (!v.zlozenie) { setChyba('Výrobok sa našiel, ale nemá zadané zloženie. Odfoť zloženie na obale.'); naVyrobok(v); }
       else { setStav(''); naVyrobok(v); }
     } catch {
-      setChyba('Nepodarilo sa spojiť s Open Food Facts (bez internetu?). Odfoť zloženie – to funguje aj offline.');
+      setChyba('Nepodarilo sa spojiť s Open Food Facts (bez internetu?) a výrobok nemáme uložený v mobile. Odfoť zloženie – to funguje aj offline.');
     } finally { setBezi(false); }
   };
 
@@ -67,7 +67,7 @@ export function Kod({ naVyrobok }: { naVyrobok: (v: OffVyrobok) => void }) {
   return (
     <div class="karta" style="animation:none">
       <h3>Čiarový kód <span class="tag">online</span></h3>
-      <p class="maly">Keď máš internet, nájdeme výrobok v Open Food Facts (názov, zloženie, výživové hodnoty). Bez internetu alebo bez nálezu odfoť zloženie.</p>
+      <p class="maly">Keď máš internet, nájdeme výrobok v Open Food Facts (názov, zloženie, výživové hodnoty). Výrobky, ktoré už raz našlo, sa uložia v mobile a nájdu sa aj bez internetu. Bez nálezu odfoť zloženie.</p>
       <div class="rad">
         <input type="text" inputMode="numeric" pattern="[0-9]*" id="sk-kod" aria-label="Čiarový kód (čísla)" placeholder="napr. 5900000000000" value={kod} onInput={(e) => setKod((e.target as HTMLInputElement).value.replace(/\D/g, ''))} style="flex:1;min-width:160px;width:auto" />
         <button class="hl" onClick={() => hladaj(kod)} disabled={bezi || !kod}>Nájsť</button>
