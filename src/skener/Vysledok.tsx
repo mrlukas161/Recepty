@@ -4,6 +4,8 @@ import { ZdrojKarta } from '../ui/Zdroje';
 import { Pecat } from '../ui/kom';
 import { ALERGEN_NAZOV } from './alergeny';
 import { stupenPreDomacnost, POZNAMKA_SKORE_V, type SkoreVyrobku } from './skore';
+import { INFOS } from '../ctx';
+import { domaceAlternativy, tipyNaVyber } from './lepsia';
 import { STUPEN_TEXT, STUPEN_IKONA, type Rozbor, type Zlozka } from './typy';
 
 const UROVEN_TEXT: Record<string, string> = { 'silné': 'dôkazy: silné', 'stredné': 'dôkazy: stredné', 'slabé': 'dôkazy: slabé', prax: 'prax, nie dôkaz', odhad: 'odhad' };
@@ -47,7 +49,8 @@ export function RiadokZlozky({ z, deti }: { z: Zlozka; deti: boolean }) {
   );
 }
 
-export function Vysledok({ r, s, deti }: { r: Rozbor; s: SkoreVyrobku; deti: boolean }) {
+export function Vysledok({ r, s, deti, nazov = '' }: { r: Rozbor; s: SkoreVyrobku; deti: boolean; nazov?: string }) {
+  const alt = domaceAlternativy(nazov, r, INFOS);
   return (
     <div>
       <div class="karta" style="animation:none">
@@ -82,6 +85,19 @@ export function Vysledok({ r, s, deti }: { r: Rozbor; s: SkoreVyrobku; deti: boo
           <ZdrojeIds ids={f.zdroje} />
         </details>
       ))}
+
+      <h2>Lepšia voľba</h2>
+      <div class="karta" style="animation:none">
+        <h3>Podľa čoho vybrať</h3>
+        <ul>{tipyNaVyber(r, s).map((t) => <li key={t}>{t}</li>)}</ul>
+        <p class="sk-pozn">Naše pravidlá (odhad), nie výsledok štúdie.</p>
+        {alt && (
+          <>
+            <h3>Domáca alternatíva ({alt.druh.nazov})</h3>
+            {alt.recepty.map((i) => <a key={i.r.id} class="karta" style="animation:none" href={`#/recept/${i.r.id}`}><div class="riadok"><div class="emoji" aria-hidden="true">{i.r.ilustracia}</div><div class="rozt"><b>{i.r.nazov}</b><div class="maly">{i.cas} min · skóre {i.skore.celkom}</div></div></div></a>)}
+          </>
+        )}
+      </div>
 
       <h2>Zložky ({r.zlozky.length})</h2>
       <p class="maly">Ťukni na zložku: čo to je, prečo ju tak hodnotíme a zdroj.</p>

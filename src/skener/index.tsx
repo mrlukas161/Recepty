@@ -9,6 +9,8 @@ import { vypocitajSkoreVyrobku } from './skore';
 import { nacitajHistoriu, pridajDoHistorie, zmazZaznam, vymazHistoriu, type Zaznam } from './historia';
 import { Porovnanie } from './Porovnanie';
 import { Foto } from './Foto';
+import { Kod } from './Kod';
+import type { OffVyrobok } from './off';
 import type { Vyziva } from './typy';
 import { PASMO_TEXT } from '../engine/score';
 
@@ -27,6 +29,7 @@ export function Skener() {
   const [vyziva, setVyziva] = useState<Vyziva>({});
   const [hist, setHist] = useState<Zaznam[]>(() => nacitajHistoriu());
   const [ulozene, setUlozene] = useState(false);
+  const [off, setOff] = useState<OffVyrobok | null>(null);
   const deti = s.nastavenia.deti.length > 0;
 
   const vyhodnotenie = useMemo(() => {
@@ -50,6 +53,7 @@ export function Skener() {
 
       {zal === 'sken' && (
         <>
+          <Kod naVyrobok={(v) => { setOff(v); setNazov([v.znacka, v.nazov].filter(Boolean).join(' – ')); setVyziva(v.vyziva); setText(v.zlozenie); setHotovy(v.zlozenie || null); setUlozene(false); }} />
           <Foto naText={(t) => { setText(t); setHotovy(null); setUlozene(false); }} />
           <p class="maly">Alebo vlož či napíš zloženie z obalu (rozpoznaný text sa dá opraviť). Všetko sa vyhodnotí len v tvojom mobile.</p>
           <label for="sk-text"><b>Zloženie výrobku</b></label>
@@ -78,7 +82,14 @@ export function Skener() {
                 <input id="sk-nazov" type="text" value={nazov} onInput={(e) => setNazov((e.target as HTMLInputElement).value)} placeholder="napr. Müsli čokoládové" />
                 <div class="rad"><button class="male" onClick={uloz} disabled={ulozene}>{ulozene ? '✓ Uložené' : '💾 Uložiť do histórie'}</button></div>
               </div>
-              <Vysledok r={vyhodnotenie.r} s={vyhodnotenie.sk} deti={deti} />
+              {off && off.zlozenie && (
+                <div class="upoz">
+                  <b>{off.nazov}</b>{off.znacka ? ` (${off.znacka})` : ''} – údaje z Open Food Facts (ODbL), <a href={off.url} target="_blank" rel="noopener noreferrer">karta výrobku</a>.
+                  {off.nutriscore && <> Nutri-Score {off.nutriscore}.</>}{off.nova && <> NOVA {off.nova}.</>}
+                  <span class="maly"> Nutri-Score a NOVA sú údaje z databázy, nie naše skóre; zloženie od používateľov môže byť zastarané – porovnaj s obalom.</span>
+                </div>
+              )}
+              <Vysledok r={vyhodnotenie.r} s={vyhodnotenie.sk} deti={deti} nazov={nazov} />
             </>
           )}
         </>

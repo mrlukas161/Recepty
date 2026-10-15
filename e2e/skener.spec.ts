@@ -44,3 +44,34 @@ test('skener: ručné vloženie → hodnotenie → história; fotka etikety → 
   await page.screenshot({ path: 'test-results/skener-3-ocr.png', fullPage: true });
   expect(chyby).toEqual([]);
 });
+
+test('skener: čiarový kód → Open Food Facts (zmockované) → hodnotenie, lepšia voľba, porovnanie', async ({ page }) => {
+  await page.route('https://world.openfoodfacts.org/api/v2/product/**', (r) => {
+    const kod = r.request().url().includes('4006381333931') ? 'A' : 'B';
+    const product = kod === 'A'
+      ? { product_name: 'Müsli čokoládové', brands: 'Test', ingredients_text_sk: 'ovsené vločky, cukor, glukózovo-fruktózový sirup, kakao, aróma, emulgátor (E 471)', nutriscore_grade: 'c', nova_group: 4, nutriments: { sugars_100g: 28, salt_100g: 0.3 } }
+      : { product_name: 'Ovsené vločky', brands: 'Test', ingredients_text_sk: 'celozrnné ovsené vločky 100 %', nutriscore_grade: 'a', nova_group: 1, nutriments: { sugars_100g: 1, salt_100g: 0, fiber_100g: 10 } };
+    return r.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({ status: 1, product }) });
+  });
+  await page.goto('./');
+  await page.getByRole('button', { name: 'Hotovo, ukáž návrhy' }).click();
+  await page.goto('./#/skener');
+  await page.getByLabel('Čiarový kód (čísla)').fill('4006381333932');
+  await page.getByRole('button', { name: 'Nájsť' }).click();
+  await expect(page.getByText(/Kód nie je platný/)).toBeVisible();
+  await page.getByLabel('Čiarový kód (čísla)').fill('4006381333931');
+  await page.getByRole('button', { name: 'Nájsť' }).click();
+  await expect(page.getByText(/údaje z Open Food Facts \(ODbL\)/)).toBeVisible();
+  await expect(page.getByText('Lepšia voľba')).toBeVisible();
+  await expect(page.getByText(/Domáca alternatíva/)).toBeVisible();
+  await page.screenshot({ path: 'test-results/skener-4-off.png', fullPage: true });
+  await page.getByRole('button', { name: /Uložiť do histórie/ }).click();
+  await page.getByRole('button', { name: /Skenovať/ }).click();
+  await page.getByLabel('Čiarový kód (čísla)').fill('96385074');
+  await page.getByRole('button', { name: 'Nájsť' }).click();
+  await expect(page.getByText(/údaje z Open Food Facts/)).toBeVisible();
+  await page.getByRole('button', { name: /Uložiť do histórie/ }).click();
+  await page.getByRole('button', { name: /Porovnať/ }).click();
+  await expect(page.getByText(/Lepšie vychádza/)).toBeVisible();
+  await page.screenshot({ path: 'test-results/skener-5-porovnanie.png', fullPage: true });
+});
