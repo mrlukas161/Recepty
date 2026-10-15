@@ -40,7 +40,6 @@ export function vyhovujeDiete(i: Info, dietaId: string, db: Map<string, Surovina
   const has = (p: string) => maPriznak(r, db, p);
   switch (dietaId) {
     case 'vegetarianska': return !has('maso') && !has('ryba') && !has('spracovane-maso');
-    case 'vegansku':
     case 'veganska': return !has('maso') && !has('ryba') && !has('spracovane-maso') && !has('vajce') && !has('mliecne') && !has('med');
     case 'bezlepkova': return !has('lepok') && !i.alergeny.has('lepok');
     case 'bez-laktozy': return !has('laktoza') && !has('mliecne');

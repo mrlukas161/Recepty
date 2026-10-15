@@ -1,0 +1,35 @@
+import { defineConfig } from 'vite';
+import preact from '@preact/preset-vite';
+import { VitePWA } from 'vite-plugin-pwa';
+import { execSync } from 'node:child_process';
+
+const sha = process.env.GIT_SHA || (() => { try { return execSync('git rev-parse HEAD').toString().trim(); } catch { return 'dev'; } })();
+
+export default defineConfig({
+  base: '/Recepty/',
+  define: { __SHA__: JSON.stringify(sha), __CAS__: JSON.stringify(new Date().toISOString()) },
+  plugins: [
+    preact(),
+    {
+      name: 'version-json',
+      generateBundle() {
+        this.emitFile({ type: 'asset', fileName: 'version.json', source: JSON.stringify({ sha, cas: new Date().toISOString() }) });
+      },
+    },
+    VitePWA({
+      registerType: 'autoUpdate',
+      workbox: { globPatterns: ['**/*.{js,css,html,svg,png,woff2,json}'], navigateFallback: '/Recepty/index.html', globIgnores: ['version.json'] },
+      manifest: {
+        name: 'Recepty', short_name: 'Recepty', lang: 'sk', description: 'Čo variť, keď chceme menej múky, cukru a údenín.',
+        start_url: '/Recepty/', scope: '/Recepty/', display: 'standalone', display_override: ['fullscreen', 'standalone'],
+        background_color: '#fbf4e6', theme_color: '#c8472b',
+        icons: [
+          { src: 'icons/icon-192.png', sizes: '192x192', type: 'image/png' },
+          { src: 'icons/icon-512.png', sizes: '512x512', type: 'image/png' },
+          { src: 'icons/maskable-512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' },
+        ],
+      },
+    }),
+  ],
+  test: { include: ['tests/**/*.test.ts'] },
+});
