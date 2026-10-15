@@ -30,6 +30,14 @@
 - Ilustrácie sú emoji; vlastné SVG chýbajú. Ikona appky je jednoduchá.
 - e2e testy bežia na Chromium (nie na reálnom Xiaomi/iPhone).
 
+## Skener zloženia
+**Kde:** Viac → Skener zloženia (`#/skener`).
+**Ako ho použiť:** (1) odfoť zoznam zložiek na obale (zblízka, rovno, pri svetle) → v náhľade môžeš fotku otočiť, orezať, zvýšiť kontrast alebo dať čiernobielu → „Rozpoznať text“ (OCR beží v mobile, offline po prvom použití; prvýkrát sa stiahnu jazykové dáta z appky) → rozpoznaný text **oprav** v políčku → „Vyhodnotiť“. (2) Alebo zloženie vlož/napíš ručne. (3) Alebo zadaj/odfoť **čiarový kód** (online): z Open Food Facts sa načíta názov, zloženie, výživové hodnoty, Nutri-Score a NOVA.
+**Čo vie:** rozbor zloženia (zátvorky, percentá, poradie = množstvo, E-čísla v tvaroch E330/E 330/E-330, slovné názvy, opravy preklepov z OCR, 14 alergénov a „môže obsahovať stopy“) · skóre 0–100 s rozpadom na faktory (spracovanosť, prídavné látky, cukor, tuky a soľ, kvalita zloženia, tvoje nastavenia, výživové hodnoty ak sú) · ťuknutím na zložku dôvod, zdroj a úroveň dôkazov · osobné upozornenia podľa Nastavení (alergie, obmedzená múka/cukor/údeniny, deti) · **lepšia voľba** (podľa čoho vybrať + domáce recepty z appky) · história skenov (len v mobile) · porovnanie dvoch výrobkov. Fotky sa nikam neposielajú; jediný sieťový dopyt je voliteľný Open Food Facts podľa kódu.
+**Čo je overené a na akej úrovni:** databáza prídavných látok = taxonómia aditív Open Food Facts (727 E-čísel, slovenské názvy, licencia ODbL). Naše hodnotenia ~90 látok a skupín majú dôvod a zdroj; zdroje (27) sú na úrovni **„overené vyhľadávaním, originál nečítaný“** (doi.org/PubMed/EFSA sú zo sandboxu neprístupné). Preventívne obavy (TiO2, emulgátory CMC/polysorbát, sladidlá podľa WHO 2023, erytritol) sú označené ako preventívne so slabými dôkazmi; látky bez vlastného posúdenia majú „predvolené hodnotenie (odhad)“. Neoverené do appky nešli: EDTA E385, BHT E321, karagénan, sukralóza-6-acetát, kyselina fosforečná v colách (pozri `docs/vyskum/SKENER.md`, sekcia „Čo overenie vyvrátilo“). Skóre výrobku je **naša heuristika** (váhy a prahy sú odhad).
+**Obmedzenia OCR:** funguje najlepšie na rovnom, ostrom, kontrastnom tlači; zle číta lesklé/zakrivené obaly, malé písmo, farebné pozadie a zloženie vo viacerých jazykoch naraz (vyber jazyk obalu). OCR môže zameniť znaky (O/0, l/1) – pri E-číslach to appka opravuje a nepresné zhody označí, ale **vždy skontroluj text pred vyhodnotením**. Prvé použitie OCR potrebuje internet (~8 MB jazykových dát a jadro; potom offline). Čiarový kód len pre výrobky, ktoré sú v Open Food Facts; údaje zadávajú používatelia a môžu byť zastarané. Hodnotenia z iných aplikácií (Férová potravina, Yuka, INCI Beauty) sme nepreberali. Nie je to lekárska rada.
+**Overenie behom:** unit testy (parser, E-čísla, OCR preklepy, alergény, skóre, OFF mapovanie, lepšia voľba) a e2e na mobilnom viewporte: ručné vloženie → história → porovnanie; syntetická etiketa → OCR → zložky; čiarový kód (zmockovaný OFF); OCR offline po reloade so service workerom. Živú adresu zo sandboxu nevidno (github.io blokované) – nasadenie sa overilo cez úspešné behy workflow.
+
 ## Ďalšie návrhy (vyber si)
 | Návrh | Prečo | Náročnosť |
 |---|---|---|
@@ -42,3 +50,9 @@
 | Vlastné recepty (pridať/importovať) so skóre | rodinné recepty | stredná |
 | Kozmetika (INCI) v skeneri | pôvodný nápad | vysoká |
 | Sledovanie váhy/príjmu | mimo cieľ appky; len ak chcete | – |
+| Skener: kozmetika podľa INCI (zložky šampónov, krémov) so zdrojmi | pôvodný nápad; vlastná databáza INCI + hodnotenia podľa SCCS/EÚ | vysoká |
+| Skener: overenie hodnotení v origináli, keď sa otvorí sieť (EFSA, PubMed) a doplnenie vlastných posúdení pre látky s predvoleným hodnotením | zvýšiť úroveň z „vyhľadávanie“ na „originál“ | stredná |
+| Skener: vlastný model/čistenie OCR (napr. slovník zložiek, dvojfázové OCR s orezom riadkov) | menej preklepov na zakrivených obaloch | stredná |
+| Skener: nákupný zoznam „lepší výrobok“ priamo z histórie skenov a značenie výrobkov „kupujem“ | prepojenie so záložkou Nákup | nízka |
+| Skener: Open Food Facts offline (predstiahnutý výber SK produktov) | kód funguje aj bez internetu | vysoká |
+| Skener: hodnotenie alergénov pre diétu (celiakia: dôkladnejšie „bezlepkové“, laktóza) | bezpečnosť | stredná |

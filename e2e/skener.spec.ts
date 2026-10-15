@@ -75,3 +75,27 @@ test('skener: čiarový kód → Open Food Facts (zmockované) → hodnotenie, l
   await expect(page.getByText(/Lepšie vychádza/)).toBeVisible();
   await page.screenshot({ path: 'test-results/skener-5-porovnanie.png', fullPage: true });
 });
+
+test('skener: OCR funguje aj offline po prvom použití (service worker)', async ({ page, context }) => {
+  await page.goto('./');
+  await page.getByRole('button', { name: 'Hotovo, ukáž návrhy' }).click();
+  await page.evaluate(async () => { await navigator.serviceWorker.ready; });
+  await page.reload();
+  await page.waitForFunction(() => !!navigator.serviceWorker.controller);
+  const p2 = await context.newPage();
+  await p2.setViewportSize({ width: 900, height: 200 });
+  await p2.setContent(`<body style="margin:0;background:#fff"><div style="width:860px;padding:30px;font:34px/1.5 'DejaVu Sans', Arial, sans-serif;color:#111">Zloženie: ovsené vločky, cukor, soľ.</div></body>`);
+  const png = await p2.screenshot();
+  await p2.close();
+  const spusti = async () => {
+    await page.goto('./#/skener');
+    await page.locator('#sk-foto').setInputFiles({ name: 'e.png', mimeType: 'image/png', buffer: png });
+    await page.getByRole('button', { name: 'Rozpoznať text' }).click();
+    await expect(page.getByText(/Hotovo – text skontroluj/)).toBeVisible({ timeout: 120000 });
+    expect((await page.locator('#sk-text').inputValue()).toLowerCase()).toContain('cukor');
+  };
+  await spusti();
+  await context.setOffline(true);
+  await page.reload();
+  await spusti();
+});
