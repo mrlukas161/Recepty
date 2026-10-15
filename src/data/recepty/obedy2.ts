@@ -107,7 +107,7 @@ export const receptyObedy2: Recept[] = [
     suroviny: [
       S('cicer-konzerva', 480, 'g', { n: true }),
       S('cibula', 0.5, 'ks'), S('cesnak', 3, 'ks'), S('petrzlenova-vnat', 20, 'g'),
-      S('cicerova-muka', 3, 'lyzica', { n: true }), S('koriander-mlety', 2, 'lyzicka'), S('citron', 0.5, 'ks'),
+      S('cicerova-muka', 3, 'lyzica', { n: true }), S('koriander-mlety', 2, 'lyzicka'), S('citron', 1, 'ks'),
       S('olej-repkovy', 2, 'lyzica'), S('sol', 1, 'lyzicka'), S('prasok-do-peciva', 0.5, 'lyzicka'),
       S('pita', 4, 'ks', { n: true }), S('uhorka', 1, 'ks'), S('paradajka', 2, 'ks'),
       S('jogurt-biely', 150, 'g', { v: true }), S('tahini', 1, 'lyzica', { v: true }),
@@ -175,7 +175,7 @@ export const receptyObedy2: Recept[] = [
       'Mrkvu nastrúhaj, uhorku a reďkovky nakrájaj na tenké plátky, avokádo na kocky.',
       'Do dvoch misiek daj ryžu a okolo nej poukladaj edamame a zeleninu. Prelej dresingom a posyp sezamom.',
     ],
-    tagy: ['bezmasite', 'vegansky', 'rychle'],
+    tagy: ['bezmasite', 'vegansky'],
     vybavenie: ['hrniec'],
     upravy: [
       { typ: 'pridat', popis: 'Pridaj kocky pečeného tofu', na: 'tofu-natur', mnozstvo: 150, jednotka: 'g' },
@@ -198,7 +198,7 @@ export const receptyObedy2: Recept[] = [
       'Rúru predhrej na 200 °C. Quinou dobre prepláchni a uvar v dvojnásobku vody (400 ml) 15 minút, potom ju nechaj 5 minút pod pokrievkou.',
       'Brokolicu rozdeľ na ružičky, papriku nakrájaj na pásiky. Zmiešaj s 2 lyžicami oleja a pol lyžičkou soli, rozlož na plech.',
       'Kuracie prsia potri zvyšným olejom, paprikou, granulovaným cesnakom a soľou. Polož na druhý plech alebo na okraj toho istého.',
-      'Peč 20 až 25 minút, kým kuracie nie je vo vnútri biele a šťava číra. Brokolica má byť okrajmi hnedá.',
+      'Peč 20 až 25 minút, kým kuracie nie je vo vnútri biele, šťava číra a jadro dosiahne aspoň 74 °C. Brokolica má byť okrajmi hnedá.',
       'Jogurt rozmiešaj so šťavou z citróna a štipkou soli.',
       'Kuracie nakrájaj, rozdeľ do misiek s quinoou a zeleninou, polej jogurtovým dresingom a posyp semienkami.',
     ],
@@ -235,7 +235,7 @@ export const receptyObedy2: Recept[] = [
       { typ: 'pridat', popis: 'Pridaj na plech aj mrkvu na kolieska', na: 'mrkva', mnozstvo: 200, jednotka: 'g' },
     ],
     skladovanie: 'Chladnička max. 1 až 2 dni, ryžu rýchlo ochladiť; pred jedlom dôkladne prehriať.',
-    deti: 'Pred podávaním dôkladne skontroluj, či v rybe nie sú kosti. Losos je jemný, bez korenia pre malých stačí soľ šetrne.',
+    deti: 'Pred podávaním dôkladne skontroluj, či v rybe nie sú kosti. Losos je jemný; pre malých deti soľ šetri a korenie vynechaj.',
     ilustracia: '🐟',
   },
   {
@@ -299,7 +299,7 @@ export const receptyObedy2: Recept[] = [
     nazov: 'Cícerové cestoviny s brokolicou a cesnakom',
     typ: 'obed', kuchyna: 'talianska', casPripravy: 10, casVarenia: 15, narocnost: 1, porcie: 4,
     suroviny: [
-      S('cestoviny-cicerove', 320, 'g', { n: true, a: ['cestoviny-celozrnne'] }), S('brokolica', 1, 'ks', { n: true }),
+      S('cestoviny-cicerove', 320, 'g', { n: true, a: ['cestoviny-sosovicove'] }), S('brokolica', 1, 'ks', { n: true }),
       S('cesnak', 3, 'ks'), S('olej-olivovy', 3, 'lyzica'), S('citron', 0.5, 'ks'),
       S('parmezan', 40, 'g'), S('paprika-palivo', 0.25, 'lyzicka', { v: true }), S('sol', 1, 'lyzicka'),
       S('mandle', 30, 'g', { v: true }),
@@ -327,7 +327,7 @@ export const receptyObedy2: Recept[] = [
     nazov: 'Šošovicové cestoviny s tuniakom a paradajkami',
     typ: 'obed', kuchyna: 'talianska', casPripravy: 10, casVarenia: 20, narocnost: 1, porcie: 4,
     suroviny: [
-      S('cestoviny-sosovicove', 320, 'g', { n: true, a: ['cestoviny-celozrnne'] }), S('tuniak-konzerva', 240, 'g', { n: true }),
+      S('cestoviny-sosovicove', 320, 'g', { n: true, a: ['cestoviny-cicerove'] }), S('tuniak-konzerva', 240, 'g', { n: true }),
       S('paradajky-konzervovane', 400, 'g'), S('cibula', 1, 'ks'), S('cesnak', 2, 'ks'), S('olivy', 30, 'g', { v: true }),
       S('olej-olivovy', 2, 'lyzica'), S('oregano', 1, 'lyzicka'), S('petrzlenova-vnat', 10, 'g', { v: true }), S('sol', 1, 'lyzicka'),
     ],
@@ -345,7 +345,7 @@ export const receptyObedy2: Recept[] = [
       { typ: 'vymenit', popis: 'Tuniaka nahraď cícerom z konzervy', z: 'tuniak-konzerva', na: 'cicer-konzerva', mnozstvo: 240, jednotka: 'g' },
     ],
     skladovanie: 'Chladnička 1 až 2 dni.',
-    deti: 'Jemná paradajková chuť; olivy pre menšie deti vynechaj (slané). Tuniaka nejedzte príliš často, zvoľ striedanie s inými rybami.',
+    deti: 'Jemná paradajková chuť; olivy pre menšie deti vynechaj (slané). Tuniaka z konzervy zaraďuj striedavo s inými rybami.',
     ilustracia: '🍅',
   },
   {
@@ -355,7 +355,7 @@ export const receptyObedy2: Recept[] = [
     suroviny: [
       S('kuracie-prsia', 500, 'g', { n: true }), S('brokolica', 0.5, 'ks'), S('paprika-cervena', 1, 'ks'),
       S('mrkva', 2, 'ks'), S('cesnak', 2, 'ks'), S('zazvor', 1, 'lyzica'), S('sojova-omacka', 3, 'lyzica'),
-      S('olej-repkovy', 2, 'lyzica'), S('med', 1, 'lyzicka', { v: true }), S('ryza-natur', 250, 'g', { n: true, a: ['ryza-basmati'] }),
+      S('olej-repkovy', 2, 'lyzica'), S('med', 1, 'lyzicka', { v: true }), S('ryza-basmati', 250, 'g', { n: true, a: ['ryza-natur'] }),
       S('sezam', 1, 'lyzica', { v: true }),
     ],
     postup: [
@@ -470,7 +470,7 @@ export const receptyObedy2: Recept[] = [
       'Pridaj cesnak, papriku a koriander, premiešaj na pol minúty.',
       'Vlej paradajky a soľ. Varuj 10 minút, kým omáčka zhustne.',
       'V omáčke vytvor lyžicou 6 jamiek a do každej opatrne rozklepni vajce.',
-      'Prikry a pomaly varuj 6 až 8 minút. Bielok má byť úplne zrazený; žĺtok podľa chuti, deťom a pri neistote radšej uvar dotuha.',
+      'Prikry a pomaly varuj 6 až 8 minút. Bielok má byť úplne zrazený. Pre deti, tehotné ženy a starších ľudí varuj ešte 2 až 3 minúty, kým nie je pevný aj žĺtok.',
       'Posyp fetou a vňaťou, podávaj s celozrnným chlebom.',
     ],
     tagy: ['bezmasite', 'lacne', 'rychle'],
@@ -523,7 +523,7 @@ export const receptyObedy2: Recept[] = [
       'Rúru predhrej na 200 °C. Baklažán nakrájaj na kolieska hrubé asi 1 cm, potri z oboch strán olejom a osoľ.',
       'Rozlož na plechy s papierom a peč 15 minút, kým zmäknú a zhnednú; v polovici otoč. Nevyprážaj – olej sa použije len na potretie.',
       'Passatu zmiešaj s cesnakom, bazalkou a štipkou soli.',
-      'Do zapekacej misy daj vrstvu omáčky, potom baklažán, ďalšiu omáčku a plátky mozzarelly. Opakuj, kým ti ostane materiál; navrchu mozzarella.',
+      'Do zapekacej misy daj vrstvu omáčky, potom baklažán, ďalšiu omáčku a plátky mozzarelly. Vrstvy opakuj, navrchu nech je mozzarella.',
       'Posyp parmezánom a peč pri 190 °C ďalších 20 minút do zlatista.',
       'Pred krájaním nechaj 5 minút postáť. Podávaj s celozrnným chlebom.',
     ],
@@ -531,7 +531,7 @@ export const receptyObedy2: Recept[] = [
     vybavenie: ['rura'],
     upravy: [
       { typ: 'pridat', popis: 'Medzi vrstvy pridaj špenát alebo pečené cukety', na: 'spenat', mnozstvo: 100, jednotka: 'g' },
-      { typ: 'vymenit', popis: 'Mozzarellu nahraď eidamom 30 %', z: 'mozzarella', na: 'syr-eidam' },
+      { typ: 'vymenit', popis: 'Mozzarellu nahraď eidamom', z: 'mozzarella', na: 'syr-eidam' },
     ],
     skladovanie: 'Chladnička 3 dni, dobre sa ohrieva v rúre.',
     ilustracia: '🍆',
@@ -548,9 +548,9 @@ export const receptyObedy2: Recept[] = [
     postup: [
       'Vývarovú kocku rozpusti v 900 ml vriacej vody a drž na slabom ohni.',
       'Kuracie nakrájaj na kocky, opeč na lyžici oleja 6 minút do prepečenia a daj bokom.',
-      'V hrnci zjemni na zvyšnom oleji nadrobno nakrájanú cibuľu 4 minúty, pridaj ryžu a mieša 1 minútu.',
+      'V hrnci zjemni na zvyšnom oleji nadrobno nakrájanú cibuľu 4 minúty, pridaj ryžu a miešaj 1 minútu.',
       'Postupne prilievaj vývar po naberačke a miešaj; ďalšiu pridaj, keď sa predošlá vstrebe. Trvá to asi 18 minút.',
-      'Na konci vmiešaj hrášok a kuracie, varuj 4 minúty, aby bol všetko horúce a hrášok mäkký.',
+      'Na konci vmiešaj hrášok a kuracie, varuj 4 minúty, aby bolo všetko horúce a hrášok mäkký.',
       'Zapracuj parmezán, dochuť soľou podľa chuti (vývar je už slaný).',
     ],
     tagy: ['detske'],
@@ -576,7 +576,7 @@ export const receptyObedy2: Recept[] = [
       'Pohánku prepláchni, zalej 360 ml vody, osoľ a varuj pod pokrievkou na slabom ohni 12 až 15 minút. Vypni, nechaj ešte 5 minút postáť.',
       'Cibuľu nakrájaj nadrobno, huby na plátky.',
       'Na panvici zohrej polovicu oleja, opekaj cibuľu 4 minúty, pridaj huby a cesnak a opekaj ďalších 8 minút, kým sa neodparí voda.',
-      'Vajcia pokojne uvar natvrdo (9 až 10 minút) alebo urob volské oká pevne zrazené.',
+      'Vajcia uvar natvrdo (9 až 10 minút) alebo urob volské oká pevne zrazené.',
       'Do misiek daj pohánku, huby, vajce a kapustu; posyp petržlenom.',
     ],
     tagy: ['bezmasite', 'lacne', 'bezlepkove', 'rychle'],
@@ -599,7 +599,7 @@ export const receptyObedy2: Recept[] = [
       S('paprika-sladka', 1, 'lyzicka'), S('sol', 1, 'lyzicka'), S('petrzlenova-vnat', 10, 'g', { v: true }),
     ],
     postup: [
-      'Jahly prepláchni horúcou vodou, aby neboli horké. Mäso nakrájaj na kocky, mrkvu na kolieska, cibuľu nadrobno.',
+      'Jahly prepláchni horúcou vodou, aby neboli trpké. Mäso nakrájaj na kocky, mrkvu na kolieska, cibuľu nadrobno.',
       'Na oleji opeč cibuľu 4 minúty, pridaj mäso a opekaj 7 minút, kým nie je zvonka biele.',
       'Pridaj mrkvu, papriku a soľ, premiešaj a zalej 250 ml vody. Duš pod pokrievkou 10 minút.',
       'Vsyp jahly, dolej 450 ml vody a varuj pod pokrievkou na slabom ohni 12 až 15 minút.',
@@ -631,7 +631,7 @@ export const receptyObedy2: Recept[] = [
       'Quinou prepláchni a uvar v 300 ml osolenej vody 15 minút. Odstav a nechaj dopariť.',
       'Cibuľu a huby nadrobno nasekaj a opeč na oleji s cesnakom a tymianom 8 minút.',
       'Zmiešaj quinou s hubami a rozdrobenou fetou. Naplň polovice tekvice.',
-      'Vráť do rúry na 15 až 20 minút, kým nie sú tekvica mäkká a plnka horúca. Posyp semienkami.',
+      'Vráť do rúry na 15 až 20 minút, kým je tekvica mäkká a plnka horúca. Posyp semienkami.',
     ],
     tagy: ['bezmasite', 'bezlepkove'],
     vybavenie: ['rura', 'hrniec', 'panvica'],
@@ -674,7 +674,7 @@ export const receptyObedy2: Recept[] = [
   {
     id: 'tacos-cierna-fazula',
     nazov: 'Tacos s čiernou fazuľou a avokádom',
-    typ: 'obed', kuchyna: 'mexická', casPripravy: 15, casVarenia: 15, narocnost: 1, porcie: 4,
+    typ: 'obed', kuchyna: 'mexická', casPripravy: 15, casVarenia: 75, narocnost: 1, porcie: 4,
     suroviny: [
       S('fazula-cierna', 200, 'g', { n: true }), S('tortilla-kukuricna', 8, 'ks', { n: true }),
       S('avokado', 1, 'ks'), S('paradajka', 2, 'ks'), S('cibula', 0.5, 'ks'), S('kukurica-sladka', 100, 'g'),
@@ -682,7 +682,7 @@ export const receptyObedy2: Recept[] = [
       S('sol', 0.5, 'lyzicka'), S('jogurt-grecky', 100, 'g', { v: true }),
     ],
     postup: [
-      'Suchú čiernu fazuľu cez noc namoč, potom varuj v čerstvej vode aspoň 60 až 90 minút do mäkka (surová alebo málo uvarená fazuľa je nezdravá). Alebo použi ekvivalent z konzervy (cca 500 g).',
+      'Suchú čiernu fazuľu namoč cez noc (aspoň 8 hodín), vodu zlej a varuj v čerstvej vode 60 až 75 minút do mäkka (surová alebo nedovarená fazuľa nie je bezpečná). Kratšia cesta: použi ekvivalent z konzervy (cca 500 g scedenej fazule).',
       'Na oleji opeč cesnak s mletým koriandrom, pridaj fazuľu, soľ a 3 lyžice vody. Čiastočne roztlač vidličkou, 5 minút prehrievaj.',
       'Avokádo roztlač s trochou citrónovej šťavy a soľou. Paradajky a cibuľu nakrájaj nadrobno.',
       'Tortilly ohrej na suchej panvici po 30 sekúnd z každej strany.',
@@ -720,7 +720,7 @@ export const receptyObedy2: Recept[] = [
     vybavenie: ['rura'],
     upravy: [
       { typ: 'pridat', popis: 'Podávaj s hrachom alebo zeleninovými tyčinkami', na: 'hrasok-mrazeny', mnozstvo: 150, jednotka: 'g' },
-      { typ: 'vymenit', popis: 'Treskou nahraď losos', z: 'treska', na: 'losos' },
+      { typ: 'vymenit', popis: 'Tresku nahraď lososom', z: 'treska', na: 'losos' },
     ],
     skladovanie: 'Chladnička 1 až 2 dni; ohrievaj v rúre, nie v mikrovlnke.',
     deti: 'Pred podávaním skontroluj kosti. Pečené namiesto vyprážaných – chrumkavé, ale ľahšie.',
@@ -763,7 +763,7 @@ export const receptyObedy2: Recept[] = [
       S('sol', 1, 'lyzicka'), S('cesnak', 1, 'ks'),
     ],
     postup: [
-      'Rúru predhrej na 190 °C. Pstruhy vyčisti (alebo kúp vypitvané), osuš a zvnútra osoľ; dovnútra daj plátky citróna a polovicu kôpru.',
+      'Rúru predhrej na 190 °C. Štyri pstruhy (po asi 250 g) vyčisti (alebo kúp vypitvané), osuš a zvnútra osoľ; dovnútra daj plátky citróna a polovicu kôpru.',
       'Poukladaj na plech, zvonka potri olejom a peč 20 až 25 minút. Ryba je hotová, keď sa mäso pri chrbtovej plutve ľahko oddeľuje od kosti a je nepriehľadné.',
       'Zemiaky uvar v osolenej vode 15 až 20 minút do mäkka.',
       'Fazuľky uvar 6 až 8 minút v osolenej vode, scedi, premiešaj s pretlačeným cesnakom.',
@@ -774,7 +774,7 @@ export const receptyObedy2: Recept[] = [
     vybavenie: ['rura', 'hrniec'],
     upravy: [
       { typ: 'vymenit', popis: 'Zemiaky nahraď bulgurom', z: 'zemiaky-nove', na: 'bulgur', mnozstvo: 200, jednotka: 'g' },
-      { typ: 'pridat', popis: 'Pridaj kysnutú uhorku alebo šalát', na: 'uhorka', mnozstvo: 150, jednotka: 'g' },
+      { typ: 'pridat', popis: 'Pridaj čerstvú uhorku alebo šalát', na: 'uhorka', mnozstvo: 150, jednotka: 'g' },
     ],
     skladovanie: 'Chladnička 1 až 2 dni; mäso odkostiť a prehriať.',
     deti: 'Malým deťom rybu starostlivo odkosti.',
@@ -820,7 +820,7 @@ export const receptyObedy2: Recept[] = [
     postup: [
       'Rúru predhrej na 200 °C. Batáty poumývaj, popichaj vidličkou a peč na plechu 45 až 50 minút, kým nie sú celkom mäkké.',
       'Počas pečenia nakrájaj cibuľu a papriku nadrobno a opeč ich na oleji 5 minút.',
-      'Pridaj fazuľu (ak používaš konzervovanú, daj ju prepláchnutú), kukuricu, papriku a soľ. Prehrievaj 5 minút a časť fazule roztlač.',
+      'Pridaj fazuľu (ak používaš konzervovanú, daj ju prepláchnutú), kukuricu, mletú papriku a soľ. Prehrievaj 5 minút a časť fazule roztlač.',
       'Jogurt zmiešaj so šťavou z citróna a štipkou soli.',
       'Upečené batáty pozdĺžne narež, mierne roztlač dužinu, naplň fazuľovou zmesou a polej jogurtom.',
     ],

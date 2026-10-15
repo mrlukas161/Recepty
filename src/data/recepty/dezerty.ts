@@ -14,7 +14,7 @@ export const receptyDezerty: Recept[] = [
     postup: [
       'Ovocie umyte; jablko, banán a kiwi nakrájajte na kocky, pomaranč ošúpte a rozdeľte na mesiačiky.',
       'Jablko hneď zmiešajte s pomarančom (šťava zabráni hnednutiu).',
-      'Ovocie rozdeľte do štyroch misiek, pridajte lyžicu jogurtu na každú.',
+      'Ovocie rozdeľte do štyroch misiek, pridajte do každej asi 75 g jogurtu.',
       'Posypte nahrubo nasekanými vlašskými orechmi, škoricou a podľa chuti zakvapkajte medom.',
     ],
     tagy: ['bezmasite', 'rychle', 'sladke', 'detske', 'bez-peciva'], vybavenie: [],
@@ -32,7 +32,7 @@ export const receptyDezerty: Recept[] = [
       s('maslo', 10, 'g', { volitelna: true }), s('voda', 50, 'ml'),
     ],
     postup: [
-      'Rúru predhrejte na 180 °C. Jablká umyte a vykrojte jadrovníkom jadrovníky tak, aby spodok zostal celý.',
+      'Rúru predhrejte na 180 °C. Jablká umyte a vykrojte jadrovníkom jadrá tak, aby spodok zostal celý.',
       'Orechy nahrubo nasekajte a zmiešajte s hrozienkami a škoricou.',
       'Jablká dajte do zapekacej misy, naplňte ich zmesou a na vrch dajte kúsok masla; zakvapkajte medom.',
       'Na dno misy nalejte 50 ml vody.',
@@ -44,7 +44,7 @@ export const receptyDezerty: Recept[] = [
       { typ: 'pridat', popis: 'Pridaj lyžicu ovsených vločiek do náplne', na: 'ovsene-vlocky', mnozstvo: 20, jednotka: 'g' },
       { typ: 'vymenit', popis: 'Vlašské orechy nahraď tekvicovými semienkami', z: 'vlasske-orechy', na: 'tekvicove-semienka' },
     ],
-    skladovanie: 'V chladničke 2 dni, ohrejte v rúre alebo mikrovlnke.', deti: 'Orechy pre malé deti jemne zomelte alebo vynechajte.', ilustracia: '🍎',
+    skladovanie: 'V chladničke 2 dni, ohrejte v rúre alebo mikrovlnke.', deti: 'Orechy pre malé deti jemne zomelte alebo vynechajte; hrozienka nakrájajte.', ilustracia: '🍎',
   },
   {
     id: 'ovsene-susienky-s-ovocim', nazov: 'Ovsené sušienky s banánom a hrozienkami', typ: 'dezert', kuchyna: 'slovenská',
@@ -108,7 +108,7 @@ export const receptyDezerty: Recept[] = [
       { typ: 'pridat', popis: 'Pridaj hrsť čučoriedok', na: 'cucoriedky', mnozstvo: 80, jednotka: 'g' },
       { typ: 'vymenit', popis: 'Maliny nahraď mrazeným mangom', z: 'maliny', na: 'mango' },
     ],
-    skladovanie: 'V mrazničke 1 týždeň; pred podávaním nechajte 10 minút zmäknúť.', deti: 'Maliny majú drobné zrniečka; menším deťom môžu prekážať.', ilustracia: '🍦',
+    skladovanie: 'V mrazničke 1 týždeň; pred podávaním nechajte 10 minút zmäknúť.', deti: 'Maliny majú drobné zrniečka; menším deťom môžu prekážať. Med deťom do 1 roka nedávať.', ilustracia: '🍦',
   },
   {
     id: 'ovocne-tycinky', nazov: 'Domáce ovocné tyčinky z datlí', typ: 'dezert', kuchyna: 'moderná',
@@ -251,7 +251,7 @@ export const receptyDezerty: Recept[] = [
       'Múku zmiešajte s práškom do pečiva a soľou, vsypte do mokrej zmesi a premiešajte len, kým zmizne suchá múka.',
       'Opatrne vmiešajte čučoriedky.',
       'Naplňte košíčky do 2/3 a pečte 20 až 22 minút; špajľa musí vyjsť suchá.',
-      'Nechajte 10 minút v forme, potom prendajte na mriežku.',
+      'Nechajte 10 minút v forme, potom preložte na mriežku.',
     ],
     tagy: ['bezmasite', 'sladke', 'detske', 'do-krabicky'], vybavenie: ['rura'],
     upravy: [
@@ -286,15 +286,15 @@ export const receptyDezerty: Recept[] = [
     id: 'makovy-zavin', nazov: 'Makový závin', typ: 'dezert', kuchyna: 'slovenská',
     casPripravy: 120, casVarenia: 40, narocnost: 3, porcie: 10,
     suroviny: [
-      s('psenicna-muka-hladka', 500, 'g', { nevyhnutna: true }), s('kvasnice-sucha', 1, 'ks'), s('mlieko-plnotucne', 250, 'ml'), s('maslo', 80, 'g'), s('cukor-pudrovy', 60, 'g'),
+      s('psenicna-muka-hladka', 500, 'g', { nevyhnutna: true }), s('kvasnice-sucha', 1, 'ks'), s('mlieko-plnotucne', 400, 'ml'), s('maslo', 80, 'g'), s('cukor-pudrovy', 60, 'g'),
       s('vajce-slepacie', 2, 'ks'), s('sol', 0.5, 'lyzicka'), s('mak', 200, 'g', { nevyhnutna: true }), s('cukor-biely', 100, 'g'), s('hrozienka', 50, 'g', { volitelna: true }),
       s('vanilkovy-cukor', 1, 'lyzicka'), s('skorica', 0.5, 'lyzicka', { volitelna: true }),
     ],
     postup: [
       'Droždie rozmiešajte v 100 ml vlažného mlieka s lyžičkou cukru z celkového množstva; nechajte 10 minút, kým sa spení.',
-      'Múku zmiešajte so soľou, 1 vajcom, zvyšným mliekom, 60 g mäkkého masla, práškovým cukrom a vzídeným droždím; vypracujte hladké cesto (cca 10 minút).',
+      'Múku zmiešajte so soľou, 1 vajcom, zvyšnými 150 ml mlieka, 60 g mäkkého masla, práškovým cukrom a vzídeným droždím; vypracujte hladké cesto (cca 10 minút).',
       'Nechajte kysnúť na teplom mieste 1 hodinu, kým nezväčší objem.',
-      'Mak zomelte, spolu s 200 ml mlieka a cukrom krátko povarte (5 až 8 minút) do zhustnutia, pridajte vanilkový cukor, škoricu a hrozienka, nechajte vychladnúť.',
+      'Mak zomelte, spolu so 150 ml mlieka, cukrom a zvyšnými 20 g masla krátko povarte (5 až 8 minút) do zhustnutia, pridajte vanilkový cukor, škoricu a hrozienka, nechajte vychladnúť.',
       'Cesto rozvaľkajte na obdĺžnik cca 30 x 40 cm, natrite makovou plnkou a zrolujte, kraje dobre zaštipnite.',
       'Závin dajte na plech s papierom, nechajte 20 minút kysnúť, potrite rozšľahaným vajcom.',
       'Pečte pri 180 °C 35 až 40 minút dozlatista. Nechajte chladnúť pod utierkou.',
@@ -304,7 +304,7 @@ export const receptyDezerty: Recept[] = [
       { typ: 'pridat', popis: 'Pridaj do plnky nastrúhané jablko', na: 'jablko', mnozstvo: 100, jednotka: 'g' },
       { typ: 'vymenit', popis: 'Časť bielej múky nahraď špaldovou celozrnnou', z: 'psenicna-muka-hladka', na: 'spaldova-muka-celozrnna' },
     ],
-    skladovanie: 'V uzavretej nádobe 3 dni; krájané plátky sa dajú zamraziť.', deti: 'Klasika na slávnostné chvíle; mak obsahuje stopové alkaloidy, nepodávajte ho dojčatám. Pre menšie deti porcie malé.', klasika: true, lepsiaVerzia: [], ilustracia: '🥮',
+    skladovanie: 'V uzavretej nádobe 3 dni; krájané plátky sa dajú zamraziť.', deti: 'Klasika na slávnostné chvíle; dojčatám sa mak neodporúča (poraďte sa s pediatrom). Pre menšie deti porcie malé.', klasika: true, lepsiaVerzia: [], ilustracia: '🥮',
   },
   {
     id: 'sisky', nazov: 'Šišky s lekvárom', typ: 'dezert', kuchyna: 'slovenská',
@@ -324,7 +324,7 @@ export const receptyDezerty: Recept[] = [
     tagy: ['sladke', 'bezmasite'], vybavenie: ['hrniec'],
     upravy: [
       { typ: 'pridat', popis: 'Naplň aj trochou tvarohu s citrónom', na: 'tvaroh-makky', mnozstvo: 100, jednotka: 'g' },
-      { typ: 'vymenit', popis: 'Džem nahraď domácim lekvárom bez pridaného cukru', z: 'dzem', na: 'jablko', mnozstvo: 200, jednotka: 'g' },
+      { typ: 'vymenit', popis: 'Džem nahraď jablkovou plnkou: nastrúhané jablko 10 minút povar bez cukru', z: 'dzem', na: 'jablko', mnozstvo: 200, jednotka: 'g' },
     ],
     skladovanie: 'Najlepšie čerstvé v ten istý deň, 1 deň v uzavretej nádobe.', deti: 'Horúci olej; nepribližovať deti. Vyprážané a sladké – skôr výnimočne.', klasika: true, vyprazane: true, lepsiaVerzia: [], ilustracia: '🍩',
   },
@@ -339,7 +339,7 @@ export const receptyDezerty: Recept[] = [
     postup: [
       'Med, cukor, maslo a mlieko zohrejte v hrnci, kým sa cukor nerozpustí (nevarte); nechajte vychladnúť do vlažna.',
       'Múku zmiešajte s kakaom, škoricou, strúhaným zázvorom a sódou bikarbónou.',
-      'Do teplej zmesi vmiešajte vajcia, potom suché suroviny; vznikne lejavé cesto.',
+      'Do vlažnej zmesi vmiešajte vajcia, potom suché suroviny; vznikne lejavé cesto.',
       'Vylejte do vymastenej a múkou vysypanej formy (cca 28 x 18 cm).',
       'Pečte pri 170 °C 40 až 45 minút; špajľa musí vyjsť suchá.',
       'Nechajte vychladnúť, prípadne pozdĺžne prekrojte, natrite džemom a polejte roztopenou čokoládou.',

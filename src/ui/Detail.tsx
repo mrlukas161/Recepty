@@ -6,6 +6,7 @@ import { aplikujUpravy, ZIADNE_UPRAVY, type StavUprav } from '../engine/upravy';
 import { naGramy } from '../engine/units';
 import { kolkoPorcii } from '../engine/filtre';
 import { DNI, kluc } from '../engine/planner';
+import { ZdrojeK } from './Zdroje';
 import { Pecat, prepniOblubene, Upozornenie, KartaReceptu } from './kom';
 
 function fmt(g: number, jednotka: string, s?: { jednotky: { ks?: number } }): string {
@@ -85,9 +86,10 @@ function DetailVnutro({ id }: { id: string }) {
               <div class="riadok" style="justify-content:space-between"><strong>{x.nazov}</strong><span>{x.body}/100 · váha {x.vaha}</span></div>
               <div class="lista" role="presentation"><i style={`width:${x.body}%`} /></div>
               <div class="maly" style="color:var(--text)">{x.hodnota} – {x.preco}</div>
+              <ZdrojeK kind="faktory" id={x.id} nadpis="Zdroje k faktoru" />
             </div>
           ))}
-          <p class="upoz">{POZNAMKA_SKORE} Zdroje: žiadny faktor zatiaľ nemá overený zdroj – ide o odhad.</p>
+          <p class="upoz">{POZNAMKA_SKORE} Zdroje pri jednotlivých faktoroch ukazujú, čo je podložené; váhy a prahy sú naše odhady.</p>
         </details>
       </div>
 
@@ -179,7 +181,7 @@ function DetailVnutro({ id }: { id: string }) {
         <button onClick={() => nastav((x) => { x.nakupRecepty = x.nakupRecepty.includes(id) ? x.nakupRecepty : [...x.nakupRecepty, id]; })}>🛒 Do nákupu{s.nakupRecepty.includes(id) ? ' ✓' : ''}</button>
         <button onClick={() => nastav((x) => { x.historia.push({ recept: id, den: dnesKluc() }); })}>✅ Uvarené ({s.historia.filter((h) => h.recept === id).length}×)</button>
       </div>
-      <p class="maly">Zdroje: zatiaľ nemáme overené zdroje k hodnoteniu tohto jedla – skóre je odhad. Nutričné údaje surovín sú typické hodnoty (odhad).</p>
+      <p class="maly">Skóre je odhad (heuristika); zdroje k faktorom nájdeš v „Ako sme to spočítali“. Nutričné údaje surovín sú typické hodnoty (odhad).</p>
       <Upozornenie />
     </>
   );

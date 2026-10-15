@@ -1,5 +1,5 @@
 export interface Karta { id: string; nazov: string; ikona: string; text: string[]; uroven: 'prax' | 'odhad' }
-export const OVERENIE_POZNAMKA = 'V tomto behu sa nepodarilo otvoriť a overiť primárne zdroje (PubMed, WHO a i. boli nedostupné). Preto karty neuvádzajú konkrétne čísla ani citácie. Obsah je všeobecná výživová logika označená ako „odhad“ alebo „prax“, nie ako dôkaz. Zoznam zdrojov na overenie je v repozitári (docs/vyskum/NEOVERENE.md).';
+export const OVERENIE_POZNAMKA = 'Zdroje sú overené vyhľadávaním (existencia, bibliografia a hlavný záver potvrdené z viacerých výsledkov), ale originály sme nečítali – ak sa sieť otvorí, overenie sa zvýši. Text kariet je naše zhrnutie; ak karta nemá zdroj, je to odhad alebo prax.';
 export const VEDOMOSTI: Karta[] = [
   { id: 'muka', nazov: 'Múka', ikona: '🌾', uroven: 'odhad', text: ['Biela múka je zbavená otrúb a klíčka, preto má menej vlákniny než celozrnná.', 'V appke ju preto berieme ako surovinu, ktorej je v bežnej strave veľa – nie ako „zlú“.'] },
   { id: 'celozrnne', nazov: 'Celozrnné', ikona: '🍞', uroven: 'odhad', text: ['Celozrnné produkty obsahujú viac vlákniny. Pri chlebe pozri, či je „celozrnný“ naozaj v zložení na prvom mieste.'] },

@@ -7,6 +7,7 @@ import { useStav, nastavNastavenia, nastav, exportuj, importuj, resetuj } from '
 import { KATEGORIE, type Kategoria, type Uroven } from '../engine/types';
 import { Hlavicka, Upozornenie, Zalozky } from './kom';
 import type { Alergen } from '../data/types';
+import { ZdrojeK, VsetkyZdroje } from './Zdroje';
 
 export function Viac() {
   const odk = [
@@ -65,6 +66,7 @@ export function Diety({ id }: { id?: string }) {
         <L t="Zahŕňa" a={d.zahrna} /><L t="Obmedzuje" a={d.obmedzuje} /><L t="Vylučuje" a={d.vylucuje} />
         <div class="karta"><strong>Pre koho:</strong> {d.preKoho}<br /><strong>Pre koho nie:</strong> {d.neVhodne}</div>
         <div class="upoz"><strong>Čo hovoria dôkazy:</strong> {d.dokazy}</div>
+        <ZdrojeK kind="diety" id={d.id} />
         <L t="Praktické tipy" a={d.tipy} />
         <p class="maly">{d.tvrda ? 'Po použití appka zobrazí len recepty vyhovujúce tejto diéte.' : 'Táto diéta je vzorec stravy – appka uprednostní recepty s vyšším skóre bez údenín.'}</p>
         {konflikt.length > 0 && <p class="upoz">Pozor: táto kombinácia diét môže byť príliš reštriktívna alebo protichodná.</p>}
@@ -96,11 +98,11 @@ export function Vedomosti() {
         <details class="karta" key={k.id}>
           <summary style="min-height:44px;display:flex;align-items:center;gap:8px;font-weight:700"><span aria-hidden="true">{k.ikona}</span>{k.nazov}<span class="tag war" style="margin-left:auto">úroveň: {k.uroven}</span></summary>
           {k.text.map((t) => <p>{t}</p>)}
-          <p class="maly">Zdroj: zatiaľ neoverený.</p>
+          <ZdrojeK kind="karty" id={k.id} />
         </details>
       ))}
       <h2>Zdroje</h2>
-      <p>Zatiaľ žiadny overený zdroj. Zoznam kandidátov na overenie je v repozitári: <code>docs/vyskum/NEOVERENE.md</code>.</p>
+      <VsetkyZdroje />
     </>
   );
 }

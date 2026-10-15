@@ -90,7 +90,7 @@ export const receptyDesiaty: Recept[] = [
       'Vytvaruj guľky (priemer ~2 cm) a obaľ v kokose.',
       'Nechaj v chladničke aspoň hodinu a podávaj.',
     ],
-    tagy: ['rychle', 'do-krabicky', 'bezmasite', 'detske', 'sladke', 'bez-peciva'],
+    tagy: ['do-krabicky', 'bezmasite', 'detske', 'sladke', 'bez-peciva'],
     vybavenie: ['mixer'],
     upravy: [
       { typ: 'pridat', popis: 'Pridaj jemne pomleté ľanové semienka', na: 'lan-semienka', mnozstvo: 10, jednotka: 'g' },
@@ -162,7 +162,7 @@ export const receptyDesiaty: Recept[] = [
       { typ: 'vymenit', popis: 'Celozrnný chlieb nahraď ražným kváskovým', z: 'chlieb-celozrnny', na: 'chlieb-razny-kvaskovy' },
     ],
     skladovanie: 'Do krabičky ráno; v chladničke max 1 deň.',
-    deti: 'Sendvič nakrájaj na malé kúsky, uhorku tenko. Soľ šetri.',
+    deti: 'Chlebík nakrájaj na malé kúsky, uhorku tenko. Soľ šetri.',
     ilustracia: '🥪',
   },
   {
@@ -192,7 +192,7 @@ export const receptyDesiaty: Recept[] = [
     tagy: ['rychle', 'do-krabicky', 'bezmasite', 'detske', 'sladke', 'vegansky', 'na-viac-dni'],
     vybavenie: ['rura'],
     upravy: [
-      { typ: 'pridat', popis: 'Pridaj jemne mletý mak či ľan', na: 'lan-semienka', mnozstvo: 10, jednotka: 'g' },
+      { typ: 'pridat', popis: 'Pridaj jemne mletý ľan', na: 'lan-semienka', mnozstvo: 10, jednotka: 'g' },
       { typ: 'vymenit', popis: 'Hrozienka nahraď sušenými marhuľami', z: 'hrozienka', na: 'marhule-susene' },
     ],
     skladovanie: 'V uzavretej nádobe 3 dni, dajú sa zamraziť.',
@@ -229,7 +229,7 @@ export const receptyDesiaty: Recept[] = [
       { typ: 'vymenit', popis: 'Jogurt nahraď mäkkým tvarohom', z: 'jogurt-biely', na: 'tvaroh-makky' },
     ],
     skladovanie: 'Najlepšie do pol dňa; v chladničke 1 deň.',
-    deti: 'Hrozno do šalátu nedávaj (riziko zadusenia), ak, tak pozdĺžne rozkrojené na štvrtiny. Ovocie nakrájaj na malé kúsky.',
+    deti: 'Ovocie nakrájaj na malé kúsky. Ak by si pridal(a) hrozno, deťom do 4 rokov ho dávaj len pozdĺžne rozkrojené na štvrtiny (riziko udusenia).',
     ilustracia: '🍊',
   },
   {
@@ -249,7 +249,7 @@ export const receptyDesiaty: Recept[] = [
       { id: 'chlieb-celozrnny', mnozstvo: 2, jednotka: 'ks', volitelna: true },
     ],
     postup: [
-      'Vajcia vlož do vriacej vody a varí 10 minút (natvrdo), potom ich prelej studenou vodou.',
+      'Vajcia vlož do vriacej vody a var 10 minút (natvrdo), potom ich prelej studenou vodou.',
       'Olúp ich a rozdeľ na polovice alebo štvrtiny.',
       'Zeleninu nakrájaj na kúsky vhodné pre deti.',
       'Chlieb nakrájaj na malé kocky alebo prúžky.',
@@ -262,7 +262,7 @@ export const receptyDesiaty: Recept[] = [
       { typ: 'pridat', popis: 'Pridaj kúsok syra', na: 'syr-eidam', mnozstvo: 30, jednotka: 'g' },
     ],
     skladovanie: 'Uvarené vajcia v chladničke do 3 dní; v krabičke nenechávaj dlho mimo chladničky.',
-    deti: 'Vajce rozkrájaj na menšie kúsky, cherry paradajky nakrájaj pozdĺžne. Zelenina tenko.',
+    deti: 'Vajce rozkrájaj na menšie kúsky, paradajku nakrájaj na menšie kúsky. Zelenina tenko.',
     ilustracia: '🥚',
   },
   {
@@ -367,7 +367,7 @@ export const receptyDesiaty: Recept[] = [
       { typ: 'vymenit', popis: 'Jogurt nahraď kefírom', z: 'jogurt-biely', na: 'kefir' },
     ],
     skladovanie: 'V chladničke 3 dni, zamrazené do 2 mesiacov.',
-    deti: 'Muffiny sú mäkké, soli je málo. Pre deti do 1 roka soľ vynechaj.',
+    deti: 'Muffiny sú mäkké; soľ šetri. Nie sú určené deťom do 1 roka (soľ, syr).',
     ilustracia: '🧁',
   },
   {
@@ -389,7 +389,7 @@ export const receptyDesiaty: Recept[] = [
     ],
     postup: [
       'Rúru predhrej na 170 °C. Pekáčik (cca 20×20 cm) vystlač papierom.',
-      'Datle zalej horúcou vodou na 10 minút a rozmixuj na pastu spolu s banánom.',
+      'Datle zalej horúcou vodou na 10 minút, scedi ich a rozmixuj na pastu spolu s banánom.',
       'Primiešaj olej, vločky, škoricu a semienka (semienka daj najlepšie pomleté).',
       'Rovnomerne natlač hmotu do pekáčika, hrúbka ~1,5 cm.',
       'Piekni 18–20 minút, nechaj vychladnúť a nakrájaj na 8 tyčiniek.',

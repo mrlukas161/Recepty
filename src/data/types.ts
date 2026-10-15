@@ -83,5 +83,7 @@ export interface Recept {
 export interface Zdroj {
   id: string; citacia: string; doi: string | null; url: string;
   uroven: 'silné' | 'stredné' | 'slabé' | 'prax';
-  tvrdenie: string; cisla: string; overene: string; stav: string;
+  tvrdenie: string; cisla: string; overene: string;
+  overenie: 'original' | 'vyhladavanie';
+  faktory?: string[]; karty?: string[]; diety?: string[];
 }

@@ -49,3 +49,19 @@ describe('validácia dát', () => {
     for (const d of DIETY) { expect(d.popis.length, d.id).toBeGreaterThan(20); expect(d.neVhodne, d.id).toBeTruthy(); }
   });
 });
+
+import { ZDROJE } from '../src/data/zdroje';
+describe('zdroje', () => {
+  it('každý zdroj má URL, dátum overenia, úroveň a stupeň overenia', () => {
+    const ids = ZDROJE.map((z) => z.id);
+    expect(new Set(ids).size).toBe(ids.length);
+    for (const z of ZDROJE) {
+      expect(z.url, z.id).toMatch(/^https?:\/\//);
+      expect(z.overene, z.id).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+      expect(['silné', 'stredné', 'slabé', 'prax'], z.id).toContain(z.uroven);
+      expect(['original', 'vyhladavanie'], z.id).toContain(z.overenie);
+      expect(z.citacia.length, z.id).toBeGreaterThan(15);
+      if (z.doi) expect(z.doi, z.id).toMatch(/^10\.\d{4,9}\//);
+    }
+  });
+});

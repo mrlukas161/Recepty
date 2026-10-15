@@ -11,11 +11,11 @@ export const receptyObedy1: Recept[] = [
     casPripravy: 30, casVarenia: 15, narocnost: 2, porcie: 4,
     suroviny: [
       S('zemiaky', 1000, 'g', N), S('psenicna-muka-hladka', 300, 'g', N), S('vajce-slepacie', 1, 'ks'),
-      S('sol', 2, 'lyzicka', N), S('bryndza', 300, 'g', N), S('slanina-udena', 120, 'g', { alternativy: ['slanina-bravcova-surova'] }),
+      S('sol', 1, 'lyzicka', N), S('bryndza', 300, 'g', N), S('slanina-udena', 120, 'g', { alternativy: ['slanina-bravcova-surova'] }),
       S('pazitka', 10, 'g', V),
     ],
     postup: [
-      'Zemiaky olúpeme a najemno nastrúhame na jemnom strúhadle, hneď aby netmavli.',
+      'Zemiaky olúpeme a najemno nastrúhame na jemnom strúhadle a hneď pokračujeme, aby netmavli.',
       'Primiešame múku, vajce a soľ, až vznikne hustejšie, ale ešte lepivé cesto.',
       'Cesto dáme na dosku a z nej nožom po malých kúskoch zhadzujeme halušky do vriacej osolenej vody.',
       'Varíme asi 3 – 4 minúty od vyplávania na hladinu, vyberáme sitkom a necháme okvapkať.',
@@ -25,7 +25,7 @@ export const receptyObedy1: Recept[] = [
     tagy: ['lacne'], vybavenie: ['hrniec', 'panvica'],
     upravy: [
       { typ: 'pridat', popis: 'Pridaj k haluškám čerstvý uhorkový šalát.', na: 'uhorka', mnozstvo: 150, jednotka: 'g' },
-      { typ: 'vymenit', popis: 'Polovicu múky nahraď celozrnnou.', z: 'psenicna-muka-hladka', na: 'psenicna-muka-celozrnna' },
+      { typ: 'vymenit', popis: 'Polovicu múky nahraď celozrnnou.', z: 'psenicna-muka-hladka', na: 'psenicna-muka-celozrnna', mnozstvo: 150 },
     ],
     skladovanie: 'Bryndzové halušky sú najlepšie čerstvé; uvarené halušky bez bryndze vydržia v chladničke 1 deň.',
     deti: 'Slanina a bryndza sú slané, deťom dávame menšiu porciu bryndze.', klasika: true, lepsiaVerzia: [], ilustracia: '🥔',
@@ -34,7 +34,7 @@ export const receptyObedy1: Recept[] = [
     id: 'zemiakovo-tvarohove-pirohy', nazov: 'Pirohy plnené zemiakmi a tvarohom', typ: 'obed', kuchyna: 'slovenská',
     casPripravy: 50, casVarenia: 15, narocnost: 3, porcie: 4,
     suroviny: [
-      S('psenicna-muka-polohruba', 400, 'g', N), S('vajce-slepacie', 1, 'ks'), S('voda', 200, 'ml', N), S('sol', 2, 'lyzicka'),
+      S('psenicna-muka-polohruba', 400, 'g', N), S('vajce-slepacie', 1, 'ks'), S('voda', 200, 'ml', N), S('sol', 1.5, 'lyzicka'), S('korenie-cierne', 1, 'g'),
       S('zemiaky', 500, 'g', N), S('tvaroh-polotucny', 250, 'g', N), S('cibula', 150, 'g'), S('maslo', 40, 'g'),
       S('smotana-kysla', 150, 'g', V),
     ],
@@ -46,7 +46,7 @@ export const receptyObedy1: Recept[] = [
       'Pirohy varíme v osolenej vode 4 – 5 minút po vyplávaní, vyberieme a odkvapkáme.',
       'Cibuľu nakrájanú nadrobno opražíme na masle dozlatista, polejeme pirohy a podávame s kyslou smotanou.',
     ],
-    tagy: ['bezmasite', 'bez-peciva', 'lacne'], vybavenie: ['hrniec', 'panvica', 'valkac'],
+    tagy: ['bezmasite', 'lacne'], vybavenie: ['hrniec', 'panvica', 'valkac'],
     upravy: [
       { typ: 'pridat', popis: 'Do plnky primiešaj hrsť nasekaného špenátu.', na: 'spenat', mnozstvo: 60, jednotka: 'g' },
       { typ: 'vymenit', popis: 'Kyslú smotanu nahraď bielym jogurtom.', z: 'smotana-kysla', na: 'jogurt-biely' },
@@ -59,7 +59,7 @@ export const receptyObedy1: Recept[] = [
     casPripravy: 40, casVarenia: 150, narocnost: 2, porcie: 4,
     suroviny: [
       S('hovadzie-zadne', 700, 'g', N), S('cibula', 500, 'g', N), S('mast-bravcova', 2, 'lyzica'), S('paprika-sladka', 2, 'lyzica', N),
-      S('cesnak', 3, 'ks'), S('rasca', 1, 'lyzicka'), S('majoran', 1, 'lyzicka'), S('paradajkovy-pretlak', 1, 'lyzica'), S('sol', 2, 'lyzicka'),
+      S('cesnak', 3, 'ks'), S('rasca', 1, 'lyzicka'), S('majoran', 1, 'lyzicka'), S('paradajkovy-pretlak', 1, 'lyzica'), S('sol', 1.5, 'lyzicka'),
       S('psenicna-muka-hruba', 400, 'g', N), S('kvasnice-sucha', 7, 'g', N), S('mlieko-polotucne', 200, 'ml', N), S('vajce-slepacie', 1, 'ks'),
     ],
     postup: [
@@ -83,13 +83,13 @@ export const receptyObedy1: Recept[] = [
     casPripravy: 25, casVarenia: 25, narocnost: 2, porcie: 4,
     suroviny: [
       S('bravcova-krkovicka', 600, 'g', N), S('psenicna-muka-hladka', 60, 'g', N), S('vajce-slepacie', 2, 'ks', N), S('strouhanka', 120, 'g', N),
-      S('sol', 2, 'lyzicka'), S('olej-slnecnicovy', 250, 'ml', N), S('zemiaky', 800, 'g', N), S('maslo', 20, 'g'), S('petrzlenova-vnat', 10, 'g', V), S('citron', 1, 'ks', V),
+      S('sol', 1.5, 'lyzicka'), S('olej-slnecnicovy', 250, 'ml', N), S('zemiaky', 800, 'g', N), S('maslo', 20, 'g'), S('petrzlenova-vnat', 10, 'g', V), S('citron', 1, 'ks', V),
     ],
     postup: [
       'Zemiaky olúpeme, nakrájame na štvrtky a uvaríme v osolenej vode asi 18 minút do mäkka.',
       'Mäso nakrájame na rezne hrubé asi 1 cm, jemne rozklepeme, osolíme.',
       'Obalíme v múke, rozšľahanom vajci a strúhanke; strúhanku jemne pritlačíme.',
-      'Na panvici rozohrejeme olej (asi 1 cm), vkladáme rezne a smažíme z oboch strán po 3 – 4 minúty do zlatohneda.',
+      'Na panvici rozohrejeme olej (vrstva asi 0,5 cm), vkladáme rezne a smažíme z oboch strán po 3 – 4 minúty do zlatohneda.',
       'Rezne odkvapkáme na papierovej utierke; vnútro musí byť prepečené, nie ružové.',
       'Zemiaky scedíme, premastíme maslom a posypeme vňaťou; podávame s citrónom.',
     ],
@@ -106,7 +106,7 @@ export const receptyObedy1: Recept[] = [
     casPripravy: 25, casVarenia: 25, narocnost: 2, porcie: 4,
     suroviny: [
       S('psenicna-muka-hladka', 500, 'g', N), S('zemiaky', 200, 'g'), S('kvasnice-sucha', 7, 'g', N), S('mlieko-polotucne', 250, 'ml', N),
-      S('sol', 2, 'lyzicka'), S('cukor-biely', 1, 'lyzicka'), S('olej-slnecnicovy', 400, 'ml', N), S('cesnak', 4, 'ks', N),
+      S('sol', 1, 'lyzicka'), S('cukor-biely', 1, 'lyzicka'), S('olej-slnecnicovy', 400, 'ml', N), S('cesnak', 4, 'ks', N),
       S('syr-eidam-45', 150, 'g', N), S('smotana-kysla', 100, 'g', V), S('kecup', 2, 'lyzica', V),
     ],
     postup: [
@@ -120,7 +120,7 @@ export const receptyObedy1: Recept[] = [
     tagy: ['bezmasite', 'lacne'], vybavenie: ['panvica', 'hrniec'],
     upravy: [
       { typ: 'pridat', popis: 'K langošu pridaj kyslé uhorky alebo čerstvú zeleninu.', na: 'kysle-uhorky', mnozstvo: 80, jednotka: 'g' },
-      { typ: 'vymenit', popis: 'Polovicu múky nahraď celozrnnou.', z: 'psenicna-muka-hladka', na: 'psenicna-muka-celozrnna' },
+      { typ: 'vymenit', popis: 'Polovicu múky nahraď celozrnnou.', z: 'psenicna-muka-hladka', na: 'psenicna-muka-celozrnna', mnozstvo: 250 },
     ],
     skladovanie: 'Najlepšie čerstvé, surové cesto vydrží v chladničke cez noc.', deti: 'Nechať vychladnúť, olej pri smažení je horúci – deti pri sporáku nepúšťať.',
     klasika: true, vyprazane: true, lepsiaVerzia: [], ilustracia: '🫓',
@@ -130,7 +130,7 @@ export const receptyObedy1: Recept[] = [
     casPripravy: 15, casVarenia: 20, narocnost: 1, porcie: 4,
     suroviny: [
       S('psenicna-muka-hladka', 250, 'g', N), S('mlieko-polotucne', 500, 'ml', N), S('vajce-slepacie', 3, 'ks', N), S('olej-repkovy', 3, 'lyzica'),
-      S('cukor-biely', 1, 'lyzica'), S('sol', 1, 'lyzicka'), S('dzem', 150, 'g', N), S('cukor-pudrovy', 2, 'lyzica', V),
+      S('cukor-biely', 1, 'lyzica'), S('sol', 0.25, 'lyzicka'), S('dzem', 150, 'g', N), S('cukor-pudrovy', 2, 'lyzica', V),
     ],
     postup: [
       'Vajcia vyšľaháme s mliekom, soľou a cukrom.',
@@ -143,7 +143,7 @@ export const receptyObedy1: Recept[] = [
     tagy: ['bezmasite', 'detske', 'sladke', 'lacne'], vybavenie: ['panvica'],
     upravy: [
       { typ: 'pridat', popis: 'Namiesto časti džemu pridaj čerstvé ovocie.', na: 'jahody', mnozstvo: 150, jednotka: 'g' },
-      { typ: 'vymenit', popis: 'Polovicu múky nahraď celozrnnou.', z: 'psenicna-muka-hladka', na: 'psenicna-muka-celozrnna' },
+      { typ: 'vymenit', popis: 'Polovicu múky nahraď celozrnnou.', z: 'psenicna-muka-hladka', na: 'psenicna-muka-celozrnna', mnozstvo: 125 },
     ],
     skladovanie: 'Palacinky bez plnky 2 dni v chladničke, dajú sa zamraziť.', deti: 'Obľúbené u detí.',
     klasika: true, lepsiaVerzia: [], ilustracia: '🥞',
@@ -153,7 +153,7 @@ export const receptyObedy1: Recept[] = [
     casPripravy: 40, casVarenia: 30, narocnost: 3, porcie: 4,
     suroviny: [
       S('psenicna-muka-hladka', 500, 'g', N), S('kvasnice-sucha', 7, 'g', N), S('mlieko-polotucne', 250, 'ml', N), S('vajce-slepacie', 1, 'ks'),
-      S('cukor-biely', 50, 'g'), S('maslo', 80, 'g', N), S('sol', 1, 'lyzicka'), S('dzem', 200, 'g', N), S('mak', 30, 'g', V), S('cukor-pudrovy', 2, 'lyzica', V),
+      S('cukor-biely', 50, 'g'), S('maslo', 80, 'g', N), S('sol', 0.5, 'lyzicka'), S('dzem', 200, 'g', N), S('mak', 30, 'g', V), S('cukor-pudrovy', 2, 'lyzica', V),
     ],
     postup: [
       'Mlieko vlažne ohrejeme, rozmiešame v ňom cukor a droždie a necháme 10 minút nakvasiť.',
@@ -186,7 +186,7 @@ export const receptyObedy1: Recept[] = [
       'Horúce lokše potrieme maslom, posypeme mletým makom zmiešaným s cukrom a zrolujeme.',
       'Prikryté utierkou držíme v teple, aby nevyschli.',
     ],
-    tagy: ['bezmasite', 'bez-peciva', 'lacne', 'sladke'], vybavenie: ['panvica', 'valkac', 'hrniec'],
+    tagy: ['bezmasite', 'lacne', 'sladke'], vybavenie: ['panvica', 'valkac', 'hrniec'],
     upravy: [
       { typ: 'pridat', popis: 'Pridaj k lokšom jablko alebo ovocie nakrájané na plátky.', na: 'jablko', mnozstvo: 200, jednotka: 'g' },
       { typ: 'vymenit', popis: 'Cukor nahraď menším množstvom medu (po vychladnutí).', z: 'cukor-pudrovy', na: 'med', mnozstvo: 25, jednotka: 'g' },
@@ -198,7 +198,7 @@ export const receptyObedy1: Recept[] = [
     id: 'strapacky-s-kapustou', nazov: 'Strapačky s kyslou kapustou a slaninou', typ: 'obed', kuchyna: 'slovenská',
     casPripravy: 30, casVarenia: 20, narocnost: 2, porcie: 4,
     suroviny: [
-      S('zemiaky', 900, 'g', N), S('psenicna-muka-hladka', 300, 'g', N), S('sol', 2, 'lyzicka'), S('kvasena-kapusta', 500, 'g', N),
+      S('zemiaky', 900, 'g', N), S('psenicna-muka-hladka', 300, 'g', N), S('sol', 1.5, 'lyzicka'), S('kvasena-kapusta', 500, 'g', N),
       S('slanina-udena', 120, 'g'), S('cibula', 100, 'g'), S('paprika-sladka', 1, 'lyzicka', V), S('rasca', 1, 'lyzicka', V),
     ],
     postup: [
@@ -222,12 +222,12 @@ export const receptyObedy1: Recept[] = [
     casPripravy: 20, casVarenia: 20, narocnost: 1, porcie: 4,
     suroviny: [
       S('zemiaky', 1000, 'g', N), S('psenicna-muka-hladka', 100, 'g', N), S('vajce-slepacie', 2, 'ks'), S('cesnak', 3, 'ks'),
-      S('majoran', 1, 'lyzicka'), S('sol', 2, 'lyzicka'), S('olej-slnecnicovy', 100, 'ml', N), S('smotana-kysla', 100, 'g', V),
+      S('majoran', 1, 'lyzicka'), S('sol', 1.5, 'lyzicka'), S('olej-slnecnicovy', 100, 'ml', N), S('smotana-kysla', 100, 'g', V),
     ],
     postup: [
       'Zemiaky olúpeme a nastrúhame najemno, mierne vytlačíme prebytočnú tekutinu.',
       'Pridáme múku, vajcia, pretlačený cesnak, majorán a soľ, zmiešame.',
-      'Na panvici rozohrejeme olej (cca 0,5 cm) na stredný oheň.',
+      'Na panvici rozohrejeme olej (vrstva asi 3 mm) na stredný oheň.',
       'Lyžicou nanášame cesto a tvarujeme placky hrubé asi 5 mm.',
       'Smažíme 3 – 4 minúty z každej strany dozlatista, aby boli prepečené aj vnútri.',
       'Odkvapkáme a podávame teplé.',
@@ -296,7 +296,7 @@ export const receptyObedy1: Recept[] = [
       S('smotana-na-varenie', 150, 'ml'), S('vajce-slepacie', 2, 'ks'), S('sol', 1.5, 'lyzicka'), S('korenie-cierne', 0.5, 'lyzicka'), S('olej-repkovy', 1, 'lyzica'),
     ],
     postup: [
-      'Zemiaky umyjeme a uvaríme pol-mäkké v šupke asi 12 minút, olúpeme a nakrájame na kolieska.',
+      'Zemiaky umyjeme a uvaríme polomäkké v šupke asi 15 – 20 minút, olúpeme a nakrájame na kolieska.',
       'Cuketu, papriku a cibuľu nakrájame, krátko opražíme na oleji 5 minút.',
       'Vymasťený pekáč vyložíme polovicou zemiakov, posypeme soľou, potom zeleninou a zvyšnými zemiakmi.',
       'Vajcia vyšľaháme so smotanou, soľou a korením a prelejeme cez zemiaky.',
@@ -324,7 +324,7 @@ export const receptyObedy1: Recept[] = [
       'Cibuľu opražíme na oleji do zlatista, zamiešame papriku a hneď pridáme do hrnca.',
       'Dochutíme majoránom, soľou a lyžicou octu; prívarok necháme prevrieť 5 minút.',
       'Podľa potreby časť rozmixujeme tyčovým mixérom, aby bol hustejší.',
-      'Podávame s volským okom alebo kúskom chleba.',
+      'Podávame s kúskom chleba, podľa chuti s volským okom.',
     ],
     tagy: ['bezmasite', 'lacne', 'na-viac-dni', 'vegansky'], vybavenie: ['hrniec'],
     upravy: [
@@ -342,7 +342,7 @@ export const receptyObedy1: Recept[] = [
     ],
     postup: [
       'Fazuľu namočíme cez noc do studenej vody (aspoň 8 hodín), scedíme.',
-      'Varíme v čerstvej vode 45 – 60 minút do mäkka (pri varení nesolíme); musí byť uvarená úplne, surová fazuľa je nezdravá.',
+      'Varíme v čerstvej vode 45 – 60 minút do mäkka (pri varení nesolíme); musí byť uvarená úplne – surová alebo nedovarená fazuľa obsahuje látky, ktoré škodia (lektíny).',
       'Pridáme mrkvu nakrájanú na kocky a varíme ďalších 10 minút.',
       'Cibuľu a nakrájanú klobásu opražíme na oleji, zamiešame papriku a pridáme do hrnca.',
       'Dochutíme cesnakom, majoránom, soľou a octom; ak je potrebné, trochu fazule rozmačkáme na zahustenie.',
@@ -382,7 +382,7 @@ export const receptyObedy1: Recept[] = [
     casPripravy: 20, casVarenia: 60, narocnost: 1, porcie: 4,
     suroviny: [
       S('kuracie-stehno', 800, 'g', N), S('zemiaky', 700, 'g'), S('mrkva', 300, 'g'), S('cibula', 200, 'g'), S('petrzlen-korenovy', 150, 'g'),
-      S('olej-repkovy', 2, 'lyzica'), S('paprika-sladka', 1, 'lyzica'), S('majoran', 1, 'lyzicka'), S('cesnak', 3, 'ks'), S('sol', 1.5, 'lyzicka'),
+      S('olej-repkovy', 3, 'lyzica'), S('paprika-sladka', 1, 'lyzica'), S('majoran', 1, 'lyzicka'), S('cesnak', 3, 'ks'), S('sol', 1.5, 'lyzicka'),
     ],
     postup: [
       'Rúru predhrejeme na 200 °C.',
@@ -395,7 +395,7 @@ export const receptyObedy1: Recept[] = [
     tagy: ['bezlepkove', 'na-viac-dni'], vybavenie: ['rura', 'pekac'],
     upravy: [
       { typ: 'pridat', popis: 'Pridaj pečenú tekvicu hokkaido.', na: 'tekvica-hokkaido', mnozstvo: 300, jednotka: 'g' },
-      { typ: 'vymenit', popis: 'Stehná nahraď kuracími prsiami (kratšie pečenie, 25 min).', z: 'kuracie-stehno', na: 'kuracie-prsia' },
+      { typ: 'vymenit', popis: 'Stehná nahraď kuracími prsiami (kratšie pečenie, 25 min).', z: 'kuracie-stehno', na: 'kuracie-prsia', mnozstvo: 600 },
     ],
     skladovanie: '3 dni v chladničke, pri ohrievaní prehrejeme poriadne.', deti: 'Mäso odstrániť z kosti, kožu odstrániť.', ilustracia: '🍗',
   },
@@ -418,7 +418,7 @@ export const receptyObedy1: Recept[] = [
     tagy: ['na-viac-dni'], vybavenie: ['hrniec'],
     upravy: [
       { typ: 'pridat', popis: 'Do plnky pridaj nastrúhanú mrkvu.', na: 'mrkva', mnozstvo: 100, jednotka: 'g' },
-      { typ: 'vymenit', popis: 'Biela ryža za natural.', z: 'ryza-biela', na: 'ryza-natur' },
+      { typ: 'vymenit', popis: 'Bielu ryžu nahraď natural (predvar ju 15 minút namiesto 8).', z: 'ryza-biela', na: 'ryza-natur' },
     ],
     skladovanie: '3 dni v chladničke, ohrejeme.', deti: 'Papriky možno nakrájať na menšie kúsky.', ilustracia: '🫑',
   },
@@ -437,7 +437,7 @@ export const receptyObedy1: Recept[] = [
       'Varíme pod pokrievkou na miernom ohni 15 minút, odstavíme a necháme 5 minút odpočívať.',
       'Posypeme petržlenovou vňaťou a parmezánom.',
     ],
-    tagy: ['bezmasite', 'bezlepkove', 'rychle', 'lacne'], vybavenie: ['hrniec'],
+    tagy: ['bezmasite', 'bezlepkove', 'lacne'], vybavenie: ['hrniec'],
     upravy: [
       { typ: 'pridat', popis: 'Pridaj hrášok.', na: 'hrasok-mrazeny', mnozstvo: 100, jednotka: 'g' },
       { typ: 'vymenit', popis: 'Pohánku nahraď jahlami.', z: 'pohanka', na: 'jahly-proso' },
@@ -459,7 +459,7 @@ export const receptyObedy1: Recept[] = [
       'Pečieme ďalších 10 – 12 minút, kým sa ryba nedelí na plátky a je nepriesvitná.',
       'Posypeme kôprom a podávame s citrónom.',
     ],
-    tagy: ['bezlepkove', 'rychle'], vybavenie: ['rura', 'pekac'],
+    tagy: ['bezlepkove'], vybavenie: ['rura', 'pekac'],
     upravy: [
       { typ: 'pridat', popis: 'Pridaj olivy a petržlenovú vňať.', na: 'olivy', mnozstvo: 40, jednotka: 'g' },
       { typ: 'vymenit', popis: 'Treska za losos.', z: 'treska', na: 'losos' },
@@ -499,7 +499,7 @@ export const receptyObedy1: Recept[] = [
       'Kel zbavíme tuhých stopiek, natrháme a povaríme 8 – 10 minút v osolenej vode, scedíme.',
       'Cibuľu opražíme na oleji, pridáme cesnak a kel, krátko spolu podusíme.',
       'Zemiaky scedíme, rozmačkáme s teplým mliekom a maslom na kašu.',
-      'Vajcia vložíme na panvicu a urobíme volské oká (žĺtok aspoň uvarený na okrajoch).',
+      'Na panvici usmažíme volské oká (3 – 4 minúty pod pokrievkou; deťom žĺtok prepečieme úplne).',
       'Podávame kašu s kelom a vajcom.',
     ],
     tagy: ['bezmasite', 'bezlepkove', 'lacne'], vybavenie: ['hrniec', 'panvica'],
@@ -521,7 +521,7 @@ export const receptyObedy1: Recept[] = [
       'Šošovicu uvaríme v 400 ml vody asi 12 minút, kým nie je mäkká a voda sa vstrebe; necháme vychladnúť.',
       'Zemiaky uvaríme zvlášť v osolenej vode.',
       'Mrkvu nastrúhame, cibuľu nadrobno nakrájame a opražíme na oleji.',
-      'Zmiešame šošovicu, mrkvu, cibuľu, vločky, vajce, cesnak, korenie a soľ; zmes necháme 10 minút odstáť.',
+      'Zmiešame šošovicu, mrkvu, cibuľu, vločky, vajce, cesnak, majorán, papriku a soľ; zmes necháme 10 minút odstáť.',
       'Z hmoty tvarujeme 8 karbonátkov, položíme na plech s papierom.',
       'Pečieme pri 200 °C 25 minút, po 12 minútach obrátime; podávame so zemiakmi a jogurtom.',
     ],
@@ -543,7 +543,7 @@ export const receptyObedy1: Recept[] = [
     postup: [
       'Cuketu nastrúhame, osolíme a po 10 minútach silno vytlačíme vodu.',
       'Cícer scedíme a rozmačkáme vidličkou alebo mixérom, aby ostali kúsky.',
-      'Pridáme cuketu, nadrobno nakrájanú cibuľu, vajce, múku, cesnak, vňať a korenie.',
+      'Pridáme cuketu, nadrobno nakrájanú cibuľu, vajce, múku, cesnak, vňať, papriku a soľ.',
       'Z hmoty formujeme 8 karbonátkov a dáme na plech s papierom, potrieme olejom.',
       'Pečieme pri 200 °C 25 – 30 minút, po 12 minútach obrátime.',
       'Podávame s jogurtom a čerstvou zeleninou.',
@@ -608,13 +608,13 @@ export const receptyObedy1: Recept[] = [
       S('petrzlenova-vnat', 15, 'g', V), S('sol', 1.5, 'lyzicka'), S('korenie-cierne', 0.5, 'lyzicka'),
     ],
     postup: [
-      'Jahly prepláchneme horúcou vodou, aby neboli horké.',
+      'Jahly prepláchneme horúcou vodou, aby neboli horkasté.',
       'Uvaríme v 700 ml osolenej vody 15 minút a necháme 5 minút odpočinúť pod pokrievkou.',
       'Cibuľu nakrájanú speníme na oleji, pridáme šampiňóny na plátky a opražíme, kým vyparia vodu.',
       'Vajcia rozšľaháme, pridáme do panvice na hubách a miešame 2 – 3 minúty, kým sa zrazia.',
       'Zmiešame s jahlami, dochutíme korením a vňaťou.',
     ],
-    tagy: ['bezmasite', 'bezlepkove', 'rychle', 'lacne'], vybavenie: ['hrniec', 'panvica'],
+    tagy: ['bezmasite', 'bezlepkove', 'lacne'], vybavenie: ['hrniec', 'panvica'],
     upravy: [
       { typ: 'pridat', popis: 'Pridaj nastrúhanú mrkvu.', na: 'mrkva', mnozstvo: 100, jednotka: 'g' },
       { typ: 'vymenit', popis: 'Jahly za pohánku.', z: 'jahly-proso', na: 'pohanka' },
@@ -722,7 +722,7 @@ export const receptyObedy1: Recept[] = [
       'Vajcia rozšľaháme a vlejeme do lečá, miešame na miernom ohni, kým sa nezrazia.',
       'Podávame s plátkom celozrnného chleba.',
     ],
-    tagy: ['bezmasite', 'rychle', 'lacne'], vybavenie: ['panvica'],
+    tagy: ['bezmasite', 'lacne'], vybavenie: ['panvica'],
     upravy: [
       { typ: 'pridat', popis: 'Pridaj cuketu.', na: 'cuketa', mnozstvo: 200, jednotka: 'g' },
       { typ: 'vymenit', popis: 'Chlieb za varené zemiaky.', z: 'chlieb-celozrnny', na: 'zemiaky', mnozstvo: 500, jednotka: 'g' },

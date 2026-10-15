@@ -28,7 +28,7 @@ export const receptyRanajky1: Recept[] = [
     postup: [
       'Špenát prepláchni a osuš, cesnak nasekaj nadrobno, paradajky nakrájaj na kolieska.',
       'Na panvici zohrej olivový olej, pridaj cesnak a po pol minúte špenát; za miešania ho 2 minúty zavädzaj.',
-      'Špenát osoľ, rozdeľ na dva taniere a panvicu utri.',
+      'Špenát osoľ, rozdeľ na dva taniere a panvicu utri papierovou utierkou.',
       'Na panvici roztop maslo, rozklepni vajcia a pod pokrievkou smaž na miernom ohni 3–4 minúty, kým biely nestuhne a žĺtok je aspoň na okrajoch pevný.',
       'Vajcia polož na špenát, pridaj paradajky, osoľ a okoreň.'],
     tagy: ['rychle', 'bezmasite', 'bez-peciva', 'bezlepkove'], vybavenie: ['panvica'],
@@ -50,7 +50,7 @@ export const receptyRanajky1: Recept[] = [
     skladovanie: 'Podávaj čerstvú.', deti: 'Pre deti stačí menej soli; syr dobre rozpustený.', ilustracia: '🍳' },
   {
     id: 'shakshuka-s-paprikou', nazov: 'Shakshuka – vajcia v paradajkovej omáčke', typ: 'ranajky', kuchyna: 'blízkovýchodná',
-    casPripravy: 8, casVarenia: 17, narocnost: 2, porcie: 4,
+    casPripravy: 8, casVarenia: 20, narocnost: 2, porcie: 4,
     suroviny: [n('vajce-slepacie', 6, 'ks'), n('paradajky-krajane-konzerva', 400, 'g', ['paradajky-konzervovane', 'paradajkova-passata']), s('paprika-cervena', 1, 'ks'), s('cibula', 1, 'ks'), s('cesnak', 2, 'ks'), s('olej-olivovy', 2, 'lyzica'), s('paprika-sladka', 1, 'lyzicka'), s('koriander-mlety', 1, 'lyzicka'), s('sol', 3, 'g'), v('petrzlenova-vnat', 10, 'g'), v('feta', 50, 'g')],
     postup: [
       'Cibuľu a papriku nakrájaj na kocky, cesnak nadrobno.',
@@ -67,7 +67,7 @@ export const receptyRanajky1: Recept[] = [
     casPripravy: 12, casVarenia: 10, narocnost: 1, porcie: 2,
     suroviny: [n('vajce-slepacie', 4, 'ks'), s('avokado', 1, 'ks'), s('uhorka', 0.5, 'ks'), s('paradajka', 1, 'ks'), s('citron', 0.25, 'ks'), s('olej-olivovy', 1, 'lyzica'), s('sol', 2, 'g'), v('sezam', 5, 'g')],
     postup: [
-      'Vajcia vlož do vriacej vody a varíš 9–10 minút na tvrdo, potom ich schlaď studenou vodou.',
+      'Vajcia vlož do vriacej vody a var 9–10 minút na tvrdo, potom ich schlaď studenou vodou.',
       'Medzitým nakrájaj uhorku a paradajku na kocky, avokádo na plátky a pokvapkaj citrónovou šťavou, aby nezhnedlo.',
       'Vajcia olúp a rozpoľ.',
       'Do dvoch misiek poukladaj zeleninu, avokádo a vajcia.',
@@ -122,20 +122,20 @@ export const receptyRanajky1: Recept[] = [
     postup: [
       'Polovicu banánu rozpučaj vidličkou na kašu.',
       'V hrnci zmiešaj mlieko, vodu, vločky, soľ a rozpučený banán.',
-      'Za stáleho miešania varíš 6–7 minút na miernom ohni, kým kaša zhustne.',
+      'Za stáleho miešania var 6–7 minút na miernom ohni, kým kaša zhustne.',
       'Odstav a vmiešaj škoricu.',
       'Rozdeľ do misiek, navrch daj zvyšný banán na kolieskach, lyžicu arašidového masla a prípadne chia.'],
     tagy: ['rychle', 'bezmasite', 'bez-peciva', 'sladke', 'detske'], vybavenie: ['hrniec'],
     upravy: [{ typ: 'pridat', popis: 'Pridaj hrsť čučoriedok', na: 'cucoriedky', mnozstvo: 50, jednotka: 'g' }],
-    skladovanie: 'Najlepšia čerstvá; zvyšok v chladničke do druhého dňa.', deti: 'Arašidové maslo rozotri tenko na kašu, nie vo vrstve či po lyžiciach (riziko udusenia); pri podozrení na alergiu najprv poraď s lekárom.', ilustracia: '🍌' },
+    skladovanie: 'Najlepšia čerstvá; zvyšok v chladničke do druhého dňa.', deti: 'Arašidové maslo vmiešaj do teplej kaše, nedávaj ho po lyžiciach ani v hrubej vrstve (lepkavé sústo, riziko udusenia); pri podozrení na alergiu sa najprv poraď s lekárom.', ilustracia: '🍌' },
   {
     id: 'detska-ovsena-kasa-s-hruskou', nazov: 'Detská ovsená kaša s hruškou', typ: 'ranajky', kuchyna: 'slovenská',
     casPripravy: 5, casVarenia: 10, narocnost: 1, porcie: 2,
     suroviny: [n('ovsene-vlocky', 60, 'g'), s('mlieko-polotucne', 300, 'ml', ['mlieko-ovsene']), s('hruska', 1, 'ks', ['jablko']), s('skorica', 0.5, 'lyzicka'), v('jogurt-biely', 50, 'g')],
     postup: [
       'Hrušku olúp, odstráň jadrovník a nakrájaj na veľmi malé kocky.',
-      'Mlieko privedieš takmer k varu, pridaj vločky a hrušku.',
-      'Na miernom ohni varíš 8–10 minút, často miešaj, aby sa vločky rozvarili a hruška bola mäkká.',
+      'Mlieko priveď takmer k varu, pridaj vločky a hrušku.',
+      'Na miernom ohni var 8–10 minút, často miešaj, aby sa vločky rozvarili a hruška bola mäkká.',
       'Odstav, primiešaj štipku škorice a nechaj 2 minúty odstáť.',
       'Vychladni na jedlú teplotu, prípadne pomôž ručným mixérom na hladšiu kašu a podávaj s lyžicou jogurtu.'],
     tagy: ['detske', 'rychle', 'bezmasite', 'bez-peciva', 'sladke'], vybavenie: ['hrniec'],
@@ -148,7 +148,7 @@ export const receptyRanajky1: Recept[] = [
     postup: [
       'Pohánku prepláchni na site pod tečúcou vodou.',
       'Daj ju do hrnca s mliekom, vodou a štipkou soli, priveď do varu.',
-      'Prikry, zníž oheň a varíš 15 minút, kým pohánka nasaje tekutinu a zmäkne.',
+      'Prikry, zníž oheň a var 15 minút, kým pohánka nasaje tekutinu a zmäkne.',
       'Odstav, nechaj 3 minúty odstáť a pridaj škoricu.',
       'Rozdeľ do misiek, posyp banánom na kolieskach, malinami a nahrubo nasekanými orechmi, podľa chuti polej medom.'],
     tagy: ['bezmasite', 'bez-peciva', 'bezlepkove', 'sladke'], vybavenie: ['hrniec'],
@@ -160,9 +160,9 @@ export const receptyRanajky1: Recept[] = [
     suroviny: [n('ryza-biela', 80, 'g'), s('mlieko-polotucne', 450, 'ml'), s('jablko', 1, 'ks'), s('skorica', 1, 'lyzicka'), s('vanilkovy-cukor', 5, 'g'), s('sol', 1, 'g')],
     postup: [
       'Ryžu prepláchni a daj do hrnca s mliekom a štipkou soli.',
-      'Priveď do varu, zníž oheň na minimum a varíš 15 minút za častého miešania, aby sa neprichytila.',
+      'Priveď do varu, zníž oheň na minimum a var 15 minút za častého miešania, aby sa neprichytila.',
       'Jablko nastrúhaj nahrubo a pridaj do kaše.',
-      'Varíš ďalších 5 minút, kým je ryža mäkká a kaša krémová.',
+      'Var ďalších 5 minút, kým je ryža mäkká a kaša krémová.',
       'Primiešaj škoricu a vanilkový cukor, nechaj chvíľu odstáť a podávaj teplú.'],
     tagy: ['detske', 'bezmasite', 'bez-peciva', 'bezlepkove', 'sladke', 'lacne'], vybavenie: ['hrniec'],
     upravy: [{ typ: 'pridat', popis: 'Pridaj hrsť čučoriedok na koniec', na: 'cucoriedky', mnozstvo: 50, jednotka: 'g' }, { typ: 'vymenit', popis: 'Jablko nahraď hruškou', z: 'jablko', na: 'hruska', mnozstvo: 170, jednotka: 'g' }],
@@ -174,7 +174,7 @@ export const receptyRanajky1: Recept[] = [
     postup: [
       'Jahly preplách horúcou vodou na site, aby zmizla horkastá chuť.',
       'Vlož do hrnca s mliekom, vodou a soľou, priveď do varu.',
-      'Prikry a varíš na miernom ohni 15 minút, občas premiešaj; jahly majú byť mäkké a kaša krémová.',
+      'Prikry a var na miernom ohni 15 minút, občas premiešaj; jahly majú byť mäkké a kaša krémová.',
       'Marhule rozpoľ, vyber kôstky a nakrájaj na kúsky; mandle nahrubo nasekaj.',
       'Kašu odstav, vmiešaj škoricu, rozdeľ a ozdob marhuľami, mandľami a prípadne sirupom.'],
     tagy: ['bezmasite', 'bez-peciva', 'bezlepkove', 'sladke'], vybavenie: ['hrniec'],
@@ -185,11 +185,11 @@ export const receptyRanajky1: Recept[] = [
     casPripravy: 8, casVarenia: 20, narocnost: 2, porcie: 2,
     suroviny: [n('pohanka', 100, 'g'), s('voda', 250, 'ml'), n('vajce-slepacie', 2, 'ks'), s('cibula', 0.5, 'ks'), s('sampinony', 100, 'g'), s('olej-repkovy', 1, 'lyzica'), s('sol', 3, 'g'), s('korenie-cierne', 1, 'g'), v('petrzlenova-vnat', 10, 'g')],
     postup: [
-      'Pohánku prepláchni, vlož do hrnca s vodou a štipkou soli, priveď do varu a varíš prikrytú 15 minút.',
+      'Pohánku prepláchni, vlož do hrnca s vodou a štipkou soli, priveď do varu a var prikrytú 15 minút.',
       'Medzitým nakrájaj cibuľu na drobno a šampiňóny na plátky.',
       'Na panvici zohrej polovicu oleja, opeč cibuľu a šampiňóny 5–6 minút do zlatista, osoľ a okoreň.',
       'Uvarenú pohánku zmiešaj so šampiňónmi.',
-      'V tej istej panvici uvar zvyšným olejom dve volské oká, 3–4 minúty pod pokrievkou.',
+      'V tej istej panvici usmaž na zvyšnom oleji dve volské oká, 3–4 minúty pod pokrievkou, kým žĺtok nestuhne.',
       'Kašu rozdeľ do misiek, navrch polož vajce a posyp petržlenovou vňaťou.'],
     tagy: ['bezmasite', 'bez-peciva', 'bezlepkove', 'lacne'], vybavenie: ['hrniec', 'panvica'],
     upravy: [{ typ: 'pridat', popis: 'Pridaj hrsť špenátu k hubám', na: 'spenat', mnozstvo: 50, jednotka: 'g' }, { typ: 'vymenit', popis: 'Šampiňóny nahraď hlivou ustricovou', z: 'sampinony', na: 'hliva-ustricova', mnozstvo: 100, jednotka: 'g' }],
@@ -199,7 +199,7 @@ export const receptyRanajky1: Recept[] = [
     casPripravy: 5, casVarenia: 10, narocnost: 1, porcie: 2,
     suroviny: [n('ovsene-vlocky', 80, 'g'), s('voda', 350, 'ml'), s('spenat', 80, 'g'), s('syr-eidam', 40, 'g', { alternativy: ['parmezan'] }), s('vajce-slepacie', 2, 'ks'), s('olej-olivovy', 1, 'lyzica'), s('sol', 2, 'g'), s('korenie-cierne', 1, 'g')],
     postup: [
-      'Vodu osoľ a priveď do varu, pridaj vločky a varíš 5 minút za miešania.',
+      'Vodu osoľ a priveď do varu, pridaj vločky a var 5 minút za miešania.',
       'Špenát hrubo nasekaj a primiešaj do kaše na poslednú minútu, kým zvädne.',
       'Syr nastrúhaj a vmiešaj, kým sa neroztopí.',
       'Na panvici si na oleji usmaž 2 volské oká (3–4 minúty pod pokrievkou).',
@@ -216,7 +216,7 @@ export const receptyRanajky1: Recept[] = [
       'Cibuľu nakrájaj nadrobno, mrkvu nastrúhaj, cuketu nakrájaj na malé kocky.',
       'V hrnci zohrej olej, opeč cibuľu 2 minúty, pridaj mrkvu a cuketu, duš 3 minúty.',
       'Pridaj jahly, papriku, soľ a vodu, priveď do varu.',
-      'Prikry a varíš na miernom ohni 12–15 minút, kým jahly nasajú vodu; odstav a nechaj 3 minúty odstáť.',
+      'Prikry a var na miernom ohni 12–15 minút, kým jahly nasajú vodu; odstav a nechaj 3 minúty odstáť.',
       'Podávaj s kôprom a lyžicou jogurtu.'],
     tagy: ['bezmasite', 'bez-peciva', 'bezlepkove', 'lacne', 'na-viac-dni', 'detske'], vybavenie: ['hrniec'],
     upravy: [{ typ: 'pridat', popis: 'Pridaj uvarené vajce nakrájané na štvrtky', na: 'vajce-slepacie', mnozstvo: 2, jednotka: 'ks' }, { typ: 'vymenit', popis: 'Cuketu nahraď brokolicou', z: 'cuketa', na: 'brokolica', mnozstvo: 120, jednotka: 'g' }],
@@ -227,11 +227,11 @@ export const receptyRanajky1: Recept[] = [
     suroviny: [n('ovsene-vlocky', 80, 'g'), s('jogurt-biely', 150, 'g', { alternativy: ['kefir'] }), s('mlieko-polotucne', 150, 'ml', ['mlieko-ovsene']), s('chia', 15, 'g'), s('maliny', 100, 'g', { alternativy: ['cucoriedky', 'jahody'] }), s('med', 1, 'lyzicka'), v('mandle', 15, 'g')],
     postup: [
       'V miske alebo v dvoch pohároch zmiešaj vločky, jogurt, mlieko a chia semienka.',
-      'Dobre premiešaj, aby sa nehromadili hrčky, a osladi medom.',
+      'Dobre premiešaj, aby sa nevytvorili hrudky, a podľa chuti osladi medom.',
       'Prikry a daj do chladničky aspoň na 6 hodín, najlepšie na noc (čas prípravy ráno je 0 minút).',
       'Ráno premiešaj; ak je príliš hustá, prilej trochu mlieka.',
       'Navrch daj maliny a nasekané mandle.'],
-    tagy: ['rychle', 'bezmasite', 'bez-peciva', 'sladke', 'do-krabicky', 'na-viac-dni'], vybavenie: ['pohar'],
+    tagy: ['bezmasite', 'bez-peciva', 'sladke', 'do-krabicky', 'na-viac-dni'], vybavenie: ['pohar'],
     upravy: [{ typ: 'pridat', popis: 'Pridaj lyžicu kakaa pre čokoládovú verziu', na: 'kakao', mnozstvo: 8, jednotka: 'g' }, { typ: 'vymenit', popis: 'Maliny nahraď jahodami', z: 'maliny', na: 'jahody', mnozstvo: 100, jednotka: 'g' }],
     skladovanie: 'V chladničke v zatvorenom pohári až 3 dni (príprava na viac dní naraz).', deti: 'Mandle len mleté, med až od 1 roka.', ilustracia: '🫙' },
   {
@@ -246,7 +246,7 @@ export const receptyRanajky1: Recept[] = [
       'Puding rozdeľ do pohárov, navrch daj mango a opražený alebo surový kokos.'],
     tagy: ['bezmasite', 'bez-peciva', 'bezlepkove', 'sladke', 'do-krabicky', 'na-viac-dni'], vybavenie: ['pohar'],
     upravy: [{ typ: 'pridat', popis: 'Pridaj hrsť čučoriedok', na: 'cucoriedky', mnozstvo: 50, jednotka: 'g' }],
-    skladovanie: 'V chladničke 3 dni bez ovocia.', deti: 'Chia nechaj dobre napučať (min. 4 hodiny); mango na malé kúsky.', ilustracia: '🥭' },
+    skladovanie: 'V chladničke 3 dni bez ovocia.', deti: 'Chia nechaj dobre napučať (min. 4 hodiny); mango na malé kúsky; kokos pre menšie deti jemne nastrúhaný.', ilustracia: '🥭' },
   {
     id: 'kakaovy-chia-puding-s-bananom', nazov: 'Kakaový chia puding s banánom', typ: 'ranajky', kuchyna: 'moderná',
     casPripravy: 8, casVarenia: 0, narocnost: 1, porcie: 2,
@@ -259,7 +259,7 @@ export const receptyRanajky1: Recept[] = [
       'Pred podávaním premiešaj a navrch pridaj kolieska banánu a posekané orechy.'],
     tagy: ['detske', 'bezmasite', 'bez-peciva', 'bezlepkove', 'sladke', 'do-krabicky', 'na-viac-dni'], vybavenie: ['pohar'],
     upravy: [{ typ: 'pridat', popis: 'Pridaj lyžicu arašidového masla', na: 'arasidove-maslo', mnozstvo: 15, jednotka: 'g' }],
-    skladovanie: 'V chladničke 3 dni.', deti: 'Orechy len mleté alebo vynechať; kakao je mierne povzbudzujúce, deťom dávaj skôr menšie množstvo.', ilustracia: '🍫' },
+    skladovanie: 'V chladničke 3 dni.', deti: 'Orechy len mleté alebo vynechať; kakao obsahuje trochu kofeínu a teobrómu, preto ho deťom dávaj v menšom množstve.', ilustracia: '🍫' },
   {
     id: 'jogurtova-misa-s-ovocim-a-orechmi', nazov: 'Jogurtová misa s ovocím a orechmi', typ: 'ranajky', kuchyna: 'moderná',
     casPripravy: 7, casVarenia: 0, narocnost: 1, porcie: 2,

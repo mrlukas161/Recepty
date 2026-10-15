@@ -57,7 +57,7 @@ export const receptyPolievky: Recept[] = [
   },
   {
     id: 'fazulova-polievka', nazov: 'Fazuľová polievka s mrkvou', typ: 'polievka', kuchyna: 'slovenská',
-    casPripravy: 15, casVarenia: 75, narocnost: 2, porcie: 4,
+    casPripravy: 15, casVarenia: 90, narocnost: 2, porcie: 4,
     suroviny: [
       s('fazula-biela', 250, 'g', { nevyhnutna: true, alternativy: ['fazula-cervena'] }), s('mrkva', 150, 'g'), s('petrzlen-korenovy', 80, 'g'), s('cibula', 100, 'g'),
       s('cesnak', 3, 'ks'), s('olej-repkovy', 2, 'lyzica'), s('paprika-sladka', 1, 'lyzica'), s('bobkovy-list', 2, 'ks'), s('majoran', 1, 'lyzicka'),
@@ -65,7 +65,7 @@ export const receptyPolievky: Recept[] = [
     ],
     postup: [
       'Fazuľu namočte do studenej vody aspoň na 8 hodín (cez noc), potom vodu zlejte.',
-      'Namočenú fazuľu dajte do hrnca s čerstvou vodou a bobkovým listom a varte 45 minút na miernom ohni. Soľ pridávajte až na konci, inak fazuľa dlho tvrdne. Fazuľa musí byť dostatočne uvarená, surová alebo nedovarená je nestráviteľná.',
+      'Namočenú fazuľu dajte do hrnca s čerstvou vodou a bobkovým listom a varte 60 minút na miernom ohni. Soľ pridávajte až na konci, inak fazuľa dlho tvrdne. Fazuľa musí byť celkom mäkká; surová alebo nedovarená fazuľa nie je bezpečná na jedenie.',
       'Medzitým nakrájajte mrkvu a petržlen na kolieska, cibuľu nadrobno.',
       'Na oleji speňte cibuľu 3 minúty, pridajte mrkvu a petržlen, po 2 minútach vmiešajte papriku a hneď všetko vlejte do fazule.',
       'Varte ďalších 20 až 25 minút, kým nie je fazuľa a zelenina mäkká.',
@@ -114,7 +114,7 @@ export const receptyPolievky: Recept[] = [
       'Hrach prepláchnite a namočte na 2 hodiny do studenej vody (lúpaný hrach sa uvarí aj bez namáčania, ale dlhšie), potom scedte.',
       'Cibuľu nakrájajte nadrobno, mrkvu a petržlen na kolieska.',
       'V hrnci speňte cibuľu na oleji, pridajte mrkvu a petržlen a po 2 minútach zalejte vodou.',
-      'Pridajte hrach a bobkový list, privedťe do varu, spenu zoberte a varte na miernom ohni 40 až 45 minút, občas premiešajte, aby sa neprichytil.',
+      'Pridajte hrach a bobkový list, priveďte do varu, spenu zoberte a varte na miernom ohni 40 až 45 minút, občas premiešajte, aby sa neprichytil.',
       'Keď je hrach rozvarený, bobkový list vyberte a polievku rozmixujte ponorným mixérom na hladko.',
       'Dochuťte soľou, korením, majoránom a pretlačeným cesnakom.',
       'Rožky nakrájajte na kocky a opečte ich na suchej panvici dozlatista; podávajte ako krutóny.',
@@ -124,7 +124,7 @@ export const receptyPolievky: Recept[] = [
       { typ: 'pridat', popis: 'Pridaj hrášok z mrazenia pre sviežu farbu', na: 'hrasok-mrazeny', mnozstvo: 100, jednotka: 'g' },
       { typ: 'vymenit', popis: 'Biele krutóny nahraď celozrnným chlebom', z: 'rozok-biely', na: 'chlieb-celozrnny' },
     ],
-    skladovanie: 'V chladničke 4 dni, pred ohrevom pridajte trochu vody.', deti: 'Krutóny dávajte deťom až od cca 3 rokov.', ilustracia: '🟢',
+    skladovanie: 'V chladničke 4 dni, pred ohrevom pridajte trochu vody.', deti: 'Tvrdé krutóny deťom do 4 rokov radšej nedávajte (riziko dusenia).', ilustracia: '🟢',
   },
   {
     id: 'sampinonova-polievka', nazov: 'Šampiňónová polievka', typ: 'polievka', kuchyna: 'slovenská',
@@ -142,7 +142,7 @@ export const receptyPolievky: Recept[] = [
       'Polovicu polievky rozmixujte ponorným mixérom, vráťte späť, aby zostali aj kúsky húb.',
       'Vlejte smotanu, krátko prevarte, dochuťte korením a posypte petržlenovou vňaťou.',
     ],
-    tagy: ['bezmasite', 'rychle', 'bez-peciva'], vybavenie: ['hrniec', 'mixer'],
+    tagy: ['bezmasite', 'bez-peciva'], vybavenie: ['hrniec', 'mixer'],
     upravy: [
       { typ: 'pridat', popis: 'Pridaj hrsť špenátu', na: 'spenat', mnozstvo: 60, jednotka: 'g' },
       { typ: 'vymenit', popis: 'Smotanu na varenie nahraď rastlinným ovseným mliekom', z: 'smotana-na-varenie', na: 'mlieko-ovsene' },
@@ -160,7 +160,7 @@ export const receptyPolievky: Recept[] = [
     postup: [
       'Mrkvu, petržlen, zeler a kaleráb ošúpte a nakrájajte na kocky približne 1 cm; cuketu nakrájajte na menšie kocky.',
       'V hrnci na oleji krátko opečte cibuľu 2 minúty, pridajte mrkvu, petržlen, zeler a kaleráb a restujte ďalšie 3 minúty.',
-      'Zalejte vodou, pridajte bobkový list a soľ, privedťe do varu a varte pod pokrievkou 10 minút.',
+      'Zalejte vodou, pridajte bobkový list a soľ, priveďte do varu a varte pod pokrievkou 10 minút.',
       'Vsypte prepláchnutú ryžu a varte 10 minút.',
       'Pridajte cuketu a hrášok, varte ešte 5 minút.',
       'Dochuťte korením a posypte nasekanou petržlenovou vňaťou.',
@@ -184,7 +184,7 @@ export const receptyPolievky: Recept[] = [
       'Kuracie kosti a stehno vložte do hrnca, zalejte studenou vodou a pomaly priveďte do varu; spenu opakovane zoberte naberačkou.',
       'Pridajte celú ošúpanú cibuľu, polovicu mrkvy, petržlen, zeler, bobkový list a soľ.',
       'Varte pod pokrievkou na veľmi miernom ohni 75 až 90 minút, stehno vyberte po 40 minútach, keď je mäso mäkké a prepečené (šťava je číra).',
-      'Vývar precedťe cez sitko. Mäso z kostí oberte a nakrájajte na malé kúsky, kosti zahoďte.',
+      'Vývar precedte cez sitko. Mäso z kostí oberte a nakrájajte na malé kúsky, kosti zahoďte.',
       'Zvyšnú mrkvu nakrájajte na kolieska a uvarte vo vývare 8 minút.',
       'Rezance uvarte vo vývare podľa návodu (zvyčajne 5 až 7 minút), vráťte mäso a krátko prevarte.',
       'Dochuťte soľou a korením, posypte petržlenovou vňaťou. Ak polievku nepodávate hneď, rezance varte zvlášť, inak nasiaknu a rozpadnú sa.',
@@ -204,7 +204,7 @@ export const receptyPolievky: Recept[] = [
       s('rasca', 0.5, 'lyzicka'), s('sol', 1.5, 'lyzicka'), s('syr-eidam', 100, 'g'), s('rozok-biely', 2, 'ks'), s('olej-repkovy', 1, 'lyzica'),
     ],
     postup: [
-      'Zemiaky ošúpte, nakrájajte na malé kocky a varte vo vode s soľou, rascou a majoránom asi 15 minút do mäkka.',
+      'Zemiaky ošúpte, nakrájajte na malé kocky a varte vo vode so soľou, rascou a majoránom asi 15 minút do mäkka.',
       'Cesnak ošúpte, posekajte alebo pretlačte; polovicu pridajte do polievky v poslednej minúte varenia, aby zostala chuť výraznejšia.',
       'Rožky nakrájajte na kocky a opečte na lyžici oleja a masle dozlatista (asi 4 minúty).',
       'Polievku môžete ľahko rozmačkať vareškou, aby bola hustejšia.',
@@ -334,14 +334,14 @@ export const receptyPolievky: Recept[] = [
   },
   {
     id: 'borsc', nazov: 'Boršč s červenou repou', typ: 'polievka', kuchyna: 'východoeurópska',
-    casPripravy: 25, casVarenia: 80, narocnost: 2, porcie: 4,
+    casPripravy: 25, casVarenia: 95, narocnost: 2, porcie: 4,
     suroviny: [
       s('hovadzie-predne', 400, 'g', { alternativy: ['kuracie-stehno'] }), s('repa-cervena', 400, 'g', { nevyhnutna: true }), s('kapusta-biela', 250, 'g'), s('zemiaky', 300, 'g'),
       s('mrkva', 120, 'g'), s('cibula', 100, 'g'), s('paradajkovy-pretlak', 1, 'lyzica'), s('olej-repkovy', 1, 'lyzica'), s('ocot-jablkovy', 1, 'lyzica'),
       s('bobkovy-list', 2, 'ks'), s('voda', 2000, 'ml', { nevyhnutna: true }), s('sol', 2, 'lyzicka'), s('smotana-kysla', 80, 'g', { volitelna: true }), s('kopor', 10, 'g', { volitelna: true }),
     ],
     postup: [
-      'Hovädzie mäso zalejte studenou vodou, priveďte do varu, spenu zoberte, pridajte bobkový list a soľ a varte pod pokrievkou na miernom ohni 60 minút.',
+      'Hovädzie mäso zalejte studenou vodou, priveďte do varu, spenu zoberte, pridajte bobkový list a soľ a varte pod pokrievkou na miernom ohni 75 minút, kým mäso nezmäkne.',
       'Repu ošúpte a nastrúhajte na hrubo, mrkvu tiež, cibuľu nakrájajte nadrobno.',
       'Na oleji speňte cibuľu, pridajte mrkvu a repu, restujte 5 minút, pridajte pretlak a ocot (ocot zachová sýtu farbu) a duste ďalšie 5 minút.',
       'Mäso vyberte, nakrájajte na kúsky; do vývaru vložte zemiaky na kocky a nahrubo nakrájanú kapustu, varte 10 minút.',

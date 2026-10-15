@@ -4,7 +4,7 @@ export interface Dieta {
   preKoho: string; neVhodne: string; dokazy: string; tipy: string[];
   tvrda: boolean; // true = filter vylučuje recepty; false = len odporúčanie podľa skóre
 }
-const DOK = 'Úroveň dôkazov: v tomto behu sa nepodarilo otvoriť a overiť primárne zdroje, preto appka netvrdí konkrétne čísla. Popis vychádza z bežne uvádzaných zásad diéty (prax / odhad).';
+const DOK = 'Popis zásad je naše zhrnutie. Podložené zdroje (ak sa ich podarilo potvrdiť) sú uvedené nižšie s úrovňou dôkazov; čo zdroj nemá, je prax alebo odhad.';
 
 export const DIETY: Dieta[] = [
   { id: 'stredomorska', nazov: 'Stredomorská', tvrda: false,
@@ -18,7 +18,7 @@ export const DIETY: Dieta[] = [
   { id: 'mind', nazov: 'MIND', tvrda: false,
     popis: 'Kombinácia stredomorskej a DASH diéty so zameraním na zelenú listovú zeleninu, bobule, orechy, strukoviny, ryby a olivový olej.',
     zahrna: ['listová zelenina', 'bobuľové ovocie', 'orechy', 'strukoviny', 'ryby', 'olivový olej'], obmedzuje: ['červené mäso', 'maslo', 'sladkosti', 'vyprážané'], vylucuje: [],
-    preKoho: 'Dospelí; zaujímavé aj pre zdravý životný štýl.', neVhodne: 'Orechy podávať deťom do 4 rokov len mleté/rozdrvené.', dokazy: DOK + ' Poznámka: výsledky štúdií MIND na kognitívne zdravie nie sú jednoznačné — nesľubujeme žiadny účinok.', tipy: ['Hrsť bobúľ v kaši', 'Listová zelenina aspoň 6× týždenne'] },
+    preKoho: 'Dospelí; zaujímavé aj pre zdravý životný štýl.', neVhodne: 'Orechy podávať deťom do 4 rokov len mleté/rozdrvené.', dokazy: DOK + ' Výsledky štúdií MIND na kognitívne zdravie nie sú jednoznačné — nesľubujeme žiadny účinok.', tipy: ['Hrsť bobúľ v kaši', 'Listová zelenina aspoň 6× týždenne'] },
   { id: 'protizapalova', nazov: 'Protizápalová', tvrda: false,
     popis: 'Vzorec stravy s viac zeleninou, ovocím, strukovinami, celozrnnými obilninami, rybami a olejmi; menej rafinovaných sacharidov, cukru a spracovaného mäsa.',
     zahrna: ['zelenina', 'strukoviny', 'ryby', 'olivový olej', 'orechy', 'celozrnné'], obmedzuje: ['rafinované obilniny', 'cukor', 'červené mäso'], vylucuje: ['spracované mäso (v appke)'],

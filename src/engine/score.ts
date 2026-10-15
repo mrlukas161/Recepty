@@ -15,7 +15,7 @@ const clamp = (x: number, a = 0, b = 100) => Math.max(a, Math.min(b, x));
 const lin = (v: number, lo: number, hi: number) => clamp(((v - lo) / (hi - lo)) * 100);
 
 export const POZNAMKA_SKORE =
-  'Skóre je naša heuristika (odhad), nie klinický nástroj. Váhy sú orientačné a neboli odvodené z konkrétnej štúdie – zdroje čakajú na overenie.';
+  'Skóre je naša heuristika (odhad), nie klinický nástroj. Váhy a prahy sú naše odhady a neboli odvodené z konkrétnej štúdie; zdroje pri faktoroch len podporujú smer (viac vlákniny, menej cukru…), nie presné čísla.';
 
 export function pasmo(s: number): Skore['pasmo'] {
   return s >= 80 ? 'vyborne' : s >= 60 ? 'dobre' : s >= 40 ? 'obcas' : 'zriedka';
