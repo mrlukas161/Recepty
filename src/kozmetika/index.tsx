@@ -110,7 +110,7 @@ export function Kozmetika() {
       {zal === 'porovnat' && <PorovnanieK hist={hist} nast={nast} />}
 
       <div class="upoz sk-pozn">
-        <b>Zdroje a licencie.</b> Regulačný rámec: nariadenie (ES) č. 1223/2009 a jeho zmeny, stanoviská SCCS; overené vyhľadávaním, originály sme nečítali (úroveň „overené vyhľadávaním“). Čo sme nepotvrdili, je označené „odhad / prax, nie dôkaz“ a číselný limit pri tom neuvádzame. Funkcie látok sú naše zhrnutie (databáza CosIng nebola dostupná). Výrobky podľa kódu: Open Beauty Facts (ODbL). Hodnotenia iných aplikácií nepreberáme.
+        <b>Zdroje a licencie.</b> Regulačný rámec: nariadenie (ES) č. 1223/2009 a jeho zmeny, stanoviská SCCS; overené vyhľadávaním, originály sme nečítali (úroveň „overené vyhľadávaním“). Čo sme nepotvrdili, je označené „odhad / prax, nie dôkaz“ a číselný limit pri tom neuvádzame. Funkcie látok sú naše zhrnutie (databáza CosIng nebola dostupná). Výrobky podľa kódu: Open Beauty Facts (ODbL). Databáza nie je úplná (asi 120 látok, nie celá Príloha II so zakázanými látkami): zložka, ktorú nepoznáme, nie je tým ani povolená, ani zakázaná. Hodnotenia iných aplikácií nepreberáme.
       </div>
       <Upozornenie />
     </>

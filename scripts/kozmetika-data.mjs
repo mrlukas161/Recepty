@@ -23,6 +23,11 @@ export const ZDROJE = {
   'mit-obs': ['CosmeticOBS: metylizotiazolinón zakázaný v nezmývateľných výrobkoch (nar. 2016/1198)', 'https://cosmeticobs.com/en/articles/news-59/reminder-mit-is-now-banned-in-leave-on-products-3791'],
   'mit-biorius': ['Biorius: metylizotiazolinón max. 15 ppm v zmývateľných výrobkoch (nar. 2017/1224)', 'https://biorius.com/?p=44117'],
   'echa-v': ['ECHA – Príloha V, povolené konzervanty (databáza)', 'https://echa.europa.eu/cosmetics-preservatives/-/legislationlist/substance/100.103.285'],
+  'lexparency-v': ['Príloha V nariadenia 1223/2009 – zoznam povolených konzervantov (prepis)', 'https://lexparency.org/eu/32009R1223/ANX_V/'],
+  'sccp-benzoat': ['SCCP: stanovisko k benzoovej kyseline a benzoanu sodnému', 'https://ec.europa.eu/health/ph_risk/committees/sccp/documents/out166_en.pdf'],
+  'zno-2016-621': ['Nariadenie Komisie (EÚ) 2016/621 – oxid zinočnatý v Prílohe VI', 'https://www.legislation.gov.uk/eur/2016/621/data.xht?view=snippet&wrap=true'],
+  'zno-premium': ['Premium Beauty News: oxid zinočnatý medzi povolenými UV filtrami v EÚ', 'https://www.premiumbeautynews.com/en/zinc-oxide-makes-official-entry,9707'],
+  'tricl-draft': ['Reach24h: návrh zmien príloh II, III, V, VI (2023) – triklokarbán, triklosán, kojová kyselina', 'https://en.reach24h.com/news/industry-news/cosmetic/eu-proposes-11-changes-to-cosmetic-ingredient-lists-including-prohibition-and-restrictions-on-9-substances'],
   'safic-v': ['Safic-Alcan: Konzervanty v kozmetike – prehľad Prílohy V', 'https://www.safic-alcan.com/en-fr/industry-articles/preservatives-cosmetics-guide/'],
   'sccs-fenoxy': ['SCCS: stanovisko k fenoxyetanolu (SCCS/1575/16) – bezpečný ako konzervant do 1,0 %', 'https://health.ec.europa.eu/publications/phenoxyethanol_en'],
   'fenoxy-media': ['Personal Care Magazine: fenoxyetanol potvrdený ako bezpečný do 1 % (deti: MoS ≈ 50)', 'https://personalcaremagazine.com/story/17788/phenoxyethanol-preservative-confirmed-as-safe-at-1'],
@@ -105,16 +110,19 @@ p('kys-salicylova', 'Salicylic Acid|Kyselina salicylová', 'konzervant;exfoliant
   'Ako konzervant najviac 0,5 %; na iné účely (peeling, akné) platia samostatné podmienky v Prílohe III. Pri sprejoch a aerosóloch sú nové podmienky (nar. 2021/850).',
   ['safic-v', 'tio2-ceway'], V, { limit: '0,5 % ako konzervant', max: 0.5 });
 p('triklosan', 'Triclosan|Triklosán', 'konzervant;antimikrobiálna látka', 'konzervant', 'diskusia',
-  'EÚ obmedzila použitie triklosánu a triklokarbánu nariadením 2024/996 (podľa správ odborných webov). Presné podmienky a lehoty sme nepotvrdili, preto ich neuvádzame – pozri predpis.',
-  ['tricl-obelis', 'r2024-996-obs'], V, { os: ['deti'] });
+  'Odborné weby uvádzajú nové obmedzenia triklosánu a triklokarbánu v kozmetike (EÚ návrh z roku 2023, správy ho spájajú s balíkom zmien okolo nar. 2024/996). Stav prijatia a konkrétne podmienky sme nepotvrdili, preto ich neuvádzame – pozri aktuálnu Prílohu V.',
+  ['tricl-obelis', 'tricl-draft'], V, { os: ['deti'] });
 for (const [id, m, ds] of [
   ['dmdm', 'DMDM Hydantoin', 'Prílohy V (položka 33 podľa UK SAG)'], ['imidazolidinyl', 'Imidazolidinyl Urea', 'Prílohy V'], ['diazolidinyl', 'Diazolidinyl Urea', 'Prílohy V'],
   ['quaternium15', 'Quaternium-15', 'Prílohy V'], ['hydroxymethylglycinat', 'Sodium Hydroxymethylglycinate', 'Prílohy V'], ['bronopol', '2-Bromo-2-Nitropropane-1,3-Diol|Bronopol', 'Prílohy V'],
 ]) p(id, m, 'konzervant (uvoľňuje formaldehyd)', 'konzervant', 'diskusia',
   `Konzervant, ktorý môže pomaly uvoľňovať formaldehyd (karcinogén kat. 1B, sám osebe v Prílohe II). Uvoľňovače sú v EÚ povolené podľa ${ds} s podmienkami; prah, od ktorého sa musí uvádzať upozornenie na uvoľňovaný formaldehyd, EÚ sprísňuje (finálne znenie sme nepotvrdili). Vhodné obmedziť pri citlivej pokožke.`,
   ['uk-sag-form', 'form-exp'], V, { os: ['citliva'] });
-for (const [id, m] of [['benzoat', 'Sodium Benzoate|Benzoic Acid'], ['sorban', 'Potassium Sorbate|Sorbic Acid'], ['dhk', 'Dehydroacetic Acid|Sodium Dehydroacetate']])
-  p(id, m, 'konzervant', 'konzervant', 'obmedzena', 'Bežný konzervant; v EÚ sa smie použiť len ak je v Prílohe V a v povolenom množstve. Konkrétny limit sme v tejto práci nepotvrdili, preto ho neuvádzame.', [], O);
+p('benzoat', 'Sodium Benzoate|Benzoic Acid', 'konzervant', 'konzervant', 'obmedzena',
+  'Povolený konzervant (Príloha V), limit je v prepočte na kyselinu: nezmývateľné výrobky 0,5 %, zmývateľné okrem ústnych 2,5 %, ústne výrobky 1,7 %.',
+  ['lexparency-v', 'sccp-benzoat'], V, { limit: '0,5 % nezmývateľné; 2,5 % zmývateľné; 1,7 % ústne', max: 0.5 });
+for (const [id, m] of [['sorban', 'Potassium Sorbate|Sorbic Acid'], ['dhk', 'Dehydroacetic Acid|Sodium Dehydroacetate']])
+  p(id, m, 'konzervant', 'konzervant', 'obmedzena', 'Povolený konzervant do 0,6 % (v prepočte na kyselinu; Príloha V).', ['lexparency-v', 'safic-v'], V, { limit: '0,6 % ako kyselina', max: 0.6 });
 p('etylhexylglycerin', 'Ethylhexylglycerin', 'kondicionér pokožky;podporuje konzerváciu', 'ina', 'ok', ODHAD_NEUTRAL, [], O);
 p('kaprylylglykol', 'Caprylyl Glycol', 'kondicionér pokožky;zvlhčovač', 'ina', 'ok', ODHAD_NEUTRAL, [], O);
 
@@ -132,7 +140,8 @@ p('tio2', 'Titanium Dioxide|CI 77891|Oxid titaničitý', 'UV filter;farbivo (bie
   'Ako UV filter povolený do 25 %; pri práškových a sprejových výrobkoch (riziko vdýchnutia) platia osobitné podmienky v Prílohe III od nar. 2021/850, lebo sa vdychovaný prach klasifikuje ako možný karcinogén (kat. 2). Pri nanoforme ((nano)) platia ďalšie podmienky (napr. nie na pery pri niektorých povlakoch). Na koži vo forme krému sa vdýchnutie nepredpokladá.',
   ['tio2-sgs', 'echa-uv', 'tio2-ceway'], V, { limit: 'UV filter ≤ 25 %', max: 25 });
 p('zinok-oxid', 'Zinc Oxide|CI 77947|Oxid zinočnatý', 'UV filter;farbivo (biele);ochrana pokožky', 'uv', 'ok',
-  'Minerálny UV filter, v EÚ povolený v Prílohe VI. Maximálny limit sme v tejto práci nepotvrdili a neuvádzame.', ['echa-uv'], O);
+  'Minerálny UV filter; nar. 2016/621 ho povolilo v nano aj nenano forme do 25 %, okrem aplikácií s rizikom vdýchnutia (spreje, prášky).',
+  ['zno-2016-621', 'zno-premium'], V, { limit: '25 % (okrem rizika vdýchnutia)', max: 25 });
 for (const [id, m] of [['avobenzon', 'Butyl Methoxydibenzoylmethane|Avobenzone'], ['oktinoxat', 'Ethylhexyl Methoxycinnamate|Octinoxate'], ['oktisalat', 'Ethylhexyl Salicylate|Octisalate'], ['tinosorb-s', 'Bis-Ethylhexyloxyphenol Methoxyphenyl Triazine'], ['uvinul-a', 'Diethylamino Hydroxybenzoyl Hexyl Benzoate'], ['tinosorb-m', 'Methylene Bis-Benzotriazolyl Tetramethylbutylphenol'], ['uvinul-t', 'Ethylhexyl Triazone']])
   p(id, m, 'UV filter', 'uv', 'ok', 'Chemický UV filter. Na trhu EÚ smú byť len filtre z Prílohy VI s limitmi; číselný limit pre túto látku sme nepotvrdili, preto ho neuvádzame.', ['echa-uv'], O);
 

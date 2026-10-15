@@ -23,3 +23,6 @@ Hotové: generátor `scripts/kozmetika-data.mjs` → `src/kozmetika/data` (118 l
 
 ### 23:07 UTC – (d) e2e
 4 e2e na 412×915: ručné vloženie (Viac → rozpad, detail zložky, nastavenia, história, porovnanie), syntetická etiketa → OCR (angličtina), kód so zmockovaným Open Beauty Facts + z uloženého po výpadku, offline reload (service worker). Všetko zelené.
+
+### 23:09 UTC – doladenie a záver
+Doplnené overenie (benzoany, sorbany, DHA, oxid zinočnatý), oprava triklosánu (len návrh, bez čísel), poznámka o neúplnosti databázy, sekcia „Novinky 16.10. – kozmetika“ v ranom prehľade. Unit 204, e2e 27 zelené, build bez chýb.

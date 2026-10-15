@@ -16,8 +16,8 @@ Vlastná metodika (nie INCI Beauty, Yuka ani Codecheck – hodnotenia iných apl
 ## Čo je v databáze a čo nie
 `src/kozmetika/data/latky.json` (generované `node scripts/kozmetika-data.mjs`, zdroj údajov je v tom skripte; test kontroluje, že súbory sedia). ~118 látok:
 - zakázané (Príloha II): formaldehyd, Lilial – **nie je to úplná Príloha II** (~1 700 látok; bez prístupu k EUR-Lex ju nemáme čo overiť). Appka to hovorí: „nenájdené“ ≠ „povolené“.
-- konzervanty (Príloha V): MIT, MCI, fenoxyetanol, parabény, benzylalkohol, chlórfenezín, kyselina salicylová, triklosán, uvoľňovače formaldehydu (DMDM hydantoín, imidazolidinyl-/diazolidinylurea, quaternium-15, hydroxymetylglycinát, bronopol), benzoany/sorbany/DHA (bez čísel).
-- UV filtre (Príloha VI): oktokrylén, benzofenón-3, homosalát, TiO2 (s číslami), zinok oxid a bežné chemické filtre (bez čísel).
+- konzervanty (Príloha V): MIT, MCI, fenoxyetanol, parabény, benzylalkohol, chlórfenezín, kyselina salicylová, triklosán, uvoľňovače formaldehydu (DMDM hydantoín, imidazolidinyl-/diazolidinylurea, quaternium-15, hydroxymetylglycinát, bronopol), benzoany, sorbany, DHA (s limitmi z Prílohy V).
+- UV filtre (Príloha VI): oktokrylén, benzofenón-3, homosalát, TiO2 (s číslami), zinok oxid (25 %) a bežné chemické filtre (bez čísel).
 - siloxany D4/D5/D6, mikročastice (polyetylén, nylón, PMMA …), parfum a 23 vonných alergénov (Príloha III), retinoidy (Príloha III, 2024/996), dráždivé zložky (SLS, SLES, denat. alkohol, propylénglykol, kokamidopropylbetaín, lanolín – posledné štyri iba ako odhad/prax), farbivá CI a ~35 bežných zložiek len s funkciou.
 - Funkcie sú **naše zhrnutie** funkčných kategórií CosIng. Databáza CosIng (Európska komisia) nebola dostupná, **nič z nej sa nekopíruje**; podmienky použitia CosIng sme nemohli prečítať. Po otvorení siete: stiahnuť CosIng, preveriť podmienky opakovaného použitia a doplniť funkcie a synonymá.
 
@@ -37,10 +37,13 @@ Vlastná metodika (nie INCI Beauty, Yuka ani Codecheck – hodnotenia iných apl
 | Retinol | nar. 2024/996: 0,3 % RE, telové mlieka 0,05 % RE, upozornenie „Contains vitamin A…“ | dátumy uplatnenia sa líšia (11/2025, 2027) |
 | Formaldehyd | Príloha II od 2019; uvoľňovače povolené (DMDM hydantoín pol. 33) | prah označovania „uvoľňuje formaldehyd“ – finálne znenie nepotvrdené, neuvádzame |
 | Mikroplasty | nar. 2023/2055; kozmetika s prechodným obdobím 4–12 r. | presné dátumy pre kozmetiku nepotvrdené, neuvádzame |
+| Benzoany, sorbany, DHA | benzoová kyselina/benzoan sodný: 0,5 % nezmývateľné, 2,5 % zmývateľné, 1,7 % ústne (ako kyselina); sorbany a DHA 0,6 % | z prepisu Prílohy V a SCCP; zdroje v 1 prípade sekundárne |
+| Oxid zinočnatý | nar. 2016/621: 25 % nano aj nenano, okrem rizika vdýchnutia | |
+| Triklosán / triklokarbán | len návrh zmien (WTO 2023); prijatie a podmienky nepotvrdené → v appke bez čísel | pôvodne sme ho viazali na 2024/996 – opravené |
 | SLS | EMA: podráždenie pri dlhšej aplikácii; CIR 1983 (laureth sulfáty) | spotrebiteľské blogy nepoužité |
 
 **Vyvrátené / nepoužité:** formaldehyd „Príloha V pol. 5 0,2 %“ (zastarané), regulácia „2024/996“ pre lilial (nesedí – lilial je 2021/1902), „2022/1181 ako zmena Prílohy IV“ (v skutočnosti zmena preambuly Prílohy V), 2022/1176 pre homosalát (správne je 2022/2195).
-**Bez overenia, preto v appke len ako „odhad“ bez čísla:** benzoany, sorbany, dehydroacetát, chemické UV filtre (avobenzón, oktinoxát …), zinok oxid, farbivá CI (okrem opisu), SLS-podobné tenzidy, propylénglykol, lanolín, denat. alkohol.
+**Bez overenia, preto v appke len ako „odhad“ bez čísla:** chemické UV filtre (avobenzón, oktinoxát …), farbivá CI (okrem opisu), SLS-podobné tenzidy, propylénglykol, lanolín, denat. alkohol.
 
 ## Rozhodnutia
 - **K1** Modul `src/kozmetika/**`, trasa `#/kozmetika`, vlastné kľúče localStorage (`recepty-kozmetika-nastavenia-v1`, `-historia-v1`, `-obf-v1`); nezasahuje do stavu receptov ani do skenera potravín. Importuje len OCR (`ocr.ts`, `obrazok.ts`, `kod.ts`, `off.ts` → `platnyKod`). Jediná zmena mimo modulu v skeneri: typ `JazykOcr` rozšírený o `'eng'` (jazykové dáta `eng` už v appke sú).
