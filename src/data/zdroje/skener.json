@@ -1,0 +1,380 @@
+[
+ {
+  "id": "iarc-2015-maso",
+  "citacia": "Bouvard V. a kol. 2015, Lancet Oncol (IARC Monografie 114)",
+  "doi": "10.1016/S1470-2045(15)00444-1",
+  "url": "https://www.iarc.who.int/news-events/iarc-monographs-volume-114-evaluation-of-consumption-of-red-meat-and-processed-meat",
+  "uroven": "stredné",
+  "tvrdenie": "Spracované mäso je v skupine 1 (dostatočné dôkazy o súvise s rakovinou hrubého čreva a konečníka), červené mäso v 2A. Skupina vyjadruje silu dôkazu, nie veľkosť rizika.",
+  "cisla": "každých 50 g spracovaného mäsa denne = o 18 % vyššie riziko",
+  "overene": "2026-10-15",
+  "overenie": "vyhladavanie",
+  "karty": [
+   "skener"
+  ]
+ },
+ {
+  "id": "efsa-2017-dusitany",
+  "citacia": "EFSA ANS Panel 2017, EFSA Journal 15(6):4786 (dusitany) a 4787 (dusičnany)",
+  "doi": null,
+  "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7010087",
+  "uroven": "stredné",
+  "tvrdenie": "EFSA stanovila ADI pre dusitany; genotoxicita sa in vivo nepotvrdila. ADI sa prekračuje najmä pri započítaní všetkých zdrojov (nielen aditív). Limity v EÚ neskôr znížilo nariadenie 2023/2108.",
+  "cisla": "ADI dusitanu 0,07 mg/kg/deň",
+  "overene": "2026-10-15",
+  "overenie": "vyhladavanie",
+  "karty": [
+   "skener"
+  ]
+ },
+ {
+  "id": "efsa-2021-tio2",
+  "citacia": "EFSA 2021 (6. 5. 2021) a nariadenie Komisie (EÚ) 2022/63",
+  "doi": null,
+  "url": "https://fsai.ie/Business-Advice/Running-a-Food-Business/Food-Safety-and-Hygiene/Additives/EFSA-Opinion-Titanium-dioxide-(E171)-no-longer-con",
+  "uroven": "slabé",
+  "tvrdenie": "EFSA uviedla, že E171 sa nedá považovať za bezpečný, lebo genotoxicitu nemožno vylúčiť. V EÚ je zakázaný v potravinách od 7. 2. 2022 (prechodné obdobie do 7. 8. 2022). Ide o preventívnu obavu, nie o preukázanú škodu u ľudí.",
+  "cisla": "",
+  "overene": "2026-10-15",
+  "overenie": "vyhladavanie",
+  "karty": [
+   "skener"
+  ]
+ },
+ {
+  "id": "mccann-2007",
+  "citacia": "McCann D. a kol. 2007, Lancet 370:1560–1567; nariadenie (ES) č. 1333/2008, čl. 24 a príloha V",
+  "doi": null,
+  "url": "https://eprints.soton.ac.uk/145999",
+  "uroven": "stredné",
+  "tvrdenie": "V RCT na deťoch zmesi farbív s benzoanom sodným zvýšili hyperaktivitu; účinok je malý a nedá sa pripísať jednej látke. EÚ vyžaduje na obale farbív E102, E104, E110, E122, E124, E129 text „môže nepriaznivo ovplyvňovať aktivitu a pozornosť detí“.",
+  "cisla": "",
+  "overene": "2026-10-15",
+  "overenie": "vyhladavanie",
+  "karty": [
+   "skener"
+  ]
+ },
+ {
+  "id": "iarc-2023-aspartam",
+  "citacia": "IARC (WHO) 14. 7. 2023; JECFA; EFSA Journal 2013, doi 10.2903/j.efsa.2013.3496",
+  "doi": "10.2903/j.efsa.2013.3496",
+  "url": "https://www.who.int/news/item/14-07-2023-aspartame-hazard-and-risk-assessment-results-released",
+  "uroven": "slabé",
+  "tvrdenie": "IARC zaradila aspartám do 2B (možný karcinogén, obmedzené dôkazy – ide o hazard, nie o mieru rizika). JECFA ponechala ADI 40 mg/kg/deň, EFSA (2013) pri tejto hodnote obavu nenašla. Nevhodný pri fenylketonúrii.",
+  "cisla": "ADI 40 mg/kg/deň",
+  "overene": "2026-10-15",
+  "overenie": "vyhladavanie",
+  "karty": [
+   "skener"
+  ]
+ },
+ {
+  "id": "efsa-2017-glutamany",
+  "citacia": "EFSA ANS Panel 2017, EFSA Journal 15(7):4910",
+  "doi": null,
+  "url": "https://efsa.europa.eu/en/efsajournal/pub/4910",
+  "uroven": "stredné",
+  "tvrdenie": "Skupinová ADI pre glutamáty E620–E625; bez obavy z genotoxicity. Odhady príjmu u niektorých skupín ADI prekračujú (EFSA uvádza, že odhad ju pravdepodobne nadsadzuje).",
+  "cisla": "ADI 30 mg/kg/deň",
+  "overene": "2026-10-15",
+  "overenie": "vyhladavanie",
+  "karty": [
+   "skener"
+  ]
+ },
+ {
+  "id": "efsa-2019-fosfaty",
+  "citacia": "EFSA 2019, EFSA Journal, doi 10.2903/j.efsa.2019.5674",
+  "doi": "10.2903/j.efsa.2019.5674",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/32626329/",
+  "uroven": "stredné",
+  "tvrdenie": "Skupinová ADI pre fosfáty (E338–E341, E343, E450–E452), najcitlivejší koncový bod je poškodenie obličiek. ADI neplatí pre ľudí s poruchou obličiek; u detí sa ADI prekračuje.",
+  "cisla": "ADI 40 mg/kg/deň (ako fosfor, vrátane prirodzeného)",
+  "overene": "2026-10-15",
+  "overenie": "vyhladavanie",
+  "karty": [
+   "skener"
+  ]
+ },
+ {
+  "id": "chassaing-2015",
+  "citacia": "Chassaing B. a kol. 2015, Nature 519:92–96",
+  "doi": "10.1038/nature14232",
+  "url": "https://gut.bmj.com/content/64/7/1178",
+  "uroven": "slabé",
+  "tvrdenie": "U myší nízke dávky CMC a polysorbátu 80 menili črevnú mikrobiotu a podporovali zápal; dôkaz u ľudí chýba, ide o preventívnu obavu.",
+  "cisla": "",
+  "overene": "2026-10-15",
+  "overenie": "vyhladavanie",
+  "karty": [
+   "skener"
+  ]
+ },
+ {
+  "id": "witkowski-2023",
+  "citacia": "Witkowski M. a kol. 2023, Nat Med 29(3):710–718",
+  "doi": null,
+  "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10275890/",
+  "uroven": "slabé",
+  "tvrdenie": "Vyššie hladiny erytritolu v krvi súviseli s vyšším rizikom veľkých kardiovaskulárnych príhod (observačne, u vysokorizikových pacientov); malý pilotný pokus na 8 zdravých ľuďoch. Príčinnosť nie je dokázaná.",
+  "cisla": "",
+  "overene": "2026-10-15",
+  "overenie": "vyhladavanie",
+  "karty": [
+   "skener"
+  ]
+ },
+ {
+  "id": "efsa-2023-erytritol",
+  "citacia": "EFSA 2023, EFSA Journal (8430)",
+  "doi": null,
+  "url": "https://www.efsa.europa.eu/en/efsajournal/pub/8430",
+  "uroven": "stredné",
+  "tvrdenie": "Erytritol môže pri vyšších dávkach spôsobiť hnačku; EFSA to zohľadnila pri hodnotení.",
+  "cisla": "",
+  "overene": "2026-10-15",
+  "overenie": "vyhladavanie",
+  "karty": [
+   "skener"
+  ]
+ },
+ {
+  "id": "who-2023-sladidla",
+  "citacia": "WHO 2023: Use of non-sugar sweeteners (usmernenie)",
+  "doi": null,
+  "url": "https://www.paho.org/en/news/15-5-2023-who-advises-not-use-non-sugar-sweeteners-weight-control-newly-released-guideline",
+  "uroven": "slabé",
+  "tvrdenie": "WHO podmienečne odporúča nepoužívať nesacharidové sladidlá na kontrolu hmotnosti ani na zníženie rizika chorôb: žiadny trvalý prínos pre telesný tuk, observačné štúdie ukazujú súvis s vyšším rizikom. Netýka sa polyolov ani cukrov.",
+  "cisla": "prehľad 283 štúdií",
+  "overene": "2026-10-15",
+  "overenie": "vyhladavanie",
+  "karty": [
+   "skener"
+  ]
+ },
+ {
+  "id": "efsa-2011-karamel",
+  "citacia": "EFSA ANS Panel 2011 (karamelové farbivá E150a–d)",
+  "doi": null,
+  "url": "https://www.efsa.europa.eu/en/press/news/ans110308",
+  "uroven": "stredné",
+  "tvrdenie": "Skupinová ADI pre karamely E150a, c, d; karamely nie sú genotoxické ani karcinogénne a 4-MeI nebol pri odhadovanej expozícii obavou. Vysokí konzumenti môžu ADI pri maximálnych úrovniach použitia prekročiť.",
+  "cisla": "skupinová ADI 300 mg/kg/deň",
+  "overene": "2026-10-15",
+  "overenie": "vyhladavanie",
+  "karty": [
+   "skener"
+  ]
+ },
+ {
+  "id": "efsa-2010-e133",
+  "citacia": "EFSA 2010, EFSA Journal 1853 (brilantná modrá E133)",
+  "doi": null,
+  "url": "https://efsa.europa.eu/sv/efsajournal/pub/1853",
+  "uroven": "stredné",
+  "tvrdenie": "EFSA znížila ADI pre E133; pri vysokom príjme u detí sa ADI môže prekračovať.",
+  "cisla": "ADI 6 mg/kg/deň",
+  "overene": "2026-10-15",
+  "overenie": "vyhladavanie",
+  "karty": [
+   "skener"
+  ]
+ },
+ {
+  "id": "efsa-2016-benzoany",
+  "citacia": "EFSA 2016, EFSA Journal, doi 10.2903/j.efsa.2016.4433",
+  "doi": "10.2903/j.efsa.2016.4433",
+  "url": "https://efsa.europa.eu/en/efsajournal/pub/4433",
+  "uroven": "stredné",
+  "tvrdenie": "Benzoany E210–E213: bez obavy z genotoxicity; ADI sa pri ochutených nápojoch môže u batoliat a detí prekračovať.",
+  "cisla": "ADI 5 mg/kg/deň (ako benzoová kyselina)",
+  "overene": "2026-10-15",
+  "overenie": "vyhladavanie",
+  "karty": [
+   "skener"
+  ]
+ },
+ {
+  "id": "efsa-2022-sulfity",
+  "citacia": "EFSA 2016 (4438) a 2022 (7594): sulfity E220–E228",
+  "doi": null,
+  "url": "https://www.efsa.europa.eu/sites/default/files/2022-11/EFS2_7594.pdf",
+  "uroven": "stredné",
+  "tvrdenie": "EFSA v roku 2022 pre nedostatok údajov starú ADI nepotvrdila; pri maximálnych povolených hladinách je bezpečnostná rezerva nízka (obava u vysokých konzumentov).",
+  "cisla": "",
+  "overene": "2026-10-15",
+  "overenie": "vyhladavanie",
+  "karty": [
+   "skener"
+  ]
+ },
+ {
+  "id": "efsa-2019-sorbany",
+  "citacia": "EFSA 2015 a EFSA FAF Panel 2019 (sorbany E200–E203)",
+  "doi": null,
+  "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7009143/",
+  "uroven": "stredné",
+  "tvrdenie": "Od roku 2019 platí pre sorbovú kyselinu a sorban draselný ADI vyššia než pôvodná dočasná.",
+  "cisla": "ADI 11 mg/kg/deň",
+  "overene": "2026-10-15",
+  "overenie": "vyhladavanie",
+  "karty": [
+   "skener"
+  ]
+ },
+ {
+  "id": "eu-2019-649",
+  "citacia": "Nariadenie Komisie (EÚ) 2019/649; WHO REPLACE (2018)",
+  "doi": null,
+  "url": "https://eur-lex.europa.eu/eli/reg/2019/649/oj/eng",
+  "uroven": "silné",
+  "tvrdenie": "V EÚ nesmie potravina pre spotrebiteľa obsahovať viac ako 2 g transmastných kyselín (okrem prirodzených v živočíšnom tuku) na 100 g tuku; platí od 1. 4. 2021. Právny rámec, zdravotný dôkaz sme samostatne nehľadali.",
+  "cisla": "max. 2 g / 100 g tuku",
+  "overene": "2026-10-15",
+  "overenie": "vyhladavanie",
+  "karty": [
+   "skener"
+  ]
+ },
+ {
+  "id": "efsa-2011-bha",
+  "citacia": "EFSA ANS Panel 2011, EFSA Journal 9(10) (BHA E320)",
+  "doi": null,
+  "url": "https://efsa.europa.eu/de/efsajournal/pub/2392",
+  "uroven": "stredné",
+  "tvrdenie": "EFSA stanovila ADI pre BHA, bez obavy z genotoxicity.",
+  "cisla": "ADI 1,0 mg/kg/deň",
+  "overene": "2026-10-15",
+  "overenie": "vyhladavanie",
+  "karty": [
+   "skener"
+  ]
+ },
+ {
+  "id": "who-2015-cukry",
+  "citacia": "WHO 2015: Guideline: Sugars intake for adults and children",
+  "doi": null,
+  "url": "https://who.int/news/item/04-03-2015-who-calls-on-countries-to-reduce-sugars-intake-among-adults-and-children",
+  "uroven": "stredné",
+  "tvrdenie": "Silné odporúčanie: voľné cukry pod 10 % energie (dospelí aj deti); podmienečne pod 5 %. Voľné cukry zahŕňajú pridané cukry, med, sirupy a šťavy, nie celé ovocie a mlieko.",
+  "cisla": "< 10 % energie, ideálne < 5 % (≈ 25 g/deň)",
+  "overene": "2026-10-15",
+  "overenie": "vyhladavanie",
+  "karty": [
+   "skener"
+  ]
+ },
+ {
+  "id": "efsa-2016-glycidyl",
+  "citacia": "EFSA CONTAM Panel 2016, EFSA Journal 14(5):4426; aktualizácia 2018",
+  "doi": null,
+  "url": "https://www.efsa.europa.eu/en/press/news/180110",
+  "uroven": "stredné",
+  "tvrdenie": "Glycidylestery (genotoxické) a 3-MCPD vznikajú pri rafinácii olejov; najvyššie hladiny boli v palmovom oleji a tukoch; obava je najmä pri malých deťoch. Ide o kontaminant z rafinácie, nie o palmový olej ako taký.",
+  "cisla": "",
+  "overene": "2026-10-15",
+  "overenie": "vyhladavanie",
+  "karty": [
+   "skener"
+  ]
+ },
+ {
+  "id": "monteiro-2019",
+  "citacia": "Monteiro C. A. a kol. 2019, Public Health Nutr 22(5):936–941",
+  "doi": "10.1017/S1368980018003762",
+  "url": "https://pmc.ncbi.nlm.nih.gov/articles/10260459",
+  "uroven": "prax",
+  "tvrdenie": "Ultraspracované potraviny sa v zložení rozpoznajú podľa markerov (napr. glukózo-fruktózový sirup, hydrolyzované bielkoviny, emulgátory, sladidlá, zahusťovadlá, arómy). Je to klasifikácia, nie dôkaz škodlivosti jednotlivých látok.",
+  "cisla": "",
+  "overene": "2026-10-15",
+  "overenie": "vyhladavanie",
+  "karty": [
+   "skener"
+  ]
+ },
+ {
+  "id": "lane-2024",
+  "citacia": "Lane M. M. a kol. 2024, BMJ",
+  "doi": "10.1136/bmj-2023-077310",
+  "url": "https://researchonline.jcu.edu.au/87551/",
+  "uroven": "stredné",
+  "tvrdenie": "Umbrella review 45 metaanalýz: vyššia konzumácia ultraspracovaných potravín súvisí s horšími výsledkami v 32 zo sledovaných ukazovateľov (najmä kardiometabolické, duševné, úmrtnosť). Ide o asociáciu, nie o dôkaz príčinnosti.",
+  "cisla": "",
+  "overene": "2026-10-15",
+  "overenie": "vyhladavanie",
+  "karty": [
+   "skener"
+  ]
+ },
+ {
+  "id": "efsa-2010-steviol",
+  "citacia": "EFSA ANS Panel 2010, EFSA Journal (1537), steviolglykozidy E960",
+  "doi": null,
+  "url": "https://efsa.europa.eu/en/efsajournal/pub/1537",
+  "uroven": "stredné",
+  "tvrdenie": "EFSA stanovila ADI pre steviolglykozidy.",
+  "cisla": "ADI 4 mg/kg/deň (ako steviol)",
+  "overene": "2026-10-15",
+  "overenie": "vyhladavanie",
+  "karty": [
+   "skener"
+  ]
+ },
+ {
+  "id": "eu-1169-polyoly",
+  "citacia": "Nariadenie (EÚ) č. 1169/2011, príloha III; nariadenie (EÚ) 2021/1175",
+  "doi": null,
+  "url": "https://eur-lex.europa.eu/eli/reg/2021/1175/oj/eng",
+  "uroven": "silné",
+  "tvrdenie": "Potraviny s viac ako 10 % pridaných polyolov musia niesť upozornenie, že nadmerná konzumácia môže mať preháňavé účinky.",
+  "cisla": "prah 10 %",
+  "overene": "2026-10-15",
+  "overenie": "vyhladavanie",
+  "karty": [
+   "skener"
+  ]
+ },
+ {
+  "id": "eu-1334-2008",
+  "citacia": "Nariadenie (ES) č. 1334/2008, čl. 3",
+  "doi": null,
+  "url": "https://eur-lex.europa.eu/eli/reg/2008/1334/2026-02-16",
+  "uroven": "silné",
+  "tvrdenie": "„Prírodná aróma“ je právna kategória (získaná fyzikálnymi, enzymatickými alebo mikrobiologickými postupmi z prírodného materiálu); nehovorí nič o zdravotnej hodnote.",
+  "cisla": "",
+  "overene": "2026-10-15",
+  "overenie": "vyhladavanie",
+  "karty": [
+   "skener"
+  ]
+ },
+ {
+  "id": "efsa-2017-skroby",
+  "citacia": "EFSA ANS Panel 2017, EFSA Journal, doi 10.2903/j.efsa.2017.4911 (modifikované škroby E1404–E1452)",
+  "doi": "10.2903/j.efsa.2017.4911",
+  "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7009865/",
+  "uroven": "stredné",
+  "tvrdenie": "EFSA nenašla pri hlásených použitiach bezpečnostnú obavu, číselná ADI nie je potrebná.",
+  "cisla": "",
+  "overene": "2026-10-15",
+  "overenie": "vyhladavanie",
+  "karty": [
+   "skener"
+  ]
+ },
+ {
+  "id": "eu-1333-2008",
+  "citacia": "Nariadenie (ES) č. 1333/2008 o prídavných látkach, príloha II (zoznam povolených)",
+  "doi": null,
+  "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02008R1333-20230720",
+  "uroven": "silné",
+  "tvrdenie": "Zoznam prídavných látok povolených v EÚ je v prílohe II; povolenie znamená, že látka prešla hodnotením bezpečnosti pre dané použitie, nie že je zdravotne prospešná.",
+  "cisla": "",
+  "overene": "2026-10-15",
+  "overenie": "vyhladavanie",
+  "karty": [
+   "skener"
+  ]
+ }
+]
