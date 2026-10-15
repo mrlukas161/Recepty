@@ -1,5 +1,5 @@
 /** História skenov – len lokálne (localStorage), bez fotiek. */
-import type { Vyziva } from './typy';
+import type { Vyziva, Doplnok } from './typy';
 
 const KEY = 'recepty-skener-v1';
 export interface Zaznam {
@@ -11,6 +11,10 @@ export interface Zaznam {
   pasmo: string;
   vyziva?: Vyziva;
   kod?: string;
+  /** údaje z tagov databázy (E-čísla, alergény…) */
+  doplnok?: Doplnok;
+  /** jazyk textu zloženia z databázy */
+  jazyk?: string;
 }
 
 export function nacitajHistoriu(): Zaznam[] {

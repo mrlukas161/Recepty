@@ -376,5 +376,19 @@
   "karty": [
    "skener"
   ]
+ },
+ {
+  "id": "uk-fop-2016",
+  "citacia": "Department of Health, FSA a ďalší 2016: Guide to creating a front of pack (FoP) nutrition label for pre-packed products sold through retail outlets (britské semaforové prahy)",
+  "doi": null,
+  "url": "https://assets.publishing.service.gov.uk/media/5a80cd03ed915d74e33fc7c5/FoP_Nutrition_labelling_UK_guidance.pdf",
+  "uroven": "slabé",
+  "tvrdenie": "Britské farebné značenie na prednej strane obalu: „vysoký obsah“ (červená) pri tuhých potravinách na 100 g je pri celkových cukroch nad 22,5 g, pri nasýtených tukoch nad 5 g a pri soli nad 1,5 g; „nízky“ obsah je do 5 g cukrov, 1,5 g nasýtených tukov a 0,3 g soli. Ide o regulačnú konvenciu, nie o výsledok jednej štúdie.",
+  "cisla": "cukry > 22,5 g · nasýtené tuky > 5 g · soľ > 1,5 g na 100 g (vysoký obsah)",
+  "overene": "2026-10-15",
+  "overenie": "vyhladavanie",
+  "karty": [
+   "skener"
+  ]
  }
 ]

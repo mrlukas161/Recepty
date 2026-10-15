@@ -1,10 +1,10 @@
 /** Rozbor zloženia: parser + databázy → zoznam rozpoznaných zložiek, alergény a stopy. */
 import { rozdelText, parsujZlozenie, type Uzol } from './parser';
 import { norm, kluc, levenshtein, tolerancia } from './normalizacia';
-import { najdiPodlaE, najdiPodlaNazvu, vytiahniE, TRIEDY_SK, ADITIVUM, type Aditivum } from './aditiva';
-import { najdiZlozku, VZORY_IDX } from './zlozky';
+import { najdiPodlaE, najdiPodlaNazvu, vytiahniE, zakladnyE, TRIEDY_SK, ADITIVUM, type Aditivum } from './aditiva';
+import { najdiZlozku, zlozkaPodlaId, VZORY_IDX } from './zlozky';
 import { alergenyVTexte } from './alergeny';
-import type { Rozbor, Zlozka, PriznakZlozky } from './typy';
+import type { Rozbor, Zlozka, PriznakZlozky, Doplnok, Spolahlivost } from './typy';
 import type { Alergen } from '../data/types';
 
 /** Slová označujúce funkciu (pred zátvorkou so zložkami): „farbivo (E102, E110)“. */
@@ -117,15 +117,60 @@ function spracuj(uzly: Uzol[], out: Zlozka[], hlbka = 0, rodic?: string, poradie
   });
 }
 
-export function rozbor(vstup: string): Rozbor {
+/** Tag OFF „en:e322i“ → aditívum z našej databázy (E322i → E322(i) → E322). */
+function aditivumZTagu(tag: string): Aditivum | undefined {
+  const m = /^(?:[a-z]{2}:)?e(\d{3,4})([a-z]?)$/i.exec(tag.trim());
+  if (!m) return undefined;
+  const cislo = m[1], pis = m[2].toLowerCase();
+  const rimske: Record<string, string> = { i: '(i)', v: '(v)', x: '(x)' };
+  return najdiPodlaE(`E${cislo}${pis}`) ?? (rimske[pis] ? najdiPodlaE(`E${cislo}${rimske[pis]}`) : undefined) ?? najdiPodlaE(`E${cislo}`);
+}
+
+/** Nerozpoznané zložky nesmú pôsobiť ako neutrálne: nad ~30 % alebo medzi prvými tromi = nízka spoľahlivosť. */
+export const PRAH_NEROZPOZNANYCH = 0.3;
+export function spolahlivostRozboru(zlozky: Zlozka[]): Spolahlivost {
+  const nezn = zlozky.filter((z) => z.typ === 'neznama');
+  const podiel = zlozky.length ? nezn.length / zlozky.length : 0;
+  const naPrvych = nezn.some((z) => z.hlbka === 0 && z.poradie < 3);
+  const nizka = zlozky.length > 0 && (podiel > PRAH_NEROZPOZNANYCH || naPrvych);
+  return {
+    nizka, nerozpoznane: nezn.length, podiel, zoznam: nezn.map((z) => z.povodny),
+    dovod: nizka ? (podiel > PRAH_NEROZPOZNANYCH ? `Nerozpoznali sme ${nezn.length} z ${zlozky.length} zložiek.` : 'Nerozpoznali sme niektorú z prvých troch (najväčších) zložiek.') : undefined,
+  };
+}
+
+/** Zloží rozbor textu s údajmi z databázy (E-čísla, alergény, pridaný cukor, palmový olej) bez duplicít. */
+function zlucDoplnok(zlozky: Zlozka[], d: Doplnok) {
+  const koniec = () => zlozky.reduce((a, z) => Math.max(a, z.poradie), -1) + 1;
+  const mamE = new Set(zlozky.filter((z) => z.typ === 'aditivum' && z.id).map((z) => zakladnyE(z.id!).replace(/[a-z]$/, '')));
+  for (const tag of d.e ?? []) {
+    const a = aditivumZTagu(tag);
+    if (!a) continue;
+    const zaklad = zakladnyE(a.id).replace(/[a-z]$/, '');
+    if (mamE.has(zaklad)) continue;
+    mamE.add(zaklad);
+    const z = zAditiva(a, `${a.id} (z údajov databázy)`, koniec(), 0, undefined, false);
+    zlozky.push({ ...z, zTagov: true });
+  }
+  const pridajZlozku = (id: string, popis: string, poradie: number) => {
+    const db = zlozkaPodlaId(id);
+    if (!db) return;
+    zlozky.push({ povodny: popis, nazov: db.nazov, typ: 'zlozka', poradie, hlbka: 0, id: db.id, priznaky: [...db.priznaky], hodnotenie: db.hodnotenie, alergeny: [], zTagov: true });
+  };
+  if (d.cukor && !zlozky.some((z) => z.priznaky.includes('cukor'))) pridajZlozku('cukor', 'pridaný cukor (z údajov databázy)', Math.min(koniec(), 2));
+  if (d.palma && !zlozky.some((z) => z.priznaky.includes('palmovy-tuk'))) pridajZlozku('palmovy-tuk', 'palmový olej (z údajov databázy)', Math.min(koniec(), 3));
+}
+
+export function rozbor(vstup: string, doplnok?: Doplnok): Rozbor {
   const { zlozenie, stopy, alergenInfo } = rozdelText(vstup);
   const strom = parsujZlozenie(zlozenie);
   const zlozky: Zlozka[] = [];
   spracuj(strom, zlozky);
-  const alergeny = [...new Set(zlozky.flatMap((z) => z.alergeny))];
-  const stopyA = [...new Set(alergenyVTexte(stopy.replace(/^[^:]*?(?:obsahova[tť]|stopy|contain|traces of)/i, '')))].filter((a) => !alergeny.includes(a));
+  if (doplnok) zlucDoplnok(zlozky, doplnok);
+  const alergeny = [...new Set([...zlozky.flatMap((z) => z.alergeny), ...(doplnok?.alergeny ?? [])])];
+  const stopyA = [...new Set([...alergenyVTexte(stopy.replace(/^[^:]*?(?:obsahova[tť]|stopy|contain|traces of)/i, '')), ...(doplnok?.stopy ?? [])])].filter((a) => !alergeny.includes(a));
   void alergenInfo;
-  return { zlozky, alergeny, stopy: stopyA, stopyText: stopy.trim(), pocetZloziek: zlozky.length, text: zlozenie };
+  return { zlozky, alergeny, stopy: stopyA, stopyText: stopy.trim(), pocetZloziek: zlozky.length, text: zlozenie, spolahlivost: spolahlivostRozboru(zlozky) };
 }
 
 export { ADITIVUM };

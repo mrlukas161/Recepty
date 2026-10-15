@@ -49,7 +49,7 @@ export function RiadokZlozky({ z, deti }: { z: Zlozka; deti: boolean }) {
   );
 }
 
-export function Vysledok({ r, s, deti, nazov = '' }: { r: Rozbor; s: SkoreVyrobku; deti: boolean; nazov?: string }) {
+export function Vysledok({ r, s, deti, nazov = '', naOpravu }: { r: Rozbor; s: SkoreVyrobku; deti: boolean; nazov?: string; naOpravu?: () => void }) {
   const alt = domaceAlternativy(nazov, r, INFOS);
   return (
     <div>
@@ -57,13 +57,20 @@ export function Vysledok({ r, s, deti, nazov = '' }: { r: Rozbor; s: SkoreVyrobk
         <div class="riadok">
           <Pecat skore={s.celkom} pasmo={s.pasmo} />
           <div class="rozt">
-            <h2 style="margin:0">{PASMO_TEXT[s.pasmo]}</h2>
+            <h2 style="margin:0">{PASMO_TEXT[s.pasmo]}{s.nizkaSpolahlivost ? ' (orientačne)' : ''}</h2>
             <div class="maly">{r.pocetZloziek} zložiek · {r.zlozky.filter((z) => z.typ === 'aditivum').length} prídavných látok</div>
           </div>
         </div>
         <p class="sk-pozn" style="margin-top:10px">{POZNAMKA_SKORE_V}</p>
       </div>
 
+      {s.nizkaSpolahlivost && (
+        <div class="sk-varovanie" role="alert">
+          <b>{s.spolahlivostText}.</b> {r.spolahlivost.dovod} Skóre je len orientačné a nikdy nie „Výborné“ ani „Dobré“.
+          {r.spolahlivost.zoznam.length > 0 && <> Nerozpoznané: {r.spolahlivost.zoznam.slice(0, 6).join('; ')}{r.spolahlivost.zoznam.length > 6 ? '…' : ''}.</>}
+          {naOpravu && <div class="rad"><button class="male" onClick={naOpravu}>✏️ Opraviť zloženie</button></div>}
+        </div>
+      )}
       {s.osobne.map((o) => <div key={o.text} class="sk-varovanie" role="alert">{o.text}</div>)}
       {r.alergeny.length > 0 && <div class="upoz"><b>Alergény v zložení:</b> {r.alergeny.map((a) => ALERGEN_NAZOV[a]).join(', ')}.</div>}
       {r.stopy.length > 0 && <div class="upoz"><b>Môže obsahovať stopy:</b> {r.stopy.map((a) => ALERGEN_NAZOV[a]).join(', ')}.</div>}

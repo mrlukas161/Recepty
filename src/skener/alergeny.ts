@@ -26,7 +26,7 @@ const VZORY: Record<Alergen, string[]> = {
 };
 
 /** Slová, ktoré vyzerajú ako alergén, ale nie sú (napr. „kakaové maslo“ nie je mlieko, „muškátový orech“ nie je orech, „kokos“). */
-const VYNIMKY = [/kakaov\w* maslo/g, /kakaov\w* masla/g, /muskatov\w* orech/g, /kokosov\w* mlie\w*/g, /kokosov\w* smet\w*/g, /mandlov\w* mlie\w*/g, /ryzov\w* mlie\w*/g, /ovsen\w* mlie\w*/g, /sojov\w* mlie\w*/g, /bezlepkov\w*/g, /bez lepku/g, /mak\b/g, /ceresn\w*/g];
+const VYNIMKY = [/kakaov\w* maslo/g, /kakaov\w* masla/g, /muskatov\w* orech/g, /kokosov\w* mlie\w*/g, /kokosov\w* smet\w*/g, /mandlov\w* mlie\w*/g, /ryzov\w* mlie\w*/g, /ovsen\w* mlie\w*/g, /sojov\w* mlie\w*/g, /bezlepkov\w*/g, /sans gluten/g, /gluten[ -]free/g, /free from gluten/g, /bez glutenu/g, /glutenfrei/g, /sin gluten/g, /bez lepku/g, /mak\b/g, /ceresn\w*/g];
 
 export interface NajdeneAlergeny { alergeny: Alergen[]; kluce: Record<string, Alergen[]> }
 

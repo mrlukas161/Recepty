@@ -53,6 +53,29 @@ export interface Zlozka {
   /** len pri typ 'neznama': text vyzerá ako nezmysel z OCR */
   podozrivy?: boolean;
   alergeny: Alergen[];
+  /** zložka pochádza z tagov databázy, nie z textu */
+  zTagov?: boolean;
+}
+
+/** Doplnkové údaje z databázy (OFF tagy) – skladajú sa s rozborom textu. */
+export interface Doplnok {
+  /** E-čísla z additives_tags (napr. E322, E322i) */
+  e?: string[];
+  alergeny?: Alergen[];
+  stopy?: Alergen[];
+  /** ingredients_tags / analysis obsahujú en:added-sugar */
+  cukor?: boolean;
+  /** en:palm-oil */
+  palma?: boolean;
+}
+
+export interface Spolahlivost {
+  nizka: boolean;
+  nerozpoznane: number;
+  podiel: number;
+  /** názvy nerozpoznaných zložiek (na zobrazenie) */
+  zoznam: string[];
+  dovod?: string;
 }
 
 export interface Rozbor {
@@ -62,6 +85,7 @@ export interface Rozbor {
   stopyText: string;
   pocetZloziek: number;
   text: string;
+  spolahlivost: Spolahlivost;
 }
 
 export interface Vyziva {

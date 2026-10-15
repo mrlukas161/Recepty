@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { readFileSync } from 'node:fs';
 
 const ETIKETA = 'Zloženie: pšeničná múka, cukor, palmový tuk, kakao 4,5 %, emulgátor (E 471), farbivo E102, aróma, soľ.';
 
@@ -98,4 +99,21 @@ test('skener: OCR funguje aj offline po prvom použití (service worker)', async
   await context.setOffline(true);
   await page.reload();
   await spusti();
+});
+
+test('skener: Nutella (reálna odpoveď OFF, zloženie len en/fr) → nízke pásmo, E322, cukor, palmový olej', async ({ page }) => {
+  const nutella = readFileSync(new URL('../tests/fixtures/off/nutella.json', import.meta.url), 'utf8');
+  await page.route('https://world.openfoodfacts.org/api/v2/product/**', (r) => r.fulfill({ status: 200, contentType: 'application/json', body: nutella }));
+  await page.goto('./');
+  await page.getByRole('button', { name: 'Hotovo, ukáž návrhy' }).click();
+  await page.goto('./#/skener');
+  await page.getByLabel('Čiarový kód (čísla)').fill('3017620422003');
+  await page.getByRole('button', { name: 'Nájsť' }).click();
+  await expect(page.getByText(/Zloženie je v angličtine/)).toBeVisible();
+  await expect(page.getByRole('heading', { name: /Zriedka|Občas/ })).toBeVisible();
+  await expect(page.getByText(/Nízka spoľahlivosť/)).toHaveCount(0);
+  await expect(page.getByText(/E322 · /).first()).toBeVisible();
+  await expect(page.getByText(/Vysoký obsah cukrov/)).toBeVisible();
+  await expect(page.getByText('Palmový tuk / olej').first()).toBeVisible();
+  await page.screenshot({ path: 'test-results/skener-6-nutella.png', fullPage: true });
 });

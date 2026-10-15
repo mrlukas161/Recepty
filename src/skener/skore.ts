@@ -16,6 +16,9 @@ export interface SkoreVyrobku {
   osobne: { typ: 'alergen' | 'obmedzenie'; text: string }[];
   /** najproblematickejšie zložky (na zobrazenie hore) */
   najhorsie: Zlozka[];
+  /** zloženie sme rozpoznali slabo – skóre je len orientačné a nikdy nie „Výborné“ ani „Dobré“ */
+  nizkaSpolahlivost: boolean;
+  spolahlivostText?: string;
 }
 export interface MoznostiSkore {
   nastavenia?: Pick<Nastavenia, 'obmedzenia' | 'alergie' | 'deti'>;
@@ -134,18 +137,22 @@ export function vypocitajSkoreVyrobku(r: Rozbor, o: MoznostiSkore = {}): SkoreVy
   if (v && (v.cukry !== undefined || v.sol !== undefined || v.nasyt !== undefined)) {
     const casti: number[] = [];
     const popis: string[] = [];
-    if (v.cukry !== undefined) { casti.push(100 - lin(v.cukry, 5, 30)); popis.push(`cukry ${v.cukry} g`); }
-    if (v.sol !== undefined) { casti.push(100 - lin(v.sol, 0.3, 1.5)); popis.push(`soľ ${v.sol} g`); }
-    if (v.nasyt !== undefined) { casti.push(100 - lin(v.nasyt, 1.5, 6)); popis.push(`nasýtené ${v.nasyt} g`); }
+    const horsie: number[] = [];
+    if (v.cukry !== undefined) { const c = 100 - lin(v.cukry, 5, 22.5); casti.push(c); horsie.push(c); popis.push(`cukry ${v.cukry} g`); }
+    if (v.sol !== undefined) { const c = 100 - lin(v.sol, 0.3, 1.5); casti.push(c); horsie.push(c); popis.push(`soľ ${v.sol} g`); }
+    if (v.nasyt !== undefined) { const c = 100 - lin(v.nasyt, 1.5, 5); casti.push(c); horsie.push(c); popis.push(`nasýtené ${v.nasyt} g`); }
     if (v.vlak !== undefined) { casti.push(lin(v.vlak, 1, 6)); popis.push(`vláknina ${v.vlak} g`); }
-    const b = casti.reduce((a, c) => a + c, 0) / casti.length;
+    // priemer aj najhoršia živina: jedna veľmi vysoká hodnota (napr. 56 g cukrov) nesmie zaniknúť v priemere
+    const priemerV = casti.reduce((a, c) => a + c, 0) / casti.length;
+    const b = horsie.length ? (priemerV + Math.min(...horsie)) / 2 : priemerV;
     faktory.push({
-      id: 'vyziva', nazov: 'Výživové hodnoty (na 100 g)', body: Math.round(b), vaha: 10, hodnota: popis.join(' · '),
-      preco: 'Prahy (napr. cukry 5–30 g, soľ 0,3–1,5 g, nasýtené tuky 1,5–6 g na 100 g) sú naše odhady podobné farebným semaforom; nie sú to oficiálne limity ani výsledok jednej štúdie.',
-      zdroje: ['who-2015-cukry'],
+      id: 'vyziva', nazov: 'Výživové hodnoty (na 100 g)', body: Math.round(b), vaha: 20, hodnota: popis.join(' · '),
+      preco: 'Prahy „vysoký obsah“ sú z britského farebného značenia (cukry nad 22,5 g, nasýtené tuky nad 5 g, soľ nad 1,5 g na 100 g; „nízky“ do 5 g, 1,5 g a 0,3 g). Skóre sa stráca medzi „nízkym“ a „vysokým“ prahom a berie sa priemer s najhoršou živinou. Vláknina (1–6 g) je náš odhad. Tieto prahy sú regulačná konvencia, nie výsledok jednej štúdie.',
+      zdroje: ['uk-fop-2016', 'who-2015-cukry'],
     });
-    if ((v.cukry ?? 0) >= 22.5) negativa.push(`Veľa cukrov: ${v.cukry} g na 100 g.`);
-    if ((v.sol ?? 0) >= 1.5) negativa.push(`Veľa soli: ${v.sol} g na 100 g.`);
+    if ((v.cukry ?? 0) > 22.5) negativa.push(`Vysoký obsah cukrov: ${v.cukry} g na 100 g (nad 22,5 g).`);
+    if ((v.nasyt ?? 0) > 5) negativa.push(`Vysoký obsah nasýtených tukov: ${v.nasyt} g na 100 g (nad 5 g).`);
+    if ((v.sol ?? 0) > 1.5) negativa.push(`Vysoký obsah soli: ${v.sol} g na 100 g (nad 1,5 g).`);
     if ((v.vlak ?? 0) >= 6) pozitiva.push(`Vysoká vláknina: ${v.vlak} g na 100 g.`);
   }
 
@@ -174,10 +181,13 @@ export function vypocitajSkoreVyrobku(r: Rozbor, o: MoznostiSkore = {}): SkoreVy
   const sumaVah = faktory.reduce((a, f) => a + f.vaha, 0);
   const priemer = faktory.reduce((a, f) => a + f.body * f.vaha, 0) / sumaVah;
   // veľmi zlý kľúčový faktor (spracovanosť, cukor, prídavné látky) výrazne stiahne celok
-  const najhorsi = Math.min(...faktory.filter((f) => ['spracovanost', 'cukor', 'aditiva'].includes(f.id)).map((f) => f.body));
-  const celkom = pocet === 0 ? 0 : Math.round(clamp(priemer - 0.3 * Math.max(0, 45 - najhorsi)));
+  const najhorsi = Math.min(...faktory.filter((f) => ['spracovanost', 'cukor', 'aditiva', 'vyziva'].includes(f.id)).map((f) => f.body));
+  let celkom = pocet === 0 ? 0 : Math.round(clamp(priemer - 0.3 * Math.max(0, 45 - najhorsi)));
+  // nerozpoznané zložky nie sú neutrálne: pri slabej spoľahlivosti skóre nikdy nedosiahne „Dobré“ ani „Výborné“
+  const nizka = r.spolahlivost.nizka;
+  if (nizka) { celkom = Math.min(celkom, 59); negativa.push(`Nízka spoľahlivosť rozboru: ${r.spolahlivost.dovod ?? 'veľa nerozpoznaných zložiek'}`); }
   const p = pasmo(celkom);
   const najhorsie = z.filter((x) => { const s = stupenPreDomacnost(x, mameDeti); return s === 'obmedzit' || s === 'vyhnut-sa'; })
     .sort((a, b) => (horsi(stupenPreDomacnost(a, mameDeti)!, stupenPreDomacnost(b, mameDeti)!) ? -1 : 1)).slice(0, 5);
-  return { celkom, pasmo: p, pasmoText: PASMO_TEXT[p], faktory, pozitiva, negativa, osobne, najhorsie };
+  return { celkom, pasmo: p, pasmoText: PASMO_TEXT[p], faktory, pozitiva, negativa, osobne, najhorsie, nizkaSpolahlivost: nizka, spolahlivostText: nizka ? 'Nízka spoľahlivosť – skontroluj zloženie' : undefined };
 }

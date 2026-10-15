@@ -1,11 +1,19 @@
 /** Open Food Facts (ODbL) – dopyt z prehliadača používateľa, len keď je internet. Údaje: Open Food Facts, licencia ODbL. */
-import type { Vyziva } from './typy';
+import type { Vyziva, Doplnok } from './typy';
+import type { Alergen } from '../data/types';
+
+export type JazykZlozenia = 'sk' | 'cs' | 'en' | 'povodny';
 
 export interface OffVyrobok {
   kod: string;
   nazov: string;
   znacka?: string;
   zlozenie: string;
+  /** v akom jazyku je text zloženia */
+  jazyk?: JazykZlozenia;
+  jazykText?: string;
+  /** údaje z tagov databázy (E-čísla, alergény, pridaný cukor, palmový olej) */
+  doplnok?: Doplnok;
   vyziva: Vyziva;
   nutriscore?: string;
   nova?: number;
@@ -21,24 +29,53 @@ export function platnyKod(kod: string): boolean {
   return (10 - (suma % 10)) % 10 === kontrolna;
 }
 
-const POLIA = ['product_name', 'product_name_sk', 'brands', 'ingredients_text', 'ingredients_text_sk', 'ingredients_text_cs', 'nutriments', 'nutriscore_grade', 'nova_group'].join(',');
+const POLIA = [
+  'product_name', 'product_name_sk', 'brands', 'lang', 'ingredients_text', 'ingredients_text_sk', 'ingredients_text_cs', 'ingredients_text_en',
+  'ingredients_tags', 'additives_tags', 'ingredients_analysis_tags', 'allergens_tags', 'traces_tags', 'nutriments', 'nutriscore_grade', 'nova_group',
+].join(',');
 export const offUrl = (kod: string) => `https://world.openfoodfacts.org/api/v2/product/${encodeURIComponent(kod)}.json?fields=${POLIA}`;
 
 const cislo = (x: unknown): number | undefined => (typeof x === 'number' && Number.isFinite(x) ? Math.round(x * 100) / 100 : undefined);
+const retazec = (x: unknown): string | undefined => (typeof x === 'string' && x.trim() ? x : undefined);
+const tagy = (x: unknown): string[] => (Array.isArray(x) ? x.filter((t): t is string => typeof t === 'string') : []);
 
-/** Premení odpoveď OFF na náš tvar (čistá funkcia – testovaná). */
+/** Alergény OFF (en:milk …) → naše kľúče. */
+const ALERGEN_TAG: Record<string, Alergen> = {
+  gluten: 'lepok', crustaceans: 'korovce', eggs: 'vajcia', fish: 'ryby', peanuts: 'arasidy', soybeans: 'soja', milk: 'mlieko', nuts: 'orechy',
+  celery: 'zeler', mustard: 'horcica', 'sesame-seeds': 'sezam', 'sulphur-dioxide-and-sulphites': 'siricitany', lupin: 'vlcibob', molluscs: 'makkyse',
+};
+export function alergenyZTagov(t: unknown): Alergen[] {
+  return [...new Set(tagy(t).map((x) => ALERGEN_TAG[x.replace(/^[a-z]{2}:/, '')]).filter((x): x is Alergen => !!x))];
+}
+
+const JAZYK_TEXT: Record<JazykZlozenia, string> = { sk: 'slovenčine', cs: 'češtine', en: 'angličtine', povodny: 'pôvodnom jazyku výrobku' };
+
+/** Premení odpoveď OFF na náš tvar (čistá funkcia – testovaná). Text: sk → cs → en → originál. */
 export function mapujOff(kod: string, j: unknown): OffVyrobok | null {
   const o = j as { status?: number; product?: Record<string, unknown> } | null;
   const p = o?.product;
   if (!p || o?.status === 0) return null;
   const n = (p.nutriments ?? {}) as Record<string, unknown>;
-  const text = [p.ingredients_text_sk, p.ingredients_text_cs, p.ingredients_text].find((x) => typeof x === 'string' && x.trim()) as string | undefined;
+  const kandidati: [JazykZlozenia, string | undefined][] = [['sk', retazec(p.ingredients_text_sk)], ['cs', retazec(p.ingredients_text_cs)], ['en', retazec(p.ingredients_text_en)], ['povodny', retazec(p.ingredients_text)]];
+  const najdeny = kandidati.find(([, t]) => t);
+  const jazyk = najdeny?.[0];
   const nazov = [p.product_name_sk, p.product_name].find((x) => typeof x === 'string' && x.trim()) as string | undefined;
+  const itags = [...tagy(p.ingredients_tags), ...tagy(p.ingredients_analysis_tags)];
+  const doplnok: Doplnok = {
+    e: tagy(p.additives_tags),
+    alergeny: alergenyZTagov(p.allergens_tags),
+    stopy: alergenyZTagov(p.traces_tags),
+    cukor: itags.includes('en:added-sugar'),
+    palma: itags.includes('en:palm-oil'),
+  };
   return {
     kod,
     nazov: nazov?.trim() ?? `Výrobok ${kod}`,
     znacka: typeof p.brands === 'string' ? p.brands.split(',')[0].trim() : undefined,
-    zlozenie: text?.replace(/<[^>]+>/g, '').replace(/_/g, '').trim() ?? '',
+    zlozenie: najdeny?.[1]?.replace(/<[^>]+>/g, '').replace(/_/g, '').trim() ?? '',
+    jazyk,
+    jazykText: jazyk ? (jazyk === 'povodny' && typeof p.lang === 'string' ? `pôvodnom jazyku výrobku (${p.lang})` : JAZYK_TEXT[jazyk]) : undefined,
+    doplnok,
     vyziva: {
       kcal: cislo(n['energy-kcal_100g']), tuky: cislo(n.fat_100g), nasyt: cislo(n['saturated-fat_100g']), sach: cislo(n.carbohydrates_100g),
       cukry: cislo(n.sugars_100g), vlak: cislo(n.fiber_100g), bielk: cislo(n.proteins_100g), sol: cislo(n.salt_100g),
