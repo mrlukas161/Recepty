@@ -89,6 +89,8 @@ function rozpoznaj(povodny: string, poradie: number, hlbka: number, rodic: strin
   return { ...zaklad, nazov: t, typ: 'neznama', priznaky: [], podozrivy: vyzeraNezmyselne(t) };
 }
 
+const PREFIX_FUNKCIE = /^(?:farbiv[oa]|konzervant(?:y)?|emulgator(?:y)?|regulator(?:y)? kyslosti|antioxidant(?:y)?|stabilizator(?:y)?|zahustovadl[oa]|sladidl[oa]|zvyraznovac(?:e)? chuti|latka na upravu muky|kypriac[a-z]* latka)\s+/;
+
 function spracuj(uzly: Uzol[], out: Zlozka[], hlbka = 0, rodic?: string, poradieRodica?: number, funkRodica?: string) {
   uzly.forEach((u, i) => {
     const poradie = poradieRodica ?? i;
@@ -102,6 +104,14 @@ function spracuj(uzly: Uzol[], out: Zlozka[], hlbka = 0, rodic?: string, poradie
       }
       spracuj(u.deti, out, hlbka + (f ? 0 : 1), f ? (rodic ?? u.text) : u.text, poradie, f ?? funkRodica);
     } else if (u.text) {
+      // „regulátor kyslosti kyselina citrónová“ (bez dvojbodky): funkcia + látka
+      const m = PREFIX_FUNKCIE.exec(n);
+      if (m && m[0].length < n.length - 3) {
+        const zv = u.text.slice(Math.min(u.text.length, m[0].length)).replace(/^[\s:\-]+/, '');
+        const f2 = funkcia(m[0].trim());
+        out.push(rozpoznaj(zv || u.text, poradie, hlbka, rodic, u.percento, f2 ?? funkRodica));
+        return;
+      }
       out.push(rozpoznaj(u.text, poradie, hlbka, rodic, u.percento, funkRodica));
     }
   });

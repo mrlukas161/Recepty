@@ -5,7 +5,7 @@
 - **Databáza prídavných látok:** taxonómia aditív Open Food Facts (`additives.txt`, licencia **ODbL**), prevedená skriptom `scripts/skener-aditiva.mjs` na `src/skener/data/aditiva-off.json` (727 položiek; slovenské názvy, triedy, odkazy na EFSA). Dáta sú © prispievatelia Open Food Facts, ODbL; appka to uvádza.
 - **Hodnotenie látok** (`src/skener/hodnotenia.ts`, `zlozky.ts`): 4 stupne (bez výhrad · v poriadku · obmedziť · vyhnúť sa/najmä deti). Každé má dôvod, zdroje (`src/data/zdroje/skener.json`) a úroveň dôkazov. Látka bez vlastného posúdenia dostane **predvolenú** hodnotu „v poriadku (predvolené podľa funkcie, odhad)“ — nepredstierame posúdenie, ktoré sme nespravili.
 - **Preventívne obavy** (TiO2, emulgátory CMC/polysorbát, sladidlá podľa WHO 2023, erytritol) sú označené `preventivne` a majú len úroveň „slabé“.
-- **Skóre výrobku** je naša heuristika: spracovanosť 28 · prídavné látky 22 · cukor 14 · tuky a soľ 10 · kvalita zloženia 8 · tvoje nastavenia 8 · (výživové hodnoty 10, ak sú zadané). Prahy a váhy sú odhad.
+- **Skóre výrobku** je naša heuristika: spracovanosť 30 · prídavné látky 20 · cukor 18 · tuky a soľ 8 · kvalita zloženia 6 · tvoje nastavenia 8 · (výživové hodnoty 10, ak sú zadané). Prahy a váhy sú odhad.
 - **NOVA markery** (arómy, emulgátory, sladidlá, farbivá, izoláty, modifikované škroby, sirupy, stužené tuky…) podľa Monteiro 2019; je to klasifikácia, nie dôkaz škodlivosti jednotlivých látok.
 - Hodnotenia z iných aplikácií (Férová potravina, Yuka, INCI Beauty) **nepreberáme**.
 
@@ -24,3 +24,4 @@ Sieť v cloude: doi.org, PubMed, EFSA, EUR-Lex neprístupné (test 15. 10. 2026 
 - **S3** Nerozpoznané zložky sa nepenalizujú (väčšinou ide o bežné suroviny); zjavný nezmysel z OCR sa označí „Skontroluj“.
 - **S4** Pšeničná múka bez slova „celozrnná“ sa berie ako rafinovaná (zvyčajný prípad na obaloch v EÚ); je to označené ako odhad.
 - **S5** Hlavný príznak „bez pridaného cukru“ neznamená, že výrobok je bez cukrov (môže byť ovocný cukor) — skóre pozerá len zloženie.
+- **S6** Kalibrácia: veľmi zlý kľúčový faktor (spracovanosť, cukor, prídavné látky pod 45 bodov) stiahne celkové skóre o 0,3 × rozdiel; údeniny sa počítajú do spracovanosti. Overené na 10 ručne písaných zloženiach (cola ≈ 56 „občas“, kakaová nátierka ≈ 52, ovsené vločky 100).

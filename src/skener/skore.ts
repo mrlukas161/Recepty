@@ -48,7 +48,7 @@ export function vypocitajSkoreVyrobku(r: Rozbor, o: MoznostiSkore = {}): SkoreVy
 
   // 1. spracovanosť
   const markery = new Map<string, string>();
-  for (const x of z) if (x.priznaky.includes('ultra')) markery.set(x.id ?? x.nazov, x.nazov);
+  for (const x of z) if (x.priznaky.includes('ultra') || x.priznaky.includes('udenina')) markery.set(x.id ?? x.nazov, x.nazov);
   const m = markery.size;
   const MARK = [100, 70, 55, 42, 30, 20];
   let bSprac = MARK[Math.min(m, 5)];
@@ -56,9 +56,9 @@ export function vypocitajSkoreVyrobku(r: Rozbor, o: MoznostiSkore = {}): SkoreVy
   bSprac -= Math.min(15, Math.max(0, pocet - 8) * 1.5);
   bSprac = clamp(bSprac);
   faktory.push({
-    id: 'spracovanost', nazov: 'Spracovanosť', body: Math.round(bSprac), vaha: 28,
+    id: 'spracovanost', nazov: 'Spracovanosť', body: Math.round(bSprac), vaha: 30,
     hodnota: m ? `${m} marker${m === 1 ? '' : m < 5 ? 'y' : 'ov'} ultraspracovania · ${pocet} zložiek` : `bez markerov · ${pocet} zložiek`,
-    preco: m ? `Markery ultraspracovania (NOVA): ${[...markery.values()].join(', ')}. Čím viac takých látok, tým viac ide o priemyselnú formuláciu, nie o kuchynskú recepturu. Ide o klasifikáciu, nie o dôkaz škodlivosti každej látky.` : 'Nenašli sme žiadnu látku typickú pre ultraspracované potraviny.',
+    preco: m ? `Markery ultraspracovania a spracovania (NOVA; údeniny sa počítajú sem): ${[...markery.values()].join(', ')}. Čím viac takých látok, tým viac ide o priemyselnú formuláciu, nie o kuchynskú recepturu. Ide o klasifikáciu, nie o dôkaz škodlivosti každej látky.` : 'Nenašli sme žiadnu látku typickú pre ultraspracované potraviny.',
     zdroje: ['monteiro-2019', 'lane-2024'],
   });
   if (!m && pocet > 0 && pocet <= 5) pozitiva.push(`Krátke zloženie (${pocet} zložiek) bez markerov ultraspracovania.`);
@@ -71,7 +71,7 @@ export function vypocitajSkoreVyrobku(r: Rozbor, o: MoznostiSkore = {}): SkoreVy
   const zoradene = adit.map((x) => ({ x, s: stupenPreDomacnost(x, mameDeti) ?? 'v-poriadku' })).sort((a, b) => PENALIZACIA[b.s] - PENALIZACIA[a.s]);
   zoradene.forEach(({ x, s }, i) => { pen += PENALIZACIA[s] * (i === 0 ? 1 : 0.7); if (PENALIZACIA[s] >= 14) pozn.push(`${x.e ?? x.nazov} (${x.nazov}) – ${s === 'vyhnut-sa' ? 'vyhnúť sa' : 'obmedziť'}`); });
   faktory.push({
-    id: 'aditiva', nazov: 'Prídavné látky', body: Math.round(clamp(100 - pen)), vaha: 22,
+    id: 'aditiva', nazov: 'Prídavné látky', body: Math.round(clamp(100 - pen)), vaha: 20,
     hodnota: adit.length ? `${adit.length} prídavných látok${pozn.length ? ' · ' + pozn.length + '× obmedziť/vyhnúť sa' : ''}` : 'bez prídavných látok',
     preco: pozn.length ? `Horšie hodnotené: ${pozn.join('; ')}. Povolená látka nie je automaticky „jed“ – pri preventívnych obavách to pri látke uvádzame.` : adit.length ? 'Všetky nájdené látky sú povolené a nemáme voči nim výhrady pri bežnom príjme.' : 'Žiadne E-čísla ani iné prídavné látky.',
     zdroje: ['eu-1333-2008'],
@@ -85,11 +85,11 @@ export function vypocitajSkoreVyrobku(r: Rozbor, o: MoznostiSkore = {}): SkoreVy
   const prvyCukor = cukry.length ? Math.min(...cukry.map(mesto)) : 0;
   let bCukor = 100;
   if (cukry.length) {
-    const podlaPozicie = [0, 12, 30, 45, 58, 70][Math.min(prvyCukor, 5)] ?? 70;
+    const podlaPozicie = [0, 8, 25, 40, 55, 68][Math.min(prvyCukor, 5)] ?? 70;
     bCukor = clamp(podlaPozicie + (prvyCukor > 5 ? 5 : 0) - Math.max(0, druhy.size - 1) * 8);
   }
   faktory.push({
-    id: 'cukor', nazov: 'Pridaný cukor', body: Math.round(bCukor), vaha: 14,
+    id: 'cukor', nazov: 'Pridaný cukor', body: Math.round(bCukor), vaha: 18,
     hodnota: cukry.length ? `${druhy.size} druh${druhy.size === 1 ? '' : druhy.size < 5 ? 'y' : 'ov'} · najvyššie na ${prvyCukor}. mieste` : 'bez pridaného cukru',
     preco: cukry.length ? 'Zložky sú v poradí podľa množstva – čím vyššie cukor stojí, tým ho je viac. Viac druhov cukru (cukor, glukóza, sirup) znamená, že sa v zozname posunul nižšie. WHO: voľné cukry pod 10 % energie, ideálne pod 5 %.' : 'V zložení sme nenašli cukor ani sirupy.',
     zdroje: ['who-2015-cukry'],
@@ -105,7 +105,7 @@ export function vypocitajSkoreVyrobku(r: Rozbor, o: MoznostiSkore = {}): SkoreVy
   const sol = top.find((x) => x.priznaky.includes('sol'));
   if (sol && mesto(sol) <= 3) { bTuk -= 20; tukPoz.push('soľ na vysokom mieste'); }
   faktory.push({
-    id: 'tuky-sol', nazov: 'Tuky a soľ', body: Math.round(clamp(bTuk)), vaha: 10,
+    id: 'tuky-sol', nazov: 'Tuky a soľ', body: Math.round(clamp(bTuk)), vaha: 8,
     hodnota: tukPoz.length ? tukPoz.join(', ') : 'bez výhrad',
     preco: tukPoz.length ? 'Stužené tuky môžu obsahovať trans-tuky (EÚ limit 2 g / 100 g tuku); palmový tuk je nasýtený a pri rafinácii vznikajú kontaminanty (EFSA). Soľ vysoko v zozname = veľa soli.' : 'Nenašli sme stužený ani palmový tuk a soľ nie je medzi prvými zložkami.',
     zdroje: ['eu-2019-649', 'efsa-2016-glycidyl'],
@@ -121,8 +121,9 @@ export function vypocitajSkoreVyrobku(r: Rozbor, o: MoznostiSkore = {}): SkoreVy
   if (pocet > 0 && pocet <= 5 && !m) bPoz += 20;
   if (!cukry.length && pocet > 0) bPoz += 10;
   if (pocet > 14) bPoz -= 15;
+  if (prva?.priznaky.includes('rafinovana-muka')) { bPoz -= 20; negativa.push('Biela (rafinovaná) múka na prvom mieste – menej vlákniny.'); }
   faktory.push({
-    id: 'zlozenie', nazov: 'Kvalita zloženia', body: Math.round(clamp(bPoz)), vaha: 8,
+    id: 'zlozenie', nazov: 'Kvalita zloženia', body: Math.round(clamp(bPoz)), vaha: 6,
     hodnota: pozitiva.length ? `${pozitiva.length} pozitív` : 'neutrálne',
     preco: 'Plusy: celozrnná zložka na prvom mieste, vysoký podiel hlavnej suroviny, krátke zloženie, olivový olej, bez cukru. Dlhý zoznam (nad 14 zložiek) ubúda.',
     zdroje: ['monteiro-2019'],
@@ -171,7 +172,10 @@ export function vypocitajSkoreVyrobku(r: Rozbor, o: MoznostiSkore = {}): SkoreVy
   });
 
   const sumaVah = faktory.reduce((a, f) => a + f.vaha, 0);
-  const celkom = pocet === 0 ? 0 : Math.round(clamp(faktory.reduce((a, f) => a + f.body * f.vaha, 0) / sumaVah));
+  const priemer = faktory.reduce((a, f) => a + f.body * f.vaha, 0) / sumaVah;
+  // veľmi zlý kľúčový faktor (spracovanosť, cukor, prídavné látky) výrazne stiahne celok
+  const najhorsi = Math.min(...faktory.filter((f) => ['spracovanost', 'cukor', 'aditiva'].includes(f.id)).map((f) => f.body));
+  const celkom = pocet === 0 ? 0 : Math.round(clamp(priemer - 0.3 * Math.max(0, 45 - najhorsi)));
   const p = pasmo(celkom);
   const najhorsie = z.filter((x) => { const s = stupenPreDomacnost(x, mameDeti); return s === 'obmedzit' || s === 'vyhnut-sa'; })
     .sort((a, b) => (horsi(stupenPreDomacnost(a, mameDeti)!, stupenPreDomacnost(b, mameDeti)!) ? -1 : 1)).slice(0, 5);

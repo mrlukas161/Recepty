@@ -1,5 +1,5 @@
 /** Skener zloženia výrobkov – obrazovka. Integrácia: src/skener-vstup.tsx načíta tento súbor (export Skener). */
-import { useMemo, useState } from 'preact/hooks';
+import { useEffect, useMemo, useState } from 'preact/hooks';
 import './skener.css';
 import { useStav } from '../store';
 import { Hlavicka, Zalozky, Upozornenie } from '../ui/kom';
@@ -39,6 +39,7 @@ export function Skener() {
     return { r, sk: vypocitajSkoreVyrobku(r, { nastavenia: s.nastavenia, vyziva: vz }) };
   }, [hotovy, vyziva, s.nastavenia]);
 
+  useEffect(() => { if (hotovy) document.getElementById('sk-vysledok')?.scrollIntoView({ block: 'start', behavior: 'smooth' }); }, [hotovy]);
   const vyhodnot = () => { setHotovy(text); setUlozene(false); };
   const uloz = () => {
     if (!vyhodnotenie) return;
@@ -49,7 +50,7 @@ export function Skener() {
   return (
     <>
       <Hlavicka nazov="Skener zloženia" />
-      <Zalozky hodnoty={[{ id: 'sken', nazov: '📷 Skenovať' }, { id: 'historia', nazov: `🕘 História (${hist.length})` }, { id: 'porovnat', nazov: '⚖️ Porovnať' }]} vybrane={zal} zmen={setZal} />
+      <Zalozky hodnoty={[{ id: 'sken', nazov: '📷 Skenovať' }, { id: 'historia', nazov: `🕘 História${hist.length ? ` ${hist.length}` : ''}` }, { id: 'porovnat', nazov: '⚖️ Porovnať' }]} vybrane={zal} zmen={setZal} />
 
       {zal === 'sken' && (
         <>
@@ -76,7 +77,7 @@ export function Skener() {
           </details>
 
           {vyhodnotenie && (
-            <>
+            <div id="sk-vysledok" style="scroll-margin-top:8px">
               <div class="karta" style="animation:none;margin-top:14px">
                 <label for="sk-nazov" class="maly">Názov výrobku (do histórie)</label>
                 <input id="sk-nazov" type="text" value={nazov} onInput={(e) => setNazov((e.target as HTMLInputElement).value)} placeholder="napr. Müsli čokoládové" />
@@ -90,7 +91,7 @@ export function Skener() {
                 </div>
               )}
               <Vysledok r={vyhodnotenie.r} s={vyhodnotenie.sk} deti={deti} nazov={nazov} />
-            </>
+            </div>
           )}
         </>
       )}

@@ -7,7 +7,7 @@ export interface Uzol {
   deti: Uzol[];
 }
 
-const HLAVICKA = /^\s*(?:zlo[zž]enie|zlozeni|ingredients?|ingredienty|zusammensetzung|zutaten|sk[lł]adniki|složení|složky|obsah)\s*[:：.\-–]?\s*/i;
+const HLAVICKA = /^\s*(?:zlo[zž]enie|zlozeni|ingredienty|ingredients?|zusammensetzung|zutaten|sk[lł]adniki|složení|složky|obsah)\s*[:：.\-–]?\s*/i;
 /** Úseky, kde zloženie končí. */
 const KONIEC = /(?:v[yý][zž]ivov[eé]\s+(?:[uú]daje|hodnoty)|priemern[aá]\s+v[yý][zž]ivov|nutri[cč]n[ií]\s+(?:[uú]daje|hodnoty)|nutrition\s+(?:facts|information)|skladujte|uchov[aá]vajte|uchov[aá]vejte|najlep[sš]ie\s+spotrebova[tť]|spotrebujte\s+do|minim[aá]lna\s+trvanlivos[tť]|trvanlivos[tť]|vyroben[eé]\s+v|vyrobca|v[yý]robca|distribu[uú]tor|dovozca|krajina\s+p[oô]vodu|energetick[aá]\s+hodnota|best\s+before|store\s+in|po\s+otvoren[ií])/i;
 
@@ -19,7 +19,7 @@ export function vycistiText(vstup: string): string {
   const h = HLAVICKA.exec(t);
   if (h) t = t.slice(h[0].length);
   else {
-    const i = t.search(/(?:zlo[zž]enie|ingredients?)\s*:/i);
+    const i = t.search(/(?:zlo[zž]enie|ingredienty|ingredients?)\s*:/i);
     if (i >= 0) t = t.slice(i).replace(HLAVICKA, '');
   }
   return t;
