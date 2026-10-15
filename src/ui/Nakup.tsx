@@ -11,11 +11,12 @@ export function Nakup() {
   const s = useStav();
   const [nova, setNova] = useState('');
   const recepty = zoskupRecepty(s.nakupRecepty, (id) => RECEPT.get(id));
+  const volne = [...new Set(recepty.flatMap(({ r }) => r.volne ?? []))];
   const por = kolkoPorcii(s.nastavenia);
   const sk = zostavNakup(recepty, por, SUROVINA, new Set(s.nastavenia.mamDoma), { pridane: s.pridaneVolitelne });
   const nazovO = (o: string) => (o === SKONTROLUJ ? SKONTROLUJ_NAZOV : ODDELENIA[o as keyof typeof ODDELENIA]);
   const skupiny = Object.entries(sk).sort(([a], [b]) => (a === SKONTROLUJ ? 1 : 0) - (b === SKONTROLUJ ? 1 : 0));
-  const text = () => skupiny.map(([o, p]) => `${nazovO(o)}:\n` + p.map((x) => `- ${x.nazov}${x.text ? ' ' + x.text : ''}${x.potreba ? ` (${x.potreba})` : ''}`).join('\n')).join('\n\n') + (s.nakupVlastne.length ? '\n\nĎalšie:\n' + s.nakupVlastne.map((x) => '- ' + x).join('\n') : '');
+  const text = () => skupiny.map(([o, p]) => `${nazovO(o)}:\n` + p.map((x) => `- ${x.nazov}${x.text ? ' ' + x.text : ''}${x.potreba ? ` (${x.potreba})` : ''}`).join('\n')).join('\n\n') + (volne.length ? '\n\nZ vlastných receptov (bez presného množstva):\n' + volne.map((x) => '- ' + x).join('\n') : '') + (s.nakupVlastne.length ? '\n\nĎalšie:\n' + s.nakupVlastne.map((x) => '- ' + x).join('\n') : '');
   const zdielaj = async () => {
     try { if (navigator.share) { await navigator.share({ title: 'Nákup', text: text() }); return; } } catch { /* zrušené */ }
     try { await navigator.clipboard.writeText(text()); alert('Skopírované'); } catch { alert(text()); }
@@ -39,6 +40,17 @@ export function Nakup() {
           ))}
         </div>
       ))}
+      {volne.length > 0 && (
+        <div class="karta">
+          <h3>Z vlastných receptov</h3>
+          <p class="maly" style="margin-top:0">Suroviny zapísané voľným textom (nepočítame ich do množstiev).</p>
+          {volne.map((x) => (
+            <div class={`nakup-pol ${s.nakupOdskrtnute.includes('f:' + x) ? 'hotovo' : ''}`} key={x}>
+              <label><input type="checkbox" checked={s.nakupOdskrtnute.includes('f:' + x)} onChange={() => tog('f:' + x)} /><span>{x}</span></label>
+            </div>
+          ))}
+        </div>
+      )}
       <div class="karta">
         <h3>Vlastné položky</h3>
         {s.nakupVlastne.map((x, k) => (

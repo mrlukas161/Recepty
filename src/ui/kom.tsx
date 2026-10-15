@@ -27,6 +27,7 @@ export function KartaReceptu({ i, dovod }: { i: Info; dovod?: string[] }) {
           <h3 style="margin:0">{fav ? '★ ' : ''}{nazovPreDomacnost(i.r, s.nastavenia, SUROVINA, s.pridaneVolitelne[i.r.id])}</h3>
           <div class="maly">{TYP_NAZOV[i.r.typ]} · {i.cas} min · {'●'.repeat(i.r.narocnost)}{'○'.repeat(3 - i.r.narocnost)}</div>
           {i.r.klasika && <span class="tag war">klasika</span>}
+          {i.r.vlastny && <span class="tag">vlastný</span>}
           {(dovod ?? []).map((d) => <span class="tag">{d}</span>)}
         </div>
         <Pecat skore={i.skore.celkom} pasmo={i.skore.pasmo} />

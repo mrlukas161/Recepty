@@ -78,6 +78,8 @@ export interface Recept {
   lepsiaVerzia?: string[];       // id lepších receptov (len pre klasiku)
   vyprazane?: boolean;           // jedlo sa vyprážané/smažené vo veľkom množstve tuku
   ilustracia: string;            // jedno emoji
+  vlastny?: boolean;             // recept vytvorený používateľom (localStorage)
+  volne?: string[];              // suroviny voľným textom (nie sú v skóre ani v gramovom nákupe)
 }
 
 export interface Zdroj {

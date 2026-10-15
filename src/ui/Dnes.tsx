@@ -1,6 +1,6 @@
 import { Ilustracia } from './ilustracia';
 import { useMemo, useState } from 'preact/hooks';
-import { INFOS, typPodlaCasu, TYP_NAZOV } from '../ctx';
+import { INFOS, vlastnaVerzia, typPodlaCasu, TYP_NAZOV } from '../ctx';
 import { SUROVINA } from '../data';
 import { useStav, dnesKluc } from '../store';
 import { dietyOk, vylucene } from '../engine/filtre';
@@ -27,7 +27,7 @@ export function Dnes() {
       })
       .sort((a, c) => c.b - a.b)
       .map((x) => x.i);
-  }, [typ, JSON.stringify(n), s.oblubene.length]);
+  }, [typ, JSON.stringify(n), s.oblubene.length, vlastnaVerzia()]);
   const okno = 6;
   const zacni = (strana * okno) % Math.max(1, navrhy.length);
   const vyber = navrhy.slice(zacni, zacni + okno).concat(zacni + okno > navrhy.length ? navrhy.slice(0, zacni + okno - navrhy.length).slice(0, okno) : []).slice(0, okno);

@@ -27,6 +27,7 @@ Bez zmien kódu: testy, build a e2e zelené, nasadenie úspešné. Opätovná We
 ## R-i1 – Vlastné ilustrácie a ikona
 Emoji pri receptoch, kategóriách, v navigácii a na rulete nahradila vlastná sada SVG (`src/ui/ilustracia.tsx`, farby cez premenné `--il-*`, svetlá aj tmavá téma). Dáta receptov ostávajú s emoji v poli `ilustracia`; appka ho mapuje na typ ilustrácie (inak podľa kategórie jedla), takže nové recepty nič nerozbijú. Test kontroluje pokrytie. Ikona appky (tanier s paradajkou) sa generuje cez `node scripts/ikony.mjs`.
 
+
 ## R-a1 – Aktualizácie, úpravy ako prepínače, časovač
 Service worker: autoUpdate + skipWaiting + clientsClaim + cleanupOutdatedCaches; kontrola novej verzie (`update()`) pri návrate z pozadia (najviac raz za 30 s) a raz za hodinu (`src/aktualizacia.ts`). Verzia a čas zostavenia sú v Nastaveniach → O appke, vrátane tlačidla „Skontrolovať aktualizáciu“. Úpravy receptu sú tlačidlá s `aria-pressed`. Časovač (`src/engine/casovac.ts`, `src/ui/Varenie.tsx`): pri rozsahu času sa ponúkne dolná aj horná hranica; „cez noc“ sa nerozpoznáva; časy sú údaje z postupov (kuchárska prax, nie zdravotné tvrdenie). Notifikácie sa pýtajú až po ťuknutí na štart časovača.
 ## R-b1 – Nákupný zoznam: balenia, „skontroluj“, jednotky
@@ -37,3 +38,10 @@ Ak je voliteľná surovina v kategórii, ktorú má domácnosť obmedzenú alebo
 
 ## R-f1 – Plánovač: zvyšky a čas
 Nastavenia majú `casTyzden` (po–pi), `casVikend` a `varimNa2Dni` (stav verzia 2; migrácia `maxCas` → `casTyzden`, víkend predvolene 90 min). Pri „varím na 2 dni“ sa večera s tagom `na-viac-dni` zopakuje ako obed ďalšieho dňa (zvyšky sa nevaria, limit času sa tam nepoužije). Nákup spočíta recept podľa počtu výskytov v pláne, takže kúpi raz za obe jedlá v jednom riadku.
+
+
+## R-g1 – Vlastné recepty
+- Ukladajú sa v localStorage (`vlastne` v stave, verzia stavu 3; starší stav sa pri načítaní migruje, chybné vlastné recepty sa zahodia). Pri zmazaní sa recept odstráni aj z jedálnička, nákupu, obľúbených a histórie.
+- Skóre sa počíta rovnakou funkciou ako pri vstavaných receptoch, ale len zo surovín z databázy s množstvom. Voľný text a suroviny bez množstva sa do skóre nezapočítajú; appka ukáže „istotu skóre“ (vysoká/stredná/nízka/žiadna) podľa odhadu podielu hmotnosti, ktorý je započítaný (prahy 90 % a 70 % sú naše odhady). Návrh priradenia voľného textu k surovine je len zhoda podľa názvu a vždy ho potvrdzuje používateľ.
+- Voľný text sa v nákupe ukáže ako samostatný zoznam bez množstiev.
+- Formát exportu: `{format:"recepty-vlastne", verzia:1, vytvorene, recepty[]}`; API v `src/engine/vlastne.ts`: `exportVlastne(recepty)`, `parseVlastne(json)` → `{ok, recepty, chyby}`, `zlucVlastne(existujuce, prichadzajuce)` → `{recepty, pridane, aktualizovane, nezmenene}` (pri rovnakom id vyhrá novší `upravene`). Import je tolerantný: neznáme suroviny prevedie na voľný text, chybné recepty preskočí, novšiu verziu formátu odmietne.

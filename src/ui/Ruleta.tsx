@@ -1,6 +1,6 @@
 import { Ilustracia, IlustraciaReceptu } from './ilustracia';
 import { useMemo, useState } from 'preact/hooks';
-import { INFOS, TYP_NAZOV } from '../ctx';
+import { INFOS, vlastnaVerzia, TYP_NAZOV } from '../ctx';
 import { SUROVINA } from '../data';
 import { useStav, nastav, dnesKluc } from '../store';
 import { dietyOk, vylucene } from '../engine/filtre';
@@ -15,7 +15,7 @@ export function Ruleta() {
   const [vyber, setVyber] = useState<string | null>(null);
   const [toci, setToci] = useState(false);
   const [emoji, setEmoji] = useState<{ typ: string; ilustracia?: string } | null>(null);
-  const pool = useMemo(() => INFOS.filter((i) => (typ === 'vsetko' || i.r.typ === typ) && !vylucene(i, n) && dietyOk(i, n, SUROVINA) && s.hodnotenie[i.r.id] !== -1), [typ, JSON.stringify(n)]);
+  const pool = useMemo(() => INFOS.filter((i) => (typ === 'vsetko' || i.r.typ === typ) && !vylucene(i, n) && dietyOk(i, n, SUROVINA) && s.hodnotenie[i.r.id] !== -1), [typ, JSON.stringify(n), vlastnaVerzia()]);
   const tocit = () => {
     if (!pool.length || toci) return;
     setToci(true); setVyber(null);

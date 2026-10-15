@@ -11,6 +11,7 @@ import { DNI, kluc } from '../engine/planner';
 import { LEPSIE } from '../data/lepsie';
 import { ZdrojeK } from './Zdroje';
 import { Varenie } from './Varenie';
+import { OvladanieVlastneho } from './VlastnyRecept';
 import { Pecat, prepniOblubene, Upozornenie, KartaReceptu } from './kom';
 
 const TAG_NAZOV: Record<string, string> = { detske: 'Detské', rychle: 'Rýchle', 'do-krabicky': 'Do krabičky', lacne: 'Lacné', bezmasite: 'Bezmäsité', 'bez-peciva': 'Bez pečiva', bezlepkove: 'Bezlepkové', vegansky: 'Vegánske', 'vyvarene-z-zvyskov': 'Zo zvyškov', 'na-viac-dni': 'Na viac dní', sladke: 'Sladké' };
@@ -83,6 +84,7 @@ function DetailVnutro({ id }: { id: string }) {
         <button class="male" aria-pressed={hod === 1} onClick={() => nastav((x) => { if (x.hodnotenie[id] === 1) delete x.hodnotenie[id]; else x.hodnotenie[id] = 1; })}>👍</button>
         <button class="male" aria-pressed={hod === -1} onClick={() => nastav((x) => { if (x.hodnotenie[id] === -1) delete x.hodnotenie[id]; else x.hodnotenie[id] = -1; })}>👎</button>
       </div>
+      {r.vlastny && <OvladanieVlastneho id={id} />}
       <div>{r.tagy.map((t) => <span class="tag" key={t}>{TAG_NAZOV[t] ?? t}</span>)}</div>
       <div class="karta">
         <div class="riadok">
@@ -137,6 +139,7 @@ function DetailVnutro({ id }: { id: string }) {
               </li>
             );
           })}
+          {(r.volne ?? []).map((t, k) => <li key={'f' + k}><span class="mn maly">voľný text</span><span class="rozt">{t}</span></li>)}
           {st.pridane.map((i) => { const u = r.upravy[i]; const sv = u.na ? SUROVINA.get(u.na) : undefined; return <li key={'p' + i}><span class="mn plus">+ {fmt((u.mnozstvo ?? 50) * f, u.jednotka ?? 'g')}</span><span class="rozt">{sv?.nazov}</span></li>; })}
         </ul>
       </div>

@@ -11,6 +11,7 @@ import { Jedalnicek } from './ui/Jedalnicek';
 import { Nakup } from './ui/Nakup';
 import { Viac, Nahrady, Diety, Vedomosti, Nastavenia } from './ui/Viac';
 import { SkenerTrasa } from './skener-vstup';
+import { VlastnyReceptForm, MojeRecepty } from './ui/VlastnyRecept';
 import { registerSW } from 'virtual:pwa-register';
 import { pripravAktualizacie } from './aktualizacia';
 
@@ -46,10 +47,12 @@ function App() {
   else if (a === 'diety') obsah = <Diety id={b} />;
   else if (a === 'vedomosti') obsah = <Vedomosti />;
   else if (a === 'nastavenia') obsah = <Nastavenia />;
+  else if (a === 'vlastny') obsah = <VlastnyReceptForm key={b ?? 'novy'} id={b} />;
+  else if (a === 'moje') obsah = <MojeRecepty />;
   else if (a === 'skener') obsah = <SkenerTrasa />;
   else if (a === 'viac') obsah = <Viac />;
   else obsah = <Dnes />;
-  const akt = a === '' || a === undefined ? '#/' : `#/${a === 'recept' ? 'recepty' : a}`;
+  const akt = a === '' || a === undefined ? '#/' : `#/${a === 'recept' || a === 'vlastny' || a === 'moje' ? 'recepty' : a}`;
   return (
     <>
       <main>{obsah}</main>

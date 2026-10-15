@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'preact/hooks';
-import { INFOS } from '../ctx';
+import { INFOS, vlastnaVerzia } from '../ctx';
 import { SUROVINA } from '../data';
 import { DIETY } from '../data/diety';
 import { useStav } from '../store';
@@ -14,11 +14,15 @@ export function Recepty() {
   const [ukaz, setUkaz] = useState(false);
   const [limit, setLimit] = useState(80);
   const zmen = (p: Partial<FiltreRecept>) => { ulozeneFiltre = { ...f, ...p }; setF(ulozeneFiltre); };
-  const zoznam = useMemo(() => filtruj(INFOS, f, s.nastavenia, SUROVINA, s.oblubene), [JSON.stringify(f), JSON.stringify(s.nastavenia), s.oblubene.length]);
+  const zoznam = useMemo(() => filtruj(INFOS, f, s.nastavenia, SUROVINA, s.oblubene), [JSON.stringify(f), JSON.stringify(s.nastavenia), s.oblubene.length, vlastnaVerzia()]);
   return (
     <>
       <Hlavicka nazov="Recepty" vpravo={<span class="maly">{zoznam.length} z {INFOS.length}</span>} />
       <AktivneDiety />
+      <div class="rad">
+        <a class="tlacidlo hl" href="#/vlastny" style="text-decoration:none;display:inline-flex;align-items:center">+ Vlastný recept</a>
+        {s.vlastne.length > 0 && <a class="tlacidlo" href="#/moje" style="text-decoration:none;display:inline-flex;align-items:center">Moje recepty ({s.vlastne.length}) · export</a>}
+      </div>
       <input type="search" placeholder="Hľadať recept alebo surovinu…" aria-label="Hľadať" value={f.hladat} onInput={(e) => zmen({ hladat: (e.target as HTMLInputElement).value })} />
       <div class="rad">
         <button class="male" onClick={() => setUkaz(!ukaz)} aria-expanded={ukaz}>⚙ Filtre a zoradenie</button>

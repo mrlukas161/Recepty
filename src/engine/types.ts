@@ -1,4 +1,5 @@
 import type { Alergen, Typ } from '../data/types';
+import type { VlastnyRecept } from './vlastne';
 
 export type Kategoria = 'muka' | 'cukor' | 'udeniny' | 'vyprazane' | 'tazke';
 export type Uroven = 'bez' | 'obmedzit' | 'vylucit';
@@ -37,8 +38,8 @@ export const PREDVOLENE: Nastavenia = {
   tema: 'auto', jedla: ['ranajky', 'obed', 'vecera'], mamDoma: [], vibracia: true, hotovo: false,
 };
 
-/** Verzia tvaru uloženého stavu. 2 = casTyzden/casVikend/varimNa2Dni namiesto maxCas, pridaneVolitelne. */
-export const VERZIA_STAVU = 2;
+/** Verzia tvaru uloženého stavu. 2 = casTyzden/casVikend/varimNa2Dni namiesto maxCas, pridaneVolitelne. 3 = pribudli vlastné recepty (`vlastne`). */
+export const VERZIA_STAVU = 3;
 
 /** Limit času varenia pre deň (0 = po … 6 = ne). */
 export const casNaDen = (n: Pick<Nastavenia, 'casTyzden' | 'casVikend'>, den: number): number => (den >= 5 ? n.casVikend : n.casTyzden);
@@ -57,4 +58,5 @@ export interface UlozenyStav {
   dnes: Record<string, string[]>;               // dátum -> prijaté recepty dňa
   /** Obmedzované voliteľné suroviny, ktoré používateľ do receptu pridal: id receptu -> id surovín. */
   pridaneVolitelne: Record<string, string[]>;
+  vlastne: VlastnyRecept[];                     // vlastné recepty (od verzie 3)
 }

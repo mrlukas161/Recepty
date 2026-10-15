@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'preact/hooks';
 import { PREDVOLENE, VERZIA_STAVU, type UlozenyStav, type Nastavenia } from './engine/types';
+import { ocistiVlastne, noveId, type VlastnyRecept } from './engine/vlastne';
 
 const KEY = 'recepty-v1';
 const prazdny = (): UlozenyStav => ({
-  verzia: VERZIA_STAVU,
+  verzia: VERZIA_STAVU, vlastne: [],
   nastavenia: structuredClone(PREDVOLENE), oblubene: [], hodnotenie: {}, historia: [], jedalnicek: {}, zamknute: [],
   nakupOdskrtnute: [], nakupVlastne: [], nakupRecepty: [], dnes: {}, pridaneVolitelne: {},
 });
@@ -15,7 +16,7 @@ function nacitaj(): UlozenyStav {
   } catch { /* poškodené alebo nedostupné */ }
   return prazdny();
 }
-/** Zlúči uložený (prípadne starší) stav s predvoleným; migruje staré tvary (v1 → v2: maxCas → casTyzden). */
+/** Zlúči uložený (prípadne starší) stav s predvoleným; migruje staré tvary (v1 → v2: maxCas → casTyzden; v2 → v3: pribudli `vlastne`, chybné vlastné recepty sa zahodia). */
 export function zluc(x: Partial<UlozenyStav>): UlozenyStav {
   const p = prazdny();
   const ns = { ...(x.nastavenia ?? {}) } as Partial<Nastavenia> & { maxCas?: number };
@@ -25,12 +26,15 @@ export function zluc(x: Partial<UlozenyStav>): UlozenyStav {
     ...p, ...x, verzia: VERZIA_STAVU,
     nastavenia: { ...p.nastavenia, ...ns, obmedzenia: { ...p.nastavenia.obmedzenia, ...(ns.obmedzenia ?? {}) }, maxTyzdenne: { ...p.nastavenia.maxTyzdenne, ...(ns.maxTyzdenne ?? {}) } },
     pridaneVolitelne: { ...(x.pridaneVolitelne ?? {}) },
+    vlastne: ocistiVlastne(x.vlastne),
   };
 }
 
 let stav: UlozenyStav = nacitaj();
 const poslucha = new Set<() => void>();
 export const dajStav = () => stav;
+/** Listener volaný pred ostatnými (ctx.ts cez neho obnoví zoznam receptov). */
+export const pocuvaj = (f: () => void) => { poslucha.add(f); };
 export function nastav(f: (s: UlozenyStav) => UlozenyStav | void) {
   const kopia = structuredClone(stav);
   stav = f(kopia) ?? kopia;
@@ -47,3 +51,27 @@ export function useStav(): UlozenyStav {
   return stav;
 }
 export const dnesKluc = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; };
+
+export function ulozVlastny(r: VlastnyRecept) {
+  nastav((s) => { const k = s.vlastne.findIndex((x) => x.id === r.id); if (k >= 0) s.vlastne[k] = r; else s.vlastne.push(r); });
+}
+/** Zmaže vlastný recept aj všetky odkazy naň (jedálniček, nákup, obľúbené, hodnotenie, dnes, história). */
+export function zmazVlastny(id: string) {
+  nastav((s) => {
+    s.vlastne = s.vlastne.filter((x) => x.id !== id);
+    s.oblubene = s.oblubene.filter((x) => x !== id);
+    delete s.hodnotenie[id];
+    s.historia = s.historia.filter((h) => h.recept !== id);
+    for (const k of Object.keys(s.jedalnicek)) if (s.jedalnicek[k] === id) s.jedalnicek[k] = null;
+    s.zamknute = s.zamknute.filter((k) => s.jedalnicek[k] !== null);
+    s.nakupRecepty = s.nakupRecepty.filter((x) => x !== id);
+    for (const d of Object.keys(s.dnes)) s.dnes[d] = s.dnes[d].filter((x) => x !== id);
+  });
+}
+/** Vytvorí kópiu vlastného receptu a vráti jej id. */
+export function duplikujVlastny(id: string): string | null {
+  const z = stav.vlastne.find((x) => x.id === id); if (!z) return null;
+  const teraz = new Date().toISOString(); const nid = noveId();
+  ulozVlastny({ ...structuredClone(z), id: nid, nazov: `${z.nazov} (kópia)`.slice(0, 120), vytvorene: teraz, upravene: teraz });
+  return nid;
+}
