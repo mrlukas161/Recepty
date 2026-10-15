@@ -5,7 +5,7 @@ export const NAHRADY: SkupinaNahrad[] = [
   { id: 'muka', nazov: 'Múka', ikona: '🌾', uvod: 'Biela pšeničná múka je v kuchyni všade. Nahradiť sa dá čiastočne alebo úplne – podľa jedla.', nahrady: [
     { za: 'Biela múka v plackách a lievancoch', kontext: 'raňajky', zisk: 'Viac vlákniny a sýtosti', strata: 'Hustejšia, menej nadýchaná textúra', ides: ['ovsene-vlocky', 'pohankova-muka'] },
     { za: 'Biela múka na zahustenie omáčky', kontext: 'omáčky, polievky', zisk: 'Menej rafinovanej múky', strata: 'Mierne iná chuť', ides: ['zemiaky', 'cervena-sosovica'] },
-    { za: 'Biela múka v halušiek a šúľancoch', kontext: 'obed', zisk: 'Viac bielkovín a vlákniny (strukovinové cesto)', strata: 'Iná chuť a konzistencia – treba si zvyknúť' },
+    { za: 'Biela múka v haluškách a šúľancoch', kontext: 'obed', zisk: 'Viac bielkovín a vlákniny (strukovinové cesto)', strata: 'Iná chuť a konzistencia – treba si zvyknúť' },
     { za: 'Pečivo na raňajky', kontext: 'raňajky', zisk: 'Vajcia, kaša alebo jogurt zasýtia dlhšie (odhad)', strata: 'Menej pohodlné, treba pár minút navyše' },
     { za: 'Cestoviny z bielej múky', kontext: 'obed, večera', zisk: 'Celozrnné alebo strukovinové cestoviny majú viac vlákniny a bielkovín', strata: 'Iná chuť; strukovinové cestoviny sa ľahko rozvaria' },
     { za: 'Strúhanka v rezňoch a karbonátkoch', kontext: 'obed', zisk: 'Ovsené vločky alebo mleté semienka dajú viac vlákniny', strata: 'Menej chrumkavé' },
@@ -35,7 +35,7 @@ export const NAHRADY: SkupinaNahrad[] = [
 export const CHUT_NA: { chut: string; klasika: string; skus: string }[] = [
   { chut: 'Chuť na halušky', klasika: 'Bryndzové halušky', skus: 'Zemiakové jedlo so strukovinovou múkou, alebo pohánkové/pšenové jedlo s bryndzou a zeleninou.' },
   { chut: 'Chuť na pizzu', klasika: 'Pizza s bielou múkou', skus: 'Pizza z celozrnnej múky alebo placka z karfiolu/cukety.' },
-  { chut: 'Chuť na rezeň', klasika: 'Vyprážaný rezeň', skus: 'Pečený kuracie prsia v ovsenej strúhanke.' },
+  { chut: 'Chuť na rezeň', klasika: 'Vyprážaný rezeň', skus: 'Kuracie prsia pečené v ovsenej strúhanke.' },
   { chut: 'Chuť na palacinky', klasika: 'Palacinky z bielej múky', skus: 'Ovsené alebo pohánkové palacinky s ovocím.' },
   { chut: 'Chuť na pečivo na raňajky', klasika: 'Rožok s maslom a šunkou', skus: 'Praženica so zeleninou alebo kaša s ovocím.' },
 ];
