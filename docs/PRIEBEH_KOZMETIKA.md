@@ -26,3 +26,5 @@ Hotové: generátor `scripts/kozmetika-data.mjs` → `src/kozmetika/data` (118 l
 
 ### 23:09 UTC – doladenie a záver
 Doplnené overenie (benzoany, sorbany, DHA, oxid zinočnatý), oprava triklosánu (len návrh, bez čísel), poznámka o neúplnosti databázy, sekcia „Novinky 16.10. – kozmetika“ v ranom prehľade. Unit 204, e2e 27 zelené, build bez chýb.
+
+| 23:10 UTC | hotovo | Úlohy (a)–(d) hotové; 204 unit testov, 27 e2e (4 nové na 412×915) a build zelené; workflow „Nasadenie na GitHub Pages“ pre commit 6266eef skončil úspešne (run 45). Nesplnené: overenie v origináli (EUR-Lex, ec.europa.eu, Open Beauty Facts, PubMed boli v cloude zatvorené), úplná Príloha II, CosIng – dôvod a postup v docs/vyskum/KOZMETIKA.md. |
