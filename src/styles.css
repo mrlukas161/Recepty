@@ -89,3 +89,23 @@ ol.postup { padding-left: 1.3em; } ol.postup li { margin-bottom: .6em; }
 @keyframes vyskoc { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
 .karta { animation: vyskoc .25s ease-out both; }
 :focus-visible { outline: 3px solid var(--horcica); outline-offset: 2px; }
+
+/* Úpravy receptu ako prepínače */
+button.upr { display: flex; align-items: center; gap: 10px; width: 100%; min-height: 48px; margin: 0 0 8px; padding: 8px 12px; text-align: left; border-radius: 14px; border: 2px solid var(--text); background: var(--karta); color: var(--text); font-weight: 600; }
+button.upr .upr-ik { flex: none; width: 28px; height: 28px; display: grid; place-items: center; border-radius: 50%; border: 2px solid var(--text); font-weight: 800; }
+button.upr .upr-txt { flex: 1; }
+button.upr .upr-stav { flex: none; font-size: .78rem; font-weight: 700; color: var(--tlmene); }
+button.upr[aria-pressed="true"] { background: var(--oliva); color: var(--papier); box-shadow: 2px 2px 0 var(--text); }
+button.upr[aria-pressed="true"] .upr-ik { background: var(--papier); color: var(--oliva); border-color: var(--papier); }
+button.upr[aria-pressed="true"] .upr-stav { color: var(--papier); }
+button.upr:focus-visible { outline: 3px solid var(--horcica); outline-offset: 2px; }
+
+/* Časovače v režime varenia */
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+ul.casovace { margin: 8px 0; display: grid; gap: 6px; }
+ul.casovace li { display: flex; align-items: center; gap: 10px; border: 2px solid var(--text); border-radius: 12px; padding: 4px 8px 4px 12px; background: var(--karta); min-height: 48px; }
+ul.casovace .cas-cislo { font-size: 1.5rem; font-weight: 800; font-variant-numeric: tabular-nums; }
+ul.casovace .cas-nazov { flex: 1; font-size: .85rem; color: var(--tlmene); }
+ul.casovace li.cas-hotovo { background: var(--zle); color: #fff; }
+ul.casovace li.cas-hotovo .cas-nazov { color: #fff; }
+.cas-ponuka { margin: 8px 0; }

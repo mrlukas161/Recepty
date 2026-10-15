@@ -1,5 +1,5 @@
 import { IlustraciaReceptu } from './ilustracia';
-import { useMemo, useState, useEffect } from 'preact/hooks';
+import { useMemo, useState } from 'preact/hooks';
 import { INFO, SUROVINA, TYP_NAZOV, INFOS } from '../ctx';
 import { useStav, nastav, dnesKluc } from '../store';
 import { vypocitajSkore, POZNAMKA_SKORE } from '../engine/score';
@@ -9,6 +9,7 @@ import { kolkoPorcii } from '../engine/filtre';
 import { DNI, kluc } from '../engine/planner';
 import { LEPSIE } from '../data/lepsie';
 import { ZdrojeK } from './Zdroje';
+import { Varenie } from './Varenie';
 import { Pecat, prepniOblubene, Upozornenie, KartaReceptu } from './kom';
 
 const TAG_NAZOV: Record<string, string> = { detske: 'Detské', rychle: 'Rýchle', 'do-krabicky': 'Do krabičky', lacne: 'Lacné', bezmasite: 'Bezmäsité', 'bez-peciva': 'Bez pečiva', bezlepkove: 'Bezlepkové', vegansky: 'Vegánske', 'vyvarene-z-zvyskov': 'Zo zvyškov', 'na-viac-dni': 'Na viac dní', sladke: 'Sladké' };
@@ -133,16 +134,18 @@ function DetailVnutro({ id }: { id: string }) {
         <>
           <h2>Úpravy</h2>
           <div class="karta">
+            <p class="maly" style="margin-top:0">Ťuknutím úpravu zapneš alebo vypneš; skóre sa prepočíta.</p>
             {dopl.map(({ u, idx }) => {
               const aktivna = u.typ === 'pridat' ? st.pridane.includes(idx) : !!(u.z && st.vymenene[u.z] === u.na);
               return (
-                <label class="pol" key={idx}>
-                  <input type="checkbox" checked={aktivna} onChange={() => {
-                    if (u.typ === 'pridat') setSt({ ...st, pridane: aktivna ? st.pridane.filter((y) => y !== idx) : [...st.pridane, idx] });
-                    else if (u.z && u.na) { const v = { ...st.vymenene }; if (aktivna) delete v[u.z]; else v[u.z] = u.na; setSt({ ...st, vymenene: v }); }
-                  }} />
-                  <span>{u.popis}</span>
-                </label>
+                <button type="button" role="button" class="upr" key={idx} aria-pressed={aktivna} onClick={() => {
+                  if (u.typ === 'pridat') setSt({ ...st, pridane: aktivna ? st.pridane.filter((y) => y !== idx) : [...st.pridane, idx] });
+                  else if (u.z && u.na) { const v = { ...st.vymenene }; if (aktivna) delete v[u.z]; else v[u.z] = u.na; setSt({ ...st, vymenene: v }); }
+                }}>
+                  <span class="upr-ik" aria-hidden="true">{aktivna ? '✓' : u.typ === 'pridat' ? '+' : '⇄'}</span>
+                  <span class="upr-txt">{u.popis}</span>
+                  <span class="upr-stav">{aktivna ? 'zapnuté' : 'vypnuté'}</span>
+                </button>
               );
             })}
           </div>
@@ -192,21 +195,3 @@ function DetailVnutro({ id }: { id: string }) {
   );
 }
 
-function Varenie({ postup, i, set, nazov }: { postup: string[]; i: number; set: (n: number | null) => void; nazov: string }) {
-  useEffect(() => {
-    let lock: { release: () => Promise<void> } | null = null;
-    (navigator as unknown as { wakeLock?: { request: (t: string) => Promise<{ release: () => Promise<void> }> } }).wakeLock?.request('screen').then((l) => { lock = l; }).catch(() => {});
-    return () => { lock?.release().catch(() => {}); };
-  }, []);
-  return (
-    <div class="varenie" role="dialog" aria-label={`Varenie: ${nazov}`}>
-      <div class="horna"><strong>{nazov}</strong><button class="male" onClick={() => set(null)}>✕ Zavrieť</button></div>
-      <div class="maly">Krok {i + 1} z {postup.length}</div>
-      <div class="krok">{postup[i]}</div>
-      <div class="rad" style="justify-content:space-between">
-        <button disabled={i === 0} onClick={() => set(i - 1)} style="flex:1;min-height:60px">← Späť</button>
-        {i < postup.length - 1 ? <button class="hl" onClick={() => set(i + 1)} style="flex:1;min-height:60px">Ďalej →</button> : <button class="hl" onClick={() => set(null)} style="flex:1;min-height:60px">Hotovo 🎉</button>}
-      </div>
-    </div>
-  );
-}

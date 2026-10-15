@@ -26,3 +26,6 @@ Bez zmien kódu: testy, build a e2e zelené, nasadenie úspešné. Opätovná We
 
 ## R-i1 – Vlastné ilustrácie a ikona
 Emoji pri receptoch, kategóriách, v navigácii a na rulete nahradila vlastná sada SVG (`src/ui/ilustracia.tsx`, farby cez premenné `--il-*`, svetlá aj tmavá téma). Dáta receptov ostávajú s emoji v poli `ilustracia`; appka ho mapuje na typ ilustrácie (inak podľa kategórie jedla), takže nové recepty nič nerozbijú. Test kontroluje pokrytie. Ikona appky (tanier s paradajkou) sa generuje cez `node scripts/ikony.mjs`.
+
+## R-a1 – Aktualizácie, úpravy ako prepínače, časovač
+Service worker: autoUpdate + skipWaiting + clientsClaim + cleanupOutdatedCaches; kontrola novej verzie (`update()`) pri návrate z pozadia (najviac raz za 30 s) a raz za hodinu (`src/aktualizacia.ts`). Verzia a čas zostavenia sú v Nastaveniach → O appke, vrátane tlačidla „Skontrolovať aktualizáciu“. Úpravy receptu sú tlačidlá s `aria-pressed`. Časovač (`src/engine/casovac.ts`, `src/ui/Varenie.tsx`): pri rozsahu času sa ponúkne dolná aj horná hranica; „cez noc“ sa nerozpoznáva; časy sú údaje z postupov (kuchárska prax, nie zdravotné tvrdenie). Notifikácie sa pýtajú až po ťuknutí na štart časovača.

@@ -12,8 +12,12 @@ import { Nakup } from './ui/Nakup';
 import { Viac, Nahrady, Diety, Vedomosti, Nastavenia } from './ui/Viac';
 import { SkenerTrasa } from './skener-vstup';
 import { registerSW } from 'virtual:pwa-register';
+import { pripravAktualizacie } from './aktualizacia';
 
-registerSW({ immediate: true });
+registerSW({
+  immediate: true,
+  onRegisteredSW(_url: string, reg: ServiceWorkerRegistration | undefined) { if (reg) pripravAktualizacie(reg, document); },
+});
 
 function useHash() {
   const [h, setH] = useState(location.hash || '#/');

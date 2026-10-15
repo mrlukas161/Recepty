@@ -186,11 +186,35 @@ export function Nastavenia({ uvod }: { uvod?: boolean }) {
           </div>
           <p role="status">{sprava}</p>
           <h2>O appke</h2>
-          <p class="maly">Verzia: <code>{__SHA__.slice(0, 7)}</code> · zostavené {__CAS__.slice(0, 16).replace('T', ' ')} UTC</p>
+          <OAppke />
           <Upozornenie />
         </>
       )}
       {uvod && <div class="rad"><button class="hl" onClick={() => { nastavNastavenia({ hotovo: true }); location.hash = '#/'; }}>Hotovo, ukáž návrhy</button><button onClick={() => { nastavNastavenia({ hotovo: true }); location.hash = '#/'; }}>Preskočiť</button></div>}
+    </>
+  );
+}
+
+function OAppke() {
+  const [stav, setStav] = useState('');
+  const skontroluj = async () => {
+    setStav('Kontrolujem…');
+    try {
+      const r = await fetch(`version.json?t=${Date.now()}`, { cache: 'no-store' });
+      const v = (await r.json()) as { sha: string };
+      if (v.sha === __SHA__) { setStav('Máš najnovšiu verziu.'); return; }
+      setStav('Je nová verzia, sťahujem…');
+      const reg = await navigator.serviceWorker?.getRegistration();
+      await reg?.update();
+      setTimeout(() => setStav('Nová verzia je pripravená – zavri a znova otvor appku (alebo obnov stránku).'), 4000);
+    } catch { setStav('Kontrola sa nepodarila (si offline?).'); }
+  };
+  return (
+    <>
+      <p class="maly">Verzia: <code>{__SHA__.slice(0, 7)}</code> · zostavené {__CAS__.slice(0, 16).replace('T', ' ')} UTC ({new Date(__CAS__).toLocaleString('sk-SK')} tvoj čas)</p>
+      <p class="maly">Nové verzie sa sťahujú samy pri otvorení appky a pri návrate z pozadia.</p>
+      <button class="male" onClick={skontroluj}>🔄 Skontrolovať aktualizáciu</button>
+      <p role="status" class="maly">{stav}</p>
     </>
   );
 }

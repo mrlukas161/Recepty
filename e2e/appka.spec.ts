@@ -17,8 +17,8 @@ test('prvé spustenie → nastavenie → raňajky → detail → úprava → jed
   const skoreP = await page.locator('.pecat').first().innerText();
   await page.screenshot({ path: 'test-results/03-detail.png', fullPage: true });
   // úprava
-  const upravy = page.locator('h2:has-text("Úpravy") + .karta input[type=checkbox]');
-  if (await upravy.count()) { await upravy.first().check(); await expect(page.locator('.pecat').first()).toBeVisible(); }
+  const upravy = page.locator('h2:has-text("Úpravy") + .karta button.upr');
+  if (await upravy.count()) { await upravy.first().click(); await expect(page.locator('.pecat').first()).toBeVisible(); }
   // režim varenia
   await page.getByRole('button', { name: /Režim varenia/ }).click();
   await expect(page.locator('.varenie .krok')).toBeVisible();
