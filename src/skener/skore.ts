@@ -3,6 +3,7 @@ import { pasmo, PASMO_TEXT } from '../engine/score';
 import type { Nastavenia } from '../engine/types';
 import type { Alergen } from '../data/types';
 import { ALERGEN_NAZOV } from './alergeny';
+import { upozorneniaDiety, PENALIZACIA_DIETY, type UpozornenieDiety } from './dieta';
 import type { Rozbor, Stupen, Vyziva, Zlozka } from './typy';
 
 export type Pasmo = 'vyborne' | 'dobre' | 'obcas' | 'zriedka';
@@ -13,7 +14,9 @@ export interface SkoreVyrobku {
   celkom: number; pasmo: Pasmo; pasmoText: string; faktory: FaktorV[];
   pozitiva: string[]; negativa: string[];
   /** osobné upozornenia podľa nastavení (alergie, obmedzenia) */
-  osobne: { typ: 'alergen' | 'obmedzenie'; text: string }[];
+  osobne: { typ: 'alergen' | 'obmedzenie' | 'dieta'; text: string }[];
+  /** upozornenia pre diétu bezlepkovú / bez laktózy a alergie so zdrojmi */
+  dieta: UpozornenieDiety[];
   /** najproblematickejšie zložky (na zobrazenie hore) */
   najhorsie: Zlozka[];
   /** zloženie sme rozpoznali slabo – skóre je len orientačné a nikdy nie „Výborné“ ani „Dobré“ */
@@ -21,7 +24,7 @@ export interface SkoreVyrobku {
   spolahlivostText?: string;
 }
 export interface MoznostiSkore {
-  nastavenia?: Pick<Nastavenia, 'obmedzenia' | 'alergie' | 'deti'>;
+  nastavenia?: Pick<Nastavenia, 'obmedzenia' | 'alergie' | 'deti'> & Partial<Pick<Nastavenia, 'diety'>>;
   vyziva?: Vyziva;
 }
 
@@ -171,9 +174,11 @@ export function vypocitajSkoreVyrobku(r: Rozbor, o: MoznostiSkore = {}): SkoreVy
   const mojeAlergie = new Set<Alergen>(o.nastavenia?.alergie ?? []);
   for (const a of r.alergeny) if (mojeAlergie.has(a)) { bOs = 0; osobne.push({ typ: 'alergen', text: `ALERGÉN: obsahuje ${ALERGEN_NAZOV[a].toLowerCase()} – máš ho v zozname alergií.` }); }
   for (const a of r.stopy) if (mojeAlergie.has(a)) osobne.push({ typ: 'alergen', text: `Môže obsahovať stopy: ${ALERGEN_NAZOV[a].toLowerCase()} – máš to v zozname alergií.` });
+  const dieta = o.nastavenia ? upozorneniaDiety(r, { diety: o.nastavenia.diety, alergie: o.nastavenia.alergie }) : [];
+  for (const u of dieta) bOs -= PENALIZACIA_DIETY[u.zavaznost];
   if (ob) faktory.push({
     id: 'osobne', nazov: 'Tvoje nastavenia', body: Math.round(clamp(bOs)), vaha: 8,
-    hodnota: osobne.length ? `${osobne.length} upozornen${osobne.length === 1 ? 'ie' : osobne.length < 5 ? 'ia' : 'í'}` : 'bez konfliktu',
+    hodnota: osobne.length + dieta.filter((u) => u.zavaznost !== 'info').length ? `${osobne.length + dieta.filter((u) => u.zavaznost !== 'info').length} upozornení` : 'bez konfliktu',
     preco: 'Porovnanie so zoznamom obmedzení a alergií z Nastavení (múka, cukor, údeniny, alergény).',
     zdroje: [],
   });
@@ -189,5 +194,5 @@ export function vypocitajSkoreVyrobku(r: Rozbor, o: MoznostiSkore = {}): SkoreVy
   const p = pasmo(celkom);
   const najhorsie = z.filter((x) => { const s = stupenPreDomacnost(x, mameDeti); return s === 'obmedzit' || s === 'vyhnut-sa'; })
     .sort((a, b) => (horsi(stupenPreDomacnost(a, mameDeti)!, stupenPreDomacnost(b, mameDeti)!) ? -1 : 1)).slice(0, 5);
-  return { celkom, pasmo: p, pasmoText: PASMO_TEXT[p], faktory, pozitiva, negativa, osobne, najhorsie, nizkaSpolahlivost: nizka, spolahlivostText: nizka ? 'Nízka spoľahlivosť – skontroluj zloženie' : undefined };
+  return { celkom, pasmo: p, pasmoText: PASMO_TEXT[p], faktory, pozitiva, negativa, osobne, najhorsie, dieta, nizkaSpolahlivost: nizka, spolahlivostText: nizka ? 'Nízka spoľahlivosť – skontroluj zloženie' : undefined };
 }

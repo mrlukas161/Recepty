@@ -136,3 +136,17 @@ test('skener: výrobok nájdený podľa kódu sa po výpadku internetu nájde z 
   await expect(page.getByText(/Uložené \d{2}\.\d{2}\.\d{4}/)).toBeVisible();
   await expect(page.getByText('Ako sme to spočítali')).toBeVisible();
 });
+
+test('skener: diéta bezlepková a bez laktózy → upozornenia so zdrojmi', async ({ page }) => {
+  await page.addInitScript(() => {
+    if (!localStorage.getItem('recepty-v1')) localStorage.setItem('recepty-v1', JSON.stringify({ nastavenia: { hotovo: true, diety: ['bezlepkova', 'bez-laktozy'], alergie: [] } }));
+  });
+  await page.goto('./#/skener');
+  await page.locator('#sk-text').fill('ovsené vločky, odtučnené mlieko, srvátkový prášok, tvrdý syr, jačmenný slad, cukor. Môže obsahovať stopy lepku.');
+  await page.getByRole('button', { name: 'Vyhodnotiť' }).click();
+  await expect(page.getByRole('heading', { name: 'Tvoja diéta a alergie' })).toBeVisible();
+  await expect(page.getByText(/krížovo|kontaminovať/).first()).toBeVisible();
+  await expect(page.getByText(/Laktóza: srvátka/)).toBeVisible();
+  await expect(page.getByText(/vyzret/)).toBeVisible();
+  await page.screenshot({ path: 'test-results/skener-7-dieta.png', fullPage: true });
+});

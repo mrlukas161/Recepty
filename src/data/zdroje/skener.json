@@ -390,5 +390,47 @@
   "karty": [
    "skener"
   ]
+ },
+ {
+  "doi": null,
+  "overene": "2026-10-15",
+  "overenie": "vyhladavanie",
+  "karty": [
+   "skener"
+  ],
+  "id": "eu-828-2014",
+  "citacia": "Vykonávacie nariadenie Komisie (EÚ) č. 828/2014 o požiadavkách na informovanie spotrebiteľov o neprítomnosti alebo zníženej prítomnosti lepku v potravinách",
+  "url": "https://www.legislation.gov.uk/eur/2014/828/data.html",
+  "uroven": "silné",
+  "tvrdenie": "Označenie „bezlepkový“ znamená najviac 20 mg lepku na kg potraviny v stave, v akom sa predáva, „veľmi nízky obsah lepku“ najviac 100 mg/kg (len pri špeciálne spracovaných obilninách). Ovos v takých výrobkoch musí byť vyrobený alebo spracovaný tak, aby sa zabránilo kontaminácii pšenicou, ražou či jačmeňom (dôvod: kontaminácia pri zbere, preprave, skladovaní a spracovaní).",
+  "cisla": "bezlepkový ≤ 20 mg/kg; veľmi nízky obsah lepku ≤ 100 mg/kg"
+ },
+ {
+  "doi": null,
+  "overene": "2026-10-15",
+  "overenie": "vyhladavanie",
+  "karty": [
+   "skener"
+  ],
+  "id": "eu-1169-2011-ii",
+  "citacia": "Nariadenie (EÚ) č. 1169/2011, príloha II – látky vyvolávajúce alergie alebo neznášanlivosť",
+  "url": "https://www.legislation.gov.uk/eur/2011/1169/annex/II",
+  "uroven": "silné",
+  "tvrdenie": "Zoznam povinne označovaných alergénov zahŕňa obilniny obsahujúce lepok (pšenica vrátane špaldy a kamutu/khorasanu, raž, jačmeň, ovos alebo ich kríženci) a výrobky z nich a mlieko a výrobky z neho vrátane laktózy. Výnimky z označovania majú napr. pšeničné glukózové sirupy vrátane dextrózy, pšeničné maltodextríny a jačmenné glukózové sirupy.",
+  "cisla": null
+ },
+ {
+  "doi": null,
+  "overene": "2026-10-15",
+  "overenie": "vyhladavanie",
+  "karty": [
+   "skener"
+  ],
+  "id": "aoecs-pal",
+  "citacia": "AOECS (Association of European Coeliac Societies): tlačová správa o označovaní lepku v alergénovom značení (Codex)",
+  "url": "https://www.aoecs.org/news/aoecs-urges-codex-to-consider-gluten-in-allergen-labelling/",
+  "uroven": "slabé",
+  "tvrdenie": "Preventívne označenie „môže obsahovať“ je dobrovoľné a na medzinárodnej úrovni nie je jednotne upravené. Ľudia s celiakiou sa podľa AOECS spoliehajú na označenie „bezlepkový“, ktoré dáva vysokú istotu; pri celiakii preto neprítomnosť varovania „môže obsahovať“ nie je záruka.",
+  "cisla": null
  }
 ]

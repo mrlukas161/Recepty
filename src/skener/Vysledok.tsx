@@ -72,6 +72,18 @@ export function Vysledok({ r, s, deti, nazov = '', naOpravu }: { r: Rozbor; s: S
           {naOpravu && <div class="rad"><button class="male" onClick={naOpravu}>✏️ Opraviť zloženie</button></div>}
         </div>
       )}
+      {s.dieta.length > 0 && (
+        <div class="karta" style="animation:none">
+          <h3>Tvoja diéta a alergie</h3>
+          {s.dieta.map((u) => (
+            <div key={u.text} class={u.zavaznost === 'vysoka' ? 'sk-varovanie' : 'upoz'} role={u.zavaznost === 'vysoka' ? 'alert' : undefined}>
+              {u.text} <span class="tag">{u.uroven}</span>
+              <ZdrojeIds ids={u.zdroje} />
+            </div>
+          ))}
+          <p class="sk-pozn">Rozpoznávame podľa slov v zložení; nie je to lekárska rada. Pri celiakii, alergii a iných ochoreniach sa poraď s lekárom alebo nutričným terapeutom.</p>
+        </div>
+      )}
       {s.osobne.map((o) => <div key={o.text} class="sk-varovanie" role="alert">{o.text}</div>)}
       {r.alergeny.length > 0 && <div class="upoz"><b>Alergény v zložení:</b> {r.alergeny.map((a) => ALERGEN_NAZOV[a]).join(', ')}.</div>}
       {r.stopy.length > 0 && <div class="upoz"><b>Môže obsahovať stopy:</b> {r.stopy.map((a) => ALERGEN_NAZOV[a]).join(', ')}.</div>}
