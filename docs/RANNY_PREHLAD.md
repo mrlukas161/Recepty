@@ -22,13 +22,26 @@
 - **Odhad / prax:** váhy a prahy skóre (`docs/vyskum/SKORE.md`), zaradenie surovín (zápal, NOVA, GI), **všetky nutričné hodnoty surovín** (typické hodnoty, USDA/Ciqual nedostupné), recepty (vlastné slová, 2 kontroly agentmi, ale **nik ich neuvaril** – prosím rodinná skúška).
 - Nie je to lekárska rada – upozornenie je v appke.
 
+## Novinky 15.10. – appka
+- **Aktualizácie:** appka sa po nasadení sama obnoví (autoUpdate, kontrola pri návrate z pozadia a raz za hodinu). Nastavenia → O appke: verzia, čas zostavenia, „Skontrolovať aktualizáciu“. *Reálnu výmenu verzie v mobile sme zo sandboxu neskúšali – po prvej aktualizácii over, že sa verzia zmenila.*
+- **Nákup:** bez vody a ľadu; soľ, korenie a drobnosti v skupine „Skontroluj, či máš doma“ bez gramov; chlieb „~315 g ≈ 7 plátkov“; zaokrúhlenie na bežné balenia (múka 1 kg, mlieko 1 l, vajcia po 10…). Tabuľka balení je náš odhad a appka to povie.
+- **Voliteľné obmedzované suroviny:** ak máš údeniny/múku/cukor/vyprážané obmedzené, voliteľná surovina sa predvolene vynechá („voliteľne … (máš obmedzené)“, názov napr. „Fazuľový prívarok (klobása voliteľne)“); po pridaní sa počíta do limitu, skóre aj nákupu.
+- **Úpravy receptu** sú tlačidlá-prepínače (≥ 48 px, zapnuté/vypnuté).
+- **Časovač v režime varenia:** z postupu rozpozná časy (aj rozsahy), viac časovačov naraz, zvuk/vibrácia/notifikácia, Wake Lock.
+- **Plánovač:** „varím na 2 dni“ (večera → obed na ďalší deň, nákup raz), čas na varenie cez týždeň a cez víkend v Nastaveniach.
+- **Vlastné recepty:** Recepty → „+ Vlastný recept“ (aj Viac → Moje recepty): úprava, duplikát, zmazanie, export/import JSON; skóre rovnakým výpočtom, suroviny voľným textom znižujú „istotu skóre“; fungujú v zozname, jedálničku, rulete aj nákupe.
+- **Prenos do druhého mobilu:** Viac → Preniesť do druhého mobilu: odkaz, QR (lokálne), súbor; na druhom mobile náhľad zmien, zlúčiť alebo nahradiť, vrátiť späť. *Živú kameru na QR sme neskúšali na reálnom telefóne.*
+- **Vlastné SVG ilustrácie a nová ikona** (tanier s paradajkou) namiesto emoji; svetlá aj tmavá téma skontrolované na 412×915.
+- Ako vyskúšať: otvor appku, prejdi menu Viac a záložky vyššie; testy: 177 unit, 23 e2e.
+
 ## Čo chýba a prečo
 - **Originály zdrojov** nie sú prečítané – sandbox blokuje PubMed/DOI/WHO (iba WebSearch). Po otvorení siete zopakovať rešerš na úroveň `original`.
 - Nutričné hodnoty bez tabuliek (USDA/Ciqual) → všetky `odhad: true`.
-- Živá adresa sa z cloudu nedá otvoriť (proxy blokuje github.io); nasadenie som overoval cez GitHub Actions (behy úspešné). **Ráno otvor `version.json` a porovnaj s commitom.**
-- Plánovač nerieši zvyšky (večera → obed) ani rozdielny čas cez týždeň len približne; nákup nepozná balenia.
-- Ilustrácie sú emoji; vlastné SVG chýbajú. Ikona appky je jednoduchá.
-- e2e testy bežia na Chromium (nie na reálnom Xiaomi/iPhone).
+- Živá adresa sa z cloudu nedá otvoriť (proxy blokuje github.io); nasadenie overujem cez GitHub Actions. **Ráno otvor `version.json` a porovnaj s commitom.**
+- Nič z novinky sme neskúšali na reálnom Xiaomi/iPhone (len Chromium 412×915): aktualizácia SW, živé skenovanie QR kamerou, notifikácie časovača.
+- Tabuľka balení v nákupe je odhad. Filtre používajú kategórie (`Info.kat`) počítané so všetkými surovinami; poznámka „(voliteľné – máš obmedzené)“ je pri kroku postupu, nie pri konkrétnej surovine.
+- Emoji ostali v niektorých tlačidlách (⭐ 👍 👎 ✏️ 🗑 ✨ 🛒 📤); niektoré ilustrácie receptov sú približné (struk, banán/jahoda). Kozmetika (INCI) čaká na samostatný beh.
+- Recepty nik neuvaril – potrebná rodinná skúška.
 
 ## Novinky 15.10. – skener
 **Čo sa zmenilo** (na základe tvojho „všetky návrhy aplikuj a oprav“; podrobnosti a rozhodnutia S7–S14 v `docs/vyskum/SKENER.md`):
