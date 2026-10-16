@@ -1,0 +1,24 @@
+{
+ "zdroj": "Open Food Facts (https://world.openfoodfacts.org)",
+ "licencia": "Open Database License (ODbL) 1.0; obsah databázy: Database Contents License; obrázky nesťahujeme",
+ "vyber": "search.openfoodfacts.org q=countries_tags:\"en:slovakia\", podrobnosti cez /api/v2/product/{kód}.json",
+ "polia": "code,product_name,product_name_sk,product_name_cs,product_name_en,brands,lang,quantity,ingredients_text,ingredients_text_sk,ingredients_text_cs,ingredients_text_en,ingredients_tags,additives_tags,ingredients_analysis_tags,allergens_tags,traces_tags,nutriments,nutriscore_grade,nova_group,categories_tags,last_modified_t",
+ "ziviny": [
+  "energy-kcal_100g",
+  "fat_100g",
+  "saturated-fat_100g",
+  "carbohydrates_100g",
+  "sugars_100g",
+  "fiber_100g",
+  "proteins_100g",
+  "salt_100g",
+  "sodium_100g"
+ ],
+ "stiahnute": "2026-10-16T17:50:56Z",
+ "vystup": {
+  "subor": "sk-vyrobky.jsonl.gz",
+  "vyrobkov": 3686,
+  "sha256": "e05324bd1c8821641d001dfb9c3eb5e5007356964fb831a5e6998a365de8221a"
+ },
+ "chyby_stahovania": 0
+}
