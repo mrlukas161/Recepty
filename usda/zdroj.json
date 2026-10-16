@@ -1,0 +1,29 @@
+{
+ "zdroj": "USDA FoodData Central (U.S. Department of Agriculture, Agricultural Research Service)",
+ "licencia": "CC0 1.0 (verejné vlastníctvo); citovať ako U.S. Department of Agriculture, FoodData Central",
+ "stranka": "https://fdc.nal.usda.gov/download-datasets",
+ "subory": [
+  {
+   "typ": "sr_legacy",
+   "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip",
+   "subor": "FoodData_Central_sr_legacy_food_csv_2018-04.zip",
+   "bajty": 6074592,
+   "sha256": "b80817294b8850530aaedf2e515c02593b1824f763a0ff356e5c2081643e6fd0",
+   "stiahnute": "2026-10-16T13:39:52Z"
+  },
+  {
+   "typ": "foundation",
+   "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_foundation_food_csv_2025-12-18.zip",
+   "subor": "FoodData_Central_foundation_food_csv_2025-12-18.zip",
+   "bajty": 3559820,
+   "sha256": "3850de85effd6d9aa471f48aab2a76c20f9bc5feb3f2f52c8ce693f9cf75d52b",
+   "stiahnute": "2026-10-16T13:39:55Z"
+  }
+ ],
+ "vystup": {
+  "subor": "usda_vyziva.csv",
+  "riadkov": 8229,
+  "sha256": "0dd2ee72943ff1f5a805fbb467bcb6cd9aad87d7809541139ddbb88aaf467e77"
+ },
+ "poznamka": "Hodnoty na 100 g jedlej časti. sol_g_vypocet = sodík (mg) × 2,5 / 1000."
+}

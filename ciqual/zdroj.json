@@ -1,0 +1,29 @@
+{
+ "zdroj": "Anses. 2025. Table de composition nutritionnelle des aliments Ciqual 2025",
+ "doi": "10.57745/RDMHWY",
+ "licencia": "Licence Ouverte / Open Licence 2.0 (Etalab)",
+ "stranka": "https://entrepot.recherche.data.gouv.fr/dataset.xhtml?persistentId=doi:10.57745/RDMHWY",
+ "verzia": "1.0 z 2025-11-19T16:29:04Z",
+ "subory": [
+  {
+   "url": "https://entrepot.recherche.data.gouv.fr/api/access/datafile/666260",
+   "subor": "Table Ciqual 2025_FR_2025_11_03.xlsx",
+   "bajty": 1541998,
+   "sha256": "5555c572fa3735991298d832d0427788fa69a11b4fd20a5d580d58942369fbb0",
+   "stiahnute": "2026-10-16T13:40:40Z"
+  },
+  {
+   "url": "https://entrepot.recherche.data.gouv.fr/api/access/datafile/666252",
+   "subor": "alim_2025_11_03.xml",
+   "bajty": 1581031,
+   "sha256": "e0b1de25b3039028205e9d54a96892e403e1b313c2efeb41180fabe132627478",
+   "stiahnute": "2026-10-16T13:40:42Z"
+  }
+ ],
+ "vystup": {
+  "subor": "ciqual_vyziva.csv",
+  "riadkov": 3484,
+  "sha256": "812caefe9475a25fe7ebdf4901a6309ef62c60e91fe877f048f16c0232fb57d8"
+ },
+ "poznamka": "Hodnoty ako v tabuľke (desatinná čiarka, „< 0,5“, „traces“, „-“ ponechané); na 100 g."
+}
