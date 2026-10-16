@@ -65,3 +65,9 @@ Bez zmeny kódu: žiadna chyba nenájdená. Migrácia sa overila odseknutým sta
 ## R-k2 – Kontrolný beh 16.10.
 - Všeobecná zložka s upresnením v zátvorke (`olej`, `aroma`) je jedna zložka: ak upresnenie je známa konkrétnejšia zložka (palm → palmový tuk), platí ona; inak ostane jedna všeobecná (aróma vanilín). Ostatné zložené zložky (čokoláda (cukor, …)) sa rozbaľujú ako doteraz. Test v `tests/skener7.test.ts`.
 - Sieť ostala zatvorená (doi.org 000), úroveň zdrojov sa nemenila; agent pre zdroje nič nespustil, čo je zapísané v prehľade ako chýbajúce.
+
+## R-v1 – Výživové hodnoty surovín z USDA a Ciqual (16.10.2026)
+- Tabuľky (vetva `data-zdroje`) → 287 z 298 surovín má hodnoty z tabuľky (`odhad: false`, `zdrojNutr` = `ciqual:<kód>` / `fdc:<id>`; 249 Ciqual, 38 USDA), 11 ostáva `odhad: true` s poznámkou prečo (`poznamkaNutr`). Spracované hodnoty sú v `src/data/vyziva-tabulky.json`, prekrývajú sa v `src/data/index.ts`; surové tabuľky v `main` nie sú. Mapovanie surovina → položka → dôvod: `docs/vyskum/VYZIVA.md`.
+- USDA: sacharidy = „by difference“ − vláknina (min. 0), soľ zo `sol_g_vypocet`. Ciqual: desatinná čiarka; „traces“ → 0; „< x“ → x/2; `-` → chýba (soľ sa dopočíta zo sodíka; chýbajúca nasýtené/cukry/vláknina → ponechaný pôvodný odhad; chýbajúce kcal/bielkoviny/tuky/sacharidy → surovina ostáva odhadom). Také hodnoty sú v appke označené „približné“. Cukry sa orežú na sacharidy, nasýtené na tuky.
+- Párovanie robili sub-agenti po dávkach, sporné (istota „stredna“ alebo odchýlka > 35 % od starého odhadu) overil druhý sub-agent.
+- **Kalibrácia skóre: bez zmeny.** Recepty (197) v pásmach Výborné/Dobré/Občas/Zriedka: pred 65/100/18/14, po 62/104/17/14; pásma sa nerozpadli, poradie sa takmer nemení, preto sa váhy ani prah nemenili.

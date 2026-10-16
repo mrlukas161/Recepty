@@ -38,6 +38,8 @@ for (const [id, m] of Object.entries(map)) {
     for (const k of Object.keys(f)) if (f[k] == null) { chyba.push(k); f[k] = o[k]; p = true; }
     if (['kcal', 'bielk', 'tuky', 'sach'].some((k) => chyba.includes(k))) { nezhoda.push(id + ' chýba hlavná živina ' + m.zdroj); continue; }
     n = f; }
+  // cukry nemôžu presiahnuť sacharidy bez vlákniny (rozdiel býva zaokrúhlením alebo definíciou tabuľky)
+  n.cukry = Math.min(n.cukry, n.sach); n.nasyt = Math.min(n.nasyt, n.tuky);
   out[id] = { z: m.zdroj, n: [n.kcal, n.bielk, n.tuky, n.nasyt, n.sach, n.cukry, n.vlak, n.sol].map(r1), ...(p ? { p: 1 } : {}), ...(chyba.length ? { d: chyba } : {}) };
 }
 fs.writeFileSync('src/data/vyziva-tabulky.json', JSON.stringify(out, null, 0).replace(/},"/g, '},\n"') + '\n');

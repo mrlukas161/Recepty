@@ -12,7 +12,7 @@ describe('validácia dát', () => {
       expect(s.na100.kcal, s.id).toBeLessThanOrEqual(900);
       expect(s.na100.cukry, s.id + ' cukry>sacharidy').toBeLessThanOrEqual(s.na100.sach + 0.5);
       expect(s.na100.nasyt, s.id + ' nasyt>tuky').toBeLessThanOrEqual(s.na100.tuky + 0.5);
-      expect(s.odhad || /USDA|Ciqual/.test(s.zdrojNutr), s.id).toBe(true);
+      expect(s.odhad || /^(ciqual|fdc):\d+$/.test(s.zdrojNutr), s.id).toBe(true);
     }
   });
   it('suroviny s lepkom majú alergén lepok', () => {
