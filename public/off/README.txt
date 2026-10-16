@@ -1,0 +1,1 @@
+Výrobky z Open Food Facts (https://world.openfoodfacts.org), © prispievatelia Open Food Facts, licencia ODbL (https://opendatacommons.org/licenses/odbl/1-0/). Stiahnuté 16.10.2026, spracované skriptom scripts/off-balik.ts.

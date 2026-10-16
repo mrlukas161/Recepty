@@ -77,6 +77,20 @@ test('skener: čiarový kód → Open Food Facts (zmockované) → hodnotenie, l
   await page.screenshot({ path: 'test-results/skener-5-porovnanie.png', fullPage: true });
 });
 
+test('skener: výrobok z balíka slovenských výrobkov sa nájde bez siete s označením zdroja', async ({ page }) => {
+  const siet: string[] = [];
+  await page.route('https://world.openfoodfacts.org/**', (r) => { siet.push(r.request().url()); return r.abort(); });
+  await page.goto('./');
+  await page.getByRole('button', { name: 'Hotovo, ukáž návrhy' }).click();
+  await page.goto('./#/skener');
+  await page.getByLabel('Čiarový kód (čísla)').fill('20131616');
+  await page.getByRole('button', { name: 'Nájsť' }).click();
+  await expect(page.getByText('Trappista').first()).toBeVisible();
+  await expect(page.getByText('Open Food Facts (ODbL), stiahnuté 16.10.2026')).toBeVisible();
+  await expect(page.getByText(/Pasterizované mlieko/).first()).toBeVisible();
+  expect(siet).toEqual([]);
+});
+
 test('skener: OCR funguje aj offline po prvom použití (service worker)', async ({ page, context }) => {
   await page.goto('./');
   await page.getByRole('button', { name: 'Hotovo, ukáž návrhy' }).click();

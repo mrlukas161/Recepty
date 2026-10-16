@@ -71,3 +71,8 @@ Bez zmeny kódu: žiadna chyba nenájdená. Migrácia sa overila odseknutým sta
 - USDA: sacharidy = „by difference“ − vláknina (min. 0), soľ zo `sol_g_vypocet`. Ciqual: desatinná čiarka; „traces“ → 0; „< x“ → x/2; `-` → chýba (soľ sa dopočíta zo sodíka; chýbajúca nasýtené/cukry/vláknina → ponechaný pôvodný odhad; chýbajúce kcal/bielkoviny/tuky/sacharidy → surovina ostáva odhadom). Také hodnoty sú v appke označené „približné“. Cukry sa orežú na sacharidy, nasýtené na tuky.
 - Párovanie robili sub-agenti po dávkach, sporné (istota „stredna“ alebo odchýlka > 35 % od starého odhadu) overil druhý sub-agent.
 - **Kalibrácia skóre: bez zmeny.** Recepty (197) v pásmach Výborné/Dobré/Občas/Zriedka: pred 65/100/18/14, po 62/104/17/14; pásma sa nerozpadli, poradie sa takmer nemení, preto sa váhy ani prah nemenili.
+
+## R-o1 – Balík slovenských výrobkov (16.10.2026)
+- Skript sa nemenil. Do balíka idú výrobky s platným čiarovým kódom, ktoré majú aspoň zloženie, E-čísla/zložky alebo výživové hodnoty; 37 neplatných kódov a 1 151 prázdnych záznamov sa vyradilo, duplicity sa zlúčili → 2 498 výrobkov, ~0,7 MB (hlboko pod rozpočtom 3 MB).
+- Dáta (`sk-vyrobky.jsonl.gz`) ostávajú len vo vetve `data-zdroje`, do main ide len spracovaný balík `public/off/` (ODbL, uvedené v appke aj v súbore s pôvodom).
+- E2E používa EAN-8 `20131616` (Trappista, slovenské zloženie) a blokuje sieť na openfoodfacts.org, aby dokázalo, že údaj je z balíka.
