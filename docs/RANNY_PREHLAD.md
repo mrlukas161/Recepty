@@ -9,6 +9,12 @@
 - **Úroveň zdrojov:** všetko stále „overené vyhľadávaním, originál nečítaný“. Nočný agent pre zdroje sa nespustil – sieť (PubMed, doi.org, EUR-Lex, Open Food Facts…) je z cloudu zatvorená, preto **nie sú** nové výživové tabuľky, balík slovenských výrobkov ani `OVERENIE-ORIGINAL.md`; všetky nutričné hodnoty surovín ostávajú odhad.
 - **Čo chýba a prečo:** originály zdrojov, tabuľky USDA/Ciqual, úplná Príloha II/CosIng (sieť), skúška na reálnom telefóne, uvarenie receptov rodinou.
 
+## Novinky 16.10. – výživa a slovenské výrobky
+- **Výživa surovín:** 287 z 298 surovín má hodnoty z tabuliek (249 Ciqual 2025, 38 USDA FoodData Central), 11 ostalo odhadom (poznámka pri každej: napr. chýba zhoda pre petržlenový koreň, tlačenku, kuraciu chrbticu, cícerové a šošovicové cestoviny, pukancovú kukuricu, klobásu bez údaja o tukoch). Hodnoty „traces“ a „< x“ z Ciqualu sú v appke „približné“. Mapovanie a pravidlá: `docs/vyskum/VYZIVA.md`, rozhodnutie R-v1.
+- **Skóre receptov (197):** Výborné/Dobré/Občas/Zriedka pred 65/100/18/14, po 62/104/17/14 – pásma sa nerozpadli, kalibrácia sa nemenila.
+- **Ako vyskúšať:** otvor ľubovoľný recept → dole „Zdroj výživových hodnôt (X z Y z tabuliek)“; Viac → Vedomosti → Zdroje → „Výživové tabuľky“ (USDA CC0, Ciqual Licence Ouverte 2.0).
+- **Balík slovenských výrobkov: NEHOTOVÝ.** Súbor `off/sk-vyrobky.jsonl.gz` sa vo vetve `data-zdroje` do 15:37 UTC (90 min čakania) neobjavil. Hotový je kód: skener hľadá najprv lokálnu zásobu, potom balík `public/off/` (načíta sa až pri hľadaní, service worker ho uloží, funguje bez internetu), až potom Open Food Facts online; výrobok z balíka nesie „Open Food Facts (ODbL), stiahnuté 16.10.2026“. Skript na zostavenie: `npx vite-node scripts/off-balik.ts <sk-vyrobky.jsonl.gz>` (výstup do `public/off/`, rozpočet ~3 MB). Po nahraní súboru stačí skript spustiť, otestovať e2e kódom z balíka a pushnúť. Počet výrobkov v balíku: 0.
+
 ## Inštalácia na Android (Xiaomi 15) v 3 krokoch
 1. Otvor odkaz v **Chrome**.
 2. ⋮ (menu) → **Inštalovať aplikáciu** / **Pridať na plochu**.
@@ -26,7 +32,7 @@
 
 ## Čo je overené a čo odhad
 - **Overené vyhľadávaním (originál nečítaný):** 43 zdrojov v `src/data/zdroje/*.json`, adversariálne prekontrolovaných druhým agentom (`docs/vyskum/OVERENIE.md`; nepotvrdené čísla vyradené, nesprávne priradenia zdrojov odstránené). V appke majú viditeľné označenie.
-- **Odhad / prax:** váhy a prahy skóre (`docs/vyskum/SKORE.md`), zaradenie surovín (zápal, NOVA, GI), **všetky nutričné hodnoty surovín** (typické hodnoty, USDA/Ciqual nedostupné), recepty (vlastné slová, 2 kontroly agentmi, ale **nik ich neuvaril** – prosím rodinná skúška).
+- **Odhad / prax:** váhy a prahy skóre (`docs/vyskum/SKORE.md`), zaradenie surovín (zápal, NOVA, GI), nutričné hodnoty 11 surovín (ostatné 287 sú z USDA/Ciqual), recepty (vlastné slová, 2 kontroly agentmi, ale **nik ich neuvaril** – prosím rodinná skúška).
 - Nie je to lekárska rada – upozornenie je v appke.
 
 ## Novinky 15.10. – appka
@@ -43,7 +49,7 @@
 
 ## Čo chýba a prečo
 - **Originály zdrojov** nie sú prečítané – sandbox blokuje PubMed/DOI/WHO (iba WebSearch). Po otvorení siete zopakovať rešerš na úroveň `original`.
-- Nutričné hodnoty bez tabuliek (USDA/Ciqual) → všetky `odhad: true`.
+- Overenie štúdií v origináli stále chýba – sieť je zatvorená (tabuľky USDA/Ciqual sme dostali cez vetvu `data-zdroje`, ale PubMed/DOI nie). Balík slovenských výrobkov čaká na dáta.
 - Živá adresa sa z cloudu nedá otvoriť (proxy blokuje github.io); nasadenie overujem cez GitHub Actions. **Ráno otvor `version.json` a porovnaj s commitom.**
 - Nič z novinky sme neskúšali na reálnom Xiaomi/iPhone (len Chromium 412×915): aktualizácia SW, živé skenovanie QR kamerou, notifikácie časovača.
 - Tabuľka balení v nákupe je odhad. Filtre používajú kategórie (`Info.kat`) počítané so všetkými surovinami; poznámka „(voliteľné – máš obmedzené)“ je pri kroku postupu, nie pri konkrétnej surovine.
