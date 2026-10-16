@@ -29,6 +29,10 @@ export interface Surovina {
   na100: { kcal: number; bielk: number; tuky: number; nasyt: number; sach: number; cukry: number; vlak: number; sol: number };
   zdrojNutr: string;             // napr. 'USDA FDC 168878' alebo 'typická hodnota (odhad)'
   odhad: boolean;                // true ak hodnoty neboli overené v tabuľke
+  /** hodnoty z tabuľky sú približné: „traces“, „< x“ alebo chýbajúca živina doplnená odhadom (pozri docs/vyskum/VYZIVA.md) */
+  priblizne?: boolean;
+  /** poznámka, prečo hodnota ostala odhadom alebo ako bola prevzatá */
+  poznamkaNutr?: string;
   gi?: 'nizky' | 'stredny' | 'vysoky';
   nova: 1 | 2 | 3 | 4;
   /** zápalový potenciál potraviny: -2 (výrazne protizápalová) .. +2 (výrazne prozápalová) – odhad podľa EDIP/DII logiky */

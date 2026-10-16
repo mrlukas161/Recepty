@@ -9,7 +9,7 @@ import { obmedzeneVolitelne, vynechaneVolitelne, zobrazenyNazov, postupPreDomacn
 import { kolkoPorcii } from '../engine/filtre';
 import { DNI, kluc } from '../engine/planner';
 import { LEPSIE } from '../data/lepsie';
-import { ZdrojeK } from './Zdroje';
+import { ZdrojeK, ZdrojVyzivy } from './Zdroje';
 import { Varenie } from './Varenie';
 import { OvladanieVlastneho } from './VlastnyRecept';
 import { Pecat, prepniOblubene, Upozornenie, KartaReceptu } from './kom';
@@ -204,7 +204,8 @@ function DetailVnutro({ id }: { id: string }) {
         <button onClick={() => nastav((x) => { x.nakupRecepty = x.nakupRecepty.includes(id) ? x.nakupRecepty : [...x.nakupRecepty, id]; })}>🛒 Do nákupu{s.nakupRecepty.includes(id) ? ' ✓' : ''}</button>
         <button onClick={() => nastav((x) => { x.historia.push({ recept: id, den: dnesKluc() }); })}>✅ Uvarené ({s.historia.filter((h) => h.recept === id).length}×)</button>
       </div>
-      <p class="maly">Skóre je odhad (heuristika); zdroje k faktorom nájdeš v „Ako sme to spočítali“. Nutričné údaje surovín sú typické hodnoty (odhad).</p>
+      <p class="maly">Skóre je odhad (heuristika); zdroje k faktorom nájdeš v „Ako sme to spočítali“. Nutričné údaje surovín sú z tabuliek USDA / Ciqual, kde sa dalo priradiť; ostatné sú typické hodnoty (odhad).</p>
+      <ZdrojVyzivy ids={r.suroviny.map((x) => x.id)} />
       <Upozornenie />
     </>
   );

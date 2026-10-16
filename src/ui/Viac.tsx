@@ -7,7 +7,7 @@ import { useStav, nastavNastavenia, nastav, exportuj, importuj, resetuj } from '
 import { KATEGORIE, type Kategoria, type Uroven } from '../engine/types';
 import { Hlavicka, Upozornenie, Zalozky } from './kom';
 import type { Alergen } from '../data/types';
-import { ZdrojeK, VsetkyZdroje } from './Zdroje';
+import { ZdrojeK, VsetkyZdroje, ZdrojeTabuliek } from './Zdroje';
 import { IkonaKarty } from './ilustracia';
 
 export function Viac() {
@@ -106,6 +106,8 @@ export function Vedomosti() {
       ))}
       <h2>Zdroje</h2>
       <VsetkyZdroje />
+      <h3>Výživové tabuľky</h3>
+      <ZdrojeTabuliek />
     </>
   );
 }
