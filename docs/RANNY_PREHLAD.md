@@ -2,10 +2,12 @@
 
 **Appka:** https://mrlukas161.github.io/Recepty/ (verzia v Nastaveniach → „O appke“; `…/version.json` = posledný nasadený commit)
 
-## Kontrola z 15.10. 11:48 UTC (commit b7dae2a)
-- Overené spustením: 177 unit testov, build, 23 e2e na 412×915 (vrátane Nutelly z fixtúry: nízke pásmo „Občas“, nikdy „Dobré“/„Výborné“; OCR syntetickej etikety; prenos do druhého mobilu; jedálniček so zvyškami; nákup bez vody).
-- Migrácia: stav uložený verziou af713bd ostal po aktualizácii v localStorage a service worker novej verzie sa v prehliadači (Chromium) sám vymenil (`version.json` sa zmenil na b7dae2a). Skutočný Xiaomi/iPhone ani sieť (PubMed, github.io) z cloudu nedostupné – zdroje ostávajú na úrovni „overené vyhľadávaním“.
-- Chyby: nenašli sa žiadne, kód sa nemenil.
+## Stav v skratke (kontrola 16.10. ~04:50 UTC)
+- **Nové:** skener kozmetiky podľa INCI (Viac → Skener kozmetiky → „Ukáž príklad“), oprava skenera potravín: zložka s upresnením v zátvorke je jedna zložka („vegetable fat (palm)“ → Palmový tuk, „flavouring (vanillin)“ → jedna Aróma; Nutella cez Open Food Facts už nemá duplicity).
+- **Ako vyskúšať v mobile:** otvor adresu vyššie, Viac → Skener zloženia → vlož text „Ingredients: sugar, vegetable fat (palm), flavouring (vanillin)“; potom Viac → Skener kozmetiky.
+- **Overené spustením:** 205 unit testov, build, 27 e2e na 412×915 (skener potravín vrátane OCR a offline, skener kozmetiky: ručné INCI, syntetická etiketa, kód so zmockovanou odpoveďou). Skóre receptov: žiadny recept označený ako klasika/vyprážaný nie je v pásme „Výborné“.
+- **Úroveň zdrojov:** všetko stále „overené vyhľadávaním, originál nečítaný“. Nočný agent pre zdroje sa nespustil – sieť (PubMed, doi.org, EUR-Lex, Open Food Facts…) je z cloudu zatvorená, preto **nie sú** nové výživové tabuľky, balík slovenských výrobkov ani `OVERENIE-ORIGINAL.md`; všetky nutričné hodnoty surovín ostávajú odhad.
+- **Čo chýba a prečo:** originály zdrojov, tabuľky USDA/Ciqual, úplná Príloha II/CosIng (sieť), skúška na reálnom telefóne, uvarenie receptov rodinou.
 
 ## Inštalácia na Android (Xiaomi 15) v 3 krokoch
 1. Otvor odkaz v **Chrome**.

@@ -85,3 +85,17 @@ describe('druhý prechod: pás textu', () => {
     expect(pasmoTextu([riadok(10, 30, 10)], 1000, 2000)).toBeUndefined();
   });
 });
+
+describe('zložka s upresnením v zátvorke je jedna zložka', () => {
+  it('Nutella (angličtina): palmový tuk a aróma vanilín bez duplicít', async () => {
+    const { rozbor } = await import('../src/skener/rozbor');
+    const r = rozbor('Ingredients: sugar, vegetable fat (palm), hazelnuts (13%), skimmed milk powder (8.7%), fat-reduced cocoa (7.4%), emulsifier: lecithins (soy), flavouring: vanillin.');
+    const id = r.zlozky.map((z) => z.id);
+    expect(id.filter((x) => x === 'palmovy-tuk')).toHaveLength(1);
+    expect(id).not.toContain('olej');
+    const e2 = rozbor('sugar, flavouring (vanillin), salt');
+    expect(e2.zlozky.filter((z) => z.id === 'aroma')).toHaveLength(1);
+    const e3 = rozbor('vegetable fat (palm), flavouring (vanillin)');
+    expect(e3.zlozky.map((z) => z.id)).toEqual(['palmovy-tuk', 'aroma']);
+  });
+});

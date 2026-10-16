@@ -61,3 +61,7 @@ Prešlo sa Dnes, recepty, detail s úpravami, režim varenia s časovačom, vlas
 
 ## R-k1 – Kontrolný beh 15.10.
 Bez zmeny kódu: žiadna chyba nenájdená. Migrácia sa overila odseknutým stavom (verzia 1) — uložený JSON sa neprepisuje, kým používateľ niečo nezmení; `zluc` ho migruje pri načítaní (pokrýva unit test a e2e „starý uložený stav“).
+
+## R-k2 – Kontrolný beh 16.10.
+- Všeobecná zložka s upresnením v zátvorke (`olej`, `aroma`) je jedna zložka: ak upresnenie je známa konkrétnejšia zložka (palm → palmový tuk), platí ona; inak ostane jedna všeobecná (aróma vanilín). Ostatné zložené zložky (čokoláda (cukor, …)) sa rozbaľujú ako doteraz. Test v `tests/skener7.test.ts`.
+- Sieť ostala zatvorená (doi.org 000), úroveň zdrojov sa nemenila; agent pre zdroje nič nespustil, čo je zapísané v prehľade ako chýbajúce.

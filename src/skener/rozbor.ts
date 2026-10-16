@@ -91,6 +91,8 @@ function rozpoznaj(povodny: string, poradie: number, hlbka: number, rodic: strin
 
 const PREFIX_FUNKCIE = /^(?:farbiv[oa]|konzervant(?:y)?|emulgator(?:y)?|regulator(?:y)? kyslosti|antioxidant(?:y)?|stabilizator(?:y)?|zahustovadl[oa]|sladidl[oa]|zvyraznovac(?:e)? chuti|latka na upravu muky|kypriac[a-z]* latka)\s+/;
 
+const UPRESNENIE = new Set(['olej', 'aroma']);
+
 function spracuj(uzly: Uzol[], out: Zlozka[], hlbka = 0, rodic?: string, poradieRodica?: number, funkRodica?: string) {
   uzly.forEach((u, i) => {
     const poradie = poradieRodica ?? i;
@@ -100,6 +102,15 @@ function spracuj(uzly: Uzol[], out: Zlozka[], hlbka = 0, rodic?: string, poradie
       if (!f && u.text) {
         // zložená zložka (čokoláda (cukor, …)): vyhodnotíme aj samotný názov, potom podzložky
         const z = rozpoznaj(u.text, poradie, hlbka, rodic, u.percento, funkRodica);
+        // všeobecná zložka s upresnením v zátvorke (vegetable fat (palm), flavouring (vanillin)) = jedna zložka
+        if (z.typ === 'zlozka' && z.id && UPRESNENIE.has(z.id)) {
+          const dieta: Zlozka[] = [];
+          spracuj(u.deti, dieta, hlbka, u.text, poradie, funkRodica);
+          const presnejsia = dieta.find((d) => d.typ === 'zlozka' && d.id && d.id !== z.id);
+          if (presnejsia) out.push(...dieta.map((d) => ({ ...d, povodny: `${u.text} (${d.povodny})` })));
+          else out.push({ ...z, povodny: `${u.text} (${u.deti.map((d) => d.text).join(', ')})`, alergeny: [...new Set([...z.alergeny, ...dieta.flatMap((d) => d.alergeny)])] });
+          return;
+        }
         out.push(z);
       }
       spracuj(u.deti, out, hlbka + (f ? 0 : 1), f ? (rodic ?? u.text) : u.text, poradie, f ?? funkRodica);
