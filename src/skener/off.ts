@@ -2,6 +2,7 @@
 import type { Vyziva, Doplnok } from './typy';
 import type { Alergen } from '../data/types';
 import { najdiVUlozisku, ulozVyrobok } from './ulozisko';
+import { najdiVBaliku } from './balik';
 
 export type JazykZlozenia = 'sk' | 'cs' | 'en' | 'povodny';
 
@@ -21,6 +22,8 @@ export interface OffVyrobok {
   url: string;
   /** výrobok pochádza z lokálnej zásoby (bez internetu) */
   zCache?: boolean;
+  /** výrobok pochádza z balíka slovenských výrobkov (public/off) */
+  zBalika?: boolean;
   /** ISO čas uloženia do lokálnej zásoby */
   ulozene?: string;
 }
@@ -91,8 +94,13 @@ export function mapujOff(kod: string, j: unknown): OffVyrobok | null {
   };
 }
 
-/** Online: dopyt na OFF a uloženie do zásoby. Bez internetu (alebo pri chybe siete): výrobok z lokálnej zásoby. */
+/** Hľadanie podľa kódu: lokálna zásoba → balík → online dopyt na OFF (uloží sa do zásoby). */
 export async function nacitajOff(kod: string): Promise<OffVyrobok | null> {
+  // 1. lokálna zásoba, 2. balík slovenských výrobkov (aj bez internetu), 3. Open Food Facts online
+  const miestny = najdiVUlozisku(kod);
+  if (miestny) return miestny;
+  const zBalika = await najdiVBaliku(kod);
+  if (zBalika) return zBalika;
   let r: Response;
   try {
     r = await fetch(offUrl(kod), { headers: { Accept: 'application/json' } });
