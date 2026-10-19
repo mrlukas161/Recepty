@@ -8,6 +8,7 @@ import { KartaReceptu, Hlavicka, Zalozky, Upozornenie, AktivneDiety } from './ko
 import { KATEGORIE, casNaDen } from '../engine/types';
 import { suhrn } from '../engine/planner';
 import { INFO } from '../ctx';
+import { tyzdenMuky } from '../engine/muka';
 
 export function Dnes() {
   const s = useStav();
@@ -21,6 +22,7 @@ export function Dnes() {
         let b = i.skore.celkom;
         if (s.oblubene.includes(i.r.id)) b += 6;
         if (s.hodnotenie[i.r.id] === -1) b -= 40;
+        if (i.kat.muka && n.obmedzenia.muka !== 'bez') b -= 12;
         if (i.cas > casNaDen(n, (new Date().getDay() + 6) % 7)) b -= 8;
         for (const k of Object.keys(i.kat) as (keyof typeof i.kat)[]) if (i.kat[k] && n.obmedzenia[k] === 'obmedzit') b -= 6;
         return { i, b };
@@ -31,6 +33,8 @@ export function Dnes() {
   const okno = 6;
   const zacni = (strana * okno) % Math.max(1, navrhy.length);
   const vyber = navrhy.slice(zacni, zacni + okno).concat(zacni + okno > navrhy.length ? navrhy.slice(0, zacni + okno - navrhy.length).slice(0, okno) : []).slice(0, okno);
+  const muka = tyzdenMuky(s, INFO);
+  const bezMuky = navrhy.filter((i) => !i.kat.muka).slice(0, 3);
   const tyzden = suhrn(s.jedalnicek, INFO, SUROVINA);
   const dovody = (i: (typeof INFOS)[number]) => [...i.skore.prinosy.slice(0, 1), ...(i.skore.slabiny.length ? [] : [])];
   return (
@@ -38,7 +42,15 @@ export function Dnes() {
       <Hlavicka nazov={<span style="display:inline-flex;align-items:center;gap:8px"><Ilustracia typ={typ} velkost={34} />{TYP_NAZOV[typ]}</span>} vpravo={<span class="maly">{new Date().toLocaleDateString('sk-SK', { weekday: 'long', day: 'numeric', month: 'long' })}</span>} />
       <Zalozky hodnoty={[{ id: 'ranajky', nazov: 'Raňajky' }, { id: 'obed', nazov: 'Obed' }, { id: 'vecera', nazov: 'Večera' }]} vybrane={typ} zmen={(t) => { setTyp(t); setStrana(0); }} />
       <AktivneDiety />
+      <MukaTyzden m={muka} />
       <p class="maly">Zoradené podľa skóre zdravosti (naša heuristika) a tvojich preferencií.</p>
+      {bezMuky.length > 0 && (
+        <section data-sekcia="bez-muky">
+          <h2>Bez múky na {TYP_NAZOV[typ].toLowerCase()}</h2>
+          {bezMuky.map((i) => <KartaReceptu key={i.r.id} i={i} />)}
+        </section>
+      )}
+      <h2>Ďalšie návrhy</h2>
       {vyber.map((i) => <KartaReceptu key={i.r.id} i={i} dovod={dovody(i)} />)}
       {!vyber.length && <p>Žiadne recepty nevyhovujú nastaveniam. Skús uvoľniť obmedzenia v Nastaveniach.</p>}
       <div class="rad">
@@ -58,5 +70,19 @@ export function Dnes() {
       )}
       <Upozornenie />
     </>
+  );
+}
+
+export function MukaTyzden({ m }: { m: ReturnType<typeof tyzdenMuky> }) {
+  const farba = m.stav === 'nad-limitom' ? 'minus' : m.stav === 'ok' ? 'plus' : '';
+  return (
+    <div class="karta muka-tyzden" style="animation:none">
+      <h3 style="margin:0 0 4px">Múka tento týždeň</h3>
+      <div>Uvarené: <strong>{m.vareneSMukou}</strong> z {m.varene} jedál s múkou · Naplánované: <strong>{m.planovaneSMukou}</strong> z {m.planovane}</div>
+      <div class={`maly ${farba}`}>
+        {m.limit === null ? 'Múku zatiaľ neobmedzuješ (Nastavenia → Čo obmedziť).' : m.vylucena ? 'Múku máš vylúčenú – jedlá s múkou sa nenavrhujú.' : m.stav === 'nad-limitom' ? `Nad limitom ${m.limit}× za týždeň – skús dnes jedlo bez múky.` : `Limit ${m.limit}× za týždeň.`}
+      </div>
+      <a class="maly" href="#/nahrady">Čím nahradiť múku</a>
+    </div>
   );
 }
