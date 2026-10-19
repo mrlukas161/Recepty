@@ -1,6 +1,8 @@
 // Vlastná sada jednoduchých ilustrácií jedál (SVG, 48×48). Farby idú cez CSS premenné --il-*,
 // takže fungujú v svetlej aj tmavej téme. Nahrádza emoji pri receptoch, kategóriách a v navigácii.
 import type { ComponentChildren } from 'preact';
+import { useState } from 'preact/hooks';
+import { useFoto, fotoUrl } from '../foto';
 
 const P = 'var(--il-pap)', H = 'var(--il-hor)', O = 'var(--il-oli)', K = 'var(--il-kre)', N = 'var(--il-hne)', B = 'var(--il-bob)', M = 'var(--il-mod)', R = 'var(--il-ruz)';
 
@@ -99,6 +101,20 @@ export function Ilustracia({ typ, velkost = 40, nazov }: { typ: TypIlustracie | 
       fill="none" stroke="var(--il-ln)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       {k()}
     </svg>
+  );
+}
+
+/** Fotka jedla (ak existuje `public/foto/<id>.webp` a je v zozname), inak ilustrácia. AI fotka je nenápadne označená „AI“. */
+export function FotoReceptu({ r, velkost = 38, velka = false }: { r: { id: string; typ: string; ilustracia?: string }; velkost?: number; velka?: boolean }) {
+  const f = useFoto(r.id);
+  const [chyba, setChyba] = useState(false);
+  if (!f || chyba) return <IlustraciaReceptu r={r} velkost={velkost} />;
+  const popis = f.ai ? `Obrázok vytvorený umelou inteligenciou${f.model ? ` (${f.model}${f.datum ? ', ' + f.datum : ''})` : ''}; ilustračný, nie fotka z tohto receptu.` : '';
+  return (
+    <span class={`foto${velka ? ' foto-velka' : ''}`} data-foto={r.id} style={velka ? undefined : `width:${velkost}px;height:${velkost}px`}>
+      <img src={fotoUrl(r.id)} alt="" loading="lazy" decoding="async" onError={() => setChyba(true)} />
+      {f.ai && <span class="foto-ai" title={popis} aria-label={popis} role="img">AI</span>}
+    </span>
   );
 }
 

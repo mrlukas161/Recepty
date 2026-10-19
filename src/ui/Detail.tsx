@@ -1,4 +1,5 @@
-import { IlustraciaReceptu } from './ilustracia';
+import { IlustraciaReceptu, FotoReceptu } from './ilustracia';
+import { useFoto } from '../foto';
 import { useMemo, useState } from 'preact/hooks';
 import { INFO, SUROVINA, TYP_NAZOV, INFOS } from '../ctx';
 import { useStav, nastav, dnesKluc } from '../store';
@@ -37,6 +38,7 @@ function DetailVnutro({ id }: { id: string }) {
   const [varenie, setVarenie] = useState<number | null>(null);
   const [porcie, setPorcie] = useState(0);
   const r = info.r;
+  const foto = useFoto(r.id);
   const domac = Math.round(kolkoPorcii(s.nastavenia) * 2) / 2;
   const cielPorcie = porcie || domac;
   // obmedzované voliteľné suroviny (napr. klobása, keď máme obmedzené údeniny) sú predvolene vynechané, kým ich používateľ nepridá
@@ -83,6 +85,12 @@ function DetailVnutro({ id }: { id: string }) {
       <div class="rad">
         <button class="male" aria-pressed={fav} onClick={() => prepniOblubene(id)}>{fav ? '★ Obľúbené' : '☆ Obľúbené'}</button>
       </div>
+      {foto && (
+        <figure class="foto-hero" style="margin:0 0 8px">
+          <FotoReceptu r={r} velka velkost={300} />
+          {foto.ai && <figcaption class="maly">Obrázok vytvorený umelou inteligenciou{foto.model ? ` (${foto.model}${foto.datum ? ', ' + foto.datum : ''})` : ''} – ilustračný.</figcaption>}
+        </figure>
+      )}
       <Hviezdicky id={id} />
       {r.vlastny && <OvladanieVlastneho id={id} />}
       <div>{r.tagy.map((t) => <span class="tag" key={t}>{TAG_NAZOV[t] ?? t}</span>)}</div>

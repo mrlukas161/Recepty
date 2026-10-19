@@ -28,17 +28,17 @@ sosovicova-muka | Šošovicová múka | muky-obilniny
 mandlova-muka | Mandľová múka | muky-obilniny
 kokosova-muka | Kokosová múka | muky-obilniny
 kukurica-pukancova | Kukurica na pukance (zrno) | muky-obilniny
-rozok-biely | Rožok biely | pecivo | ks=45
-chlieb-psenicno-razny | Chlieb pšenično-ražný (konzumný) | pecivo | ks=40
-chlieb-celozrnny | Chlieb celozrnný pšeničný | pecivo | ks=45
-chlieb-razny-kvaskovy | Chlieb ražný kváskový tmavý | pecivo | ks=45
-toastovy-chlieb | Toastový chlieb | pecivo | ks=25
-bageta | Bageta | pecivo | ks=250
-tortilla-psenicna | Tortilla pšeničná | pecivo | ks=60
-tortilla-kukuricna | Tortilla kukuričná | pecivo | ks=30
-pita | Pita chlieb | pecivo | ks=60
-knackebrot-razny | Chrumkavý chlebíček ražný | pecivo | ks=10
-ryzove-chlebicky | Ryžové chlebíčky (nadúvané) | pecivo | ks=9
+rozok-biely | Rožok biely | pecivo
+chlieb-psenicno-razny | Chlieb pšenično-ražný (konzumný) | pecivo
+chlieb-celozrnny | Chlieb celozrnný pšeničný | pecivo
+chlieb-razny-kvaskovy | Chlieb ražný kváskový tmavý | pecivo
+toastovy-chlieb | Toastový chlieb | pecivo
+bageta | Bageta | pecivo
+tortilla-psenicna | Tortilla pšeničná | pecivo
+tortilla-kukuricna | Tortilla kukuričná | pecivo
+pita | Pita chlieb | pecivo
+knackebrot-razny | Chrumkavý chlebíček ražný | pecivo
+ryzove-chlebicky | Ryžové chlebíčky (nadúvané) | pecivo
 strouhanka | Strúhanka | pecivo
 cestoviny-psenicne | Cestoviny pšeničné sušené | cestoviny
 cestoviny-celozrnne | Cestoviny celozrnné sušené | cestoviny
@@ -46,10 +46,10 @@ cestoviny-vajecne | Cestoviny vaječné sušené | cestoviny
 cestoviny-ryzove | Cestoviny ryžové sušené | cestoviny
 cestoviny-cicerove | Cestoviny cícerové sušené | cestoviny
 cestoviny-sosovicove | Cestoviny šošovicové sušené | cestoviny
-zemiaky | Zemiaky | prilohy | ks=120
-zemiaky-nove | Zemiaky nové | prilohy | ks=60
-sladke-zemiaky | Sladké zemiaky (batáty) | prilohy | ks=200
-topinambur | Topinambur | prilohy | ks=60
+zemiaky | Zemiaky | prilohy
+zemiaky-nove | Zemiaky nové | prilohy
+sladke-zemiaky | Sladké zemiaky (batáty) | prilohy
+topinambur | Topinambur | prilohy
 sosovica-cervena | Šošovica červená sušená | strukoviny
 sosovica-zelena | Šošovica zelená/hnedá sušená | strukoviny
 cicer-suseny | Cícer sušený | strukoviny
@@ -62,73 +62,73 @@ hrach-suseny | Hrach lúpaný sušený | strukoviny
 hrasok-mrazeny | Hrášok zelený mrazený | strukoviny
 mungo-fazula | Fazuľa mungo sušená | strukoviny
 sojove-boby | Sójové bôby sušené | strukoviny
-tofu-natur | Tofu natural | strukoviny | ks=200
-tempeh | Tempeh | strukoviny | ks=200
+tofu-natur | Tofu natural | strukoviny
+tempeh | Tempeh | strukoviny
 edamame-mrazene | Edamame mrazené (bôby) | strukoviny
-mrkva | Mrkva | zelenina | ks=80
-cibula | Cibuľa | zelenina | ks=100
-cesnak | Cesnak | zelenina | ks=4
-por | Pór | zelenina | ks=150
-paradajka | Paradajka | zelenina | ks=120
-uhorka | Uhorka šalátová | zelenina | ks=300
-paprika-cervena | Paprika červená | zelenina | ks=150
-cuketa | Cuketa | zelenina | ks=250
-baklazan | Baklažán | zelenina | ks=300
-brokolica | Brokolica | zelenina | ks=350
-karfiol | Karfiol | zelenina | ks=600
-kapusta-biela | Kapusta biela | zelenina | ks=1000
-kapusta-cervena | Kapusta červená | zelenina | ks=1000
+mrkva | Mrkva | zelenina
+cibula | Cibuľa | zelenina
+cesnak | Cesnak | zelenina
+por | Pór | zelenina
+paradajka | Paradajka | zelenina
+uhorka | Uhorka šalátová | zelenina
+paprika-cervena | Paprika červená | zelenina
+cuketa | Cuketa | zelenina
+baklazan | Baklažán | zelenina
+brokolica | Brokolica | zelenina
+karfiol | Karfiol | zelenina
+kapusta-biela | Kapusta biela | zelenina
+kapusta-cervena | Kapusta červená | zelenina
 kel | Kel kučeravý | zelenina
-ruzickovy-kel | Kel ružičkový | zelenina | ks=20
+ruzickovy-kel | Kel ružičkový | zelenina
 spenat | Špenát | zelenina
-salat-hlavkovy | Šalát hlávkový | zelenina | ks=300
+salat-hlavkovy | Šalát hlávkový | zelenina
 rukola | Rukola | zelenina
-kalerab | Kaleráb | zelenina | ks=250
-repa-cervena | Repa červená | zelenina | ks=150
-zeler-bulvovy | Zeler buľvový | zelenina | ks=400
-petrzlen-korenovy | Petržlen koreňový | zelenina | ks=80
-pastinak | Pastinák | zelenina | ks=120
-tekvica-hokkaido | Tekvica hokkaido | zelenina | ks=1000
-tekvica-maslova | Tekvica maslová | zelenina | ks=1000
+kalerab | Kaleráb | zelenina
+repa-cervena | Repa červená | zelenina
+zeler-bulvovy | Zeler buľvový | zelenina
+petrzlen-korenovy | Petržlen koreňový | zelenina
+pastinak | Pastinák | zelenina
+tekvica-hokkaido | Tekvica hokkaido | zelenina
+tekvica-maslova | Tekvica maslová | zelenina
 kukurica-sladka | Kukurica sladká (zrná) | zelenina
 fazulove-struky | Fazuľové struky | zelenina
-spargla | Špargľa | zelenina | ks=20
-redkovka | Reďkovka | zelenina | ks=15
-fenikel | Fenikel (buľva) | zelenina | ks=250
+spargla | Špargľa | zelenina
+redkovka | Reďkovka | zelenina
+fenikel | Fenikel (buľva) | zelenina
 kvasena-kapusta | Kapusta kvasená | zelenina
-kysle-uhorky | Uhorky kyslé nakladané | zelenina | ks=60
-sampinony | Šampiňóny | zelenina | ks=20
-hliva-ustricova | Hliva ustricová | zelenina | ks=30
+kysle-uhorky | Uhorky kyslé nakladané | zelenina
+sampinony | Šampiňóny | zelenina
+hliva-ustricova | Hliva ustricová | zelenina
 paradajky-konzervovane | Paradajky krájané konzervované | zelenina
-jablko | Jablko | ovocie | ks=180
-hruska | Hruška | ovocie | ks=170
-banan | Banán | ovocie | ks=120
-pomaranc | Pomaranč | ovocie | ks=200
-mandarinka | Mandarínka | ovocie | ks=80
-citron | Citrón | ovocie | ks=100
-jahody | Jahody | ovocie | ks=15
+jablko | Jablko | ovocie
+hruska | Hruška | ovocie
+banan | Banán | ovocie
+pomaranc | Pomaranč | ovocie
+mandarinka | Mandarínka | ovocie
+citron | Citrón | ovocie
+jahody | Jahody | ovocie
 maliny | Maliny | ovocie
 cucoriedky | Čučoriedky | ovocie
 ribezle-cierne | Ríbezle čierne | ovocie
-slivky | Slivky | ovocie | ks=40
-marhule | Marhule | ovocie | ks=45
-broskyna | Broskyňa | ovocie | ks=150
-ceresne | Čerešne | ovocie | ks=8
-hrozno | Hrozno | ovocie | ks=5
+slivky | Slivky | ovocie
+marhule | Marhule | ovocie
+broskyna | Broskyňa | ovocie
+ceresne | Čerešne | ovocie
+hrozno | Hrozno | ovocie
 melon-vodovy | Melón vodový | ovocie
-kiwi | Kiwi | ovocie | ks=75
+kiwi | Kiwi | ovocie
 ananas | Ananás | ovocie
-mango | Mango | ovocie | ks=200
-avokado | Avokádo | ovocie | ks=150
+mango | Mango | ovocie
+avokado | Avokádo | ovocie
 hrozienka | Hrozienka sušené | ovocie
-datle-susene | Datle sušené | ovocie | ks=8
-slivky-susene | Slivky sušené | ovocie | ks=10
-marhule-susene | Marhule sušené | ovocie | ks=8
-figy-susene | Figy sušené | ovocie | ks=15
-kuracie-prsia | Kuracie prsia (bez kože) | maso | ks=180
-kuracie-stehno | Kuracie stehno (s kožou) | maso | ks=150
-kuracie-stehno-bez-kozy | Kuracie stehno bez kože a kosti | maso | ks=120
-kuracie-kridla | Kuracie krídelká | maso | ks=90
+datle-susene | Datle sušené | ovocie
+slivky-susene | Slivky sušené | ovocie
+marhule-susene | Marhule sušené | ovocie
+figy-susene | Figy sušené | ovocie
+kuracie-prsia | Kuracie prsia (bez kože) | maso
+kuracie-stehno | Kuracie stehno (s kožou) | maso
+kuracie-stehno-bez-kozy | Kuracie stehno bez kože a kosti | maso
+kuracie-kridla | Kuracie krídelká | maso
 kuracie-mlete | Kuracie mleté mäso | maso
 kuraci-chrbat | Kuracie kosti a chrbty na vývar | maso
 kuracia-pecen | Kuracia pečeň | maso
@@ -145,28 +145,28 @@ hovadzie-steak | Hovädzí steak / sviečková | maso
 hovadzie-predne | Hovädzie predné (na vývar, polievku) | maso
 telacie-maso | Teľacie mäso | maso
 kralik | Králičie mäso | maso
-losos | Losos (filet) | ryby | ks=150
-treska | Treska (filet) | ryby | ks=150
-pstruh | Pstruh | ryby | ks=250
-makrela-cerstva | Makrela čerstvá / údená | ryby | ks=200
-sardinky-konzerva | Sardinky v konzerve (vo vlastnej šťave/oleji) | ryby | ks=100
-tuniak-konzerva | Tuniak v konzerve (vo vlastnej šťave) | ryby | ks=120
-tuniak-v-oleji | Tuniak v konzerve v oleji | ryby | ks=120
+losos | Losos (filet) | ryby
+treska | Treska (filet) | ryby
+pstruh | Pstruh | ryby
+makrela-cerstva | Makrela čerstvá / údená | ryby
+sardinky-konzerva | Sardinky v konzerve (vo vlastnej šťave/oleji) | ryby
+tuniak-konzerva | Tuniak v konzerve (vo vlastnej šťave) | ryby
+tuniak-v-oleji | Tuniak v konzerve v oleji | ryby
 slede-marinovany | Sleď marinovaný | ryby
 kapor | Kapor | ryby
-ryba-fileje-mrazene | Rybie filé mrazené (hoki, treska alaska) | ryby | ks=120
+ryba-fileje-mrazene | Rybie filé mrazené (hoki, treska alaska) | ryby
 krevety | Krevety | ryby
-surimi | Surimi (krabie tyčinky) | ryby | ks=15
-sunka-kuracia | Šunka kuracia / morčacia (plátky) | udeniny | ks=15
-sunka-bravcova | Šunka bravčová (plátky) | udeniny | ks=15
+surimi | Surimi (krabie tyčinky) | ryby
+sunka-kuracia | Šunka kuracia / morčacia (plátky) | udeniny
+sunka-bravcova | Šunka bravčová (plátky) | udeniny
 sunka-dedinska | Šunka dedinská / údená | udeniny
-salama-vysociny | Saláma (Vysočina, Herkules, Lovecká) | udeniny | ks=10
-klobasa-udena | Klobása údená | udeniny | ks=100
+salama-vysociny | Saláma (Vysočina, Herkules, Lovecká) | udeniny
+klobasa-udena | Klobása údená | udeniny
 slanina-udena | Slanina údená | udeniny
-slanina-bravcova-surova | Bravčová slanina / špek surový | udeniny
-parky | Párky (hovädzie/bravčové) | udeniny | ks=50
-parky-kuracie | Párky kuracie | udeniny | ks=50
-sunkova-salama | Šunková saláma / mortadela | udeniny | ks=15
+slanina-bravcova-surova | Bravčová slanina / špek surový | maso
+parky | Párky (hovädzie/bravčové) | udeniny
+parky-kuracie | Párky kuracie | udeniny
+sunkova-salama | Šunková saláma / mortadela | udeniny
 pastika-pecenova | Paštéta pečeňová | udeniny
 tlacenka | Tlačenka / jaternica | udeniny
 mlieko-polotucne | Mlieko polotučné 1,5 % | mliecne
@@ -174,7 +174,7 @@ mlieko-plnotucne | Mlieko plnotučné 3,5 % | mliecne
 mlieko-bezlaktozove | Mlieko bezlaktózové | mliecne
 jogurt-biely | Jogurt biely (bez cukru) | mliecne
 jogurt-grecky | Jogurt grécky | mliecne
-jogurt-ovocny | Jogurt ovocný (slazený) | mliecne | ks=150
+jogurt-ovocny | Jogurt ovocný (slazený) | mliecne
 kefir | Kefír | mliecne
 cmar | Cmar / acidko | mliecne
 tvaroh-makky | Tvaroh mäkký | mliecne
@@ -182,12 +182,12 @@ tvaroh-polotucny | Tvaroh polotučný | mliecne
 cottage | Cottage syr | mliecne
 bryndza | Bryndza ovčia | mliecne
 parmezan | Parmezán | mliecne
-syr-eidam | Syr Eidam 30 % | mliecne | ks=20
-syr-eidam-45 | Syr Eidam 45 % / Gouda | mliecne | ks=20
-mozzarella | Mozzarella | mliecne | ks=125
+syr-eidam | Syr Eidam 30 % | mliecne
+syr-eidam-45 | Syr Eidam 45 % / Gouda | mliecne
+mozzarella | Mozzarella | mliecne
 feta | Feta / balkánsky syr | mliecne
 niva | Niva / modrý syr | mliecne
-syr-taviaci | Syr taviaci (trojuholníčky) | mliecne | ks=18
+syr-taviaci | Syr taviaci (trojuholníčky) | mliecne
 smotana-na-varenie | Smotana na varenie 15 % | mliecne
 smotana-sladka | Smotana šľahačková 33 % | mliecne
 smotana-kysla | Smotana kyslá 12 % | mliecne
@@ -195,10 +195,10 @@ mascarpone | Mascarpone | mliecne
 maslo | Maslo | tuky-oleje
 maslo-pomazankove | Maslo roztierateľné (Rama, Flora) | tuky-oleje
 maslo-prepustene | Maslo prepustené (ghee) | tuky-oleje
-vajce-slepacie | Vajce slepačie (M) | vajcia | ks=58
-vajce-bielok | Vaječný bielok | vajcia | ks=33
-vajce-zltok | Vaječný žĺtok | vajcia | ks=18
-vajce-prepelicie | Vajce prepeličie | vajcia | ks=10
+vajce-slepacie | Vajce slepačie (M) | vajcia
+vajce-bielok | Vaječný bielok | vajcia
+vajce-zltok | Vaječný žĺtok | vajcia
+vajce-prepelicie | Vajce prepeličie | vajcia
 olej-repkovy | Olej repkový | tuky-oleje
 olej-slnecnicovy | Olej slnečnicový | tuky-oleje
 olej-olivovy | Olivový olej extra panenský | tuky-oleje
@@ -206,7 +206,7 @@ olej-lanovy | Olej ľanový (za studena) | tuky-oleje
 olej-kokosovy | Kokosový olej | tuky-oleje
 olej-tekvicovy | Olej tekvicový | tuky-oleje
 mast-bravcova | Bravčová masť | tuky-oleje
-vlasske-orechy | Vlašské orechy | orechy-semienka | ks=4
+vlasske-orechy | Vlašské orechy | orechy-semienka
 liesikove-orechy | Lieskové orechy | orechy-semienka
 mandle | Mandle | orechy-semienka
 kesu | Kešu orechy | orechy-semienka
@@ -239,7 +239,7 @@ kurkuma | Kurkuma mletá | korenie-bylinky
 skorica | Škorica mletá | korenie-bylinky
 zazvor | Zázvor čerstvý | korenie-bylinky
 cesnak-granulovany | Cesnak granulovaný / sušený | korenie-bylinky
-bobkovy-list | Bobkový list | korenie-bylinky | ks=0.5
+bobkovy-list | Bobkový list | korenie-bylinky
 koriander-mlety | Koriander mletý / rascový mix | korenie-bylinky
 vanilkovy-cukor | Vanilkový cukor | sladidla
 prasok-do-peciva | Prášok do pečiva | korenie-bylinky
@@ -250,7 +250,7 @@ cukor-trstinovy | Cukor trstinový | sladidla
 cukor-pudrovy | Cukor práškový | sladidla
 med | Med | sladidla
 javorovy-sirup | Javorový sirup | sladidla
-datle | Datle sušené | sladidla | ks=8
+datle | Datle sušené | sladidla
 datlovy-sirup | Datľový sirup | sladidla
 agavovy-sirup | Agávový sirup | sladidla
 erytritol | Erytritol | sladidla
@@ -260,28 +260,28 @@ kecup | Kečup | polotovary
 horcica | Horčica | polotovary
 majoneza | Majonéza | polotovary
 sojova-omacka | Sójová omáčka | polotovary
-vyvar-kocka | Vývar v kocke / bujón | polotovary | ks=10
+vyvar-kocka | Vývar v kocke / bujón | polotovary
 paradajkovy-pretlak | Paradajkový pretlak | polotovary
-paradajky-krajane-konzerva | Paradajky krájané v konzerve | polotovary | ks=400
+paradajky-krajane-konzerva | Paradajky krájané v konzerve | polotovary
 paradajkova-passata | Paradajková passata | polotovary
-kukurica-konzerva | Kukurica sladká v konzerve | polotovary | ks=285
-fazula-konzerva | Fazuľa červená v konzerve | polotovary | ks=240
-cicerka-konzerva | Cícer v konzerve | polotovary | ks=240
+kukurica-konzerva | Kukurica sladká v konzerve | polotovary
+fazula-konzerva | Fazuľa červená v konzerve | polotovary
+cicerka-konzerva | Cícer v konzerve | polotovary
 hummus | Hummus | polotovary
 dzem | Džem / marmeláda | polotovary
-cokolada-horka | Čokoláda horká (70 %) | polotovary | ks=10
-cokolada-mliecna | Čokoláda mliečna | polotovary | ks=10
+cokolada-horka | Čokoláda horká (70 %) | polotovary
+cokolada-mliecna | Čokoláda mliečna | polotovary
 orieskova-natierka | Orieškovo-kakaová nátierka | polotovary
 muka-zmes-na-palacinky | Múčna zmes na palacinky / lievance | polotovary
-puding-prasok | Pudingový prášok | polotovary | ks=40
+puding-prasok | Pudingový prášok | polotovary
 zelatina | Želatína | polotovary
-kvasnice-sucha | Droždie sušené | polotovary | ks=7
+kvasnice-sucha | Droždie sušené | polotovary
 ocot-jablkovy | Ocot jablčný / vínny | polotovary
 kysla-kapusta | Kyslá kapusta | polotovary
-olivy | Olivy v náleve | polotovary | ks=4
+olivy | Olivy v náleve | polotovary
 mrazena-zmes-zeleniny | Mrazená zeleninová zmes | polotovary
 hranolky-mrazene | Hranolky mrazené (na fritovanie) | polotovary
-rybie-prsty | Rybie prsty mrazené | polotovary | ks=28
+rybie-prsty | Rybie prsty mrazené | polotovary
 struhanka | Strúhanka | polotovary
 voda | Voda | napoje
 cierny-caj | Čierny čaj (bez cukru) | napoje
@@ -296,3 +296,7 @@ mlieko-sojove | Sójové mlieko (neslazené) | napoje
 mlieko-mandlove | Mandľové mlieko (neslazené) | napoje
 mlieko-kokosove | Kokosové mlieko (konzerva) | napoje
 mineralka | Minerálka / sóda | napoje
+tapioka-skrob | Tapioka (škrob z manioku) | muky-obilniny
+zemiakovy-skrob | Zemiakový škrob | muky-obilniny
+kukuricny-skrob | Kukuričný škrob (maizena) | muky-obilniny
+psyllium | Psyllium (šupky skorocelu) | orechy-semienka

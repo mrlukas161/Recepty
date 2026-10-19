@@ -124,3 +124,9 @@ details > summary.maly { min-height: 44px; display: flex; align-items: center; }
 .cipy-vyber .chip { justify-content: center; text-align: center; }
 .vyber-zoznam { display: grid; gap: 6px; max-height: 50vh; overflow-y: auto; margin: 8px 0; }
 .vyber-zoznam .chip { justify-content: flex-start; text-align: left; }
+
+/* Fotky jedál (voliteľné, public/foto/<id>.webp) */
+.foto { position: relative; display: inline-block; flex: none; border-radius: 50%; }
+.foto img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: inherit; }
+.foto-velka { display: block; width: 100%; border-radius: 14px; aspect-ratio: 4 / 3; }
+.foto-ai { position: absolute; right: 3px; bottom: 3px; font: 700 .6rem 'Nunito', sans-serif; line-height: 1; padding: 2px 4px; border-radius: 6px; background: rgba(0, 0, 0, .55); color: #fff; letter-spacing: .04em; }

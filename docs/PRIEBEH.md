@@ -20,3 +20,4 @@
 | 2026-10-19 18:34 | cloud agent (appka, veľký beh) | beží | Časť 4 (učenie): karty surovín a zoznam, slabé suroviny v recepte s náhradou, denný tip, nové suroviny (tapioka, škroby, psyllium), zdroj k psylliu; testy a e2e zelené. |
 | 2026-10-19 18:37 | cloud agent (appka, veľký beh) | beží | Časti 5 a 6 (hviezdičky 1–5, Nechutilo, Zamiešať s váhami) hotové; testy a e2e zelené. Ďalej: čipy (7), foto slot (8), dizajn (9). |
 | 2026-10-19 18:40 | cloud agent (appka, veľký beh) | beží | Časť 7 (čipy, olovrant) hotová. Ďalej: foto slot (8), dizajn (9). |
+| 2026-10-19 18:44 | cloud agent (appka, veľký beh) | beží | Časť 8 (foto slot, formát v ROZHODNUTIA, docs/RECEPTY_ZOZNAM.md) hotová. Ďalej: nový dizajn (9), ranný prehľad, overenie nasadenia. |

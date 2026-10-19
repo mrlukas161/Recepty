@@ -1,4 +1,4 @@
-import { IlustraciaReceptu } from './ilustracia';
+import { FotoReceptu } from './ilustracia';
 import type { ComponentChildren } from 'preact';
 import type { Info } from '../engine/filtre';
 import { PASMO_TEXT } from '../engine/score';
@@ -44,7 +44,7 @@ export function KartaReceptu({ i, dovod }: { i: Info; dovod?: string[] }) {
   return (
     <a class="karta" href={`#/recept/${i.r.id}`}>
       <div class="riadok">
-        <div class="emoji" aria-hidden="true"><IlustraciaReceptu r={i.r} velkost={38} /></div>
+        <div class="emoji" aria-hidden="true"><FotoReceptu r={i.r} velkost={50} /></div>
         <div class="rozt">
           <h3 style="margin:0">{fav ? '★ ' : ''}{nazovPreDomacnost(i.r, s.nastavenia, SUROVINA, s.pridaneVolitelne[i.r.id])}</h3>
           <div class="maly">{TYP_NAZOV[i.r.typ]} · {i.cas} min · {'●'.repeat(i.r.narocnost)}{'○'.repeat(3 - i.r.narocnost)}</div>
