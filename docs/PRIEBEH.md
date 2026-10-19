@@ -22,3 +22,4 @@
 | 2026-10-19 18:40 | cloud agent (appka, veľký beh) | beží | Časť 7 (čipy, olovrant) hotová. Ďalej: foto slot (8), dizajn (9). |
 | 2026-10-19 18:44 | cloud agent (appka, veľký beh) | beží | Časť 8 (foto slot, formát v ROZHODNUTIA, docs/RECEPTY_ZOZNAM.md) hotová. Ďalej: nový dizajn (9), ranný prehľad, overenie nasadenia. |
 | 2026-10-19 18:47 | cloud agent (appka, veľký beh) | beží | Časť 9 (nový dizajn: svetlý základ, tmavý podľa systému, percentuálny kruh, kontrast AA v teste) hotová; RANNY_PREHLAD má „Novinky 19.10. – appka“. Ostáva overiť nasadenie. |
+| 2026-10-19 18:50 | cloud agent (appka, veľký beh) | hotovo | Časti 1–9 hotové a v main (277 unit, 48 e2e zelených). Nasadenie commitu 3f2d4bc úspešné (Actions beh 62). version.json zo sandboxu nedostupný (github.io blokované) – ráno porovnaj sha so 3f2d4bc. Nič neostalo ako ☐. |
