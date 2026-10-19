@@ -9,12 +9,15 @@ import { KATEGORIE, casNaDen } from '../engine/types';
 import { suhrn } from '../engine/planner';
 import { INFO } from '../ctx';
 import { tyzdenMuky } from '../engine/muka';
+import { tipDna } from '../data/tipy';
 
 export function Dnes() {
   const s = useStav();
   const n = s.nastavenia;
   const [typ, setTyp] = useState<'ranajky' | 'obed' | 'vecera'>(typPodlaCasu());
   const [strana, setStrana] = useState(0);
+  const [posunTipu, setPosunTipu] = useState(0);
+  const tip = tipDna(new Date(), posunTipu);
   const navrhy = useMemo(() => {
     const kand = INFOS.filter((i) => i.r.typ === typ && !vylucene(i, n) && dietyOk(i, n, SUROVINA) && !s.hodnotenie[i.r.id]?.toString().startsWith('-'));
     return kand
@@ -43,6 +46,11 @@ export function Dnes() {
       <Zalozky hodnoty={[{ id: 'ranajky', nazov: 'Raňajky' }, { id: 'obed', nazov: 'Obed' }, { id: 'vecera', nazov: 'Večera' }]} vybrane={typ} zmen={(t) => { setTyp(t); setStrana(0); }} />
       <AktivneDiety />
       <MukaTyzden m={muka} />
+      <div class="karta tip-dna" style="animation:none">
+        <div class="maly"><strong>Tip dňa</strong> · {tip.uroven === 'zdroj' ? 'podložené zdrojom' : tip.uroven === 'tabulka' ? 'z výživových tabuliek' : tip.uroven === 'prax' ? 'prax, nie dôkaz' : 'odhad'}</div>
+        <p style="margin:4px 0">{tip.text}</p>
+        <div class="rad">{tip.odkaz && <a class="maly" href={tip.odkaz}>Viac</a>}<button class="male" onClick={() => setPosunTipu(posunTipu + 1)}>Ďalší tip</button></div>
+      </div>
       <p class="maly">Zoradené podľa skóre zdravosti (naša heuristika) a tvojich preferencií.</p>
       {bezMuky.length > 0 && (
         <section data-sekcia="bez-muky">

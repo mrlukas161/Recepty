@@ -12,6 +12,7 @@ import { IkonaKarty } from './ilustracia';
 
 export function Viac() {
   const odk = [
+    ['#/suroviny', '🌾', 'Suroviny', 'Karta každej suroviny: prečo áno/nie, čím nahradiť'],
     ['#/nahrady', '🔁', 'Náhrady', 'Čím nahradiť múku, cukor, údeniny…'],
     ['#/vedomosti', '📚', 'Vedomosti', 'Krátke karty a stav zdrojov'],
     ['#/skener', '📷', 'Skener zloženia', 'Odfoť zloženie výrobku a získaj hodnotenie'],

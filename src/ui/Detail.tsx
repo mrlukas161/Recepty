@@ -12,6 +12,7 @@ import { LEPSIE } from '../data/lepsie';
 import { ZdrojeK, ZdrojVyzivy } from './Zdroje';
 import { Varenie } from './Varenie';
 import { OvladanieVlastneho } from './VlastnyRecept';
+import { SlabaPoznamka } from './Surovina';
 import { Pecat, prepniOblubene, Upozornenie, KartaReceptu } from './kom';
 
 const TAG_NAZOV: Record<string, string> = { detske: 'Detské', rychle: 'Rýchle', 'do-krabicky': 'Do krabičky', lacne: 'Lacné', bezmasite: 'Bezmäsité', 'bez-peciva': 'Bez pečiva', bezlepkove: 'Bezlepkové', vegansky: 'Vegánske', 'vyvarene-z-zvyskov': 'Zo zvyškov', 'na-viac-dni': 'Na viac dní', sladke: 'Sladké' };
@@ -140,8 +141,9 @@ function DetailVnutro({ id }: { id: string }) {
               <li key={x.id} style={odobrata ? 'opacity:.45;text-decoration:line-through' : ''}>
                 <span class="mn">{fmt(mn, x.jednotka)}</span>
                 <span class="rozt">
-                  {sv?.nazov ?? idNove}{x.nevyhnutna && <span class="tag" style="margin-left:6px">bez tohto to nejde</span>}{volna && <span class="tag" style="margin-left:6px">{obmedz && odobrata ? 'voliteľne (máš obmedzené)' : 'voliteľné'}</span>}
+                  <a href={`#/surovina/${idNove}`} class="sur-odkaz" style="color:inherit;text-decoration-style:dotted">{sv?.nazov ?? idNove}</a>{x.nevyhnutna && <span class="tag" style="margin-left:6px">bez tohto to nejde</span>}{volna && <span class="tag" style="margin-left:6px">{obmedz && odobrata ? 'voliteľne (máš obmedzené)' : 'voliteľné'}</span>}
                   {x.jednotka !== 'g' && sv && <span class="maly"> (~{Math.round(naGramy(sv, mn, x.jednotka))} g)</span>}
+                  {!odobrata && <SlabaPoznamka id={idNove} />}
                 </span>
                 {volna && <button class="male" onClick={() => (obmedz ? prepniVolitelnu(x.id) : setSt({ ...st, odobrane: odobrata ? st.odobrane.filter((y) => y !== x.id) : [...st.odobrane, x.id] }))}>{odobrata ? (obmedz ? 'Pridať' : 'Vrátiť') : 'Vynechať'}</button>}
               </li>
