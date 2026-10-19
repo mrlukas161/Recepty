@@ -14,3 +14,5 @@
 | 2026-10-15 08:45 | beží | Hotová (e): slovníková oprava OCR (Levenshtein, diakritika), spájanie slov na konci riadka, druhý prechod OCR s orezom na pás textu, testy na zašumených vzorkách + e2e. Ďalej: ranný prehľad, kontrola nasadenia. |
 | 2026-10-15 08:46 | beží | Ranný prehľad doplnený (sekcia „Novinky 15.10. – skener“ + úprava „Skener zloženia“). Posledný krok: push a kontrola workflow Nasadenie. |
 | 2026-10-15 08:48 | hotovo | Všetky úlohy (a)–(e) hotové a pushnuté; 157 unit testov, 13 e2e a build zelené; workflow „Nasadenie na GitHub Pages“ pre commit b57c751 skončil úspešne (run 34). Ranný prehľad doplnený. |
+| 2026-10-19 18:22 | beží | Štart skener behu (zadanie 19.10.): vlastné skeny, prenos histórie, tlačidlo OFF, živá kamera v potravinách. Sieť: doi.org blokované, GitHub a npm OK. |
+| 2026-10-19 18:33 | beží | Hotové (1)–(4): vlastné skeny (potraviny aj kozmetika, prednosť, mazanie, kód v histórii), prenos histórie/vlastných skenov/kódov + súbor JSON, tlačidlo OFF/OBF, živá kamera v potravinách (spoločný modul). Unit (24 nových) a e2e (8 nových) zelené. Ďalej: ranný prehľad, rebase, push, kontrola nasadenia. |

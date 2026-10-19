@@ -77,6 +77,6 @@ test('veľké dáta: bez QR, ponúkne súbor', async ({ browser }) => {
   await expect(a.page.getByText(/na QR kód priveľa/)).toBeVisible();
   await expect(a.page.locator('#prenos-qr')).toHaveCount(0);
   const [stiahnutie] = await Promise.all([a.page.waitForEvent('download'), a.page.getByRole('button', { name: /Stiahnuť súbor/ }).click()]);
-  expect(stiahnutie.suggestedFilename()).toBe('recepty-prenos.txt');
+  expect(stiahnutie.suggestedFilename()).toBe('recepty-prenos.json');
   await a.ctx.close();
 });
