@@ -33,11 +33,21 @@ export function pridajDoHistorie(z: Omit<ZaznamK, 'id' | 'cas'>): ZaznamK {
   while (h.length && !pis(KLUC_HIST, h)) h = h.slice(0, Math.floor(h.length / 2));
   return novy;
 }
+/** Prepíše celú históriu (prenos, záloha) s limitom a bezpečným zápisom. */
+export function ulozHistoriuK(z: ZaznamK[]) {
+  let h = z.slice(0, LIMIT_HISTORIE);
+  while (h.length && !pis(KLUC_HIST, h)) h = h.slice(0, Math.floor(h.length / 2));
+}
+export function overZaznamK(z: unknown): ZaznamK | null {
+  const x = z as Partial<ZaznamK> | null;
+  if (!x || typeof x !== 'object' || typeof x.text !== 'string' || typeof x.id !== 'string' || typeof x.skore !== 'number') return null;
+  return { id: x.id, cas: typeof x.cas === 'string' ? x.cas : new Date(0).toISOString(), nazov: typeof x.nazov === 'string' ? x.nazov : 'Kozmetika', text: x.text, skore: x.skore, pasmo: typeof x.pasmo === 'string' ? x.pasmo : 'obcas', kod: typeof x.kod === 'string' ? x.kod : undefined };
+}
 export function zmazZaznam(id: string) { pis(KLUC_HIST, nacitajHistoriu().filter((z) => z.id !== id)); }
 export function vymazHistoriu() { try { localStorage.removeItem(KLUC_HIST); } catch { /* nič */ } }
 
 /** Výrobok z Open Beauty Facts (ODbL), uložený na použitie bez internetu. */
-export interface VyrobokObf { kod: string; nazov: string; znacka?: string; zlozenie: string; jazyk?: string; url: string; ulozene?: string; zCache?: boolean }
+export interface VyrobokObf { kod: string; nazov: string; znacka?: string; zlozenie: string; jazyk?: string; url: string; ulozene?: string; zCache?: boolean; vlastny?: boolean }
 interface ObfZaznam { kod: string; ulozene: string; vyrobok: VyrobokObf }
 export function nacitajObfUlozisko(): ObfZaznam[] {
   const x = citaj<unknown>(KLUC_OBF, []);

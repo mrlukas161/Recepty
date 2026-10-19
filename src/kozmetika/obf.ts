@@ -1,8 +1,16 @@
 /** Open Beauty Facts (ODbL) – dopyt z prehliadača používateľa, len keď je internet; výsledok sa ukladá na použitie offline. */
 import { platnyKod } from '../skener/off';
 import { najdiObf, ulozObf, type VyrobokObf } from './ulozisko';
+import { vlastneSkenyKozmetiky, type VlastnySken } from '../skener/vlastne-skeny';
 
 export { platnyKod };
+
+/** Stránka Open Beauty Facts na pridanie/úpravu výrobku s daným kódom (nový tab; appka nič neodosiela). */
+export const obfPridatUrl = (kod: string) => `https://world.openbeautyfacts.org/cgi/product.pl?type=edit&code=${encodeURIComponent(kod)}`;
+
+export function vlastnyNaObf(v: VlastnySken): VyrobokObf {
+  return { kod: v.kod, nazov: v.nazov, znacka: v.znacka, zlozenie: v.zlozenie, url: `https://world.openbeautyfacts.org/product/${v.kod}`, vlastny: true, ulozene: v.ulozene };
+}
 export const obfUrl = (kod: string) => `https://world.openbeautyfacts.org/api/v2/product/${encodeURIComponent(kod)}.json?fields=product_name,product_name_en,brands,lang,ingredients_text,ingredients_text_en,ingredients_text_fr,ingredients_text_de,ingredients_text_sk,ingredients_text_cs`;
 
 const retazec = (x: unknown): string | undefined => (typeof x === 'string' && x.trim() ? x : undefined);
@@ -27,6 +35,8 @@ export function mapujObf(kod: string, j: unknown): VyrobokObf | null {
 
 /** Online: dopyt na OBF a uloženie. Bez internetu alebo pri chybe servera: výrobok z lokálnej zásoby. */
 export async function nacitajObf(kod: string): Promise<VyrobokObf | null> {
+  const vlastny = vlastneSkenyKozmetiky.najdi(kod);
+  if (vlastny) return vlastnyNaObf(vlastny);
   let r: Response;
   try {
     r = await fetch(obfUrl(kod), { headers: { Accept: 'application/json' } });

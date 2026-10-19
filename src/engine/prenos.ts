@@ -24,7 +24,7 @@ export const VYLUCENE: Record<string, string> = {
 };
 /** Údaje mimo stavu `recepty-v1`, ktoré sa neprenášajú (informácia pre používateľa). */
 export const MIMO_STAVU = [
-  'História skenera zloženia a uložené výrobky z čiarových kódov (sú v samostatných úložiskách skenera a môžu byť veľké; v druhom mobile sa výrobky jednoducho naskenujú znova).',
+  'Prenáša sa aj skener (potraviny aj kozmetika): história skenov a vlastné skeny celé, ostatné uložené výrobky len ako kódy (druhý mobil si ich dotiahne z balíka alebo z Open Food Facts, keď bude online). Fotky sa neprenášajú.',
 ];
 
 export type Rezim = 'zlucit' | 'nahradit';
@@ -145,12 +145,13 @@ function porovnaj(p: Politika, lok: unknown, pri: unknown) {
 }
 
 /* ---------- balík ---------- */
-export interface Balik { v: number; c: number; s: Stav }
+/** `x` = dodatočné údaje mimo stavu `recepty-v1` (skener); starý prenos ich nemá a stará appka ich ignoruje. */
+export interface Balik { v: number; c: number; s: Stav; x?: Record<string, unknown> }
 
-export function zostavBalik(stav: Stav, cas = Date.now()): Balik {
+export function zostavBalik(stav: Stav, cas = Date.now(), x?: Record<string, unknown>): Balik {
   const s: Stav = {};
   for (const [k, v] of Object.entries(stav)) if (!(k in VYLUCENE) && v !== undefined) s[k] = v;
-  return { v: VERZIA, c: cas, s };
+  return x && Object.keys(x).length ? { v: VERZIA, c: cas, s, x } : { v: VERZIA, c: cas, s };
 }
 
 /** Skontroluje a vyčistí obálku. Poškodené kľúče vyhodí s varovaním; pri zlej obálke hodí PrenosChyba. */
@@ -165,7 +166,9 @@ export function over(x: unknown): { balik: Balik; varovania: string[] } {
     const c = politika(k, v).over(v);
     if (c === undefined) varovania.push(`Časť „${POLITIKA[k]?.popis ?? k}“ je poškodená a preskočila sa.`); else s[k] = c;
   }
-  return { balik: { v: x.v, c: typeof x.c === 'number' ? x.c : 0, s }, varovania };
+  const dod: Record<string, unknown> = {};
+  if (jeObjekt(x.x)) for (const [k, v] of Object.entries(x.x)) if (!NEBEZPECNE.has(k) && k.length < 20) dod[k] = v;
+  return { balik: { v: x.v, c: typeof x.c === 'number' ? x.c : 0, s, ...(Object.keys(dod).length ? { x: dod } : {}) }, varovania };
 }
 
 /* ---------- kódovanie ---------- */
@@ -201,16 +204,28 @@ export function zBase64url(t: string): Uint8Array {
 }
 
 /** Zabalí stav do textu (prvý znak: Z = deflate-raw, J = nekomprimovaný JSON). */
-export async function zabal(stav: Stav, cas?: number): Promise<string> {
-  const json = enc.encode(JSON.stringify({ a: FORMAT, ...zostavBalik(stav, cas) }));
+export async function zabal(stav: Stav, cas?: number, x?: Record<string, unknown>): Promise<string> {
+  const json = enc.encode(JSON.stringify({ a: FORMAT, ...zostavBalik(stav, cas, x) }));
   if (mozeKomprimovat()) return 'Z' + naBase64url(await prechod(json, new CompressionStream('deflate-raw')));
   return 'J' + naBase64url(json);
 }
 
-/** Rozbalí text z odkazu/QR/súboru. Pri akejkoľvek chybe hodí PrenosChyba. */
+/** Prenos ako súbor JSON (bez limitu QR; otvorí sa v druhom mobile cez „Súbor alebo fotka QR“). */
+export function zabalJson(stav: Stav, cas?: number, x?: Record<string, unknown>): string {
+  return JSON.stringify({ a: FORMAT, ...zostavBalik(stav, cas, x) });
+}
+
+/** Rozbalí text z odkazu/QR/súboru (komprimovaný text alebo súbor JSON). Pri akejkoľvek chybe hodí PrenosChyba. */
 export async function rozbal(dataText: string): Promise<{ balik: Balik; varovania: string[] }> {
   const t = dataText.trim();
   if (t.length < 2) throw new PrenosChyba('V odkaze nie sú žiadne údaje.');
+  if (t[0] === '{') {
+    if (t.length > MAX_ROZBALENE) throw new PrenosChyba('Prenos je neprimerane veľký.');
+    try { return over(JSON.parse(t)); } catch (e) {
+      if (e instanceof PrenosChyba) throw e;
+      throw new PrenosChyba('Súbor je poškodený alebo neúplný. Skús prenos vytvoriť znova.');
+    }
+  }
   try {
     const bin = zBase64url(t.slice(1));
     let json: Uint8Array;
@@ -232,6 +247,7 @@ export function vytiahniDataText(vstup: string): string | null {
   const t = vstup.trim();
   const m = t.match(/#\/prenos\/([A-Za-z0-9_-]+)/);
   if (m) return m[1];
+  if (t[0] === '{' && t.includes(`"${FORMAT}"`)) return t;
   return /^[ZJ][A-Za-z0-9_-]{8,}$/.test(t) ? t : null;
 }
 export const odkazZDat = (dataText: string, zaklad: string) => `${zaklad.split('#')[0]}#/prenos/${dataText}`;

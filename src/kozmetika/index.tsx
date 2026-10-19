@@ -8,6 +8,11 @@ import { vypocitajSkoreKozmetiky } from './skore';
 import { VysledokK } from './Vysledok';
 import { FotoInci } from './FotoInci';
 import { KodK } from './KodK';
+import { VlastneSkenyZoznam } from '../skener/VlastneSkeny';
+import { vlastneSkenyKozmetiky, oznacenieVlastneho } from '../skener/vlastne-skeny';
+import { vlastnyNaObf, obfPridatUrl } from './obf';
+import { PridatDoDb } from '../skener/PridatDoDb';
+import { dotiahniCakajuce } from '../skener/prenos-skener';
 import { PorovnanieK } from './PorovnanieK';
 import { nacitajNastavenia, ulozNastavenia, nacitajHistoriu, pridajDoHistorie, zmazZaznam, vymazHistoriu, type VyrobokObf } from './ulozisko';
 import type { Nastavenia } from './typy';
@@ -24,6 +29,9 @@ export function Kozmetika() {
   const [hotovy, setHotovy] = useState<string | null>(null);
   const [nazov, setNazov] = useState('');
   const [obf, setObf] = useState<VyrobokObf | null>(null);
+  /** práve skenovaný kód (aj keď výrobok nie je v databáze) */
+  const [kodSken, setKodSken] = useState<string | null>(null);
+  const [vlastneKluc, setVlastneKluc] = useState(0);
   const [ulozene, setUlozene] = useState(false);
   const [hist, setHist] = useState(() => nacitajHistoriu());
 
@@ -35,10 +43,17 @@ export function Kozmetika() {
   useEffect(() => { if (hotovy) document.getElementById('kz-vysledok')?.scrollIntoView({ block: 'start', behavior: 'smooth' }); }, [hotovy]);
 
   const zmenNast = (k: keyof Nastavenia, v: boolean) => { const n = { ...nast, [k]: v }; setNast(n); ulozNastavenia(n); };
-  const vymaz = () => { setText(''); setHotovy(null); setObf(null); setUlozene(false); };
+  const vymaz = () => { setText(''); setHotovy(null); setObf(null); setKodSken(null); setUlozene(false); };
+  const ulozVlastny = () => {
+    if (!kodSken || !hotovy) return;
+    const v = vlastneSkenyKozmetiky.uloz({ kod: kodSken, nazov: nazov.trim() || `Výrobok ${kodSken}`, znacka: obf?.znacka, zlozenie: hotovy });
+    if (v) { setObf(vlastnyNaObf(v)); setVlastneKluc((x) => x + 1); }
+  };
+  const zmazVlastny = () => { if (!obf?.vlastny) return; vlastneSkenyKozmetiky.zmaz(obf.kod); setObf(null); setVlastneKluc((x) => x + 1); };
+  useEffect(() => { void dotiahniCakajuce(); }, []);
   const uloz = () => {
     if (!vyhodnotenie) return;
-    pridajDoHistorie({ nazov: nazov.trim() || `Kozmetika ${new Date().toLocaleDateString('sk-SK')}`, text: hotovy ?? '', skore: vyhodnotenie.s.celkom, pasmo: vyhodnotenie.s.pasmo, kod: obf?.kod });
+    pridajDoHistorie({ nazov: nazov.trim() || `Kozmetika ${new Date().toLocaleDateString('sk-SK')}`, text: hotovy ?? '', skore: vyhodnotenie.s.celkom, pasmo: vyhodnotenie.s.pasmo, kod: kodSken ?? obf?.kod });
     setHist(nacitajHistoriu()); setUlozene(true);
   };
 
@@ -60,14 +75,14 @@ export function Kozmetika() {
 
       {zal === 'sken' && (
         <>
-          <KodK naVyrobok={(v) => { setObf(v); setNazov([v.znacka, v.nazov].filter(Boolean).join(' – ')); setText(v.zlozenie); setHotovy(v.zlozenie || null); setUlozene(false); }} />
+          <KodK naKod={(k) => { setKodSken(k.kod); if (!k.vyrobok) { setObf(null); setHotovy(null); setText(''); setUlozene(false); } }} naVyrobok={(v) => { setObf(v); setNazov([v.znacka, v.nazov].filter(Boolean).join(' – ')); setText(v.zlozenie); setHotovy(v.zlozenie || null); setUlozene(false); }} />
           <FotoInci naText={(t) => { setText(t); setHotovy(null); setObf(null); setUlozene(false); }} />
           <p class="maly">Alebo vlož či napíš zloženie z obalu (rozpoznaný text sa dá opraviť). Všetko sa vyhodnotí len v tvojom mobile.</p>
           <label for="kz-text"><b>Zloženie (INCI)</b></label>
           <textarea id="kz-text" class="sk-text" value={text} onInput={(e) => setText((e.target as HTMLTextAreaElement).value)} placeholder="Napr.: Aqua, Glycerin, Parfum, Phenoxyethanol, CI 77891…" />
           <div class="rad">
             <button class="hl" onClick={() => { setHotovy(text); setUlozene(false); }} disabled={!text.trim()}>Vyhodnotiť</button>
-            <button onClick={() => { setText(PRIKLAD); setHotovy(PRIKLAD); setObf(null); setUlozene(false); }}>Ukáž príklad</button>
+            <button onClick={() => { setText(PRIKLAD); setHotovy(PRIKLAD); setObf(null); setKodSken(null); setUlozene(false); }}>Ukáž príklad</button>
             {text && <button onClick={vymaz}>Vymazať</button>}
           </div>
           {vyhodnotenie && (
@@ -75,9 +90,20 @@ export function Kozmetika() {
               <div class="karta" style="animation:none;margin-top:14px">
                 <label for="kz-nazov" class="maly">Názov výrobku (do histórie)</label>
                 <input id="kz-nazov" type="text" value={nazov} onInput={(e) => setNazov((e.target as HTMLInputElement).value)} placeholder="napr. Telové mlieko" />
-                <div class="rad"><button class="male" onClick={uloz} disabled={ulozene}>{ulozene ? '✓ Uložené' : '💾 Uložiť do histórie'}</button></div>
+                <div class="rad">
+                  <button class="male" onClick={uloz} disabled={ulozene}>{ulozene ? '✓ Uložené' : '💾 Uložiť do histórie'}</button>
+                  {kodSken && (!obf || !obf.zlozenie || obf.vlastny) && <button class="male" id="kz-uloz-vlastny" onClick={ulozVlastny}>{obf?.vlastny ? '💾 Aktualizovať vlastný sken' : `💾 Zapamätať zloženie pod kód ${kodSken}`}</button>}
+                </div>
+                {kodSken && (!obf || !obf.zlozenie) && <p class="maly">Zloženie sa uloží len v tomto mobile pod kód {kodSken}. Nabudúce ho skener nájde aj bez internetu.</p>}
               </div>
-              {obf && obf.zlozenie && (
+              {kodSken && (!obf || !obf.zlozenie) && <PridatDoDb id="kz-pridat-obf-vysledok" href={obfPridatUrl(kodSken)} nazov="Open Beauty Facts" />}
+              {obf && obf.zlozenie && obf.vlastny && (
+                <div class="upoz" id="kz-vlastny-info">
+                  <b>{obf.nazov}</b> – <b>{oznacenieVlastneho(obf.ulozene)}</b>: zloženie si uložil ty v tomto mobile (kód {obf.kod}), nie je z databázy. Má prednosť pred Open Beauty Facts a nájde sa aj bez internetu. Porovnaj s obalom.
+                  <div class="rad"><button class="male" id="kz-zmaz-vlastny" onClick={zmazVlastny}>🗑 Zmazať vlastný sken</button></div>
+                </div>
+              )}
+              {obf && obf.zlozenie && !obf.vlastny && (
                 <div class="upoz">
                   <b>{obf.nazov}</b>{obf.znacka ? ` (${obf.znacka})` : ''} – údaje z Open Beauty Facts (ODbL), <a href={obf.url} target="_blank" rel="noopener noreferrer">karta výrobku</a>.
                   {obf.zCache && <> <b>Uložené {datumUlozenia(obf.ulozene)}</b> v tomto mobile (bez internetu) – údaje môžu byť staršie.</>}
@@ -92,13 +118,14 @@ export function Kozmetika() {
 
       {zal === 'historia' && (
         <>
+          <VlastneSkenyZoznam key={vlastneKluc} uloziste={vlastneSkenyKozmetiky} zmena={() => setObf((o) => (o?.vlastny ? null : o))} otvor={(v) => { setKodSken(v.kod); setObf(vlastnyNaObf(v)); setNazov(v.nazov); setText(v.zlozenie); setHotovy(v.zlozenie); setUlozene(false); setZal('sken'); }} />
           {!hist.length && <p>Zatiaľ nič uložené. Vyhodnoť zloženie a ulož ho do histórie.</p>}
           {hist.map((h) => (
             <div class="karta" key={h.id} style="animation:none">
               <h3 style="margin:0">{h.nazov}</h3>
               <div class="maly">{new Date(h.cas).toLocaleString('sk-SK')} · {PASMO_TEXT[h.pasmo as keyof typeof PASMO_TEXT] ?? h.pasmo} {h.skore}/100 (pri uložení)</div>
               <div class="rad">
-                <button class="male" onClick={() => { setText(h.text); setHotovy(h.text); setObf(null); setNazov(h.nazov); setUlozene(true); setZal('sken'); }}>Otvoriť</button>
+                <button class="male" onClick={() => { setText(h.text); setHotovy(h.text); setObf(null); setKodSken(h.kod ?? null); setNazov(h.nazov); setUlozene(true); setZal('sken'); }}>Otvoriť</button>
                 <button class="male" onClick={() => { zmazZaznam(h.id); setHist(nacitajHistoriu()); }}>Zmazať</button>
               </div>
             </div>

@@ -39,6 +39,7 @@ export function nacitajHistoriu(): Zaznam[] {
 }
 /** Limit 40 záznamov; výrobky so značkou „kupujem“ sa nikdy neodrezávajú. */
 const LIMIT = 40;
+export function ulozHistoriu(z: Zaznam[]) { uloz(z); }
 function uloz(z: Zaznam[]) {
   const oblubene = z.filter((x) => x.kupujem);
   const ostatne = z.filter((x) => !x.kupujem).slice(0, Math.max(0, LIMIT - oblubene.length));

@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
 import { dajStav, nastav, zluc } from '../store';
 import {
-  zabal, rozbal, rozdiel, pouzi, odkazZDat, zmestiSaDoQr, vytiahniDataText, PrenosChyba, MIMO_STAVU, mozeKomprimovat,
+  zabal, zabalJson, rozbal, rozdiel, pouzi, odkazZDat, zmestiSaDoQr, vytiahniDataText, PrenosChyba, MIMO_STAVU, mozeKomprimovat,
   type Balik, type Rezim, type RozdielKluca,
 } from '../engine/prenos';
 import { Hlavicka, Upozornenie } from './kom';
+import { zoberSkener, jePrazdny, pocetSkener, overSkener, rozdielSkener, pouziSkener, zalohujSkener, vratSkener, zrusZalohuSkenera, dotiahniCakajuce } from '../skener/prenos-skener';
 
 const ZALOHA = 'recepty-pred-prenosom';
 
@@ -91,11 +92,16 @@ function Odoslanie() {
   const [odkaz, setOdkaz] = useState('');
   const [chyba, setChyba] = useState('');
   const [sprava, setSprava] = useState('');
+  const [sSkenerom, setSSkenerom] = useState(true);
+  const skener = zoberSkener();
+  const mamSkener = !jePrazdny(skener);
+  const zahrnut = sSkenerom && mamSkener;
+  const dodatok = () => (zahrnut ? { sk: skener } : undefined);
   useEffect(() => {
-    zabal(dajStav() as unknown as Record<string, unknown>).then((p) => setOdkaz(odkazZDat(p, location.href)), () => setChyba('Zabalenie údajov sa nepodarilo.'));
-  }, []);
+    zabal(dajStav() as unknown as Record<string, unknown>, undefined, dodatok()).then((p) => setOdkaz(odkazZDat(p, location.href)), () => setChyba('Zabalenie údajov sa nepodarilo.'));
+  }, [zahrnut]);
   const qr = !!odkaz && zmestiSaDoQr(odkaz);
-  const subor = () => new File([odkaz], 'recepty-prenos.txt', { type: 'text/plain' });
+  const subor = () => new File([zabalJson(dajStav() as unknown as Record<string, unknown>, undefined, dodatok())], 'recepty-prenos.json', { type: 'application/json' });
   const kopiruj = async () => { try { await navigator.clipboard.writeText(odkaz); setSprava('Odkaz je skopírovaný.'); } catch { setSprava('Kopírovanie sa nepodarilo – označ odkaz nižšie a skopíruj ho ručne.'); } };
   const zdielaj = async () => {
     try {
@@ -104,21 +110,24 @@ function Odoslanie() {
       else await navigator.share({ title: 'Recepty – prenos', url: odkaz });
     } catch { /* zrušené */ }
   };
-  const stiahni = () => { const a = document.createElement('a'); a.href = URL.createObjectURL(subor()); a.download = 'recepty-prenos.txt'; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 5000); };
+  const stiahni = () => { const a = document.createElement('a'); a.href = URL.createObjectURL(subor()); a.download = 'recepty-prenos.json'; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 5000); };
   return (
     <section aria-labelledby="prenos-odoslat">
       <h2 id="prenos-odoslat">Odoslať z tohto mobilu</h2>
       <p class="maly">Prenesie nastavenia, obľúbené, hodnotenia, jedálniček, nákup a ďalšie údaje z appky. Všetko ostane len medzi vašimi mobilmi, nič sa neposiela na server. {MIMO_STAVU[0]}</p>
       {chyba && <p class="upoz" role="alert">{chyba}</p>}
+      {mamSkener && (
+        <label class="pol" style="display:flex;gap:8px;align-items:center;min-height:44px"><input id="prenos-so-skenerom" type="checkbox" checked={sSkenerom} onChange={(e) => setSSkenerom((e.target as HTMLInputElement).checked)} style="width:auto" /> Poslať aj skener: históriu skenov, vlastné skeny a uložené výrobky ({pocetSkener(skener)} záznamov)</label>
+      )}
       {odkaz && (
         <div class="karta">
           {qr
             ? <><p style="margin:0">V druhom mobile naskenuj QR kód bežnou kamerou (otvorí sa odkaz) alebo v appke cez „Prijať“.</p><QrPlatno text={odkaz} /></>
-            : <p class="upoz" style="margin:0">Údajov je na QR kód priveľa. Pošli odkaz alebo súbor (napr. cez správu, e-mail alebo Zdieľať).</p>}
+            : <p class="upoz" id="prenos-bez-qr" style="margin:0">Údajov je na QR kód priveľa{zahrnut ? ' (hlavne história skenov a vlastné skeny)' : ''}, preto QR nezobrazujeme. Pošli <b>súbor</b> (tlačidlo „Stiahnuť súbor“ alebo „Zdieľať“) alebo odkaz – napr. cez správu či e-mail. V druhom mobile ho otvor cez „Prijať“ → „Súbor alebo fotka QR“.{zahrnut ? ' Ak chceš QR kód, vypni vyššie „Poslať aj skener“ – pošle sa len zvyšok údajov.' : ''}</p>}
           <div class="rad">
             <button class="hl" onClick={kopiruj}>📋 Kopírovať odkaz</button>
             {typeof navigator.share === 'function' && <button onClick={zdielaj}>📤 Zdieľať</button>}
-            <button onClick={stiahni}>⬇ Stiahnuť súbor</button>
+            <button id="prenos-subor-stiahnut" onClick={stiahni}>⬇ Stiahnuť súbor (JSON)</button>
           </div>
           <p role="status" class="maly">{sprava}</p>
           <details><summary class="maly">Ukázať odkaz ({odkaz.length} znakov{mozeKomprimovat() ? '' : ', bez kompresie'})</summary>
@@ -168,15 +177,18 @@ function Nahlad({ data, zrus }: { data: string; zrus: () => void }) {
   );
   const lok = dajStav() as unknown as Record<string, unknown>;
   const rz = rozdiel(lok, balik);
+  const skPri = overSkener(balik.x?.sk);
+  if (skPri) rz.kluce.push(...rozdielSkener(zoberSkener(), skPri));
   const stratene = rz.kluce.reduce((s, r) => s + r.lenLokalne + r.konflikty, 0);
   const zmeny = rz.kluce.reduce((s, r) => s + r.nove + r.konflikty + (rezim === 'nahradit' ? r.lenLokalne : 0), 0);
   const potvrd = () => {
     try { localStorage.setItem(ZALOHA, JSON.stringify(dajStav())); } catch { /* bez zálohy */ }
     nastav((s) => zluc(pouzi(s as unknown as Record<string, unknown>, balik, rezim) as never));
+    if (skPri) { zalohujSkener(); pouziSkener(skPri, rezim); void dotiahniCakajuce(); } else zrusZalohuSkenera();
     setHotovo(rezim === 'zlucit' ? 'Hotovo – údaje sú zlúčené.' : 'Hotovo – údaje v tomto mobile sú nahradené.');
   };
   const spat = () => {
-    try { const z = localStorage.getItem(ZALOHA); if (z) { nastav(() => zluc(JSON.parse(z))); setHotovo('Vrátené do stavu pred prenosom.'); } } catch { setHotovo('Vrátenie sa nepodarilo.'); }
+    try { const z = localStorage.getItem(ZALOHA); if (z) { nastav(() => zluc(JSON.parse(z))); vratSkener(); setHotovo('Vrátené do stavu pred prenosom.'); } } catch { setHotovo('Vrátenie sa nepodarilo.'); }
   };
   if (hotovo) return (
     <div class="karta">
@@ -230,7 +242,7 @@ function Prijatie({ naData }: { naData: (d: string) => void }) {
       <p class="maly">Odkaz z prvého mobilu stačí otvoriť v tomto mobile – appka sa sama opýta, čo urobiť. Alebo:</p>
       <div class="rad">
         <button class="hl" onClick={() => setKamera(!kamera)}>📷 Naskenovať QR</button>
-        <label class="tlacidlo" style="display:inline-flex;align-items:center;cursor:pointer">📁 Súbor alebo fotka QR<input id="prenos-subor" type="file" accept="image/*,text/plain,.txt" hidden onChange={subor} /></label>
+        <label class="tlacidlo" style="display:inline-flex;align-items:center;cursor:pointer">📁 Súbor alebo fotka QR<input id="prenos-subor" type="file" accept="image/*,text/plain,.txt,application/json,.json" hidden onChange={subor} /></label>
       </div>
       {kamera && <Skenuj naText={text} zavri={() => setKamera(false)} />}
       <label class="maly" for="prenos-vloz">Vložiť odkaz</label>

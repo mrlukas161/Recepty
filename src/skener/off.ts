@@ -3,6 +3,7 @@ import type { Vyziva, Doplnok } from './typy';
 import type { Alergen } from '../data/types';
 import { najdiVUlozisku, ulozVyrobok } from './ulozisko';
 import { najdiVBaliku } from './balik';
+import { vlastneSkenyPotravin, type VlastnySken } from './vlastne-skeny';
 
 export type JazykZlozenia = 'sk' | 'cs' | 'en' | 'povodny';
 
@@ -26,6 +27,16 @@ export interface OffVyrobok {
   zBalika?: boolean;
   /** ISO čas uloženia do lokálnej zásoby */
   ulozene?: string;
+  /** vlastný sken používateľa (zloženie odfotené/vpísané k tomuto kódu) – má prednosť pred balíkom aj OFF */
+  vlastny?: boolean;
+}
+
+/** Stránka Open Food Facts na pridanie/úpravu výrobku s daným kódom (otvára sa v novom okne; appka nič neodosiela).
+ *  Tvar adresy `cgi/product.pl?type=edit&code=` potvrdený vyhľadávaním (pozri docs/ROZHODNUTIA.md). */
+export const offPridatUrl = (kod: string) => `https://world.openfoodfacts.org/cgi/product.pl?type=edit&code=${encodeURIComponent(kod)}`;
+
+export function vlastnyNaVyrobok(v: VlastnySken): OffVyrobok {
+  return { kod: v.kod, nazov: v.nazov, znacka: v.znacka, zlozenie: v.zlozenie, vyziva: v.vyziva ?? {}, url: `https://world.openfoodfacts.org/product/${v.kod}`, vlastny: true, ulozene: v.ulozene };
 }
 
 /** Kontrolný súčet EAN-8 / EAN-13 / UPC-A (12) / GTIN-14. */
@@ -96,7 +107,9 @@ export function mapujOff(kod: string, j: unknown): OffVyrobok | null {
 
 /** Hľadanie podľa kódu: lokálna zásoba → balík → online dopyt na OFF (uloží sa do zásoby). */
 export async function nacitajOff(kod: string): Promise<OffVyrobok | null> {
-  // 1. lokálna zásoba, 2. balík slovenských výrobkov (aj bez internetu), 3. Open Food Facts online
+  // 0. vlastný sken (vždy vyhrá), 1. lokálna zásoba, 2. balík slovenských výrobkov (aj bez internetu), 3. Open Food Facts online
+  const vlastny = vlastneSkenyPotravin.najdi(kod);
+  if (vlastny) return vlastnyNaVyrobok(vlastny);
   const miestny = najdiVUlozisku(kod);
   if (miestny) return miestny;
   const zBalika = await najdiVBaliku(kod);
