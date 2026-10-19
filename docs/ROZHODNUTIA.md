@@ -76,3 +76,9 @@ Bez zmeny kódu: žiadna chyba nenájdená. Migrácia sa overila odseknutým sta
 - Skript sa nemenil. Do balíka idú výrobky s platným čiarovým kódom, ktoré majú aspoň zloženie, E-čísla/zložky alebo výživové hodnoty; 37 neplatných kódov a 1 151 prázdnych záznamov sa vyradilo, duplicity sa zlúčili → 2 498 výrobkov, ~0,7 MB (hlboko pod rozpočtom 3 MB).
 - Dáta (`sk-vyrobky.jsonl.gz`) ostávajú len vo vetve `data-zdroje`, do main ide len spracovaný balík `public/off/` (ODbL, uvedené v appke aj v súbore s pôvodom).
 - E2E používa EAN-8 `20131616` (Trappista, slovenské zloženie) a blokuje sieť na openfoodfacts.org, aby dokázalo, že údaj je z balíka.
+
+## R-n1 – Diéty sú vedľajšie, skóre zrozumiteľne, faktor múky (19.10.2026)
+- Hlavný smer appky (zadávateľ 19.10.): **obmedzovať múku**, potom cukor, údeniny, vyprážané. Diéty (keto…) sú vo Viac → Diéty; v Nastaveniach ostal len odkaz. Popis diéty je hneď na karte (zadávateľ hlásil, že sa po ťuknutí nezobrazil), na karte je aj „Použiť“.
+- Skóre: bodovú škálu faktorov (0–100) sme z UI zrušili; pri každom faktore je **skutočná hodnota, cieľ a slovo** (výborné ≥ 75, dobré ≥ 50, slabé < 50 bodov faktora). Percento ostáva len pri celkovom skóre. Cieľ = horný/dolný prah lineárnej škály faktora (napr. vláknina 2→10 g: cieľ ~10 g), čiže je to naše nastavenie, nie smernica.
+- Nový faktor `muka` (váha 12): gramy surovín s príznakom `rafinovana-muka` na porciu, 10 g → 100 bodov, 90 g → 0. Prahy sú odhad. Po pridaní sa kalibračný posun (R3) znížil z 58 na 55, aby pásma ostali podobné (pred/po: výborné 62/60, dobré 104/107, občas 17/12, zriedka 14/18).
+- Vhodnosť diét v detaile: keto/nízkosacharidová ukáže „čisté sacharidy X g na porciu, limit Y g“ (sacharidy v tabuľke sú bez vlákniny, pozri R-v1); limity 15 a 40 g sú naše limity v appke (`LIMIT_SACH`).

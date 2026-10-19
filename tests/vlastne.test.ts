@@ -60,7 +60,7 @@ describe('export / import vlastných receptov', () => {
 describe('skóre a istota', () => {
   it('používa rovnaký výpočet; kompletný recept má vysokú istotu', () => {
     const v = mk(); const sk = skoreVlastneho(v);
-    expect(sk.celkom).toBeGreaterThan(0); expect(sk.faktory).toHaveLength(10);
+    expect(sk.celkom).toBeGreaterThan(0); expect(sk.faktory).toHaveLength(11);
     expect(istotaSkore(v).uroven).toBe('vysoka');
   });
   it('voľný text a chýbajúce množstvo znižujú istotu', () => {

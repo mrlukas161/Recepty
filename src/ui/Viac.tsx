@@ -13,7 +13,6 @@ import { IkonaKarty } from './ilustracia';
 export function Viac() {
   const odk = [
     ['#/nahrady', '🔁', 'Náhrady', 'Čím nahradiť múku, cukor, údeniny…'],
-    ['#/diety', '🥗', 'Diéty', 'Popisy a tlačidlo „Použiť“'],
     ['#/vedomosti', '📚', 'Vedomosti', 'Krátke karty a stav zdrojov'],
     ['#/skener', '📷', 'Skener zloženia', 'Odfoť zloženie výrobku a získaj hodnotenie'],
     ['#/kozmetika', '🧴', 'Skener kozmetiky', 'Hodnotenie zloženia INCI podľa predpisov EÚ'],
@@ -25,6 +24,9 @@ export function Viac() {
     <>
       <Hlavicka nazov="Viac" />
       {odk.map(([h, i, n, p]) => <a class="karta" href={h} key={h}><div class="riadok"><div class="emoji" aria-hidden="true"><IkonaKarty e={i} velkost={34} /></div><div class="rozt"><h3 style="margin:0">{n}</h3><div class="maly">{p}</div></div></div></a>)}
+      <h2>Diéty</h2>
+      <p class="maly">Vedľajšie, voliteľné: keto, vegetariánska, bezlepková a ďalšie.</p>
+      <a class="karta" href="#/diety"><div class="riadok"><div class="emoji" aria-hidden="true"><IkonaKarty e="🥗" velkost={34} /></div><div class="rozt"><h3 style="margin:0">Diéty</h3><div class="maly">Popis každej diéty hneď na karte a tlačidlo „Použiť“</div></div></div></a>
       <Upozornenie />
     </>
   );
@@ -82,12 +84,21 @@ export function Diety({ id }: { id?: string }) {
   return (
     <>
       <Hlavicka nazov="Diéty" />
-      {DIETY.map((d) => (
-        <a class="karta" key={d.id} href={`#/diety/${d.id}`}>
-          <h3 style="margin:0">{s.nastavenia.diety.includes(d.id) ? '✓ ' : ''}{d.nazov}</h3>
-          <div class="maly">{d.popis}</div>
-        </a>
-      ))}
+      <p class="upoz">Hlavný smer appky je <strong>menej múky</strong> (popri cukre, údeninách a vyprážanom). Diéty sú vedľajšie, voliteľné; popis vidíš hneď na karte a podrobnosti po ťuknutí na názov.</p>
+      {DIETY.map((d) => {
+        const aktivna = s.nastavenia.diety.includes(d.id);
+        return (
+          <div class="karta dieta" key={d.id} data-dieta={d.id}>
+            <h3 style="margin:0"><a href={`#/diety/${d.id}`} style="text-decoration:none">{aktivna ? '✓ ' : ''}{d.nazov}</a></h3>
+            <p class="dieta-popis" style="margin:4px 0">{d.popis}</p>
+            <div class="maly">Pre koho nie: {d.neVhodne}</div>
+            <div class="rad">
+              <a class="tlacidlo male" href={`#/diety/${d.id}`} style="text-decoration:none;display:inline-flex;align-items:center">Podrobnosti</a>
+              <button class="male" aria-pressed={aktivna} onClick={() => nastavNastavenia({ diety: aktivna ? s.nastavenia.diety.filter((x) => x !== d.id) : [...s.nastavenia.diety, d.id] })}>{aktivna ? 'Prestať používať' : 'Použiť'}</button>
+            </div>
+          </div>
+        );
+      })}
     </>
   );
 }
@@ -161,9 +172,8 @@ export function Nastavenia({ uvod }: { uvod?: boolean }) {
       <input type="text" placeholder="Hľadať surovinu…" aria-label="Hľadať surovinu, ktorú nejeme" value={hladaj} onInput={(e) => setHladaj((e.target as HTMLInputElement).value)} />
       <div class="cipy" style="margin-top:6px">{najdene.map((x) => <button class="chip" onClick={() => { nastavNastavenia({ nejem: Array.from(new Set([...n.nejem, x.id])) }); setHladaj(''); }}>＋ {x.nazov}</button>)}</div>
       <div class="cipy" style="margin-top:6px">{n.nejem.map((id) => <button class="chip" aria-pressed="true" onClick={() => nastavNastavenia({ nejem: n.nejem.filter((x) => x !== id) })}>✕ {SUROVINA.get(id)?.nazov ?? id}</button>)}</div>
-      <h2>Diéta</h2>
-      <div class="cipy">{DIETY.map((d) => <button class="chip" aria-pressed={n.diety.includes(d.id)} onClick={() => nastavNastavenia({ diety: toggle(n.diety, d.id) })}>{d.nazov}</button>)}</div>
-      <p class="maly"><a href="#/diety">Popisy diét</a></p>
+      <h2>Diéty (vedľajšie)</h2>
+      <p class="maly">{n.diety.length ? <>Používaš: <strong>{n.diety.map((x) => DIETA.get(x)?.nazov ?? x).join(', ')}</strong>. </> : 'Žiadna diéta nie je zapnutá. '}<a href="#/diety">Diéty s popisom vo Viac</a></p>
       <h2>Jedlá v jedálničku</h2>
       <div class="cipy">{([['ranajky', 'Raňajky'], ['desiata', 'Desiata'], ['obed', 'Obed'], ['vecera', 'Večera']] as const).map(([id, nz]) => <button class="chip" aria-pressed={n.jedla.includes(id)} onClick={() => { const poradie = ['ranajky', 'desiata', 'obed', 'vecera']; const novy = n.jedla.includes(id) ? n.jedla.filter((x) => x !== id) : [...n.jedla, id]; nastavNastavenia({ jedla: novy.sort((a, b) => poradie.indexOf(a) - poradie.indexOf(b)) }); }}>{nz}</button>)}</div>
       <h2>Čas a vybavenie</h2>

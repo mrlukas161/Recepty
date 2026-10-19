@@ -14,7 +14,7 @@ const first = (pred: (id: string) => boolean) => [...SUROVINA.keys()].find(pred)
 
 describe('skóre', () => {
   it('je v rozsahu 0–100 pre všetky recepty', () => {
-    for (const r of RECEPTY) { const s = vypocitajSkore(r, r.suroviny, SUROVINA); expect(s.celkom).toBeGreaterThanOrEqual(0); expect(s.celkom).toBeLessThanOrEqual(100); expect(s.faktory.length).toBe(10); }
+    for (const r of RECEPTY) { const s = vypocitajSkore(r, r.suroviny, SUROVINA); expect(s.celkom).toBeGreaterThanOrEqual(0); expect(s.celkom).toBeLessThanOrEqual(100); expect(s.faktory.length).toBe(11); }
   });
   it('zelenina + strukoviny skórujú lepšie než biela múka + cukor', () => {
     const muka = first((id) => SUROVINA.get(id)!.priznaky.includes('rafinovana-muka') && SUROVINA.get(id)!.skupina === 'muky-obilniny');

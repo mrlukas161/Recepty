@@ -1,6 +1,6 @@
 import type { Recept, Surovina } from '../data/types';
 import type { Kategoria, Nastavenia } from './types';
-import { vypocitajSkore, type Skore } from './score';
+import { vypocitajSkore, cislo, type Skore } from './score';
 import { naGramy } from './units';
 import { DIETY } from '../data/diety';
 
@@ -34,6 +34,29 @@ function maPriznak(r: Recept, db: Map<string, Surovina>, p: string, len_nevyhnut
   return r.suroviny.some((s) => (!len_nevyhnutne || !s.volitelna) && db.get(s.id)?.priznaky.includes(p as never));
 }
 
+/** Limity čistých sacharidov na dospelú porciu (g) pre sacharidové diéty – naše limity v appke, nie predpis. */
+export const LIMIT_SACH = { nizkosacharidova: 40, ketogenna: 15 } as const;
+
+export interface Vhodnost { dieta: string; ok: boolean; text: string }
+/** Vhodnosť receptu pre zvolené diéty – s číslami pri sacharidových diétach a diéte „menej múky“. */
+export function vhodnostDiet(i: Info, diety: string[], db: Map<string, Surovina>): Vhodnost[] {
+  const sach = i.skore.na100porcia.sach;
+  return diety.map((d) => {
+    const ok = vyhovujeDiete(i, d, db);
+    const nazov = DIETY.find((x) => x.id === d)?.nazov ?? d;
+    let text: string;
+    if (d === 'ketogenna' || d === 'nizkosacharidova') {
+      const lim = LIMIT_SACH[d];
+      text = `čisté sacharidy ${cislo(sach)} g na porciu, limit ${lim} g – ${ok ? 'vhodné' : 'prekračuje limit'}`;
+    } else if (d === 'menej-muky') {
+      text = ok ? 'bez rafinovanej múky – vhodné' : `obsahuje rafinovanú múku (~${Math.round(i.skore.na100porcia.mukaG)} g na porciu) – nevhodné`;
+    } else {
+      text = ok ? 'vyhovuje' : 'nevyhovuje (podľa príznakov surovín)';
+    }
+    return { dieta: nazov, ok, text };
+  });
+}
+
 /** Je recept v súlade s dietou? (tvrdé pravidlá; mäkké diéty len podľa skóre) */
 export function vyhovujeDiete(i: Info, dietaId: string, db: Map<string, Surovina>): boolean {
   const r = i.r;
@@ -45,8 +68,8 @@ export function vyhovujeDiete(i: Info, dietaId: string, db: Map<string, Surovina
     case 'bez-laktozy': return !has('laktoza') && !has('mliecne');
     case 'low-fodmap': return !has('vysoky-fodmap');
     case 'menej-muky': return !has('rafinovana-muka');
-    case 'nizkosacharidova': return i.skore.na100porcia.sach <= 40;
-    case 'ketogenna': return i.skore.na100porcia.sach <= 15;
+    case 'nizkosacharidova': return i.skore.na100porcia.sach <= LIMIT_SACH.nizkosacharidova;
+    case 'ketogenna': return i.skore.na100porcia.sach <= LIMIT_SACH.ketogenna;
     case 'flexitarianska': return true;
     default: { // stredomorská, DASH, MIND, protizápalová, severská – mäkké
       return i.skore.celkom >= 55 && !has('spracovane-maso');

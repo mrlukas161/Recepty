@@ -6,7 +6,7 @@ import { vypocitajSkore, POZNAMKA_SKORE } from '../engine/score';
 import { aplikujUpravy, ZIADNE_UPRAVY, type StavUprav } from '../engine/upravy';
 import { naGramy } from '../engine/units';
 import { obmedzeneVolitelne, vynechaneVolitelne, zobrazenyNazov, postupPreDomacnost } from '../engine/obmedzene';
-import { kolkoPorcii } from '../engine/filtre';
+import { kolkoPorcii, vhodnostDiet } from '../engine/filtre';
 import { DNI, kluc } from '../engine/planner';
 import { LEPSIE } from '../data/lepsie';
 import { ZdrojeK, ZdrojVyzivy } from './Zdroje';
@@ -98,19 +98,26 @@ function DetailVnutro({ id }: { id: string }) {
         </div>
         {nove.prinosy.length > 0 && <><h3 style="margin-top:12px">Prínosy</h3><ul>{nove.prinosy.map((p) => <li class="plus">{p}</li>)}</ul></>}
         {nove.slabiny.length > 0 && <><h3>Slabé stránky</h3><ul>{nove.slabiny.map((p) => <li class="minus">{p}</li>)}</ul></>}
-        <details>
+        <details open>
           <summary style="min-height:44px;display:flex;align-items:center;font-weight:700">Ako sme to spočítali</summary>
           {nove.faktory.map((x) => (
-            <div class={`faktor s-${x.body >= 80 ? 'vyborne' : x.body >= 60 ? 'dobre' : x.body >= 40 ? 'obcas' : 'zriedka'}`}>
-              <div class="riadok" style="justify-content:space-between"><strong>{x.nazov}</strong><span>{x.body}/100 · váha {x.vaha}</span></div>
+            <div class={`faktor s-${x.slovo === 'slabe' ? 'zriedka' : x.slovo}`} key={x.id} data-faktor={x.id}>
+              <div class="riadok" style="justify-content:space-between"><strong style="color:var(--text)">{x.nazov}</strong><span class="faktor-slovo"><strong>{x.slovoText}</strong></span></div>
               <div class="lista" role="presentation"><i style={`width:${x.body}%`} /></div>
-              <div class="maly" style="color:var(--text)">{x.hodnota} – {x.preco}</div>
+              <div class="faktor-hodnota" style="color:var(--text)"><strong>{x.hodnota}</strong> <span class="maly">· {x.ciel}</span></div>
+              <div class="maly" style="color:var(--text)">{x.preco}</div>
               <ZdrojeK kind="faktory" id={x.id} nadpis="Zdroje k faktoru" />
             </div>
           ))}
-          <p class="upoz">{POZNAMKA_SKORE} Zdroje pri jednotlivých faktoroch ukazujú, čo je podložené; váhy a prahy sú naše odhady.</p>
+          <p class="upoz">{POZNAMKA_SKORE} Zdroje pri jednotlivých faktoroch ukazujú, čo je podložené; váhy a prahy sú naše odhady. Percento hore je celkové skóre; pri faktoroch ukazujeme skutočné hodnoty a cieľ.</p>
         </details>
       </div>
+      {s.nastavenia.diety.length > 0 && (
+        <div class="karta vhodnost">
+          <h3>Vhodnosť pre tvoje diéty</h3>
+          <ul class="cisty">{vhodnostDiet(info, s.nastavenia.diety, SUROVINA).map((v) => <li key={v.dieta} class={v.ok ? 'plus' : 'minus'}><strong>{v.dieta}:</strong> {v.text}</li>)}</ul>
+        </div>
+      )}
 
       <h2>Suroviny</h2>
       <div class="rad" style="align-items:center">
