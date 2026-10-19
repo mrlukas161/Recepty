@@ -69,6 +69,7 @@ export const POLITIKA: Record<string, Politika> = {
   nastavenia: { popis: 'Nastavenia', druh: 'objekt', over: nastaveniaOver, zjednot: ['alergie', 'nejem', 'mamDoma'] },
   oblubene: { popis: 'Obľúbené recepty', druh: 'mnozina', over: retazce },
   hodnotenie: { popis: 'Hodnotenia receptov', druh: 'mapa', over: (v) => mapa(v, (x) => (x === 1 || x === -1 ? x : undefined)) },
+  hviezdicky: { popis: 'Hviezdičky receptov', druh: 'mapa', over: (v) => mapa(v, (x) => (typeof x === 'number' && Number.isInteger(x) && x >= 1 && x <= 5 ? x : undefined)) },
   historia: {
     popis: 'História varenia', druh: 'zoznam',
     over: (v) => Array.isArray(v) ? v.filter((x) => jeObjekt(x) && typeof x.recept === 'string' && typeof x.den === 'string').map((x) => ({ recept: (x as { recept: string }).recept, den: (x as { den: string }).den })).slice(0, 5000) : undefined,

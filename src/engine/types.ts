@@ -48,7 +48,10 @@ export interface UlozenyStav {
   verzia: number;
   nastavenia: Nastavenia;
   oblubene: string[];
+  /** staré 👍/👎 (čítané ako 4★/1★, kým recept nedostane hviezdičky) */
   hodnotenie: Record<string, 1 | -1>;
+  /** hodnotenie receptov 1–5 hviezdičiek (1 = nechutilo) */
+  hviezdicky: Record<string, number>;
   historia: { recept: string; den: string }[];
   jedalnicek: Record<string, string | null>;   // kľúč `${deň0-6}:${typ}` -> id receptu
   zamknute: string[];

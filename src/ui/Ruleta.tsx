@@ -6,6 +6,7 @@ import { useStav, nastav, dnesKluc } from '../store';
 import { dietyOk, vylucene } from '../engine/filtre';
 import { Hlavicka, KartaReceptu, Zalozky } from './kom';
 import { kluc } from '../engine/planner';
+import { nechutilo } from '../engine/hviezdy';
 
 export function Ruleta() {
   const s = useStav();
@@ -15,7 +16,7 @@ export function Ruleta() {
   const [vyber, setVyber] = useState<string | null>(null);
   const [toci, setToci] = useState(false);
   const [emoji, setEmoji] = useState<{ typ: string; ilustracia?: string } | null>(null);
-  const pool = useMemo(() => INFOS.filter((i) => (typ === 'vsetko' || i.r.typ === typ) && !vylucene(i, n) && dietyOk(i, n, SUROVINA) && s.hodnotenie[i.r.id] !== -1), [typ, JSON.stringify(n), vlastnaVerzia()]);
+  const pool = useMemo(() => INFOS.filter((i) => (typ === 'vsetko' || i.r.typ === typ) && !vylucene(i, n) && dietyOk(i, n, SUROVINA) && !nechutilo(s, i.r.id)), [typ, JSON.stringify(n), JSON.stringify(s.hviezdicky), JSON.stringify(s.hodnotenie), vlastnaVerzia()]);
   const tocit = () => {
     if (!pool.length || toci) return;
     setToci(true); setVyber(null);

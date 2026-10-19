@@ -9,6 +9,7 @@ import { casNaDen } from '../engine/types';
 import { KATEGORIE } from '../engine/types';
 import { Hlavicka } from './kom';
 import { vylucene, dietyOk } from '../engine/filtre';
+import { nechutilo } from '../engine/hviezdy';
 
 export function Jedalnicek() {
   const s = useStav();
@@ -19,21 +20,22 @@ export function Jedalnicek() {
     const sd = Math.floor(Math.random() * 1e6); setSeed(sd);
     const zam: Record<string, string | null> = {};
     for (const k of s.zamknute) zam[k] = s.jedalnicek[k] ?? null;
-    nastav((x) => { x.jedalnicek = generujJedalnicek({ infos: INFOS, n, db: SUROVINA, zamknute: zam, seed: sd, pridane: s.pridaneVolitelne }); });
+    nastav((x) => { x.jedalnicek = generujJedalnicek({ infos: INFOS, n, db: SUROVINA, zamknute: zam, seed: sd, pridane: s.pridaneVolitelne, hodnotenia: s }); });
   };
   const sh = suhrn(s.jedalnicek, INFO, SUROVINA, s.pridaneVolitelne);
   const alt = (k: string) => {
     const typ = k.split(':')[1];
-    return INFOS.filter((i) => (typ === 'obed' ? i.r.typ === 'obed' : i.r.typ === typ) && !vylucene(i, n) && dietyOk(i, n, SUROVINA)).sort((a, b) => b.skore.celkom - a.skore.celkom).slice(0, 25);
+    return INFOS.filter((i) => (typ === 'obed' ? i.r.typ === 'obed' : i.r.typ === typ) && !vylucene(i, n) && dietyOk(i, n, SUROVINA) && !nechutilo(s, i.r.id)).sort((a, b) => b.skore.celkom - a.skore.celkom).slice(0, 25);
   };
   return (
     <>
       <Hlavicka nazov="Jedálniček" />
       <div class="rad">
-        <button class="hl" onClick={gen}>✨ {Object.keys(s.jedalnicek).length ? 'Pregenerovať' : 'Vygenerovať týždeň'}</button>
+        <button class="hl" onClick={gen}>{Object.keys(s.jedalnicek).length ? '🔀 Zamiešať' : '✨ Vygenerovať týždeň'}</button>
         <button onClick={() => { nastav((x) => { x.nakupRecepty = Object.values(x.jedalnicek).filter(Boolean) as string[]; }); location.hash = '#/nakup'; }}>🛒 Nákup z jedálnička</button>
         <button onClick={() => nastav((x) => { x.jedalnicek = {}; x.zamknute = []; })}>Vymazať</button>
       </div>
+      <p class="maly">Zamiešať uprednostní recepty s 4–5★ a nikdy nedá recept s 1★ (nechutilo). Zamknuté jedlá ostanú.</p>
       <label class="pol"><input type="checkbox" checked={n.varimNa2Dni} onChange={(e) => nastavNastavenia({ varimNa2Dni: (e.target as HTMLInputElement).checked })} /> Varím na 2 dni (večera → obed na ďalší deň)</label>
       {DNI.map((d, di) => (
         <div class="karta" key={d}>

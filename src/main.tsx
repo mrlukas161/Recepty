@@ -9,7 +9,7 @@ import { Detail } from './ui/Detail';
 import { Ruleta } from './ui/Ruleta';
 import { Jedalnicek } from './ui/Jedalnicek';
 import { Nakup } from './ui/Nakup';
-import { Viac, Nahrady, Diety, Vedomosti, Nastavenia } from './ui/Viac';
+import { Viac, Nechutilo, Nahrady, Diety, Vedomosti, Nastavenia } from './ui/Viac';
 import { SkenerTrasa } from './skener-vstup';
 import { KozmetikaTrasa } from './kozmetika-vstup';
 import { VlastnyReceptForm, MojeRecepty } from './ui/VlastnyRecept';
@@ -48,6 +48,7 @@ function App() {
   else if (a === 'nakup') obsah = <Nakup />;
   else if (a === 'ruleta') obsah = <Ruleta />;
   else if (a === 'nahrady') obsah = <Nahrady />;
+  else if (a === 'nechutilo') obsah = <Nechutilo />;
   else if (a === 'suroviny') obsah = <Suroviny />;
   else if (a === 'surovina' && b) obsah = <SurovinaKarta id={b} />;
   else if (a === 'diety') obsah = <Diety id={b} />;
@@ -64,7 +65,7 @@ function App() {
     <>
       <main>{obsah}</main>
       <nav class="spodna" aria-label="Hlavná navigácia">
-        {NAV.map(([href, ik, nz]) => <a href={href} key={href} aria-current={akt === href || (href === '#/viac' && ['#/nahrady', '#/suroviny', '#/surovina', '#/diety', '#/vedomosti', '#/nastavenia', '#/ruleta', '#/skener', '#/kozmetika', '#/prenos'].includes(akt)) ? 'page' : undefined}><span class="ik" aria-hidden="true"><Ilustracia typ={ik} velkost={26} /></span>{nz}</a>)}
+        {NAV.map(([href, ik, nz]) => <a href={href} key={href} aria-current={akt === href || (href === '#/viac' && ['#/nahrady', '#/suroviny', '#/surovina', '#/nechutilo', '#/diety', '#/vedomosti', '#/nastavenia', '#/ruleta', '#/skener', '#/kozmetika', '#/prenos'].includes(akt)) ? 'page' : undefined}><span class="ik" aria-hidden="true"><Ilustracia typ={ik} velkost={26} /></span>{nz}</a>)}
       </nav>
     </>
   );

@@ -112,3 +112,9 @@ ul.casovace li.cas-hotovo .cas-nazov { color: #fff; }
 /* dotykové plochy: samostatné odkazy v odsekoch a rozbaľovače aspoň 44 px */
 p.maly > a:only-child, p > a.dlhy { display: inline-block; padding: 12px 0; }
 details > summary.maly { min-height: 44px; display: flex; align-items: center; }
+
+/* Hviezdičky receptu */
+.hviezdicky { display: flex; align-items: center; flex-wrap: wrap; gap: 2px; margin: 6px 0; }
+.hviezdicky .hviezda { min-width: 44px; min-height: 44px; padding: 0; border: 0; background: transparent; font-size: 1.7rem; line-height: 1; color: var(--obcas); }
+.hviezdicky .hviezda[aria-pressed="true"] { text-shadow: 0 0 0 currentColor; }
+.hviezdy-text { margin-left: 6px; }

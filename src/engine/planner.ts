@@ -3,6 +3,7 @@ import type { Kategoria, Nastavenia } from './types';
 import { casNaDen } from './types';
 import { kategorieZPridanych } from './obmedzene';
 import { dietyOk, vylucene, type Info } from './filtre';
+import { dajHviezdy, vahaHviezd, type StavHviezd } from './hviezdy';
 
 export const DNI = ['Pondelok', 'Utorok', 'Streda', 'Štvrtok', 'Piatok', 'Sobota', 'Nedeľa'];
 export const kluc = (den: number, typ: Typ) => `${den}:${typ}`;
@@ -17,6 +18,8 @@ export interface PlanVstup {
   zamknute?: Record<string, string | null>; seed?: number;
   /** voliteľné obmedzované suroviny, ktoré používateľ do receptov pridal (id receptu -> id surovín) */
   pridane?: Record<string, string[]>;
+  /** hviezdičky receptov: 1★ sa nikdy nevyberie, 4–5★ majú vyššiu váhu */
+  hodnotenia?: StavHviezd;
 }
 
 function hlavnyBielkovina(i: Info, db: Map<string, Surovina>): string {
@@ -55,7 +58,8 @@ export function generujJedalnicek(v: PlanVstup): Record<string, string | null> {
     out[k] = id;
     const i = infos.find((x) => x.r.id === id); if (i) dopln(i);
   }
-  const povolene = infos.filter((i) => !vylucene(i, n) && dietyOk(i, n, db));
+  const hv = (id: string) => (v.hodnotenia ? dajHviezdy(v.hodnotenia, id) : 0);
+  const povolene = infos.filter((i) => !vylucene(i, n) && dietyOk(i, n, db) && hv(i.r.id) !== 1);
   const typyHlavne = new Set<Typ>(['obed', 'vecera']);
   const naViacDni = (i: Info) => i.r.tagy.includes('na-viac-dni');
   const dvaDni = n.varimNa2Dni && n.jedla.includes('vecera') && n.jedla.includes('obed');
@@ -82,7 +86,7 @@ export function generujJedalnicek(v: PlanVstup): Record<string, string | null> {
       const pred = bielkoviny[bielkoviny.length - 1];
       const dvojita = dvaDni && typ === 'vecera' && d < 6 && !out[kluc(d + 1, 'obed')];
       const vazene = zdroj.map((i) => {
-        let w = Math.pow(Math.max(5, i.skore.celkom) / 100, 3) + 0.01;
+        let w = (Math.pow(Math.max(5, i.skore.celkom) / 100, 3) + 0.01) * vahaHviezd(hv(i.r.id));
         const b = hlavnyBielkovina(i, db);
         if (b === pred && b !== 'ine') w *= 0.35;
         if (jeRyba(i, db) && ryby < 1 && d >= 2) w *= 2.5;

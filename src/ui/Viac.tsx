@@ -9,8 +9,13 @@ import { Hlavicka, Upozornenie, Zalozky } from './kom';
 import type { Alergen } from '../data/types';
 import { ZdrojeK, VsetkyZdroje, ZdrojeTabuliek } from './Zdroje';
 import { IkonaKarty } from './ilustracia';
+import { INFOS, TYP_NAZOV } from '../ctx';
+import { nechutilo } from '../engine/hviezdy';
+import { nastavHviezdy } from '../store';
 
 export function Viac() {
+  const st = useStav();
+  const pocetNech = INFOS.filter((i) => nechutilo(st, i.r.id)).length;
   const odk = [
     ['#/suroviny', '🌾', 'Suroviny', 'Karta každej suroviny: prečo áno/nie, čím nahradiť'],
     ['#/nahrady', '🔁', 'Náhrady', 'Čím nahradiť múku, cukor, údeniny…'],
@@ -18,6 +23,7 @@ export function Viac() {
     ['#/skener', '📷', 'Skener zloženia', 'Odfoť zloženie výrobku a získaj hodnotenie'],
     ['#/kozmetika', '🧴', 'Skener kozmetiky', 'Hodnotenie zloženia INCI podľa predpisov EÚ'],
     ['#/ruleta', '🎰', 'Ruleta', 'Náhodný recept dňa'],
+    ['#/nechutilo', '👎', 'Nechutilo', `Recepty s 1★ (${pocetNech}) – nenavrhujú sa; odtiaľto sa dajú vrátiť`],
     ['#/prenos', '📲', 'Preniesť do druhého mobilu', 'Odkaz alebo QR kód, bez servera'],
     ['#/nastavenia', '⚙️', 'Nastavenia', 'Domácnosť, obmedzenia, téma, export'],
   ];
@@ -29,6 +35,25 @@ export function Viac() {
       <p class="maly">Vedľajšie, voliteľné: keto, vegetariánska, bezlepková a ďalšie.</p>
       <a class="karta" href="#/diety"><div class="riadok"><div class="emoji" aria-hidden="true"><IkonaKarty e="🥗" velkost={34} /></div><div class="rozt"><h3 style="margin:0">Diéty</h3><div class="maly">Popis každej diéty hneď na karte a tlačidlo „Použiť“</div></div></div></a>
       <Upozornenie />
+    </>
+  );
+}
+
+export function Nechutilo() {
+  const s = useStav();
+  const zoznam = INFOS.filter((i) => nechutilo(s, i.r.id));
+  return (
+    <>
+      <Hlavicka nazov="Nechutilo" />
+      <p>Recepty s jednou hviezdičkou sa nenavrhujú, nie sú v rulete ani v jedálničku. Ak sa ti názor zmení, vráť ich.</p>
+      {!zoznam.length && <p class="maly" data-prazdne>Zatiaľ nič. Recept označíš v jeho detaile jednou hviezdičkou.</p>}
+      {zoznam.map((i) => (
+        <div class="karta" key={i.r.id} style="animation:none" data-nechutilo={i.r.id}>
+          <h3 style="margin:0"><a href={`#/recept/${i.r.id}`}>{i.r.nazov}</a></h3>
+          <div class="maly">{TYP_NAZOV[i.r.typ]} · skóre {i.skore.celkom}</div>
+          <div class="rad"><button class="male" onClick={() => nastavHviezdy(i.r.id, 1)}>Vrátiť (zrušiť 1★)</button></div>
+        </div>
+      ))}
     </>
   );
 }

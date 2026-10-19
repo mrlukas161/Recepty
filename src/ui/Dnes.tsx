@@ -10,6 +10,7 @@ import { suhrn } from '../engine/planner';
 import { INFO } from '../ctx';
 import { tyzdenMuky } from '../engine/muka';
 import { tipDna } from '../data/tipy';
+import { dajHviezdy, nechutilo, bonusHviezd } from '../engine/hviezdy';
 
 export function Dnes() {
   const s = useStav();
@@ -19,12 +20,12 @@ export function Dnes() {
   const [posunTipu, setPosunTipu] = useState(0);
   const tip = tipDna(new Date(), posunTipu);
   const navrhy = useMemo(() => {
-    const kand = INFOS.filter((i) => i.r.typ === typ && !vylucene(i, n) && dietyOk(i, n, SUROVINA) && !s.hodnotenie[i.r.id]?.toString().startsWith('-'));
+    const kand = INFOS.filter((i) => i.r.typ === typ && !vylucene(i, n) && dietyOk(i, n, SUROVINA) && !nechutilo(s, i.r.id));
     return kand
       .map((i) => {
         let b = i.skore.celkom;
         if (s.oblubene.includes(i.r.id)) b += 6;
-        if (s.hodnotenie[i.r.id] === -1) b -= 40;
+        b += bonusHviezd(dajHviezdy(s, i.r.id));
         if (i.kat.muka && n.obmedzenia.muka !== 'bez') b -= 12;
         if (i.cas > casNaDen(n, (new Date().getDay() + 6) % 7)) b -= 8;
         for (const k of Object.keys(i.kat) as (keyof typeof i.kat)[]) if (i.kat[k] && n.obmedzenia[k] === 'obmedzit') b -= 6;
@@ -32,7 +33,7 @@ export function Dnes() {
       })
       .sort((a, c) => c.b - a.b)
       .map((x) => x.i);
-  }, [typ, JSON.stringify(n), s.oblubene.length, vlastnaVerzia()]);
+  }, [typ, JSON.stringify(n), s.oblubene.length, JSON.stringify(s.hviezdicky), JSON.stringify(s.hodnotenie), vlastnaVerzia()]);
   const okno = 6;
   const zacni = (strana * okno) % Math.max(1, navrhy.length);
   const vyber = navrhy.slice(zacni, zacni + okno).concat(zacni + okno > navrhy.length ? navrhy.slice(0, zacni + okno - navrhy.length).slice(0, okno) : []).slice(0, okno);

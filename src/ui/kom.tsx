@@ -7,7 +7,8 @@ import { useMemo } from 'preact/hooks';
 import { nazovPreDomacnost, vynechaneVolitelne } from '../engine/obmedzene';
 import { vypocitajSkore } from '../engine/score';
 import { aplikujUpravy, ZIADNE_UPRAVY } from '../engine/upravy';
-import { useStav, nastav } from '../store';
+import { useStav, nastav, nastavHviezdy } from '../store';
+import { dajHviezdy, HVIEZDY_TEXT } from '../engine/hviezdy';
 import { DIETA } from '../data/diety';
 
 export function Pecat({ skore, pasmo }: { skore: number; pasmo: keyof typeof PASMO_TEXT }) {
@@ -19,9 +20,24 @@ export function Pecat({ skore, pasmo }: { skore: number; pasmo: keyof typeof PAS
   );
 }
 
+/** Hodnotenie receptu 1–5 hviezdičkami (1★ = nechutilo → recept zmizne z návrhov, rulety a jedálnička). */
+export function Hviezdicky({ id }: { id: string }) {
+  const s = useStav();
+  const h = dajHviezdy(s, id);
+  return (
+    <div class="hviezdicky" role="group" aria-label="Hodnotenie receptu hviezdičkami">
+      {[1, 2, 3, 4, 5].map((n) => (
+        <button key={n} type="button" class="hviezda" aria-pressed={h === n} aria-label={`${n} z 5 – ${HVIEZDY_TEXT[n]}`} data-hviezda={n} onClick={() => nastavHviezdy(id, n)}>{n <= h ? '★' : '☆'}</button>
+      ))}
+      <span class="maly hviezdy-text">{h ? `${h}★ ${HVIEZDY_TEXT[h]}` : 'Nehodnotené'}{h === 1 ? ' – nebude sa navrhovať' : ''}</span>
+    </div>
+  );
+}
+
 export function KartaReceptu({ i, dovod }: { i: Info; dovod?: string[] }) {
   const s = useStav();
   const fav = s.oblubene.includes(i.r.id);
+  const hv = dajHviezdy(s, i.r.id);
   // skóre karty zohľadní vynechané voliteľné obmedzované suroviny (rovnako ako Detail)
   const vyn = vynechaneVolitelne(i.r, s.nastavenia, SUROVINA, s.pridaneVolitelne[i.r.id]);
   const sk = useMemo(() => (vyn.length ? vypocitajSkore(i.r, aplikujUpravy(i.r, { ...ZIADNE_UPRAVY, odobrane: vyn }), SUROVINA) : i.skore), [i, vyn.join()]);
@@ -33,6 +49,7 @@ export function KartaReceptu({ i, dovod }: { i: Info; dovod?: string[] }) {
           <h3 style="margin:0">{fav ? '★ ' : ''}{nazovPreDomacnost(i.r, s.nastavenia, SUROVINA, s.pridaneVolitelne[i.r.id])}</h3>
           <div class="maly">{TYP_NAZOV[i.r.typ]} · {i.cas} min · {'●'.repeat(i.r.narocnost)}{'○'.repeat(3 - i.r.narocnost)}</div>
           {i.kat.muka ? <span class="tag war">s múkou</span> : <span class="tag">bez múky</span>}
+          {hv > 0 && <span class="tag" aria-label={`${hv} hviezdičiek`}>{'★'.repeat(hv)}</span>}
           {i.r.klasika && <span class="tag war">klasika</span>}
           {i.r.vlastny && <span class="tag">vlastný</span>}
           {(dovod ?? []).map((d) => <span class="tag">{d}</span>)}

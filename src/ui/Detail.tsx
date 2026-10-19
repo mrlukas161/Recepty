@@ -13,7 +13,7 @@ import { ZdrojeK, ZdrojVyzivy } from './Zdroje';
 import { Varenie } from './Varenie';
 import { OvladanieVlastneho } from './VlastnyRecept';
 import { SlabaPoznamka } from './Surovina';
-import { Pecat, prepniOblubene, Upozornenie, KartaReceptu } from './kom';
+import { Hviezdicky, Pecat, prepniOblubene, Upozornenie, KartaReceptu } from './kom';
 
 const TAG_NAZOV: Record<string, string> = { detske: 'Detské', rychle: 'Rýchle', 'do-krabicky': 'Do krabičky', lacne: 'Lacné', bezmasite: 'Bezmäsité', 'bez-peciva': 'Bez pečiva', bezlepkove: 'Bezlepkové', vegansky: 'Vegánske', 'vyvarene-z-zvyskov': 'Zo zvyškov', 'na-viac-dni': 'Na viac dní', sladke: 'Sladké' };
 
@@ -55,7 +55,6 @@ function DetailVnutro({ id }: { id: string }) {
   const upravene = st.odobrane.length + Object.keys(st.vymenene).length + st.pridane.length > 0;
   const dopl = r.upravy.map((u, idx) => ({ u, idx }));
   const fav = s.oblubene.includes(id);
-  const hod = s.hodnotenie[id];
   const poRoz = (() => {
     if (!upravene) return '';
     const dif = nove.faktory.map((x, k) => ({ n: x.nazov, d: x.body - zaklad.faktory[k].body })).filter((x) => Math.abs(x.d) >= 5).sort((a, b) => Math.abs(b.d) - Math.abs(a.d)).slice(0, 2);
@@ -83,9 +82,8 @@ function DetailVnutro({ id }: { id: string }) {
       </div>
       <div class="rad">
         <button class="male" aria-pressed={fav} onClick={() => prepniOblubene(id)}>{fav ? '★ Obľúbené' : '☆ Obľúbené'}</button>
-        <button class="male" aria-pressed={hod === 1} onClick={() => nastav((x) => { if (x.hodnotenie[id] === 1) delete x.hodnotenie[id]; else x.hodnotenie[id] = 1; })}>👍</button>
-        <button class="male" aria-pressed={hod === -1} onClick={() => nastav((x) => { if (x.hodnotenie[id] === -1) delete x.hodnotenie[id]; else x.hodnotenie[id] = -1; })}>👎</button>
       </div>
+      <Hviezdicky id={id} />
       {r.vlastny && <OvladanieVlastneho id={id} />}
       <div>{r.tagy.map((t) => <span class="tag" key={t}>{TAG_NAZOV[t] ?? t}</span>)}</div>
       <div class="karta">

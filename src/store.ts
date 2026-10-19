@@ -5,7 +5,7 @@ import { ocistiVlastne, noveId, type VlastnyRecept } from './engine/vlastne';
 const KEY = 'recepty-v1';
 const prazdny = (): UlozenyStav => ({
   verzia: VERZIA_STAVU, vlastne: [],
-  nastavenia: structuredClone(PREDVOLENE), oblubene: [], hodnotenie: {}, historia: [], jedalnicek: {}, zamknute: [],
+  nastavenia: structuredClone(PREDVOLENE), oblubene: [], hodnotenie: {}, hviezdicky: {}, historia: [], jedalnicek: {}, zamknute: [],
   nakupOdskrtnute: [], nakupVlastne: [], nakupRecepty: [], dnes: {}, pridaneVolitelne: {},
 });
 
@@ -26,6 +26,7 @@ export function zluc(x: Partial<UlozenyStav>): UlozenyStav {
     ...p, ...x, verzia: VERZIA_STAVU,
     nastavenia: { ...p.nastavenia, ...ns, obmedzenia: { ...p.nastavenia.obmedzenia, ...(ns.obmedzenia ?? {}) }, maxTyzdenne: { ...p.nastavenia.maxTyzdenne, ...(ns.maxTyzdenne ?? {}) } },
     pridaneVolitelne: { ...(x.pridaneVolitelne ?? {}) },
+    hviezdicky: { ...(x.hviezdicky ?? {}) },
     vlastne: ocistiVlastne(x.vlastne),
   };
 }
@@ -52,6 +53,19 @@ export function useStav(): UlozenyStav {
 }
 export const dnesKluc = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; };
 
+/** Nastaví hviezdičky receptu (ťuknutie na rovnaký počet ich zruší). 1★ = nechutilo: recept zmizne z jedálnička a dnešných návrhov. */
+export function nastavHviezdy(id: string, n: number) {
+  nastav((s) => {
+    const teraz = s.hviezdicky[id] ?? (s.hodnotenie[id] === 1 ? 4 : s.hodnotenie[id] === -1 ? 1 : 0);
+    delete s.hodnotenie[id];
+    if (teraz === n || n < 1 || n > 5) delete s.hviezdicky[id]; else s.hviezdicky[id] = n;
+    if (s.hviezdicky[id] === 1) {
+      for (const k of Object.keys(s.jedalnicek)) if (s.jedalnicek[k] === id) s.jedalnicek[k] = null;
+      s.zamknute = s.zamknute.filter((k) => s.jedalnicek[k] !== null);
+      for (const d of Object.keys(s.dnes)) s.dnes[d] = s.dnes[d].filter((x) => x !== id);
+    }
+  });
+}
 export function ulozVlastny(r: VlastnyRecept) {
   nastav((s) => { const k = s.vlastne.findIndex((x) => x.id === r.id); if (k >= 0) s.vlastne[k] = r; else s.vlastne.push(r); });
 }
@@ -60,7 +74,7 @@ export function zmazVlastny(id: string) {
   nastav((s) => {
     s.vlastne = s.vlastne.filter((x) => x.id !== id);
     s.oblubene = s.oblubene.filter((x) => x !== id);
-    delete s.hodnotenie[id];
+    delete s.hodnotenie[id]; delete s.hviezdicky[id];
     s.historia = s.historia.filter((h) => h.recept !== id);
     for (const k of Object.keys(s.jedalnicek)) if (s.jedalnicek[k] === id) s.jedalnicek[k] = null;
     s.zamknute = s.zamknute.filter((k) => s.jedalnicek[k] !== null);

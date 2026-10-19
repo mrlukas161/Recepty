@@ -18,3 +18,4 @@
 | 2026-10-19 18:25 | cloud agent (appka, veľký beh) | beží | Hlavný smer: obmedzovať múku. Sieť: doi.org zatvorené (000), zdroje ostávajú na úrovni `vyhladavanie`. Časť 1 (popis diéty na karte, diéty presunuté do Viac) a 2 (skóre: hodnota + cieľ + slovo, faktor múky, vhodnosť diét) hotové, testy a e2e zelené. |
 | 2026-10-19 18:27 | cloud agent (appka, veľký beh) | beží | Časť 3 (múka ako hlavný smer): týždenný prehľad múky na Dnes (`src/engine/muka.ts`), sekcia „Bez múky“, odkaz na náhrady; testy a e2e zelené. |
 | 2026-10-19 18:34 | cloud agent (appka, veľký beh) | beží | Časť 4 (učenie): karty surovín a zoznam, slabé suroviny v recepte s náhradou, denný tip, nové suroviny (tapioka, škroby, psyllium), zdroj k psylliu; testy a e2e zelené. |
+| 2026-10-19 18:37 | cloud agent (appka, veľký beh) | beží | Časti 5 a 6 (hviezdičky 1–5, Nechutilo, Zamiešať s váhami) hotové; testy a e2e zelené. Ďalej: čipy (7), foto slot (8), dizajn (9). |
