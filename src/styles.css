@@ -1,28 +1,24 @@
-@import '@fontsource/fraunces/latin-400.css';
-@import '@fontsource/fraunces/latin-ext-400.css';
-@import '@fontsource/fraunces/latin-700.css';
-@import '@fontsource/fraunces/latin-ext-700.css';
 @import '@fontsource/nunito/latin-400.css';
 @import '@fontsource/nunito/latin-ext-400.css';
 @import '@fontsource/nunito/latin-700.css';
 @import '@fontsource/nunito/latin-ext-700.css';
 
 :root {
-  --papier: #fbf4e6; --karta: #fffaf0; --text: #2b2118; --tlmene: #6b5b4a; --ciara: #e4d5b8;
-  --paradajka: #c8472b; --odkaz: #a93a20; --hl-pozadie: #c8472b; --hl-text: #fff; --oliva: #4f5d27; --horcica: #d99a1e; --bobula: #5a3d6e;
-  --dobre: #4f7a2b; --obcas: #b27a0f; --zle: #b23a24; --vyborne: #2f6b3a;
-  --il-ln: #2b2118; --il-pap: #e4664d; --il-hor: #f0b53f; --il-oli: #8fa64a; --il-kre: #fff1d0; --il-hne: #c18a55; --il-bob: #9b7bb8; --il-mod: #6aa7c4; --il-ruz: #f0a3a0;
-  --radius: 18px 18px 18px 6px;
+  /* Nový dizajn 19.10.2026: svetlý a vzdušný základ; skener a kozmetika preberajú farby z týchto premenných */
+  --papier: #f5f7f4; --karta: #ffffff; --text: #17201b; --tlmene: #526058; --ciara: #e1e7e2; --ramik: #7d8a82;
+  --paradajka: #c8472b; --odkaz: #a63a22; --hl-pozadie: #c8472b; --hl-text: #ffffff; --oliva: #2d6a3e; --horcica: #d99a1e; --bobula: #5a3d6e; --fokus: #1d4ed8;
+  --dobre: #44721a; --obcas: #8a5c00; --zle: #b42318; --vyborne: #1e7a3c;
+  --il-ln: #17201b; --il-pap: #e4664d; --il-hor: #f0b53f; --il-oli: #8fa64a; --il-kre: #fff1d0; --il-hne: #c18a55; --il-bob: #9b7bb8; --il-mod: #6aa7c4; --il-ruz: #f0a3a0;
+  --radius: 18px; --tien: 0 1px 2px rgba(16, 32, 24, .05), 0 10px 24px -14px rgba(16, 32, 24, .22);
   --safe-b: env(safe-area-inset-bottom, 0px); --safe-t: env(safe-area-inset-top, 0px);
 }
-@media (prefers-color-scheme: dark) { :root:not([data-tema="svetla"]) { --papier: #1f1914; --karta: #2a221b; --text: #f3e9d6; --tlmene: #bfae96; --ciara: #43382d; --paradajka: #ee7a5c; --odkaz: #f2957c; --hl-pozadie: #9c3219; --hl-text: #fff; --oliva: #aebf6a; --horcica: #f0b94a; --dobre: #9fcd6a; --obcas: #e7b64c; --zle: #f08a74; --vyborne: #8fd39a; --il-ln: #f3e9d6; --il-pap: #d9553c; --il-hor: #dca02c; --il-oli: #7c933a; --il-kre: #cdb98f; --il-hne: #a2703f; --il-bob: #85649f; --il-mod: #4f8aa8; --il-ruz: #cf837f; } }
-:root[data-tema="tmava"] { --papier: #1f1914; --karta: #2a221b; --text: #f3e9d6; --tlmene: #bfae96; --ciara: #43382d; --paradajka: #ee7a5c; --odkaz: #f2957c; --hl-pozadie: #9c3219; --hl-text: #fff; --oliva: #aebf6a; --horcica: #f0b94a; --dobre: #9fcd6a; --obcas: #e7b64c; --zle: #f08a74; --vyborne: #8fd39a; --il-ln: #f3e9d6; --il-pap: #d9553c; --il-hor: #dca02c; --il-oli: #7c933a; --il-kre: #cdb98f; --il-hne: #a2703f; --il-bob: #85649f; --il-mod: #4f8aa8; --il-ruz: #cf837f; }
+@media (prefers-color-scheme: dark) { :root:not([data-tema="svetla"]) { --papier: #0f1411; --karta: #19201c; --text: #eaf0ec; --tlmene: #a3b0a8; --ciara: #2b352f; --ramik: #6c7a72; --paradajka: #ff8f70; --odkaz: #ffa58b; --hl-pozadie: #b83a1f; --hl-text: #ffffff; --oliva: #8fd19e; --horcica: #f0b94a; --fokus: #8ab4ff; --dobre: #a6d97a; --obcas: #f0c15a; --zle: #ff9c8a; --vyborne: #86d99a; --il-ln: #eaf0ec; --il-pap: #d9553c; --il-hor: #dca02c; --il-oli: #7c933a; --il-kre: #cdb98f; --il-hne: #a2703f; --il-bob: #85649f; --il-mod: #4f8aa8; --il-ruz: #cf837f; --tien: none; } }
+:root[data-tema="tmava"] { --papier: #0f1411; --karta: #19201c; --text: #eaf0ec; --tlmene: #a3b0a8; --ciara: #2b352f; --ramik: #6c7a72; --paradajka: #ff8f70; --odkaz: #ffa58b; --hl-pozadie: #b83a1f; --hl-text: #ffffff; --oliva: #8fd19e; --horcica: #f0b94a; --fokus: #8ab4ff; --dobre: #a6d97a; --obcas: #f0c15a; --zle: #ff9c8a; --vyborne: #86d99a; --il-ln: #eaf0ec; --il-pap: #d9553c; --il-hor: #dca02c; --il-oli: #7c933a; --il-kre: #cdb98f; --il-hne: #a2703f; --il-bob: #85649f; --il-mod: #4f8aa8; --il-ruz: #cf837f; --tien: none; }
 
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 html, body { margin: 0; height: 100%; }
 body { background: var(--papier); color: var(--text); font: 17px/1.45 'Nunito', system-ui, sans-serif; background-image: radial-gradient(var(--ciara) 1px, transparent 1px); background-size: 22px 22px; background-attachment: fixed; }
-h1, h2, h3 { font-family: 'Fraunces', Georgia, serif; line-height: 1.15; margin: 0 0 .4em; font-weight: 700; }
-h1 { font-size: 1.9rem; } h2 { font-size: 1.35rem; } h3 { font-size: 1.1rem; }
+
 p { margin: 0 0 .7em; }
 a { color: var(--odkaz); }
 .odkaz, p a, .maly a { display: inline-block; padding: 10px 0; }
@@ -43,8 +39,6 @@ a.karta:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--tex
 .riadok { display: flex; gap: 12px; align-items: center; }
 .rozt { flex: 1; min-width: 0; }
 .emoji { font-size: 2.2rem; width: 54px; height: 54px; display: grid; place-items: center; background: var(--papier); border-radius: 50%; border: 1.5px dashed var(--tlmene); flex: none; }
-.pecat { width: 56px; height: 56px; border-radius: 50%; border: 3px solid currentColor; display: grid; place-items: center; flex: none; font: 700 1.25rem 'Fraunces', serif; transform: rotate(-6deg); position: relative; }
-.pecat small { position: absolute; bottom: -9px; background: var(--karta); font: 700 .6rem 'Nunito', sans-serif; padding: 0 4px; letter-spacing: .02em; }
 .s-vyborne { color: var(--vyborne); } .s-dobre { color: var(--dobre); } .s-obcas { color: var(--obcas); } .s-zriedka { color: var(--zle); }
 .tag { display: inline-block; font-size: .78rem; border: 1px solid var(--tlmene); border-radius: 99px; padding: 1px 8px; margin: 0 4px 4px 0; color: var(--tlmene); }
 .tag.war { border-color: var(--zle); color: var(--zle); }
@@ -130,3 +124,47 @@ details > summary.maly { min-height: 44px; display: flex; align-items: center; }
 .foto img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: inherit; }
 .foto-velka { display: block; width: 100%; border-radius: 14px; aspect-ratio: 4 / 3; }
 .foto-ai { position: absolute; right: 3px; bottom: 3px; font: 700 .6rem 'Nunito', sans-serif; line-height: 1; padding: 2px 4px; border-radius: 6px; background: rgba(0, 0, 0, .55); color: #fff; letter-spacing: .04em; }
+
+/* ===== Nový dizajn (19.10.2026): svetlý, vzdušný, percentuálne skóre ako hlavný prvok ===== */
+body { background: var(--papier); background-image: none; font-size: 16.5px; }
+h1, h2, h3 { font-family: 'Nunito', system-ui, sans-serif; font-weight: 800; letter-spacing: -.01em; }
+h1 { font-size: 1.7rem; } h2 { font-size: 1.25rem; margin-top: 1.2em; } h3 { font-size: 1.05rem; }
+#app { box-shadow: none; }
+main { padding-left: 18px; padding-right: 18px; }
+:focus-visible, button.upr:focus-visible { outline: 3px solid var(--fokus); outline-offset: 2px; }
+
+nav.spodna { border-top: 1px solid var(--ciara); background: var(--karta); box-shadow: 0 -8px 24px -18px rgba(16, 32, 24, .3); }
+nav.spodna a { margin: 6px 4px; min-height: 52px; border-radius: 14px; }
+nav.spodna a[aria-current="page"] { color: var(--odkaz); box-shadow: none; background: color-mix(in srgb, var(--paradajka) 12%, transparent); }
+
+.karta { border: 1px solid var(--ciara); border-radius: var(--radius); box-shadow: var(--tien); padding: 14px 16px; margin-bottom: 14px; }
+a.karta:active { transform: scale(.99); box-shadow: var(--tien); }
+.emoji { border: 0; background: color-mix(in srgb, var(--ciara) 70%, transparent); }
+
+.tlacidlo, button { border: 1px solid var(--ramik); border-radius: 12px; }
+.tlacidlo.hl, button.hl { border-color: transparent; box-shadow: 0 6px 14px -8px var(--paradajka); }
+input, select, textarea { border: 1px solid var(--ramik); border-radius: 12px; }
+.zalozky button[aria-pressed="true"] { border-color: transparent; }
+.chip { border: 1px solid var(--ramik); border-radius: 999px; }
+.chip[aria-pressed="true"] { border-color: transparent; }
+.tag { border-color: var(--ramik); }
+.upoz { border-left-width: 4px; border-radius: 12px; background: color-mix(in srgb, var(--horcica) 10%, var(--karta)); }
+.faktor .lista { height: 8px; border-radius: 4px; }
+ul.suroviny li, .slot, .nakup-pol, .sk-zl { border-bottom-style: solid; border-bottom-color: var(--ciara); }
+button.upr { border: 1px solid var(--ramik); }
+button.upr[aria-pressed="true"] { box-shadow: none; border-color: transparent; }
+ul.casovace li { border: 1px solid var(--ramik); }
+.koleso { border: 6px solid var(--karta); box-shadow: 0 0 0 1px var(--ramik), 0 18px 40px -20px rgba(16, 32, 24, .4); }
+.koleso .stred { border: 0; }
+
+/* Percentuálne skóre: kruh vyplnený podľa hodnoty; číslo je jediný text v riadku, „%“ pridáva CSS */
+.pecat { width: auto; height: auto; border: 0; border-radius: 0; transform: none; position: static; display: flex; flex-direction: column; align-items: center; gap: 4px; flex: none; font: inherit; }
+.pecat .pec-kruh { position: relative; width: 66px; height: 66px; border-radius: 50%; display: grid; place-items: center; background: conic-gradient(currentColor calc(var(--p, 0) * 1%), var(--ciara) 0); }
+.pecat .pec-kruh::before { content: ''; position: absolute; inset: 7px; border-radius: 50%; background: var(--karta); }
+.pecat .pec-kruh b { position: relative; font: 800 1.35rem/1 'Nunito', system-ui, sans-serif; font-variant-numeric: tabular-nums; }
+.pecat .pec-kruh b::after { content: '%'; font-size: .6em; font-weight: 700; margin-left: 1px; }
+.pecat small { position: static; background: none; padding: 0; font: 800 .72rem/1 'Nunito', system-ui, sans-serif; letter-spacing: .02em; color: currentColor; }
+.pecat.velky .pec-kruh { width: 92px; height: 92px; }
+.pecat.velky .pec-kruh::before { inset: 9px; }
+.pecat.velky .pec-kruh b { font-size: 2rem; }
+.pecat.velky small { font-size: .82rem; }

@@ -96,7 +96,7 @@ function DetailVnutro({ id }: { id: string }) {
       <div>{r.tagy.map((t) => <span class="tag" key={t}>{TAG_NAZOV[t] ?? t}</span>)}</div>
       <div class="karta">
         <div class="riadok">
-          <Pecat skore={nove.celkom} pasmo={nove.pasmo} />
+          <Pecat skore={nove.celkom} pasmo={nove.pasmo} velky />
           <div class="rozt">
             <strong>{nove.pasmoText}</strong> <span class="maly">(naša heuristika)</span>
             {upravene && <div class={rozdiel >= 0 ? 'plus' : 'minus'}>{rozdiel >= 0 ? '+' : ''}{rozdiel} oproti pôvodnému{poRoz ? ` – ${poRoz}` : ''}</div>}

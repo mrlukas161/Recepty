@@ -22,7 +22,7 @@ export default defineConfig({
       manifest: {
         name: 'Recepty', short_name: 'Recepty', lang: 'sk', description: 'Čo variť, keď chceme menej múky, cukru a údenín.',
         start_url: '/Recepty/', scope: '/Recepty/', display: 'standalone', display_override: ['fullscreen', 'standalone'],
-        background_color: '#fbf4e6', theme_color: '#c8472b',
+        background_color: '#f5f7f4', theme_color: '#c8472b',
         icons: [
           { src: 'icons/icon-192.png', sizes: '192x192', type: 'image/png' },
           { src: 'icons/icon-512.png', sizes: '512x512', type: 'image/png' },

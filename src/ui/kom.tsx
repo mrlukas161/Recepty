@@ -11,10 +11,11 @@ import { useStav, nastav, nastavHviezdy } from '../store';
 import { dajHviezdy, HVIEZDY_TEXT } from '../engine/hviezdy';
 import { DIETA } from '../data/diety';
 
-export function Pecat({ skore, pasmo }: { skore: number; pasmo: keyof typeof PASMO_TEXT }) {
+/** Celkové skóre ako percentuálny kruh (hlavný vizuálny prvok); značka „%“ je v CSS, aby text ostal len číslo. */
+export function Pecat({ skore, pasmo, velky = false }: { skore: number; pasmo: keyof typeof PASMO_TEXT; velky?: boolean }) {
   return (
-    <div class={`pecat s-${pasmo}`} role="img" aria-label={`Skóre ${skore} zo 100, ${PASMO_TEXT[pasmo]}`}>
-      {skore}
+    <div class={`pecat s-${pasmo}${velky ? ' velky' : ''}`} role="img" aria-label={`Skóre ${skore} zo 100, ${PASMO_TEXT[pasmo]}`}>
+      <span class="pec-kruh" style={`--p:${Math.max(0, Math.min(100, skore))}`}><b>{skore}</b></span>
       <small>{PASMO_TEXT[pasmo]}</small>
     </div>
   );

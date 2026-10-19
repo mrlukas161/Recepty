@@ -21,3 +21,4 @@
 | 2026-10-19 18:37 | cloud agent (appka, veľký beh) | beží | Časti 5 a 6 (hviezdičky 1–5, Nechutilo, Zamiešať s váhami) hotové; testy a e2e zelené. Ďalej: čipy (7), foto slot (8), dizajn (9). |
 | 2026-10-19 18:40 | cloud agent (appka, veľký beh) | beží | Časť 7 (čipy, olovrant) hotová. Ďalej: foto slot (8), dizajn (9). |
 | 2026-10-19 18:44 | cloud agent (appka, veľký beh) | beží | Časť 8 (foto slot, formát v ROZHODNUTIA, docs/RECEPTY_ZOZNAM.md) hotová. Ďalej: nový dizajn (9), ranný prehľad, overenie nasadenia. |
+| 2026-10-19 18:47 | cloud agent (appka, veľký beh) | beží | Časť 9 (nový dizajn: svetlý základ, tmavý podľa systému, percentuálny kruh, kontrast AA v teste) hotová; RANNY_PREHLAD má „Novinky 19.10. – appka“. Ostáva overiť nasadenie. |
