@@ -103,3 +103,7 @@ Bez zmeny kódu: žiadna chyba nenájdená. Migrácia sa overila odseknutým sta
 - Nový kľúč stavu `hviezdicky` (id receptu → 1–5). Staré 👍/👎 (`hodnotenie` 1/−1) sa čítajú ako 4★/1★, kým recept nedostane hviezdičky (kľúč `hodnotenie` ostal kvôli prenosu a starým záloham). 1★ = nechutilo: recept sa nenavrhuje na Dnes, nie je v rulete ani v jedálničku (pri 1★ sa zo slotov odstráni; zamknutie sa zruší); v zozname Recepty ostáva, aby sa dal nájsť. Zoznam „Nechutilo“ je vo Viac, tlačidlo „Vrátiť“ hodnotenie zruší.
 - Poradie na Dnes: 5★ +10, 4★ +5, 2★ −6 bodov. Prenos do druhého mobilu: pridaná politika pre `hviezdicky` v `src/engine/prenos.ts` (len celé čísla 1–5), nič iné sa v súbore nemenilo.
 - Zamiešať (Jedálniček): náhodný výber so váhou skóre × váha hviezd (1★ 0, 2★ 0,5, nehodnotené/3★ 1, 4★ 2,5, 5★ 4). Test: 1★ sa nevyberie ani raz v 150 pokusoch, 5★ sa vyberá viac než 2× častejšie ako 2★.
+
+## R-n4 – Čipy namiesto výberových zoznamov a olovrant (19.10.2026)
+- Krátke výbery (typ jedla, čas, náročnosť, diéta a zoradenie vo filtri Receptov; obmedzenia a téma v Nastaveniach; typ a jednotka vo vlastnom recepte; náhrady surovín v recepte) sú čipy (`Cipy` v `src/ui/kom.tsx`, `role="group"`, `aria-pressed`). Výber náhradného receptu v jedálničku je zoznam tlačidiel. Skener a kozmetika (iný beh) sa nemenili.
+- Nový typ jedla `olovrant` (v jedálničku ho vyberá z olovrantov, desiát a dezertov), v nastaveniach „Jedlá v jedálničku“ pribudol čip Olovrant.

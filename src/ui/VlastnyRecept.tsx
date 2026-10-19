@@ -8,7 +8,7 @@ import {
   exportVlastne, parseVlastne, zlucVlastne, type VlastnyRecept,
 } from '../engine/vlastne';
 import { TYP_NAZOV } from '../ctx';
-import { Hlavicka, Pecat, Upozornenie } from './kom';
+import { Hlavicka, Pecat, Upozornenie, Cipy } from './kom';
 
 const JEDNOTKA_NAZOV: Record<SurovinaVRecepte['jednotka'], string> = { g: 'g', ml: 'ml', ks: 'ks', lyzica: 'PL (lyžica)', lyzicka: 'ČL (lyžička)' };
 const norm = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
@@ -92,7 +92,7 @@ export function VlastnyReceptForm({ id }: { id?: string }) {
         <label for="vr-nazov"><strong>Názov</strong></label>
         <input id="vr-nazov" type="text" aria-label="Názov receptu" maxLength={120} value={d.nazov} onInput={(e) => zm({ nazov: (e.target as HTMLInputElement).value })} />
         <div class="rad">
-          <label>Typ jedla<br /><select aria-label="Typ jedla" value={d.typ} onChange={(e) => zm({ typ: (e.target as HTMLSelectElement).value as Typ })}>{TYPY.map((t) => <option value={t}>{TYP_NAZOV[t]}</option>)}</select></label>
+<div><strong>Typ jedla</strong><Cipy popis="Typ jedla" vybrane={d.typ} zmen={(t) => zm({ typ: t })} hodnoty={TYPY.map((t) => ({ id: t, nazov: TYP_NAZOV[t] }))} /></div>
           <label>Porcie (dospelí)<br /><input type="number" inputMode="decimal" aria-label="Porcie" min="0.5" step="0.5" style="width:110px" value={d.porcie} onInput={(e) => zm({ porcie: (e.target as HTMLInputElement).value })} /></label>
         </div>
         <div class="rad">
@@ -110,9 +110,7 @@ export function VlastnyReceptForm({ id }: { id?: string }) {
             <div class="slot" key={r.id + k} style="flex-wrap:wrap;padding:6px 0">
               <div class="rozt" style="min-width:100%"><strong>{sv?.nazov ?? r.id}</strong>{!(cisloZ(r.mn) > 0) && <span class="tag war" style="margin-left:6px">bez množstva</span>}</div>
               <input type="number" inputMode="decimal" aria-label={`Množstvo ${sv?.nazov}`} placeholder="množstvo" min="0" step="any" style="width:110px" value={r.mn} onInput={(e) => zm({ sur: d.sur.map((x, i) => i === k ? { ...x, mn: (e.target as HTMLInputElement).value } : x) })} />
-              <select aria-label={`Jednotka ${sv?.nazov}`} value={r.j} onChange={(e) => zm({ sur: d.sur.map((x, i) => i === k ? { ...x, j: (e.target as HTMLSelectElement).value as SurovinaVRecepte['jednotka'] } : x) })}>
-                {(Object.keys(JEDNOTKA_NAZOV) as SurovinaVRecepte['jednotka'][]).map((j) => <option value={j}>{JEDNOTKA_NAZOV[j]}</option>)}
-              </select>
+              <Cipy popis={`Jednotka ${sv?.nazov}`} vybrane={r.j} zmen={(j) => zm({ sur: d.sur.map((x, i) => i === k ? { ...x, j } : x) })} hodnoty={(Object.keys(JEDNOTKA_NAZOV) as SurovinaVRecepte['jednotka'][]).map((j) => ({ id: j, nazov: JEDNOTKA_NAZOV[j] }))} />
               <button type="button" class="male" aria-label={`Odstrániť ${sv?.nazov}`} onClick={() => zm({ sur: d.sur.filter((_, i) => i !== k) })}>✕</button>
             </div>
           );

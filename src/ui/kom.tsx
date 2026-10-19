@@ -70,6 +70,15 @@ export function Zalozky<T extends string>({ hodnoty, vybrane, zmen }: { hodnoty:
   );
 }
 
+/** Výber jednej možnosti ako čipy (namiesto rozbaľovacieho zoznamu). */
+export function Cipy<T extends string | number>({ hodnoty, vybrane, zmen, popis, trieda = '' }: { hodnoty: { id: T; nazov: ComponentChildren }[]; vybrane: T; zmen: (v: T) => void; popis: string; trieda?: string }) {
+  return (
+    <div class={`cipy cipy-vyber ${trieda}`} role="group" aria-label={popis}>
+      {hodnoty.map((h) => <button type="button" key={String(h.id)} class="chip" aria-pressed={vybrane === h.id} onClick={() => zmen(h.id)}>{h.nazov}</button>)}
+    </div>
+  );
+}
+
 export function Hlavicka({ nazov, vpravo }: { nazov: ComponentChildren; vpravo?: ComponentChildren }) {
   return <div class="horna"><h1>{nazov}</h1>{vpravo}</div>;
 }

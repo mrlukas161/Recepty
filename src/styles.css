@@ -118,3 +118,9 @@ details > summary.maly { min-height: 44px; display: flex; align-items: center; }
 .hviezdicky .hviezda { min-width: 44px; min-height: 44px; padding: 0; border: 0; background: transparent; font-size: 1.7rem; line-height: 1; color: var(--obcas); }
 .hviezdicky .hviezda[aria-pressed="true"] { text-shadow: 0 0 0 currentColor; }
 .hviezdy-text { margin-left: 6px; }
+
+/* Čipy namiesto výberových zoznamov */
+.cipy-vyber { margin: 6px 0 10px; }
+.cipy-vyber .chip { justify-content: center; text-align: center; }
+.vyber-zoznam { display: grid; gap: 6px; max-height: 50vh; overflow-y: auto; margin: 8px 0; }
+.vyber-zoznam .chip { justify-content: flex-start; text-align: left; }

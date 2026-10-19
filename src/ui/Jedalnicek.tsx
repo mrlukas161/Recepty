@@ -59,10 +59,10 @@ export function Jedalnicek() {
             );
           })}
           {n.jedla.some((t) => menit === kluc(di, t)) && menit && (
-            <select aria-label="Vybrať recept" onChange={(e) => { const v = (e.target as HTMLSelectElement).value; if (v) nastav((x) => { x.jedalnicek[menit] = v; }); setMenit(null); }}>
-              <option value="">Vyber náhradu…</option>
-              {alt(menit).map((i) => <option value={i.r.id}>{nazovPreDomacnost(i.r, n, SUROVINA, s.pridaneVolitelne[i.r.id])} ({i.skore.celkom})</option>)}
-            </select>
+            <div class="vyber-zoznam" role="group" aria-label="Vybrať recept">
+              <p class="maly" style="margin:0">Vyber náhradu:</p>
+              {alt(menit).map((i) => <button type="button" class="chip" key={i.r.id} onClick={() => { nastav((x) => { x.jedalnicek[menit] = i.r.id; }); setMenit(null); }}>{nazovPreDomacnost(i.r, n, SUROVINA, s.pridaneVolitelne[i.r.id])} ({i.skore.celkom})</button>)}
+            </div>
           )}
         </div>
       ))}

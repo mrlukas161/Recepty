@@ -67,7 +67,7 @@ export function generujJedalnicek(v: PlanVstup): Record<string, string | null> {
     for (const typ of n.jedla) {
       const k = kluc(d, typ);
       if (out[k]) { continue; }
-      const poolTyp: Typ[] = typ === 'obed' ? ['obed', 'polievka'] : typ === 'desiata' ? ['desiata', 'dezert'] : [typ];
+      const poolTyp: Typ[] = typ === 'obed' ? ['obed', 'polievka'] : typ === 'desiata' ? ['desiata', 'dezert'] : typ === 'olovrant' ? ['olovrant', 'desiata', 'dezert'] : [typ];
       const pool = povolene.filter((i) => (poolTyp.includes(i.r.typ) || (dvaDni && typ === 'vecera' && i.r.typ === 'obed' && naViacDni(i))) && (typ !== 'obed' || i.r.typ === 'obed'));
       const limitCasu = typyHlavne.has(typ) ? casNaDen(n, d) : Infinity;
       const dost = (i: Info) => i.cas <= limitCasu;

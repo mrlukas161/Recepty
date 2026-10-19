@@ -42,7 +42,7 @@ export interface Surovina {
   poznamkaDeti?: string;
 }
 
-export type Typ = 'ranajky' | 'obed' | 'vecera' | 'polievka' | 'desiata' | 'dezert';
+export type Typ = 'ranajky' | 'obed' | 'vecera' | 'polievka' | 'desiata' | 'olovrant' | 'dezert';
 
 export interface SurovinaVRecepte {
   id: string;                    // id suroviny

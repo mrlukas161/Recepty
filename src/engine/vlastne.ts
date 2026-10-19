@@ -13,9 +13,9 @@ import { naGramy } from './units';
 
 export const FORMAT_VLASTNE = 'recepty-vlastne';
 export const VERZIA_FORMATU = 1;
-export const TYPY: Typ[] = ['ranajky', 'obed', 'vecera', 'polievka', 'desiata', 'dezert'];
+export const TYPY: Typ[] = ['ranajky', 'desiata', 'obed', 'olovrant', 'vecera', 'polievka', 'dezert'];
 export const JEDNOTKY = ['g', 'ml', 'ks', 'lyzica', 'lyzicka'] as const;
-export const IKONA_TYPU: Record<Typ, string> = { ranajky: '🍳', obed: '🍲', vecera: '🥗', polievka: '🥣', desiata: '🍎', dezert: '🍰' };
+export const IKONA_TYPU: Record<Typ, string> = { ranajky: '🍳', obed: '🍲', vecera: '🥗', polievka: '🥣', desiata: '🍎', olovrant: '🥨', dezert: '🍰' };
 export const TAGY_VLASTNE: { id: string; nazov: string }[] = [
   { id: 'detske', nazov: 'Detské' }, { id: 'rychle', nazov: 'Rýchle' }, { id: 'do-krabicky', nazov: 'Do krabičky' },
   { id: 'lacne', nazov: 'Lacné' }, { id: 'bezmasite', nazov: 'Bezmäsité' }, { id: 'bez-peciva', nazov: 'Bez pečiva' },

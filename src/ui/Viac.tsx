@@ -5,7 +5,7 @@ import { VEDOMOSTI, OVERENIE_POZNAMKA } from '../data/vedomosti';
 import { SUROVINA } from '../data';
 import { useStav, nastavNastavenia, nastav, exportuj, importuj, resetuj } from '../store';
 import { KATEGORIE, type Kategoria, type Uroven } from '../engine/types';
-import { Hlavicka, Upozornenie, Zalozky } from './kom';
+import { Hlavicka, Upozornenie, Zalozky, Cipy } from './kom';
 import type { Alergen } from '../data/types';
 import { ZdrojeK, VsetkyZdroje, ZdrojeTabuliek } from './Zdroje';
 import { IkonaKarty } from './ilustracia';
@@ -184,9 +184,7 @@ export function Nastavenia({ uvod }: { uvod?: boolean }) {
           <div key={k.id} style="margin-bottom:12px">
             <strong>{k.nazov}</strong> <span class="maly">{k.popis}</span>
             <div class="rad">
-              <select aria-label={k.nazov} value={n.obmedzenia[k.id]} onChange={(e) => nastavNastavenia({ obmedzenia: { ...n.obmedzenia, [k.id]: (e.target as HTMLSelectElement).value as Uroven } })}>
-                <option value="bez">Bez obmedzenia</option><option value="obmedzit">Obmedziť</option><option value="vylucit">Vylúčiť</option>
-              </select>
+              <Cipy popis={k.nazov} vybrane={n.obmedzenia[k.id]} zmen={(v) => nastavNastavenia({ obmedzenia: { ...n.obmedzenia, [k.id]: v } })} hodnoty={[{ id: 'bez', nazov: 'Bez obmedzenia' }, { id: 'obmedzit', nazov: 'Obmedziť' }, { id: 'vylucit', nazov: 'Vylúčiť' }] as { id: Uroven; nazov: string }[]} />
               {n.obmedzenia[k.id] === 'obmedzit' && <label class="pol">max <input type="number" min="0" max="21" style="width:70px" value={n.maxTyzdenne[k.id]} onChange={(e) => nastavNastavenia({ maxTyzdenne: { ...n.maxTyzdenne, [k.id as Kategoria]: Math.max(0, +(e.target as HTMLInputElement).value || 0) } })} /> × týždenne</label>}
             </div>
           </div>
@@ -201,7 +199,7 @@ export function Nastavenia({ uvod }: { uvod?: boolean }) {
       <h2>Diéty (vedľajšie)</h2>
       <p class="maly">{n.diety.length ? <>Používaš: <strong>{n.diety.map((x) => DIETA.get(x)?.nazov ?? x).join(', ')}</strong>. </> : 'Žiadna diéta nie je zapnutá. '}<a href="#/diety">Diéty s popisom vo Viac</a></p>
       <h2>Jedlá v jedálničku</h2>
-      <div class="cipy">{([['ranajky', 'Raňajky'], ['desiata', 'Desiata'], ['obed', 'Obed'], ['vecera', 'Večera']] as const).map(([id, nz]) => <button class="chip" aria-pressed={n.jedla.includes(id)} onClick={() => { const poradie = ['ranajky', 'desiata', 'obed', 'vecera']; const novy = n.jedla.includes(id) ? n.jedla.filter((x) => x !== id) : [...n.jedla, id]; nastavNastavenia({ jedla: novy.sort((a, b) => poradie.indexOf(a) - poradie.indexOf(b)) }); }}>{nz}</button>)}</div>
+      <div class="cipy">{([['ranajky', 'Raňajky'], ['desiata', 'Desiata'], ['obed', 'Obed'], ['olovrant', 'Olovrant'], ['vecera', 'Večera']] as const).map(([id, nz]) => <button class="chip" aria-pressed={n.jedla.includes(id)} onClick={() => { const poradie = ['ranajky', 'desiata', 'obed', 'olovrant', 'vecera']; const novy = n.jedla.includes(id) ? n.jedla.filter((x) => x !== id) : [...n.jedla, id]; nastavNastavenia({ jedla: novy.sort((a, b) => poradie.indexOf(a) - poradie.indexOf(b)) }); }}>{nz}</button>)}</div>
       <h2>Čas a vybavenie</h2>
       <div class="karta">
         <label class="pol">Čas na varenie cez týždeň (po–pi): <input type="number" min="10" max="180" step="5" style="width:90px" value={n.casTyzden} onChange={(e) => nastavNastavenia({ casTyzden: Math.max(10, +(e.target as HTMLInputElement).value || 45) })} /> min</label>
@@ -218,7 +216,7 @@ export function Nastavenia({ uvod }: { uvod?: boolean }) {
           <div class="cipy" style="margin-top:6px">{n.mamDoma.map((id) => <button class="chip" aria-pressed="true" onClick={() => nastavNastavenia({ mamDoma: n.mamDoma.filter((x) => x !== id) })}>✕ {SUROVINA.get(id)?.nazov ?? id}</button>)}</div>
           <h2>Vzhľad</h2>
           <div class="rad">
-            <select aria-label="Téma" value={n.tema} onChange={(e) => nastavNastavenia({ tema: (e.target as HTMLSelectElement).value as 'auto' })}><option value="auto">Automaticky</option><option value="svetla">Svetlá</option><option value="tmava">Tmavá</option></select>
+<Cipy popis="Téma" vybrane={n.tema} zmen={(v) => nastavNastavenia({ tema: v })} hodnoty={[{ id: 'auto', nazov: 'Automaticky' }, { id: 'svetla', nazov: 'Svetlá' }, { id: 'tmava', nazov: 'Tmavá' }] as { id: 'auto' | 'svetla' | 'tmava'; nazov: string }[]} />
             <button onClick={celaObrazovka}>Na celú obrazovku</button>
           </div>
           <label class="pol"><input type="checkbox" checked={n.vibracia} onChange={(e) => nastavNastavenia({ vibracia: (e.target as HTMLInputElement).checked })} /> Vibrácia pri rulete</label>

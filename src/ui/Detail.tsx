@@ -13,7 +13,7 @@ import { ZdrojeK, ZdrojVyzivy } from './Zdroje';
 import { Varenie } from './Varenie';
 import { OvladanieVlastneho } from './VlastnyRecept';
 import { SlabaPoznamka } from './Surovina';
-import { Hviezdicky, Pecat, prepniOblubene, Upozornenie, KartaReceptu } from './kom';
+import { Cipy, Hviezdicky, Pecat, prepniOblubene, Upozornenie, KartaReceptu } from './kom';
 
 const TAG_NAZOV: Record<string, string> = { detske: 'Detské', rychle: 'Rýchle', 'do-krabicky': 'Do krabičky', lacne: 'Lacné', bezmasite: 'Bezmäsité', 'bez-peciva': 'Bez pečiva', bezlepkove: 'Bezlepkové', vegansky: 'Vegánske', 'vyvarene-z-zvyskov': 'Zo zvyškov', 'na-viac-dni': 'Na viac dní', sladke: 'Sladké' };
 
@@ -178,12 +178,8 @@ function DetailVnutro({ id }: { id: string }) {
           <h3>Čím nahradiť</h3>
           {r.suroviny.filter((x) => x.alternativy?.length).map((x) => (
             <div key={x.id} class="maly" style="color:var(--text);margin-bottom:6px">
-              <strong>{SUROVINA.get(x.id)?.nazov}</strong>: {x.alternativy!.map((a) => SUROVINA.get(a)?.nazov ?? a).join(', ')}
-              {' '}
-              <select aria-label={`Vymeniť ${SUROVINA.get(x.id)?.nazov}`} value={st.vymenene[x.id] ?? ''} onChange={(e) => { const v = (e.target as HTMLSelectElement).value; const m = { ...st.vymenene }; if (v) m[x.id] = v; else delete m[x.id]; setSt({ ...st, vymenene: m }); }}>
-                <option value="">pôvodná</option>
-                {x.alternativy!.map((a) => <option value={a}>{SUROVINA.get(a)?.nazov ?? a}</option>)}
-              </select>
+              <strong>{SUROVINA.get(x.id)?.nazov}</strong>
+              <Cipy popis={`Vymeniť ${SUROVINA.get(x.id)?.nazov}`} vybrane={st.vymenene[x.id] ?? ''} zmen={(v) => { const m = { ...st.vymenene }; if (v) m[x.id] = v; else delete m[x.id]; setSt({ ...st, vymenene: m }); }} hodnoty={[{ id: '', nazov: 'pôvodná' }, ...x.alternativy!.map((a) => ({ id: a, nazov: SUROVINA.get(a)?.nazov ?? a }))]} />
             </div>
           ))}
         </div>

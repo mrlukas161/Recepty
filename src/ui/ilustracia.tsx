@@ -66,6 +66,7 @@ const KRESBY: Record<string, () => ComponentChildren> = {
 };
 
 export type TypIlustracie = keyof typeof KRESBY;
+KRESBY.olovrant = KRESBY.desiata;
 export const TYPY_ILUSTRACII = Object.keys(KRESBY) as TypIlustracie[];
 
 // Pôvodné emoji receptov -> typ ilustrácie (údaje receptov ostávajú, appka zobrazuje ilustráciu).

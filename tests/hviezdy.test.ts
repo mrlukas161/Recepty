@@ -62,3 +62,12 @@ describe('hviezdičky', () => {
     expect(POLITIKA.hviezdicky.over({ a: 3, b: 7, c: 1.5, d: 'x' })).toEqual({ a: 3 });
   });
 });
+
+describe('olovrant', () => {
+  it('plánovač pre olovrant vyberie desiatu alebo dezert', () => {
+    const plan = generujJedalnicek({ infos, n: { ...n, jedla: ['olovrant'] as never }, db: SUROVINA, seed: 3 });
+    const ids = Object.values(plan).filter(Boolean) as string[];
+    expect(ids.length).toBeGreaterThan(0);
+    for (const id of ids) expect(['olovrant', 'desiata', 'dezert']).toContain(infos.find((i) => i.r.id === id)!.r.typ);
+  });
+});
