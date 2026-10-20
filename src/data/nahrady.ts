@@ -2,13 +2,13 @@ export interface Nahrada { za: string; kontext: string; zisk: string; strata: st
 export interface SkupinaNahrad { id: string; nazov: string; ikona: string; uvod: string; nahrady: Nahrada[] }
 /** Všetky tvrdenia sú praktické odhady (kuchárska prax / výživová logika), nie citované dôkazy. */
 export const NAHRADY: SkupinaNahrad[] = [
-  { id: 'muka', nazov: 'Múka', ikona: '🌾', uvod: 'Biela pšeničná múka je v kuchyni všade. Nahradiť sa dá čiastočne alebo úplne – podľa jedla.', nahrady: [
-    { za: 'Biela múka v plackách a lievancoch', kontext: 'raňajky', zisk: 'Viac vlákniny a sýtosti', strata: 'Hustejšia, menej nadýchaná textúra', ides: ['ovsene-vlocky', 'pohankova-muka'] },
-    { za: 'Biela múka na zahustenie omáčky', kontext: 'omáčky, polievky', zisk: 'Menej rafinovanej múky', strata: 'Mierne iná chuť', ides: ['zemiaky', 'cervena-sosovica'] },
-    { za: 'Biela múka v haluškách a šúľancoch', kontext: 'obed', zisk: 'Viac bielkovín a vlákniny (strukovinové cesto)', strata: 'Iná chuť a konzistencia – treba si zvyknúť' },
-    { za: 'Pečivo na raňajky', kontext: 'raňajky', zisk: 'Vajcia, kaša alebo jogurt zasýtia dlhšie (odhad)', strata: 'Menej pohodlné, treba pár minút navyše' },
-    { za: 'Cestoviny z bielej múky', kontext: 'obed, večera', zisk: 'Celozrnné alebo strukovinové cestoviny majú viac vlákniny a bielkovín', strata: 'Iná chuť; strukovinové cestoviny sa ľahko rozvaria' },
-    { za: 'Strúhanka v rezňoch a karbonátkoch', kontext: 'obed', zisk: 'Ovsené vločky alebo mleté semienka dajú viac vlákniny', strata: 'Menej chrumkavé' },
+  { id: 'muka', nazov: 'Múka', ikona: '🌾', uvod: 'Pšeničnú múku a pečivo (chlieb, rožky, cestoviny, halušky, knedle, strúhanku, cesto) appka sama nenavrhuje; ak si ich vyberieš sám, stráži limit 1–2× týždenne. Najlepšia náhrada je jedlo úplne BEZ múky (vajcia, zelenina, celé strukoviny, zemiaky, vločky). Iné múky (pohánková, ovsená, mandľová, cícerová) nie sú automatická náhrada – posudzuje ich skóre. Tvrdenia o náhradách sú praktické odhady, nie citované dôkazy.', nahrady: [
+    { za: 'Biela múka v plackách a lievancoch', kontext: 'raňajky', zisk: 'Vajcia s ovocím alebo pomletými ovsenými vločkami (celé zrno) dajú sýtosť a vlákninu bez múky', strata: 'Hustejšia, menej nadýchaná textúra', ides: ['vajce-slepacie', 'ovsene-vlocky', 'banan'] },
+    { za: 'Biela múka na zahustenie omáčky', kontext: 'omáčky, polievky', zisk: 'Bez múky: uvarený zemiak, karfiol alebo červená šošovica rozmixované do omáčky', strata: 'Mierne iná chuť', ides: ['zemiaky', 'karfiol', 'sosovica-cervena', 'cuketa'] },
+    { za: 'Biela múka v haluškách a šúľancoch', kontext: 'obed', zisk: 'Bez múky: zemiaková alebo zeleninová príloha (kaša zo zeleru či karfiolu, pečená tekvica), alebo celé strukoviny', strata: 'Iná chuť a konzistencia – treba si zvyknúť', ides: ['zemiaky', 'zeler-bulvovy', 'karfiol', 'sosovica-zelena'] },
+    { za: 'Pečivo na raňajky', kontext: 'raňajky', zisk: 'Vajcia, ovsená kaša alebo jogurt s ovocím zasýtia dlhšie (odhad); „chlieb“ z vajec a semienok je bez múky', strata: 'Menej pohodlné, treba pár minút navyše', ides: ['vajce-slepacie', 'ovsene-vlocky', 'jogurt-grecky', 'psyllium'] },
+    { za: 'Cestoviny z bielej múky', kontext: 'obed, večera', zisk: 'Bez múky: cuketové alebo kalerábové „špagety“, karfiolová ryža, ryža natur či zemiaky; strukovinové cestoviny len občas (stále sú cestoviny)', strata: 'Iná chuť; strukovinové cestoviny sa ľahko rozvaria', ides: ['cuketa', 'kalerab', 'karfiol', 'ryza-natur'] },
+    { za: 'Strúhanka v rezňoch a karbonátkoch', kontext: 'obed', zisk: 'Bez múky: pomleté ovsené vločky, mleté orechy alebo semienka dajú chrumkavý obal', strata: 'Menej chrumkavé', ides: ['ovsene-vlocky', 'lan-semienka', 'slnecnicove-semienka'] },
   ] },
   { id: 'cukor', nazov: 'Cukor a sladké', ikona: '🍬', uvod: 'Voľné cukry (cukor, med, sirupy, džúsy) je vhodné držať nízko. Ovocie ako sladidlo je lepšie než cukor, ale stále je to cukor.', nahrady: [
     { za: 'Cukor v kaši a jogurte', kontext: 'raňajky', zisk: 'Ovocie dá vlákninu a sladkosť', strata: 'Menej sladké; treba si privyknúť' },

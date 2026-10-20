@@ -4,8 +4,8 @@ import type { VlastnyRecept } from './vlastne';
 export type Kategoria = 'muka' | 'cukor' | 'udeniny' | 'vyprazane' | 'tazke';
 export type Uroven = 'bez' | 'obmedzit' | 'vylucit';
 export const KATEGORIE: { id: Kategoria; nazov: string; popis: string }[] = [
-  { id: 'muka', nazov: 'Rafinovaná múka', popis: 'pečivo, halušky, cestoviny, palacinky z bielej múky' },
-  { id: 'cukor', nazov: 'Cukor a sladké', popis: 'jedlá s viac ako ~8 g pridaného cukru na porciu' },
+  { id: 'muka', nazov: 'Rafinovaná múka', popis: 'pšeničná múka a pečivo: chlieb, rožky, cestoviny, halušky, knedle, strúhanka, cesto – appka ich sama nenavrhne, limit platí pre tie, ktoré si vyberieš' },
+  { id: 'cukor', nazov: 'Cukor a sladké', popis: 'rafinovaný cukor je vylúčený z návrhov; jedlá s viac ako ~8 g pridaného cukru (aj medu) na porciu sa počítajú do limitu' },
   { id: 'udeniny', nazov: 'Údeniny a spracované mäso', popis: 'šunka, saláma, klobása, párky, slanina' },
   { id: 'vyprazane', nazov: 'Vyprážané', popis: 'rezne, hranolky, vyprážané syry' },
   { id: 'tazke', nazov: 'Ťažké jedlá', popis: 'veľmi tučné alebo objemné jedlá' },
@@ -32,7 +32,7 @@ export interface Nastavenia {
 export const PREDVOLENE: Nastavenia = {
   dospeli: 2, deti: [2, 4, 6],
   obmedzenia: { muka: 'obmedzit', cukor: 'obmedzit', udeniny: 'obmedzit', vyprazane: 'obmedzit', tazke: 'obmedzit' },
-  maxTyzdenne: { muka: 3, cukor: 2, udeniny: 1, vyprazane: 1, tazke: 2 },
+  maxTyzdenne: { muka: 2, cukor: 2, udeniny: 1, vyprazane: 1, tazke: 2 },
   alergie: [], nejem: [], diety: [], casTyzden: 45, casVikend: 90, varimNa2Dni: false,
   vybavenie: ['rura', 'panvica', 'hrniec', 'mixer'],
   tema: 'auto', jedla: ['ranajky', 'obed', 'vecera'], mamDoma: [], vibracia: true, hotovo: false,

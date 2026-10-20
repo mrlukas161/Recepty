@@ -1,7 +1,7 @@
 export interface Karta { id: string; nazov: string; ikona: string; text: string[]; uroven: 'prax' | 'odhad' }
 export const OVERENIE_POZNAMKA = 'Zdroje sú overené vyhľadávaním (existencia, bibliografia a hlavný záver potvrdené z viacerých výsledkov), ale originály sme nečítali – ak sa sieť otvorí, overenie sa zvýši. Text kariet je naše zhrnutie; ak karta nemá zdroj, je to odhad alebo prax.';
 export const VEDOMOSTI: Karta[] = [
-  { id: 'muka', nazov: 'Múka', ikona: '🌾', uroven: 'odhad', text: ['Biela múka je zbavená otrúb a klíčka, preto má menej vlákniny než celozrnná.', 'V appke ju preto berieme ako surovinu, ktorej je v bežnej strave veľa – nie ako „zlú“.'] },
+  { id: 'muka', nazov: 'Múka', ikona: '🌾', uroven: 'odhad', text: ['Biela múka je zbavená otrúb a klíčka, preto má menej vlákniny než celozrnná.', 'Pšeničná múka a pečivo (chlieb, rožky, cestoviny, halušky, knedle, strúhanka, cesto) sú náš hlavný smer na obmedzenie: appka ich sama nenavrhne a ak si ich vyberieš, stráži limit 1–2× týždenne.', 'Najlepšia náhrada je jedlo bez múky (vajcia, zelenina, celé strukoviny, zemiaky, vločky). Iné múky nie sú automaticky lepšie – posudzuje ich skóre.'] },
   { id: 'celozrnne', nazov: 'Celozrnné', ikona: '🍞', uroven: 'odhad', text: ['Celozrnné produkty obsahujú viac vlákniny. Pri chlebe pozri, či je „celozrnný“ naozaj v zložení na prvom mieste.'] },
   { id: 'cukor', nazov: 'Cukor', ikona: '🍬', uroven: 'odhad', text: ['Voľné cukry (cukor, med, sirupy, džús) je rozumné držať nízko, najmä u detí.', 'Ovocie v celku je lepšie než šťava.'] },
   { id: 'udeniny', nazov: 'Údeniny', ikona: '🥓', uroven: 'odhad', text: ['Údeniny bývajú slané a spracované. Preto ich v appke obmedzujeme na výnimočné použitie.'] },

@@ -10,6 +10,7 @@ import { suhrn } from '../engine/planner';
 import { INFO } from '../ctx';
 import { tyzdenMuky } from '../engine/muka';
 import { tipDna } from '../data/tipy';
+import { navrhnutelny } from '../engine/navrh';
 import { dajHviezdy, nechutilo, bonusHviezd } from '../engine/hviezdy';
 
 export function Dnes() {
@@ -20,13 +21,12 @@ export function Dnes() {
   const [posunTipu, setPosunTipu] = useState(0);
   const tip = tipDna(new Date(), posunTipu);
   const navrhy = useMemo(() => {
-    const kand = INFOS.filter((i) => i.r.typ === typ && !vylucene(i, n) && dietyOk(i, n, SUROVINA) && !nechutilo(s, i.r.id));
+    const kand = INFOS.filter((i) => i.r.typ === typ && !vylucene(i, n) && navrhnutelny(i, n) && dietyOk(i, n, SUROVINA) && !nechutilo(s, i.r.id));
     return kand
       .map((i) => {
         let b = i.skore.celkom;
         if (s.oblubene.includes(i.r.id)) b += 6;
         b += bonusHviezd(dajHviezdy(s, i.r.id));
-        if (i.kat.muka && n.obmedzenia.muka !== 'bez') b -= 12;
         if (i.cas > casNaDen(n, (new Date().getDay() + 6) % 7)) b -= 8;
         for (const k of Object.keys(i.kat) as (keyof typeof i.kat)[]) if (i.kat[k] && n.obmedzenia[k] === 'obmedzit') b -= 6;
         return { i, b };
@@ -84,13 +84,15 @@ export function Dnes() {
 
 export function MukaTyzden({ m }: { m: ReturnType<typeof tyzdenMuky> }) {
   const farba = m.stav === 'nad-limitom' ? 'minus' : m.stav === 'ok' ? 'plus' : '';
+  const vyssie = Math.max(m.vareneSMukou, m.planovaneSMukou);
   return (
     <div class="karta muka-tyzden" style="animation:none">
-      <h3 style="margin:0 0 4px">Múka tento týždeň</h3>
+      <h3 style="margin:0 0 4px">Pšeničná múka a pečivo tento týždeň</h3>
       <div>Uvarené: <strong>{m.vareneSMukou}</strong> z {m.varene} jedál s múkou · Naplánované: <strong>{m.planovaneSMukou}</strong> z {m.planovane}</div>
-      <div class={`maly ${farba}`}>
-        {m.limit === null ? 'Múku zatiaľ neobmedzuješ (Nastavenia → Čo obmedziť).' : m.vylucena ? 'Múku máš vylúčenú – jedlá s múkou sa nenavrhujú.' : m.stav === 'nad-limitom' ? `Nad limitom ${m.limit}× za týždeň – skús dnes jedlo bez múky.` : `Limit ${m.limit}× za týždeň.`}
+      <div class={`maly ${farba}`} data-limit-muky>
+        {m.limit === null ? 'Múku zatiaľ neobmedzuješ (Viac → Nastavenia → Čo obmedziť).' : m.vylucena ? 'Múku máš vylúčenú – jedlá s múkou sa nenavrhujú a nepatria do plánu.' : m.stav === 'nad-limitom' ? `Nad limitom ${m.limit}× za týždeň (máš ${vyssie}×) – ďalšie jedlo urob bez múky.` : `Limit ${m.limit}× za týždeň – vybrané ${vyssie}×, ostáva ${m.ostava}×.`}
       </div>
+      <div class="maly">Jedlá s múkou a pečivom ti appka sama nenavrhne – nájdeš ich len vyhľadaním v Receptoch, hneď s verziou bez múky.</div>
       <a class="maly" href="#/nahrady">Čím nahradiť múku</a>
     </div>
   );

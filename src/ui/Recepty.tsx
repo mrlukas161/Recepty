@@ -4,7 +4,7 @@ import { SUROVINA } from '../data';
 import { DIETY } from '../data/diety';
 import { useStav } from '../store';
 import { filtruj, FILTRE0, type FiltreRecept, type Zoradenie } from '../engine/filtre';
-import { KartaReceptu, Hlavicka, AktivneDiety, Cipy } from './kom';
+import { KartaReceptu, Hlavicka, AktivneDiety, Cipy, VerziaBezMuky } from './kom';
 
 let ulozeneFiltre: FiltreRecept = { ...FILTRE0 };
 
@@ -44,7 +44,7 @@ export function Recepty() {
           <button class="male" onClick={() => { ulozeneFiltre = { ...FILTRE0 }; setF(ulozeneFiltre); }}>Zrušiť filtre</button>
         </div>
       )}
-      {zoznam.slice(0, limit).map((i) => <KartaReceptu key={i.r.id} i={i} />)}
+      {zoznam.slice(0, limit).map((i) => <div key={i.r.id}><KartaReceptu i={i} /><VerziaBezMuky i={i} /></div>)}
       {zoznam.length > limit && <button onClick={() => setLimit(limit + 80)}>Zobraziť ďalších 80</button>}
       {!zoznam.length && <div><p>Nič sa nenašlo. Skús zrušiť filtre alebo vypnúť „Bez vylúčených surovín a alergénov“ (aktívne diéty a alergie tiež zužujú výber).</p><button onClick={() => { ulozeneFiltre = { ...FILTRE0 }; setF(ulozeneFiltre); }}>Zrušiť filtre</button></div>}
     </>

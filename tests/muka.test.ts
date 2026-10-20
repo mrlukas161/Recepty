@@ -25,14 +25,48 @@ describe('týždenný prehľad múky', () => {
     }, mapa, streda);
     expect(m.varene).toBe(2); expect(m.vareneSMukou).toBe(1);
     expect(m.planovane).toBe(2); expect(m.planovaneSMukou).toBe(1);
-    expect(m.limit).toBe(3); expect(m.stav).toBe('ok');
+    expect(m.limit).toBe(2); expect(m.ostava).toBe(1); expect(m.stav).toBe('ok');
   });
   it('limit: na limite, nad limitom, vylúčená, bez obmedzenia', () => {
     const h = (n: number) => Array.from({ length: n }, () => ({ recept: sMukou, den: '2026-10-20' }));
     const s = (o: 'bez' | 'obmedzit' | 'vylucit', n: number) => tyzdenMuky({ nastavenia: { ...PREDVOLENE, obmedzenia: { ...PREDVOLENE.obmedzenia, muka: o } }, historia: h(n), jedalnicek: {} }, mapa, streda);
-    expect(s('obmedzit', 3).stav).toBe('na-limite');
-    expect(s('obmedzit', 4).stav).toBe('nad-limitom');
+    expect(s('obmedzit', 2).stav).toBe('na-limite');
+    expect(s('obmedzit', 3).stav).toBe('nad-limitom');
     expect(s('vylucit', 1).stav).toBe('nad-limitom'); expect(s('vylucit', 0).vylucena).toBe(true);
     expect(s('bez', 9).stav).toBe('bez-limitu'); expect(s('bez', 9).limit).toBeNull();
+  });
+});
+
+import { navrhnutelny, limitMuky, verzieBezMuky } from '../src/engine/navrh';
+import { generujJedalnicek } from '../src/engine/planner';
+
+describe('múka a pečivo: appka ich sama nenavrhne', () => {
+  const n = PREDVOLENE;
+  it('jedlo s múkou ani s rafinovaným cukrom nie je navrhnuteľné, bez múky áno', () => {
+    expect(navrhnutelny(infos.find((i) => i.kat.muka)!, n)).toBe(false);
+    expect(navrhnutelny(infos.find((i) => i.cukorRaf)!, n)).toBe(false);
+    expect(navrhnutelny(infos.find((i) => !i.kat.muka && !i.cukorRaf)!, n)).toBe(true);
+    const bezO = { ...n, obmedzenia: { ...n.obmedzenia, muka: 'bez' as const } };
+    expect(navrhnutelny(infos.find((i) => i.kat.muka && !i.cukorRaf)!, bezO)).toBe(true);
+  });
+  it('Zamiešať nikdy nedá jedlo s múkou ani rafinovaným cukrom (20 semien)', () => {
+    for (let seed = 1; seed <= 20; seed++) {
+      const plan = generujJedalnicek({ infos, n: { ...n, jedla: ['ranajky', 'obed', 'vecera', 'desiata'] }, db: SUROVINA, seed });
+      for (const id of Object.values(plan)) if (id) { const i = mapa.get(id)!; expect(i.kat.muka, id).toBe(false); expect(i.cukorRaf, id).toBe(false); }
+    }
+  });
+  it('limit: predvolene 2, nastaviteľný 1/2, vylúčená 0, bez = null', () => {
+    expect(limitMuky(n)).toBe(2);
+    expect(limitMuky({ ...n, maxTyzdenne: { ...n.maxTyzdenne, muka: 1 } })).toBe(1);
+    expect(limitMuky({ ...n, maxTyzdenne: { ...n.maxTyzdenne, muka: 3 } })).toBe(2);
+    expect(limitMuky({ ...n, obmedzenia: { ...n.obmedzenia, muka: 'vylucit' } })).toBe(0);
+    expect(limitMuky({ ...n, obmedzenia: { ...n.obmedzenia, muka: 'bez' } })).toBeNull();
+  });
+  it('každé jedlo s múkou má aspoň jednu verziu bez múky', () => {
+    for (const i of infos.filter((x) => x.kat.muka)) {
+      const v = verzieBezMuky(i, infos, n, 2);
+      expect(v.length, i.r.id).toBeGreaterThan(0);
+      for (const x of v) { expect(x.kat.muka).toBe(false); expect(x.cukorRaf).toBe(false); }
+    }
   });
 });

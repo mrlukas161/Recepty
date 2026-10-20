@@ -185,7 +185,8 @@ export function Nastavenia({ uvod }: { uvod?: boolean }) {
             <strong>{k.nazov}</strong> <span class="maly">{k.popis}</span>
             <div class="rad">
               <Cipy popis={k.nazov} vybrane={n.obmedzenia[k.id]} zmen={(v) => nastavNastavenia({ obmedzenia: { ...n.obmedzenia, [k.id]: v } })} hodnoty={[{ id: 'bez', nazov: 'Bez obmedzenia' }, { id: 'obmedzit', nazov: 'Obmedziť' }, { id: 'vylucit', nazov: 'Vylúčiť' }] as { id: Uroven; nazov: string }[]} />
-              {n.obmedzenia[k.id] === 'obmedzit' && <label class="pol">max <input type="number" min="0" max="21" style="width:70px" value={n.maxTyzdenne[k.id]} onChange={(e) => nastavNastavenia({ maxTyzdenne: { ...n.maxTyzdenne, [k.id as Kategoria]: Math.max(0, +(e.target as HTMLInputElement).value || 0) } })} /> × týždenne</label>}
+              {n.obmedzenia[k.id] === 'obmedzit' && k.id === 'muka' && <Cipy popis="Týždenný limit jedál s múkou" vybrane={n.maxTyzdenne.muka <= 1 ? 1 : 2} zmen={(v) => nastavNastavenia({ maxTyzdenne: { ...n.maxTyzdenne, muka: v } })} hodnoty={[{ id: 1, nazov: '1× týždenne' }, { id: 2, nazov: '2× týždenne' }]} />}
+              {n.obmedzenia[k.id] === 'obmedzit' && k.id !== 'muka' && <label class="pol">max <input type="number" min="0" max="21" style="width:70px" value={n.maxTyzdenne[k.id]} onChange={(e) => nastavNastavenia({ maxTyzdenne: { ...n.maxTyzdenne, [k.id as Kategoria]: Math.max(0, +(e.target as HTMLInputElement).value || 0) } })} /> × týždenne</label>}
             </div>
           </div>
         ))}

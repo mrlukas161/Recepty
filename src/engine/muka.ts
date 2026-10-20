@@ -1,5 +1,6 @@
 import type { Info } from './filtre';
 import type { UlozenyStav } from './types';
+import { limitMuky } from './navrh';
 
 const dd = (d: Date) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
 /** Pondelok týždňa, v ktorom je `d` (lokálny čas), ako RRRR-MM-DD. */
@@ -21,6 +22,8 @@ export interface TyzdenMuky {
   planovane: number; planovaneSMukou: number;
   /** týždenný limit jedál s múkou (null = bez obmedzenia) a či je vylúčená */
   limit: number | null; vylucena: boolean;
+  /** koľko jedál s múkou ešte ostáva do limitu (null = bez limitu) */
+  ostava: number | null;
   /** stav podľa vyššieho z čísel (uvarené s múkou, naplánované s múkou) voči limitu */
   stav: 'ok' | 'na-limite' | 'nad-limitom' | 'bez-limitu';
 }
@@ -39,8 +42,8 @@ export function tyzdenMuky(s: Pick<UlozenyStav, 'historia' | 'jedalnicek' | 'nas
     planovane++; if (i.kat.muka) planovaneSMukou++;
   }
   const u = s.nastavenia.obmedzenia.muka;
-  const limit = u === 'obmedzit' ? s.nastavenia.maxTyzdenne.muka : u === 'vylucit' ? 0 : null;
+  const limit = limitMuky(s.nastavenia);
   const vyssie = Math.max(vareneSMukou, planovaneSMukou);
   const stav: TyzdenMuky['stav'] = limit === null ? 'bez-limitu' : vyssie > limit ? 'nad-limitom' : vyssie === limit ? 'na-limite' : 'ok';
-  return { varene, vareneSMukou, planovane, planovaneSMukou, limit, vylucena: u === 'vylucit', stav };
+  return { varene, vareneSMukou, planovane, planovaneSMukou, limit, vylucena: u === 'vylucit', ostava: limit === null ? null : Math.max(0, limit - vyssie), stav };
 }

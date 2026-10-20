@@ -14,7 +14,8 @@ import { ZdrojeK, ZdrojVyzivy } from './Zdroje';
 import { Varenie } from './Varenie';
 import { OvladanieVlastneho } from './VlastnyRecept';
 import { SlabaPoznamka } from './Surovina';
-import { Cipy, Hviezdicky, Pecat, prepniOblubene, Upozornenie, KartaReceptu } from './kom';
+import { Cipy, Hviezdicky, Pecat, prepniOblubene, Upozornenie, KartaReceptu, VerziaBezMuky } from './kom';
+import { tyzdenMuky } from '../engine/muka';
 
 const TAG_NAZOV: Record<string, string> = { detske: 'Detské', rychle: 'Rýchle', 'do-krabicky': 'Do krabičky', lacne: 'Lacné', bezmasite: 'Bezmäsité', 'bez-peciva': 'Bez pečiva', bezlepkove: 'Bezlepkové', vegansky: 'Vegánske', 'vyvarene-z-zvyskov': 'Zo zvyškov', 'na-viac-dni': 'Na viac dní', sladke: 'Sladké' };
 
@@ -29,6 +30,19 @@ function fmt(g: number, jednotka: string, s?: { jednotky: { ks?: number } }): st
 export function Detail({ id }: { id: string }) {
   if (!INFO.get(id)) return <p>Recept sa nenašiel. <a href="#/recepty">Späť</a></p>;
   return <DetailVnutro key={id} id={id} />;
+}
+
+function BannerMuky({ info }: { info: typeof INFOS[number] }) {
+  const s = useStav();
+  const m = tyzdenMuky(s, INFO);
+  const vyssie = Math.max(m.vareneSMukou, m.planovaneSMukou);
+  return (
+    <div class="upoz banner-muky" data-banner-muky>
+      <strong>Obsahuje pšeničnú múku alebo pečivo.</strong> Appka ho sama nenavrhuje; ak ho chceš, je to tvoja voľba.{' '}
+      {m.limit === null ? 'Múku neobmedzuješ.' : m.vylucena ? 'Múku máš vylúčenú v Nastaveniach.' : m.stav === 'nad-limitom' ? `Tento týždeň už máš ${vyssie}× jedlo s múkou, limit je ${m.limit}× – radšej verziu bez múky.` : `Tento týždeň ${vyssie}× z ${m.limit}×, ostáva ${m.ostava}×.`}
+      <VerziaBezMuky i={info} />
+    </div>
+  );
 }
 
 function DetailVnutro({ id }: { id: string }) {
@@ -92,6 +106,7 @@ function DetailVnutro({ id }: { id: string }) {
         </figure>
       )}
       <Hviezdicky id={id} />
+      {info.kat.muka && <BannerMuky info={info} />}
       {r.vlastny && <OvladanieVlastneho id={id} />}
       <div>{r.tagy.map((t) => <span class="tag" key={t}>{TAG_NAZOV[t] ?? t}</span>)}</div>
       <div class="karta">

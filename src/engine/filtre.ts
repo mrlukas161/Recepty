@@ -7,6 +7,8 @@ import { DIETY } from '../data/diety';
 export interface Info {
   r: Recept; skore: Skore; kat: Record<Kategoria, boolean>;
   alergeny: Set<string>; surIds: Set<string>; cas: number; mäso: boolean;
+  /** recept obsahuje (nevoliteľný) rafinovaný cukor – cukor, sirup, džem, čokoláda… (nie med; ten posudzuje skóre) */
+  cukorRaf: boolean;
 }
 
 export function kategorie(r: Recept, sk: Skore, db: Map<string, Surovina>): Record<Kategoria, boolean> {
@@ -22,12 +24,20 @@ export function kategorie(r: Recept, sk: Skore, db: Map<string, Surovina>): Reco
   return res;
 }
 
+/** Rafinovaný cukor ako surovina: sladidlo s príznakom pridaného cukru, ktoré nie je med (cukry, sirupy, džem, čokoláda, nátierky). Voliteľné suroviny sa nepočítajú. */
+export function jeRafCukor(s: Surovina | undefined): boolean {
+  return !!s && s.skupina === 'sladidla' && s.priznaky.includes('pridany-cukor') && !s.priznaky.includes('med');
+}
+export function maRafCukor(r: Recept, db: Map<string, Surovina>): boolean {
+  return r.suroviny.some((s) => !(s.volitelna && !s.nevyhnutna) && jeRafCukor(db.get(s.id)));
+}
+
 export function infoRecept(r: Recept, db: Map<string, Surovina>): Info {
   const skore = vypocitajSkore(r, r.suroviny, db);
   const alergeny = new Set<string>();
   const surIds = new Set<string>();
   for (const s of r.suroviny) { surIds.add(s.id); db.get(s.id)?.alergeny.forEach((a) => alergeny.add(a)); }
-  return { r, skore, kat: kategorie(r, skore, db), alergeny, surIds, cas: r.casPripravy + r.casVarenia, mäso: false };
+  return { r, skore, kat: kategorie(r, skore, db), alergeny, surIds, cas: r.casPripravy + r.casVarenia, mäso: false, cukorRaf: maRafCukor(r, db) };
 }
 
 function maPriznak(r: Recept, db: Map<string, Surovina>, p: string, len_nevyhnutne = false): boolean {

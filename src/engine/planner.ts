@@ -3,6 +3,7 @@ import type { Kategoria, Nastavenia } from './types';
 import { casNaDen } from './types';
 import { kategorieZPridanych } from './obmedzene';
 import { dietyOk, vylucene, type Info } from './filtre';
+import { navrhnutelny } from './navrh';
 import { dajHviezdy, vahaHviezd, type StavHviezd } from './hviezdy';
 
 export const DNI = ['Pondelok', 'Utorok', 'Streda', 'Štvrtok', 'Piatok', 'Sobota', 'Nedeľa'];
@@ -59,7 +60,7 @@ export function generujJedalnicek(v: PlanVstup): Record<string, string | null> {
     const i = infos.find((x) => x.r.id === id); if (i) dopln(i);
   }
   const hv = (id: string) => (v.hodnotenia ? dajHviezdy(v.hodnotenia, id) : 0);
-  const povolene = infos.filter((i) => !vylucene(i, n) && dietyOk(i, n, db) && hv(i.r.id) !== 1);
+  const povolene = infos.filter((i) => !vylucene(i, n) && navrhnutelny(i, n) && dietyOk(i, n, db) && hv(i.r.id) !== 1);
   const typyHlavne = new Set<Typ>(['obed', 'vecera']);
   const naViacDni = (i: Info) => i.r.tagy.includes('na-viac-dni');
   const dvaDni = n.varimNa2Dni && n.jedla.includes('vecera') && n.jedla.includes('obed');

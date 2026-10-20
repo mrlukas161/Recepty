@@ -10,6 +10,20 @@ import { aplikujUpravy, ZIADNE_UPRAVY } from '../engine/upravy';
 import { useStav, nastav, nastavHviezdy } from '../store';
 import { dajHviezdy, HVIEZDY_TEXT } from '../engine/hviezdy';
 import { DIETA } from '../data/diety';
+import { INFOS } from '../ctx';
+import { verzieBezMuky } from '../engine/navrh';
+
+/** Pri jedle s múkou: odkaz na verziu/náhradu bez múky. */
+export function VerziaBezMuky({ i }: { i: Info }) {
+  const s = useStav();
+  const v = useMemo(() => verzieBezMuky(i, INFOS, s.nastavenia, 2), [i.r.id, JSON.stringify(s.nastavenia)]);
+  if (!i.kat.muka || !v.length) return null;
+  return (
+    <div class="bez-muky-verzia maly" data-bez-muky-verzia={i.r.id}>
+      <strong>Bez múky:</strong> {v.map((x, k) => <span key={x.r.id}>{k ? ' · ' : ' '}<a href={`#/recept/${x.r.id}`} style="display:inline-block;padding:10px 4px">{x.r.nazov}</a></span>)}
+    </div>
+  );
+}
 
 /** Celkové skóre ako percentuálny kruh (hlavný vizuálny prvok); značka „%“ je v CSS, aby text ostal len číslo. */
 export function Pecat({ skore, pasmo, velky = false }: { skore: number; pasmo: keyof typeof PASMO_TEXT; velky?: boolean }) {

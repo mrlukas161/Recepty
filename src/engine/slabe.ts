@@ -3,9 +3,9 @@ import { KARTY_SUROVIN } from '../data/karty-surovin';
 
 export interface Slabost { dovod: string; nahrady: string[]; kategoria: 'muka' | 'udeniny' | 'cukor' | 'ine' }
 
-const MUKY = ['pohankova-muka', 'ovsena-muka', 'cicerova-muka'];
+const MUKY = ['vajce-slepacie', 'zemiaky', 'ovsene-vlocky'];
 const PO_SKUPINACH: Record<string, string[]> = {
-  'muky-obilniny': MUKY, pecivo: ['chlieb-celozrnny', 'ovsene-vlocky'], cestoviny: ['cestoviny-celozrnne', 'cestoviny-cicerove'],
+  'muky-obilniny': MUKY, pecivo: ['vajce-slepacie', 'ovsene-vlocky', 'zemiaky'], cestoviny: ['cuketa', 'karfiol', 'ryza-natur'],
 };
 
 /** Je surovina „slabá“ (rafinovaná múka, údenina, pridaný cukor…)? Vráti krátky dôvod a zoznam náhrad (id surovín). */

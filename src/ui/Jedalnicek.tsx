@@ -10,6 +10,7 @@ import { KATEGORIE } from '../engine/types';
 import { Hlavicka } from './kom';
 import { vylucene, dietyOk } from '../engine/filtre';
 import { nechutilo } from '../engine/hviezdy';
+import { navrhnutelny } from '../engine/navrh';
 
 export function Jedalnicek() {
   const s = useStav();
@@ -25,7 +26,7 @@ export function Jedalnicek() {
   const sh = suhrn(s.jedalnicek, INFO, SUROVINA, s.pridaneVolitelne);
   const alt = (k: string) => {
     const typ = k.split(':')[1];
-    return INFOS.filter((i) => (typ === 'obed' ? i.r.typ === 'obed' : i.r.typ === typ) && !vylucene(i, n) && dietyOk(i, n, SUROVINA) && !nechutilo(s, i.r.id)).sort((a, b) => b.skore.celkom - a.skore.celkom).slice(0, 25);
+    return INFOS.filter((i) => (typ === 'obed' ? i.r.typ === 'obed' : i.r.typ === typ) && !vylucene(i, n) && navrhnutelny(i, n) && dietyOk(i, n, SUROVINA) && !nechutilo(s, i.r.id)).sort((a, b) => b.skore.celkom - a.skore.celkom).slice(0, 25);
   };
   return (
     <>
@@ -35,7 +36,7 @@ export function Jedalnicek() {
         <button onClick={() => { nastav((x) => { x.nakupRecepty = Object.values(x.jedalnicek).filter(Boolean) as string[]; }); location.hash = '#/nakup'; }}>🛒 Nákup z jedálnička</button>
         <button onClick={() => nastav((x) => { x.jedalnicek = {}; x.zamknute = []; })}>Vymazať</button>
       </div>
-      <p class="maly">Zamiešať uprednostní recepty s 4–5★ a nikdy nedá recept s 1★ (nechutilo). Zamknuté jedlá ostanú.</p>
+      <p class="maly">Jedálniček sám nenavrhne jedlá s pšeničnou múkou, pečivom ani rafinovaným cukrom. Chceš také jedlo? Nájdeš ho v Receptoch a naplánuješ v jeho detaile (appka stráži týždenný limit). Zamiešať uprednostní recepty s 4–5★ a nikdy nedá recept s 1★ (nechutilo). Zamknuté jedlá ostanú.</p>
       <label class="pol"><input type="checkbox" checked={n.varimNa2Dni} onChange={(e) => nastavNastavenia({ varimNa2Dni: (e.target as HTMLInputElement).checked })} /> Varím na 2 dni (večera → obed na ďalší deň)</label>
       {DNI.map((d, di) => (
         <div class="karta" key={d}>
