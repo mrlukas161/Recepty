@@ -1,7 +1,7 @@
 # Zoznam receptov (id → názov)
 
 Generované skriptom `scripts/recepty-zoznam.ts` (`npx vite-node scripts/recepty-zoznam.ts`); test `tests/foto.test.ts` kontroluje, že zoznam sedí s dátami.
-Počet vstavaných receptov: **197**. Názov súboru fotky = `<id>.webp` (pozri „Fotky jedál“ v `docs/ROZHODNUTIA.md`).
+Počet vstavaných receptov: **207**. Názov súboru fotky = `<id>.webp` (pozri „Fotky jedál“ v `docs/ROZHODNUTIA.md`).
 
 | id | názov | typ |
 |---|---|---|
@@ -37,6 +37,16 @@ Počet vstavaných receptov: **197**. Názov súboru fotky = `<id>.webp` (pozri 
 | `sisky` | Šišky s jablkovou plnkou | dezert |
 | `pernik` | Medový perník | dezert |
 | `tvarohovy-kolac` | Tvarohový koláč | dezert |
+| `keto-vajecny-chlieb-s-psylliom` | Vaječný chlieb s cottage a semienkami | raňajky |
+| `keto-vajecne-muffiny-so-zeleninou` | Slané vaječné muffiny so zeleninou | raňajky |
+| `keto-kulajda-z-kalerabu` | Kulajda s kalerábom a cuketou | polievka |
+| `keto-karfiolova-ryza-s-kari-a-rybou` | Karfiolová ryža s kari a rybou | obed |
+| `keto-kuracie-stehna-s-vajickovym-salatom` | Pečené kuracie stehná s vajíčkovým šalátom | obed |
+| `keto-pyre-zo-zeleru-a-karfiolu-s-pecenou` | Pyré zo zeleru a karfiolu s kuracou pečeňou | obed |
+| `keto-cuketove-placky-so-syrom-a-cesnakovym-dipom` | Cuketové placky so syrom a cesnakovým dipom | večera |
+| `keto-losos-so-spenatom-a-vajcom` | Losos so špenátom a vajcom | večera |
+| `keto-pizza-z-mozzarelly-a-vajec` | Pizza s cestom z mozzarelly a vajec | večera |
+| `keto-tvarohovo-malinovy-krem` | Tvarohový krém s malinami (bez cukru) | dezert |
 | `bryndzove-halusky` | Bryndzové halušky so slaninou | obed |
 | `zemiakovo-tvarohove-pirohy` | Pirohy plnené zemiakmi a tvarohom | obed |
 | `hovadzi-gulas-s-knedlou` | Hovädzí guláš s kysnutou knedľou | obed |

@@ -19,7 +19,7 @@ import { tyzdenMuky } from '../engine/muka';
 import { PrecoZoznam } from './Preco';
 import { precoPreRecept } from '../engine/preco-vyber';
 
-const TAG_NAZOV: Record<string, string> = { detske: 'Detské', rychle: 'Rýchle', 'do-krabicky': 'Do krabičky', lacne: 'Lacné', bezmasite: 'Bezmäsité', 'bez-peciva': 'Bez pečiva', bezlepkove: 'Bezlepkové', vegansky: 'Vegánske', 'vyvarene-z-zvyskov': 'Zo zvyškov', 'na-viac-dni': 'Na viac dní', sladke: 'Sladké' };
+const TAG_NAZOV: Record<string, string> = { detske: 'Detské', rychle: 'Rýchle', 'do-krabicky': 'Do krabičky', lacne: 'Lacné', bezmasite: 'Bezmäsité', 'bez-peciva': 'Bez pečiva', bezlepkove: 'Bezlepkové', vegansky: 'Vegánske', 'vyvarene-z-zvyskov': 'Zo zvyškov', 'na-viac-dni': 'Na viac dní', sladke: 'Sladké', keto: 'Keto' };
 
 function fmt(g: number, jednotka: string, s?: { jednotky: { ks?: number } }): string {
   if (jednotka === 'ks') return `${Math.round(g * 10) / 10} ks`.replace('.', ',');

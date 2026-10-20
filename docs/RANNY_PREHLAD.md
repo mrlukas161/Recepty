@@ -9,6 +9,14 @@
 - **Úroveň zdrojov:** všetko stále „overené vyhľadávaním, originál nečítaný“. Nočný agent pre zdroje sa nespustil – sieť (PubMed, doi.org, EUR-Lex, Open Food Facts…) je z cloudu zatvorená, preto **nie sú** nové výživové tabuľky, balík slovenských výrobkov ani `OVERENIE-ORIGINAL.md`; všetky nutričné hodnoty surovín ostávajú odhad.
 - **Čo chýba a prečo:** originály zdrojov, tabuľky USDA/Ciqual, úplná Príloha II/CosIng (sieť), skúška na reálnom telefóne, uvarenie receptov rodinou.
 
+## Novinky 20.10. ráno
+- **Múka a pečivo sa už nenavrhujú:** ani na Dnes, ani v jedálničku (Zamiešať), ani v rulete. Nájdeš ich len v Recepty (hľadaj napr. „halušky“) a pri každom je „Bez múky: …“. Ak si ich vyberieš sám, v detaile vidíš, koľko z týždenného limitu ostáva (Viac → Nastavenia → Čo obmedziť: 1× alebo 2×, predvolene 2×).
+- **Rafinovaný cukor je preč z receptov:** nahradený medom, jablkom, škoricou; z návrhov vypadáva. Med je podľa WHO tiež voľný cukor (s mierou); deťom do 1 roka nie. Chuť pečiva s medom (perník, koláč, buchty) sme nevyskúšali – povedz, ako chutí.
+- **Prečo škodí:** pri slabých surovinách v recepte, na karte suroviny a v skeneri je rozbaliteľný popis (čo to je, koľko vadí, komu viac, čo namiesto, úroveň dôkazov a zdroje). Všetky sú aj vo Viac → Vedomosti.
+- **Skener – skrytý zdroj dusitanov:** Viac → Skener zloženia, vlož „Bravčové mäso, voda, soľ, zelerový extrakt. Bez pridaných dusitanov.“ → „Rizikové látky a kombinácie“. Zeler v šaláte bez mäsa nález nedá. Skús aj „Voda, cukor, benzoan sodný (E211), kyselina askorbová (E300)“.
+- **10 nových keto receptov** (vaječný chlieb, muffiny, kulajda s kalerábom, karfiolová ryža s kari a rybou, kuracie stehná s vajíčkovým šalátom, pyré zo zeleru a karfiolu s pečeňou, cuketové placky, losos so špenátom, pizza z mozzarelly, tvarohovo-malinový krém): hľadaj „keto“ alebo Recepty → Diéta → Ketogénna. Fotky doplní PC (id v `docs/RECEPTY_ZOZNAM.md`).
+- **Čo nie je overené:** že vitamín C tlmí vznik nitrozamínov v mäse a vplyv teploty opekania – v appke ako prax, nie dôkaz; „med od 2 rokov“ v zdrojoch nie je (hranica 1 rok). Pozri `docs/ROZHODNUTIA.md` (R-m1 až R-m3).
+
 ## Novinky 19.10. – appka (múka ako hlavný smer, skóre, hviezdičky, nový dizajn)
 - **Dnes:** hore „Múka tento týždeň“ (koľko z uvarených a naplánovaných jedál bolo s múkou voči limitu), „Tip dňa“ (tlačidlo „Ďalší tip“), sekcia „Bez múky na obed/večeru“ a odkaz „Čím nahradiť múku“. Skús: otvor recept s múkou → „✅ Uvarené“ → vráť sa na Dnes, číslo sa zmení.
 - **Skóre zrozumiteľne:** v detaile receptu pri každom faktore vidíš skutočnú hodnotu, cieľ a slovo (napr. „Vláknina: 6,3 g · cieľ ~10 g na jedlo · dobré“); percento ostalo len pri celkovom skóre (veľký kruh). Nový faktor „Múka (rafinovaná)“. Pri zvolenej diéte (keto…) pribudne „Vhodnosť pre tvoje diéty“ (čisté sacharidy na porciu vs. limit).

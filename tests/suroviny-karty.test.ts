@@ -19,7 +19,7 @@ describe('karty surovín', () => {
     }
   });
   it('požadované suroviny existujú a majú kartu', () => {
-    for (const id of ['tapioka-skrob', 'bulgur', 'kuskus', 'quinoa', 'amarant', 'jahly-proso', 'pohanka', 'chia', 'psyllium', 'mandlova-muka', 'kokosova-muka', 'tofu-natur', 'tempeh', 'ovsene-vlocky', 'cicerova-muka', 'sosovicova-muka'])
+    for (const id of ['tapioka-skrob', 'karfiol', 'kalerab', 'zeler-bulvovy', 'bulgur', 'kuskus', 'quinoa', 'amarant', 'jahly-proso', 'pohanka', 'chia', 'psyllium', 'mandlova-muka', 'kokosova-muka', 'tofu-natur', 'tempeh', 'ovsene-vlocky', 'cicerova-muka', 'sosovicova-muka'])
       expect(KARTY_SUROVIN[id], id).toBeTruthy();
   });
   it('tapioka, bulgur a kuskus nie sú označené ako zlepšenie; bulgur a kuskus majú lepok', () => {

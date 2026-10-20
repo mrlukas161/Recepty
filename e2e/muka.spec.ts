@@ -59,3 +59,14 @@ test('limit múky sa dá prepnúť na 1× vo Viac → Nastavenia', async ({ page
   await page.goto('./#/');
   await expect(page.locator('[data-limit-muky]')).toContainText('Limit 1×');
 });
+
+test('keto recepty: nájdu sa vyhľadaním, čisté sacharidy pod limitom, navrhujú sa na Dnes', async ({ page }) => {
+  await page.goto('./');
+  await page.getByRole('button', { name: 'Preskočiť' }).click();
+  await page.goto('./#/recepty');
+  await page.getByRole('searchbox', { name: 'Hľadať' }).fill('kulajda');
+  await expect(page.locator('a.karta', { hasText: 'Kulajda s kalerábom' })).toBeVisible();
+  await page.goto('./#/recept/keto-pyre-zo-zeleru-a-karfiolu-s-pecenou');
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('Pyré zo zeleru');
+  await expect(page.locator('[data-banner-muky]')).toHaveCount(0);
+});

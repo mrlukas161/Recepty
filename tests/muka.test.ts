@@ -73,3 +73,18 @@ describe('múka a pečivo: appka ich sama nenavrhne', () => {
     }
   });
 });
+
+describe('keto recepty', () => {
+  const keto = infos.filter((i) => i.r.id.startsWith('keto-'));
+  it('je ich 8–12, všetky bez múky a bez rafinovaného cukru, pod limitom keto diéty', async () => {
+    const { LIMIT_SACH } = await import('../src/engine/filtre');
+    expect(keto.length).toBeGreaterThanOrEqual(8); expect(keto.length).toBeLessThanOrEqual(12);
+    expect(new Set(keto.map((i) => i.r.typ))).toEqual(new Set(['ranajky', 'polievka', 'obed', 'vecera', 'dezert']));
+    for (const i of keto) {
+      expect(i.kat.muka, i.r.id).toBe(false); expect(i.cukorRaf, i.r.id).toBe(false);
+      expect(i.skore.na100porcia.sach, i.r.id).toBeLessThanOrEqual(LIMIT_SACH.ketogenna);
+      expect(i.r.tagy).toContain('keto');
+      expect(i.r.casPripravy + i.r.casVarenia, i.r.id).toBeLessThanOrEqual(90);
+    }
+  });
+});
