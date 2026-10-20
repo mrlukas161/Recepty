@@ -44,7 +44,7 @@ describe('múka a pečivo: appka ich sama nenavrhne', () => {
   const n = PREDVOLENE;
   it('jedlo s múkou ani s rafinovaným cukrom nie je navrhnuteľné, bez múky áno', () => {
     expect(navrhnutelny(infos.find((i) => i.kat.muka)!, n)).toBe(false);
-    expect(navrhnutelny(infos.find((i) => i.cukorRaf)!, n)).toBe(false);
+    expect(navrhnutelny({ ...infos.find((i) => !i.kat.muka)!, cukorRaf: true }, n)).toBe(false);
     expect(navrhnutelny(infos.find((i) => !i.kat.muka && !i.cukorRaf)!, n)).toBe(true);
     const bezO = { ...n, obmedzenia: { ...n.obmedzenia, muka: 'bez' as const } };
     expect(navrhnutelny(infos.find((i) => i.kat.muka && !i.cukorRaf)!, bezO)).toBe(true);
@@ -61,6 +61,9 @@ describe('múka a pečivo: appka ich sama nenavrhne', () => {
     expect(limitMuky({ ...n, maxTyzdenne: { ...n.maxTyzdenne, muka: 3 } })).toBe(2);
     expect(limitMuky({ ...n, obmedzenia: { ...n.obmedzenia, muka: 'vylucit' } })).toBe(0);
     expect(limitMuky({ ...n, obmedzenia: { ...n.obmedzenia, muka: 'bez' } })).toBeNull();
+  });
+  it('žiadny vstavaný recept už neobsahuje rafinovaný cukor (nahradený medom alebo ovocím)', () => {
+    expect(infos.filter((i) => i.cukorRaf).map((i) => i.r.id)).toEqual([]);
   });
   it('každé jedlo s múkou má aspoň jednu verziu bez múky', () => {
     for (const i of infos.filter((x) => x.kat.muka)) {

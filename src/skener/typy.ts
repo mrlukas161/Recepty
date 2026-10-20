@@ -67,6 +67,8 @@ export interface Doplnok {
   cukor?: boolean;
   /** en:palm-oil */
   palma?: boolean;
+  /** vybrané tagy databázy (ingredients_tags, labels_tags) potrebné na odhalenie rizikových kombinácií */
+  tagy?: string[];
 }
 
 export interface Spolahlivost {

@@ -676,12 +676,11 @@ export const receptyRanajky2: Recept[] = [
       { id: 'vajce-slepacie', mnozstvo: 2, jednotka: 'ks' },
       { id: 'mlieko-polotucne', mnozstvo: 100, jednotka: 'ml' },
       { id: 'prasok-do-peciva', mnozstvo: 1, jednotka: 'lyzicka' },
-      { id: 'vanilkovy-cukor', mnozstvo: 1, jednotka: 'lyzicka', volitelna: true },
       { id: 'olej-repkovy', mnozstvo: 1, jednotka: 'lyzica' },
       { id: 'jahody', mnozstvo: 200, jednotka: 'g', volitelna: true, alternativy: ['maliny', 'jablko'] },
     ],
     postup: [
-      'Tvaroh vymiešaj s vajciami, mliekom a vanilkovým cukrom.',
+      'Tvaroh vymiešaj s vajciami a mliekom.',
       'Pridaj múku zmiešanú s práškom do pečiva a vymiešaj hladké cesto.',
       'Nechaj 10 minút odpočinúť.',
       'Panvicu zľahka potri olejom a vyhrej na stredný oheň.',
@@ -695,7 +694,7 @@ export const receptyRanajky2: Recept[] = [
       { typ: 'vymenit', popis: 'Mäkký tvaroh nahraď polotučným', z: 'tvaroh-makky', na: 'tvaroh-polotucny' },
     ],
     skladovanie: 'V chladničke 2 dni.',
-    deti: 'Vanilkový cukor možno vynechať, sladkosť dodá ovocie. Ovocie pre malé deti nakrájaj.',
+    deti: 'Sladkosť dodá ovocie. Ovocie pre malé deti nakrájaj.',
     ilustracia: '🥞',
   },
   {

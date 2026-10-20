@@ -27,7 +27,7 @@ test('múka: ruleta ani Zamiešať ju nedajú, vyhľadaním sa nájde s verziou 
   await page.getByRole('button', { name: /Vygenerovať týždeň|Zamiešať/ }).click();
   const odkazy = await page.locator('.slot a').evaluateAll((as) => as.map((a) => (a as HTMLAnchorElement).textContent));
   expect(odkazy.length).toBeGreaterThan(5);
-  for (const o of odkazy) expect(o).not.toMatch(/palacinky s džemom|bryndzové halušky|pizza margherita/i);
+  for (const o of odkazy) expect(o).not.toMatch(/palacinky s jablkovou plnkou|bryndzové halušky|pizza margherita/i);
   // ruleta: počet receptov na výber je bez múky
   await page.goto('./#/ruleta');
   await page.getByRole('button', { name: 'Všetko' }).click();

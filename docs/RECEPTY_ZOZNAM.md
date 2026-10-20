@@ -34,7 +34,7 @@ Počet vstavaných receptov: **197**. Názov súboru fotky = `<id>.webp` (pozri 
 | `cucoriedkove-muffiny` | Špaldové muffiny s čučoriedkami | dezert |
 | `kompot-z-jablk-a-sliviek` | Jablkovo-slivkový kompót bez cukru | dezert |
 | `makovy-zavin` | Makový závin | dezert |
-| `sisky` | Šišky s lekvárom | dezert |
+| `sisky` | Šišky s jablkovou plnkou | dezert |
 | `pernik` | Medový perník | dezert |
 | `tvarohovy-kolac` | Tvarohový koláč | dezert |
 | `bryndzove-halusky` | Bryndzové halušky so slaninou | obed |
@@ -42,8 +42,8 @@ Počet vstavaných receptov: **197**. Názov súboru fotky = `<id>.webp` (pozri 
 | `hovadzi-gulas-s-knedlou` | Hovädzí guláš s kysnutou knedľou | obed |
 | `vyprazany-rezen-so-zemiakmi` | Vyprážaný bravčový rezeň so zemiakmi | obed |
 | `langose` | Langoše s cesnakom a syrom | obed |
-| `palacinky-s-dzemom` | Palacinky s džemom | obed |
-| `kysnute-buchty-s-dzemom` | Kysnuté pečené buchty s džemom | obed |
+| `palacinky-s-dzemom` | Palacinky s jablkovou plnkou | obed |
+| `kysnute-buchty-s-dzemom` | Kysnuté pečené buchty s jablkovou plnkou | obed |
 | `zemiakove-lokse-s-makom` | Zemiakové lokše s makom | obed |
 | `strapacky-s-kapustou` | Strapačky s kyslou kapustou a slaninou | obed |
 | `zemiakove-placky` | Zemiakové placky s cesnakom | obed |

@@ -50,7 +50,7 @@ export function platnyKod(kod: string): boolean {
 
 const POLIA = [
   'product_name', 'product_name_sk', 'brands', 'lang', 'ingredients_text', 'ingredients_text_sk', 'ingredients_text_cs', 'ingredients_text_en',
-  'ingredients_tags', 'additives_tags', 'ingredients_analysis_tags', 'allergens_tags', 'traces_tags', 'nutriments', 'nutriscore_grade', 'nova_group',
+  'ingredients_tags', 'labels_tags', 'additives_tags', 'ingredients_analysis_tags', 'allergens_tags', 'traces_tags', 'nutriments', 'nutriscore_grade', 'nova_group',
 ].join(',');
 export const offUrl = (kod: string) => `https://world.openfoodfacts.org/api/v2/product/${encodeURIComponent(kod)}.json?fields=${POLIA}`;
 
@@ -69,6 +69,12 @@ export function alergenyZTagov(t: unknown): Alergen[] {
 
 const JAZYK_TEXT: Record<JazykZlozenia, string> = { sk: 'slovenčine', cs: 'češtine', en: 'angličtine', povodny: 'pôvodnom jazyku výrobku' };
 
+/** Z tagov si necháme len tie, ktoré treba na rizikové kombinácie (mäso, zeleninové extrakty, „bez dusitanov“). */
+export function relevantneTagy(t: string[]): string[] | undefined {
+  const r = t.filter((x) => /(meat|pork|beef|chicken|turkey|ham|bacon|sausage|salami|poultry|lamb|veal|duck|celery|spinach|beet|acerola|chard|nitrite|nitrate|preservative|e-number|e250|e249|e251|e252)/i.test(x)).slice(0, 40);
+  return r.length ? r : undefined;
+}
+
 /** Premení odpoveď OFF na náš tvar (čistá funkcia – testovaná). Text: sk → cs → en → originál. */
 export function mapujOff(kod: string, j: unknown): OffVyrobok | null {
   const o = j as { status?: number; product?: Record<string, unknown> } | null;
@@ -86,6 +92,7 @@ export function mapujOff(kod: string, j: unknown): OffVyrobok | null {
     stopy: alergenyZTagov(p.traces_tags),
     cukor: itags.includes('en:added-sugar'),
     palma: itags.includes('en:palm-oil'),
+    tagy: relevantneTagy([...tagy(p.ingredients_tags), ...tagy(p.labels_tags)]),
   };
   return {
     kod,

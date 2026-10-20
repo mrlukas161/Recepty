@@ -8,6 +8,9 @@ import { stupenPreDomacnost, POZNAMKA_SKORE_V, type SkoreVyrobku } from './skore
 import { INFOS } from '../ctx';
 import { nastav, useStav } from '../store';
 import { domaceAlternativy, tipyNaVyber } from './lepsia';
+import { najdiRizika } from './rizika';
+import { PrecoSkodi } from '../ui/Preco';
+import type { Doplnok } from './typy';
 import { STUPEN_TEXT, STUPEN_IKONA, type Rozbor, type Zlozka } from './typy';
 
 const UROVEN_TEXT: Record<string, string> = { 'silné': 'dôkazy: silné', 'stredné': 'dôkazy: stredné', 'slabé': 'dôkazy: slabé', prax: 'prax, nie dôkaz', odhad: 'odhad' };
@@ -51,7 +54,8 @@ export function RiadokZlozky({ z, deti }: { z: Zlozka; deti: boolean }) {
   );
 }
 
-export function Vysledok({ r, s, deti, nazov = '', naOpravu }: { r: Rozbor; s: SkoreVyrobku; deti: boolean; nazov?: string; naOpravu?: () => void }) {
+export function Vysledok({ r, s, deti, nazov = '', naOpravu, doplnok }: { r: Rozbor; s: SkoreVyrobku; deti: boolean; nazov?: string; naOpravu?: () => void; doplnok?: Doplnok }) {
+  const rizika = najdiRizika(r, doplnok);
   const alt = domaceAlternativy(nazov, r, INFOS);
   const st = useStav();
   return (
@@ -90,6 +94,17 @@ export function Vysledok({ r, s, deti, nazov = '', naOpravu }: { r: Rozbor; s: S
       {r.alergeny.length > 0 && <div class="upoz"><b>Alergény v zložení:</b> {r.alergeny.map((a) => ALERGEN_NAZOV[a]).join(', ')}.</div>}
       {r.stopy.length > 0 && <div class="upoz"><b>Môže obsahovať stopy:</b> {r.stopy.map((a) => ALERGEN_NAZOV[a]).join(', ')}.</div>}
 
+      {rizika.length > 0 && (
+        <div class="karta" style="animation:none" data-rizika>
+          <h3>Rizikové látky a kombinácie</h3>
+          {rizika.map((x) => (
+            <div key={x.id} class={x.zavaznost === 'pozor' ? 'sk-varovanie' : 'upoz'} data-riziko={x.id}>
+              <b>{x.nadpis}.</b> {x.text}
+              <PrecoSkodi id={x.preco} />
+            </div>
+          ))}
+        </div>
+      )}
       {(s.pozitiva.length > 0 || s.negativa.length > 0) && (
         <div class="karta" style="animation:none">
           {s.pozitiva.length > 0 && <><h3>Prínosy</h3><ul>{s.pozitiva.map((p) => <li key={p} class="plus">✓ <span style="color:var(--text)">{p}</span></li>)}</ul></>}

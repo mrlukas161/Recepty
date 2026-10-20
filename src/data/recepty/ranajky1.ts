@@ -157,26 +157,26 @@ export const receptyRanajky1: Recept[] = [
   {
     id: 'ryzova-kasa-s-jablkom', nazov: 'Mliečna ryžová kaša s jablkom', typ: 'ranajky', kuchyna: 'slovenská',
     casPripravy: 5, casVarenia: 22, narocnost: 1, porcie: 2,
-    suroviny: [n('ryza-biela', 80, 'g'), s('mlieko-polotucne', 450, 'ml'), s('jablko', 1, 'ks'), s('skorica', 1, 'lyzicka'), s('vanilkovy-cukor', 5, 'g'), s('sol', 1, 'g')],
+    suroviny: [n('ryza-biela', 80, 'g'), s('mlieko-polotucne', 450, 'ml'), s('jablko', 1, 'ks'), s('skorica', 1, 'lyzicka'), s('sol', 1, 'g')],
     postup: [
       'Ryžu prepláchni a daj do hrnca s mliekom a štipkou soli.',
       'Priveď do varu, zníž oheň na minimum a var 15 minút za častého miešania, aby sa neprichytila.',
       'Jablko nastrúhaj nahrubo a pridaj do kaše.',
       'Var ďalších 5 minút, kým je ryža mäkká a kaša krémová.',
-      'Primiešaj škoricu a vanilkový cukor, nechaj chvíľu odstáť a podávaj teplú.'],
+      'Primiešaj škoricu, nechaj chvíľu odstáť a podávaj teplú.'],
     tagy: ['detske', 'bezmasite', 'bez-peciva', 'bezlepkove', 'sladke', 'lacne'], vybavenie: ['hrniec'],
     upravy: [{ typ: 'pridat', popis: 'Pridaj hrsť čučoriedok na koniec', na: 'cucoriedky', mnozstvo: 50, jednotka: 'g' }, { typ: 'vymenit', popis: 'Jablko nahraď hruškou', z: 'jablko', na: 'hruska', mnozstvo: 170, jednotka: 'g' }],
-    skladovanie: 'V chladničke 2 dni, pred ohrevom prilej mlieko. Ryžu nenechávaj dlho pri izbovej teplote.', deti: 'Vanilkový cukor možno vynechať; pridaný cukor je zbytočný vďaka jablku.', ilustracia: '🍚' },
+    skladovanie: 'V chladničke 2 dni, pred ohrevom prilej mlieko. Ryžu nenechávaj dlho pri izbovej teplote.', deti: 'Bez pridaného cukru – sladkosť dodá jablko.', ilustracia: '🍚' },
   {
     id: 'jahlova-kasa-s-marhulami-a-orechmi', nazov: 'Jáhlová kaša s marhuľami a orechmi', typ: 'ranajky', kuchyna: 'slovenská',
     casPripravy: 5, casVarenia: 20, narocnost: 1, porcie: 2,
-    suroviny: [n('jahly-proso', 100, 'g'), s('mlieko-polotucne', 300, 'ml', ['mlieko-ovsene']), s('voda', 150, 'ml'), s('marhule', 3, 'ks', ['broskyna']), s('mandle', 20, 'g'), s('skorica', 0.5, 'lyzicka'), s('sol', 1, 'g'), v('javorovy-sirup', 1, 'lyzicka')],
+    suroviny: [n('jahly-proso', 100, 'g'), s('mlieko-polotucne', 300, 'ml', ['mlieko-ovsene']), s('voda', 150, 'ml'), s('marhule', 3, 'ks', ['broskyna']), s('mandle', 20, 'g'), s('skorica', 0.5, 'lyzicka'), s('sol', 1, 'g'), v('med', 1, 'lyzicka')],
     postup: [
       'Jahly preplách horúcou vodou na site, aby zmizla horkastá chuť.',
       'Vlož do hrnca s mliekom, vodou a soľou, priveď do varu.',
       'Prikry a var na miernom ohni 15 minút, občas premiešaj; jahly majú byť mäkké a kaša krémová.',
       'Marhule rozpoľ, vyber kôstky a nakrájaj na kúsky; mandle nahrubo nasekaj.',
-      'Kašu odstav, vmiešaj škoricu, rozdeľ a ozdob marhuľami, mandľami a prípadne sirupom.'],
+      'Kašu odstav, vmiešaj škoricu, rozdeľ a ozdob marhuľami, mandľami a prípadne medom.'],
     tagy: ['bezmasite', 'bez-peciva', 'bezlepkove', 'sladke'], vybavenie: ['hrniec'],
     upravy: [{ typ: 'pridat', popis: 'Pridaj lyžicu chia semienok', na: 'chia', mnozstvo: 10, jednotka: 'g' }],
     skladovanie: 'V chladničke 2 dni.', deti: 'Mandle pre deti do 4 rokov len mleté.', ilustracia: '🍑' },
@@ -237,9 +237,9 @@ export const receptyRanajky1: Recept[] = [
   {
     id: 'chia-puding-s-mangom', nazov: 'Chia puding s mangom a kokosom', typ: 'ranajky', kuchyna: 'moderná',
     casPripravy: 8, casVarenia: 0, narocnost: 1, porcie: 2,
-    suroviny: [n('chia', 40, 'g'), s('mlieko-kokosove', 150, 'ml', ['mlieko-polotucne']), s('mlieko-polotucne', 150, 'ml', ['mlieko-ovsene']), s('mango', 0.5, 'ks', ['ananas']), s('kokos-struhany', 10, 'g'), v('javorovy-sirup', 1, 'lyzicka')],
+    suroviny: [n('chia', 40, 'g'), s('mlieko-kokosove', 150, 'ml', ['mlieko-polotucne']), s('mlieko-polotucne', 150, 'ml', ['mlieko-ovsene']), s('mango', 0.5, 'ks', ['ananas']), s('kokos-struhany', 10, 'g'), v('med', 1, 'lyzicka')],
     postup: [
-      'Zmiešaj chia semienka s kokosovým a obyčajným mliekom (prípadne sirupom).',
+      'Zmiešaj chia semienka s kokosovým a obyčajným mliekom (prípadne medom).',
       'Po 5 minútach znova prešľahaj, aby sa semienka nezlepili.',
       'Prikry a nechaj v chladničke aspoň 4 hodiny, ideálne na noc.',
       'Mango olúp a nakrájaj na kocky.',
@@ -250,10 +250,10 @@ export const receptyRanajky1: Recept[] = [
   {
     id: 'kakaovy-chia-puding-s-bananom', nazov: 'Kakaový chia puding s banánom', typ: 'ranajky', kuchyna: 'moderná',
     casPripravy: 8, casVarenia: 0, narocnost: 1, porcie: 2,
-    suroviny: [n('chia', 40, 'g'), s('mlieko-polotucne', 300, 'ml', ['mlieko-ovsene', 'mlieko-sojove']), s('kakao', 10, 'g'), s('banan', 1, 'ks'), s('datlovy-sirup', 1, 'lyzicka', { alternativy: ['med'] }), s('vlasske-orechy', 15, 'g')],
+    suroviny: [n('chia', 40, 'g'), s('mlieko-polotucne', 300, 'ml', ['mlieko-ovsene', 'mlieko-sojove']), s('kakao', 10, 'g'), s('banan', 1, 'ks'), s('med', 1, 'lyzicka', { alternativy: ['datle-susene'] }), s('vlasske-orechy', 15, 'g')],
     postup: [
       'Polovicu banánu rozpučaj vidličkou.',
-      'Zmiešaj kakao s trochou mlieka na hladkú kašu, potom pridaj zvyšné mlieko, banán a sirup.',
+      'Zmiešaj kakao s trochou mlieka na hladkú kašu, potom pridaj zvyšné mlieko, banán a med.',
       'Vsyp chia semienka, dobre prešľahaj a po 5 minútach ešte raz.',
       'Prikry a daj do chladničky na aspoň 4 hodiny alebo na noc.',
       'Pred podávaním premiešaj a navrch pridaj kolieska banánu a posekané orechy.'],
@@ -289,9 +289,9 @@ export const receptyRanajky1: Recept[] = [
   {
     id: 'tvarohova-misa-s-jahodami', nazov: 'Tvarohová misa s jahodami', typ: 'ranajky', kuchyna: 'slovenská',
     casPripravy: 7, casVarenia: 0, narocnost: 1, porcie: 2,
-    suroviny: [n('tvaroh-makky', 250, 'g', ['tvaroh-polotucny', 'cottage']), s('jahody', 150, 'g', { alternativy: ['maliny', 'broskyna'] }), s('mlieko-polotucne', 50, 'ml'), s('vanilkovy-cukor', 5, 'g'), s('mandle', 15, 'g'), v('med', 1, 'lyzicka')],
+    suroviny: [n('tvaroh-makky', 250, 'g', ['tvaroh-polotucny', 'cottage']), s('jahody', 150, 'g', { alternativy: ['maliny', 'broskyna'] }), s('mlieko-polotucne', 50, 'ml'), s('mandle', 15, 'g'), v('med', 1, 'lyzicka')],
     postup: [
-      'Tvaroh rozmiešaj s mliekom a vanilkovým cukrom do hladka.',
+      'Tvaroh rozmiešaj s mliekom do hladka.',
       'Jahody umy, odstráň stopky a nakrájaj.',
       'Mandle nahrubo nasekaj.',
       'Tvaroh rozdeľ do misiek, navrch daj jahody a mandle.',

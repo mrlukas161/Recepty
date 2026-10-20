@@ -1,6 +1,8 @@
 import { useState } from 'preact/hooks';
 import { NAHRADY, CHUT_NA } from '../data/nahrady';
 import { DIETY, DIETA } from '../data/diety';
+import { PrecoZoznam } from './Preco';
+import { PRECO_ID } from '../data/preco';
 import { VEDOMOSTI, OVERENIE_POZNAMKA } from '../data/vedomosti';
 import { SUROVINA } from '../data';
 import { useStav, nastavNastavenia, nastav, exportuj, importuj, resetuj } from '../store';
@@ -141,6 +143,9 @@ export function Vedomosti() {
           <ZdrojeK kind="karty" id={k.id} />
         </details>
       ))}
+      <h2 id="preco">Prečo škodia niektoré veci</h2>
+      <p class="maly">Krátke popisy, všade rovnaké (pri skene, recepte aj surovine): čo to je, koľko vadí, komu viac, čo namiesto toho a úroveň dôkazov.</p>
+      <PrecoZoznam ids={[...PRECO_ID]} />
       <h2>Zdroje</h2>
       <VsetkyZdroje />
       <h3>Výživové tabuľky</h3>

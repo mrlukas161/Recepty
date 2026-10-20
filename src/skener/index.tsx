@@ -133,7 +133,7 @@ export function Skener() {
                   <span class="maly"> Nutri-Score a NOVA sú údaje z databázy, nie naše skóre; zloženie od používateľov môže byť zastarané – porovnaj s obalom.</span>
                 </div>
               )}
-              <Vysledok r={vyhodnotenie.r} s={vyhodnotenie.sk} deti={deti} nazov={nazov} naOpravu={off ? undefined : () => { const t = document.getElementById('sk-text') as HTMLTextAreaElement | null; t?.scrollIntoView({ block: 'center', behavior: 'smooth' }); t?.focus(); }} />
+              <Vysledok doplnok={doplnok} r={vyhodnotenie.r} s={vyhodnotenie.sk} deti={deti} nazov={nazov} naOpravu={off ? undefined : () => { const t = document.getElementById('sk-text') as HTMLTextAreaElement | null; t?.scrollIntoView({ block: 'center', behavior: 'smooth' }); t?.focus(); }} />
             </div>
           )}
         </>

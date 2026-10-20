@@ -483,7 +483,6 @@ export const receptyDesiaty: Recept[] = [
       { id: 'hruska', mnozstvo: 1, jednotka: 'ks', alternativy: ['jablko', 'broskyna'] },
       { id: 'mandarinka', mnozstvo: 2, jednotka: 'ks', volitelna: true },
       { id: 'jogurt-biely', mnozstvo: 2, jednotka: 'lyzica' },
-      { id: 'vanilkovy-cukor', mnozstvo: 0.25, jednotka: 'lyzicka', volitelna: true },
       { id: 'skorica', mnozstvo: 0.25, jednotka: 'lyzicka', volitelna: true },
     ],
     postup: [

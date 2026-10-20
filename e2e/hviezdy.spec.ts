@@ -35,6 +35,6 @@ test('hviezdičky 1–5 sa ukladajú, zobrazia na karte a prenášajú v stave',
   const s = await page.evaluate(() => JSON.parse(localStorage.getItem('recepty-v1')!).hviezdicky);
   expect(s).toEqual({ 'palacinky-s-dzemom': 4 });
   await page.goto('./#/recepty');
-  await page.getByPlaceholder(/Hľadať/).fill('palacinky s dzemom');
-  await expect(page.locator('a.karta', { hasText: 'Palacinky s džemom' }).locator('.tag', { hasText: '★★★★' })).toBeVisible();
+  await page.getByPlaceholder(/Hľadať/).fill('palacinky s jablkovou');
+  await expect(page.locator('a.karta', { hasText: 'Palacinky s jablkovou plnkou' }).locator('.tag', { hasText: '★★★★' })).toBeVisible();
 });

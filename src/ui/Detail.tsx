@@ -16,6 +16,8 @@ import { OvladanieVlastneho } from './VlastnyRecept';
 import { SlabaPoznamka } from './Surovina';
 import { Cipy, Hviezdicky, Pecat, prepniOblubene, Upozornenie, KartaReceptu, VerziaBezMuky } from './kom';
 import { tyzdenMuky } from '../engine/muka';
+import { PrecoZoznam } from './Preco';
+import { precoPreRecept } from '../engine/preco-vyber';
 
 const TAG_NAZOV: Record<string, string> = { detske: 'Detské', rychle: 'Rýchle', 'do-krabicky': 'Do krabičky', lacne: 'Lacné', bezmasite: 'Bezmäsité', 'bez-peciva': 'Bez pečiva', bezlepkove: 'Bezlepkové', vegansky: 'Vegánske', 'vyvarene-z-zvyskov': 'Zo zvyškov', 'na-viac-dni': 'Na viac dní', sladke: 'Sladké' };
 
@@ -134,6 +136,12 @@ function DetailVnutro({ id }: { id: string }) {
           <p class="upoz">{POZNAMKA_SKORE} Zdroje pri jednotlivých faktoroch ukazujú, čo je podložené; váhy a prahy sú naše odhady. Percento hore je celkové skóre; pri faktoroch ukazujeme skutočné hodnoty a cieľ.</p>
         </details>
       </div>
+      {precoPreRecept(r, SUROVINA).length > 0 && (
+        <div class="karta" style="animation:none" data-preco-recept>
+          <h3>Slabé suroviny a úpravy – prečo</h3>
+          <PrecoZoznam ids={precoPreRecept(r, SUROVINA)} />
+        </div>
+      )}
       {s.nastavenia.diety.length > 0 && (
         <div class="karta vhodnost">
           <h3>Vhodnosť pre tvoje diéty</h3>

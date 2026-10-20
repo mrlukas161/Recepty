@@ -9,6 +9,8 @@ import { bezDiakritiky } from '../engine/filtre';
 import { ZDROJE, ZDROJ, zdrojePre } from '../data/zdroje';
 import { ZdrojKarta } from './Zdroje';
 import { Hlavicka, Upozornenie } from './kom';
+import { PrecoZoznam } from './Preco';
+import { precoPreSurovinu } from '../engine/preco-vyber';
 
 const UROVEN_TEXT = { tabulka: 'z výživových tabuliek a zloženia', prax: 'kuchárska prax, nie dôkaz', odhad: 'naše zhodnotenie (odhad)' } as const;
 const zdrojTabulky = (z: string) => z.startsWith('ciqual:') ? `Ciqual 2025, kód ${z.slice(7)}` : z.startsWith('fdc:') ? `USDA FoodData Central, ID ${z.slice(4)}` : 'typická hodnota (odhad)';
@@ -69,6 +71,7 @@ export function SurovinaKarta({ id }: { id: string }) {
       <table class="tabulka"><thead><tr><th></th><th>kcal</th><th>bielk. g</th><th>sach. g</th><th>vláknina g</th></tr></thead>
         <tbody>{rad(s.nazov, s)}{id !== base.id && rad('Biela múka hladká', base)}</tbody></table>
       <p class="maly">Zdroj hodnôt: {s.odhad ? 'typická hodnota (odhad)' : zdrojTabulky(s.zdrojNutr)}{s.priblizne ? ' – približné' : ''}. Biela múka: {base.odhad ? 'odhad' : zdrojTabulky(base.zdrojNutr)}. Sacharidy sú bez vlákniny.{s.poznamkaNutr ? ` ${s.poznamkaNutr}.` : ''}</p>
+      {precoPreSurovinu(s).length > 0 && <div data-preco-surovina><h2>Prečo to škodí</h2><PrecoZoznam ids={precoPreSurovinu(s)} /></div>}
       <h2>Zdroje</h2>
       {zdroje.length ? zdroje.map((z) => <ZdrojKarta key={z.id} z={z} />) : <p class="maly">K tomuto tvrdeniu nemáme štúdiu – ide o výživové tabuľky, zloženie alebo kuchársku prax ({k ? UROVEN_TEXT[k.uroven] : 'odhad'}).</p>}
       {pouzite.length > 0 && <><h2>Recepty s touto surovinou ({pouzite.length})</h2><ul>{pouzite.slice(0, 8).map((r) => <li key={r.id}><a href={`#/recept/${r.id}`} style="display:inline-block;padding:8px 0">{r.nazov}</a></li>)}</ul></>}

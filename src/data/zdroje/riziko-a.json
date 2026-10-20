@@ -10,7 +10,9 @@
     "overene": "2026-10-20",
     "overenie": "vyhladavanie",
     "faktory": [],
-    "karty": [],
+    "karty": [
+      "udeniny"
+    ],
     "diety": []
   },
   {
@@ -24,7 +26,9 @@
     "overene": "2026-10-20",
     "overenie": "vyhladavanie",
     "faktory": [],
-    "karty": [],
+    "karty": [
+      "udeniny"
+    ],
     "diety": []
   },
   {
@@ -38,7 +42,9 @@
     "overene": "2026-10-20",
     "overenie": "vyhladavanie",
     "faktory": [],
-    "karty": [],
+    "karty": [
+      "udeniny"
+    ],
     "diety": []
   },
   {
@@ -80,7 +86,9 @@
     "overene": "2026-10-20",
     "overenie": "vyhladavanie",
     "faktory": [],
-    "karty": [],
+    "karty": [
+      "udeniny"
+    ],
     "diety": []
   },
   {
@@ -94,7 +102,9 @@
     "overene": "2026-10-20",
     "overenie": "vyhladavanie",
     "faktory": [],
-    "karty": [],
+    "karty": [
+      "udeniny"
+    ],
     "diety": []
   },
   {
@@ -108,7 +118,10 @@
     "overene": "2026-10-20",
     "overenie": "vyhladavanie",
     "faktory": [],
-    "karty": [],
+    "karty": [
+      "cukor",
+      "deti"
+    ],
     "diety": []
   },
   {
@@ -122,7 +135,10 @@
     "overene": "2026-10-20",
     "overenie": "vyhladavanie",
     "faktory": [],
-    "karty": [],
+    "karty": [
+      "cukor",
+      "deti"
+    ],
     "diety": []
   }
 ]
