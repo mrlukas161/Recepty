@@ -81,8 +81,9 @@ export function generujJedalnicek(v: PlanVstup): Record<string, string | null> {
         if (jeRyba(i, db) && ryby >= 2) return false;
         return true;
       });
-      // ak nič nevyhovuje všetkému, aspoň čas (ak sa dá), potom čokoľvek nepoužité
-      const zdroj = kand.length ? kand : (volne.filter(dost).length ? volne.filter(dost) : volne);
+      // ak nič nevyhovuje všetkému, aspoň čas: najprv nepoužité, potom rýchle jedlo spred aspoň 2 dní (čas na varenie má prednosť pred neopakovaním), až potom čokoľvek nepoužité
+      const opakovat = pool.filter((i) => dost(i) && pouzite.has(i.r.id) && d - (pouzite.get(i.r.id) as number) >= 2);
+      const zdroj = kand.length ? kand : volne.filter(dost).length ? volne.filter(dost) : opakovat.length ? opakovat : volne;
       if (!zdroj.length) { out[k] = null; continue; }
       const pred = bielkoviny[bielkoviny.length - 1];
       const dvojita = dvaDni && typ === 'vecera' && d < 6 && !out[kluc(d + 1, 'obed')];

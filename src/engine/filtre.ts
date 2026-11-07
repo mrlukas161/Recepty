@@ -11,11 +11,11 @@ export interface Info {
   cukorRaf: boolean;
 }
 
-/** Celozrnná pšeničná (a špaldová) múka, chlieb, pečivo a cestoviny: platia rovnako ako biele (rozhodnutie Lukáša, register #480). Výživový rozdiel ostáva v skóre. */
+/** Celozrnná pšeničná (a špaldová) múka, chlieb, pečivo a cestoviny aj bulgur: platia rovnako ako biele (rozhodnutie Lukáša, register #480; bulgur a kuskus Revízia bod 68, 07.11.2026). Výživový rozdiel ostáva v skóre. */
 export function jeCelozrnnaPsenica(id: string, x: Surovina | undefined): boolean {
   if (!x || !x.priznaky.includes('lepok') || !x.priznaky.includes('celozrnne')) return false;
-  if (/(ovsen|pohank|ryz|bulgur|kuskus|razn)/.test(id) && !/(chlieb|rozok|pecivo)/.test(id)) return false;
-  return /(psenicn|spaldov|chlieb|rozok|cestovin|tortil|pecivo|baget)/.test(id);
+  if (/(ovsen|pohank|ryz|razn)/.test(id) && !/(chlieb|rozok|pecivo)/.test(id)) return false;
+  return /(psenicn|spaldov|chlieb|rozok|cestovin|tortil|pecivo|baget|bulgur|kuskus)/.test(id);
 }
 
 export function kategorie(r: Recept, sk: Skore, db: Map<string, Surovina>): Record<Kategoria, boolean> {

@@ -12,6 +12,11 @@ describe('celozrnná pšenica platí ako múka', () => {
     expect(c.length).toBeGreaterThan(0);
     for (const i of c) { expect(i.kat.muka).toBe(true); expect(navrhnutelny(i, PREDVOLENE)).toBe(false); }
   });
+  it('bulgur a kuskus sa nenavrhujú (Revízia bod 68)', () => {
+    const c = infos.filter((i) => i.r.suroviny.some((s) => (s.id === 'bulgur' || s.id === 'kuskus') && !(s.volitelna && !s.nevyhnutna)));
+    expect(c.length).toBeGreaterThan(0);
+    for (const i of c) { expect(i.kat.muka).toBe(true); expect(navrhnutelny(i, PREDVOLENE)).toBe(false); }
+  });
   it('Zamiešať: 30 týždňov bez jedla s múkou', () => {
     for (let seed = 1; seed <= 30; seed++) {
       const plan = generujJedalnicek({ infos, n: PREDVOLENE, db: SUROVINA, zamknute: {}, seed, pridane: {}, hodnotenia: { hviezdicky: {}, hodnotenie: {} } as never });
