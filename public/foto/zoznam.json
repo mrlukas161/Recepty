@@ -1,1 +1,1244 @@
-[]
+[
+ {
+  "id": "desiata-jablko-arasidove-maslo",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "desiata-mrkva-hummus",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "desiata-tvarohove-gulky",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "desiata-jogurt-ovocie-vlocky",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "desiata-chlieb-tvaroh-uhorka",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "desiata-ovsene-susienky-banan",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "desiata-ovocny-salat-jogurt",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "desiata-vajce-natvrdo-zelenina",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "desiata-tortilla-zavitok-cottage",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "desiata-pita-hummus-zelenina",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "desiata-slane-zeleninove-muffiny",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "desiata-datlovo-ovsene-tycinky",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "desiata-kefir-smoothie",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "desiata-sendvic-syr-paprika",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "desiata-ovocie-tvarohovy-dip",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "ovocna-misa-s-jogurtom",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "pecene-jablka",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "ovsene-susienky-s-ovocim",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "avokadovy-cokoladovy-puding",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "jogurtova-zmrzlina",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "ovocne-tycinky",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "jablkovy-kolac-s-ovsom",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "bananove-ovsene-palacinky",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "chia-puding-s-ovocim",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "bananova-zmrzlina",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "tvarohovy-krem-s-ovocim",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "cucoriedkove-muffiny",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "kompot-z-jablk-a-sliviek",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "makovy-zavin",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "sisky",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "pernik",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "tvarohovy-kolac",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "keto-vajecny-chlieb-s-psylliom",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "keto-vajecne-muffiny-so-zeleninou",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "keto-kulajda-z-kalerabu",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "keto-karfiolova-ryza-s-kari-a-rybou",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "keto-kuracie-stehna-s-vajickovym-salatom",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "keto-pyre-zo-zeleru-a-karfiolu-s-pecenou",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "keto-cuketove-placky-so-syrom-a-cesnakovym-dipom",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "keto-losos-so-spenatom-a-vajcom",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "keto-pizza-z-mozzarelly-a-vajec",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "keto-tvarohovo-malinovy-krem",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "bryndzove-halusky",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "zemiakovo-tvarohove-pirohy",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "hovadzi-gulas-s-knedlou",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "vyprazany-rezen-so-zemiakmi",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "langose",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "palacinky-s-dzemom",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "kysnute-buchty-s-dzemom",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "zemiakove-lokse-s-makom",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "strapacky-s-kapustou",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "zemiakove-placky",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "hovadzi-gulas-bez-muky",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "segedinsky-gulas-lahsi",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "zapekane-zemiaky-so-zeleninou",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "sosovicovy-privarok",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "fazulovy-privarok",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "kapustnica-ako-hlavne-jedlo",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "pecene-kura-so-zeleninou",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "plnena-paprika-v-paradajkovej-omacke",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "pohankove-rizoto-so-zeleninou",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "pecena-treska-so-zemiakmi",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "spenat-so-zemiakmi-a-vajcom",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "kel-so-zemiakovou-kasou",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "sosovicove-karbonatky",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "cicerovo-cuketove-karbonatky",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "kuraci-paprikas-s-jahlami",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "tekvicovy-gulas-s-fazulou",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "jahlova-kasa-s-hubami",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "cuketove-placky-s-tvarohom",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "pecany-pstruh-s-bylinkami",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "zapekany-karfiol-so-syrom",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "hrachova-kasa-s-cibulkou",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "slovenske-leco-s-vajcom",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "sosovicove-kari-kokos",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "cicerove-kari-spenat",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "chilli-con-carne-fazula",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "falafel-pecene-pita",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "celozrnne-tortilly-kuracie",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "ryzova-misa-edamame-avokado",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "misa-kuracia-quinoa-brokolica",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "pecene-losos-ryza-brokolica",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "treska-zelenina-rura",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "celozrnne-cestoviny-sosovicova-bolonska",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "cicerove-cestoviny-brokolica-cesnak",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "sosovicove-cestoviny-tuniak",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "kuracie-stir-fry-zelenina",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "tofu-zelenina-kokos",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "kuskus-salat-cicer",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "bulgur-tabbouleh-salat",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "shakshuka-vajcia-paradajky",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "zapekana-cuketa-morcacie",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "baklazan-zapekany-mozzarella",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "rizoto-hrasok-kuracie",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "pohankova-misa-huby-vajce",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "jahly-kuracie-mrkva",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "plnena-tekvica-quinoa",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "fazulovy-burger-pecene",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "tacos-cierna-fazula",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "rybie-tyckinky-pecene",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "kuracie-nugetky-vlocky",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "pstruh-zemiaky-fazulky",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "mungo-dal-ryza",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "batat-plneny-fazula",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "zemiakova-polievka",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "kapustnica",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "fazulova-polievka",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "sosovicova-polievka",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "hrachova-polievka",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "sampinonova-polievka",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "zeleninova-polievka",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "kuracia-polievka-s-rezancami",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "cesnakova-polievka",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "tekvicovy-krem",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "paradajkova-polievka",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "brokolicova-polievka",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "minestrone",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "gulasova-polievka",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "borsc",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "cervena-cocka-polievka",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "cicerova-polievka",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "cuketova-polievka",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "prazenica-so-zeleninou",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "volske-oko-na-spenate",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "omeleta-so-syrom-a-bylinkami",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "shakshuka-s-paprikou",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "vajickova-misa-s-avokadom",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "vajickove-muffiny-so-zeleninou",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "omeleta-s-cuketou-a-fetou",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "ovsena-kasa-s-jablkom-a-skoricou",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "ovsena-kasa-s-bananom-a-arasidovym-maslom",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "detska-ovsena-kasa-s-hruskou",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "pohankova-kasa-s-ovocim",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "ryzova-kasa-s-jablkom",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "jahlova-kasa-s-marhulami-a-orechmi",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "slana-pohankova-kasa-s-volskym-okom",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "slana-ovsena-kasa-so-spenatom",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "slana-jahlova-kasa-so-zeleninou",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "ovsena-kasa-cez-noc-s-malinami",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "chia-puding-s-mangom",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "kakaovy-chia-puding-s-bananom",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "jogurtova-misa-s-ovocim-a-orechmi",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "kefirova-misa-s-vlockami-a-cucoriedkami",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "tvarohova-misa-s-jahodami",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "slana-tvarohova-misa-s-redkovkou",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "jogurtova-misa-s-mangom-a-kokosom",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "detska-jogurtova-misa-s-hruskou",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "ovsene-placky-banan",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "pohankove-lievance-jogurt",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "cicerove-placky-zeleninove",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "cuketove-placky-celozrnne",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "sosovicove-placky-cervene",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "fazulova-natierka-chlieb",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "ranajky-tvarohova-natierka-redkovka",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "hummus-toast-avokado-vajce",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "toast-vajce-spenat",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "sendvic-cottage-zelenina",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "smoothie-misa-spenat-banan",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "smoothie-misa-jahody-jogurt",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "domace-musli-pecene",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "muffiny-ovsene-jablko",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "muffiny-bananove-celozrnne",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "prazenica-cibula-chlieb",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "chlieb-sunka-zelenina",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "vajickova-natierka-pazitka",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "tvarohove-lievance-spaldove",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "pecena-ovsena-kasa-cucoriedky",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "omeleta-spenat-feta",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "omeleta-cuketa-paradajka",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "frittata-zemiaky-paprika",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "frittata-brokolica-syr",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "miesane-tofu-zelenina",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "salat-vajce-uhorka-jogurt",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "salat-tuniak-fazula",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "salat-cicer-paprika-feta",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "salat-sosovica-repa",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "zapekana-cuketa-tvaroh",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "zapeceny-karfiol-syr",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "zapekany-baklazan-mozzarella",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "plnena-paprika-tvaroh",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "plnena-cuketa-mlete",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "plnene-sampinony-spenat",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "hummus-domaci-zelenina",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "vecera-tvarohova-natierka-redkovka",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "natierka-tuniak-avokado",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "natierka-fazulova-zelenina",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "pizza-celozrnna-zelenina",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "pizza-margherita-klasicka",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "placka-karfiol-pizza",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "placka-cuketa-pizza",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "krem-brokolica-syr",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "krem-mrkva-sosovica",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "krem-tekvica-hokkaido",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "fasirky-morcacie-rura",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "karbonatky-sosovica-vlocky",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "karbonatky-cicer-rura",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "rybie-prsty-domace-pecene",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "rybie-prsty-zemiaky-hrasok",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "quesadilla-fazula-syr",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "quesadilla-kuracie-zvysky",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "ryza-jedna-panvica-kuracie",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "ryza-zvysky-zelenina-vajce",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "pohanka-huby-vajce",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "pohanka-cuketa-tofu",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "teple-sunkove-sendvice",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "sunkofleky-klasicke",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ },
+ {
+  "id": "zemiaky-slanina-vajce-panvica",
+  "ai": true,
+  "model": "Pollinations (Sana)",
+  "datum": "2026-11-07"
+ }
+]
