@@ -6,7 +6,7 @@
 - **Z toho, čo mám doma:** na Dnes pridaj suroviny ťuknutím a appka ukáže jedlá, kde chýba najmenej (bez múky a cukru ako doteraz).
 - **Do jedálnička na dnes** jedným ťuknutím pri každom návrhu; **Jedálniček → ↶ Späť** vráti týždeň po omylom Zamiešať; **Nákup:** „Kúpené X z Y“ a „Skryť kúpené“.
 - **Úvod:** pevné tlačidlo „Hotovo, ukáž návrhy“ vždy dole, bez dolnej navigácie. Čipy (Obmedziť/1×/2×, zoradenie) sa už nezlepujú do stĺpca; väčšie dotykové plochy odkazov; karta múky na Dnes je kompaktná (bodky limitu).
-- **Pozor, rozhodni:** celozrnné pšeničné cestoviny, chlieb a múka sa nerátajú ako „rafinovaná múka“, takže sa môžu objaviť v jedálničku; karta ich značí „celozrnná múka/pečivo“. Ak ich chceš tiež nenavrhovať, povedz (R-d1 v `docs/ROZHODNUTIA.md`).
+- **Celozrnná pšenica = múka:** celozrnné cestoviny, chlieb, pečivo a múka sa už samé nenavrhujú (27 receptov), nájdeš ich len vyhľadaním s verziou bez múky a limitom 1–2× (podľa tvojho pokynu z 19.10.).
 - **Overené:** QA na živej verzii (mobil 412×915, svetlý aj tmavý), 309 unit testov, build, 56 e2e. Neskúšané na reálnom telefóne.
 
 ## Stav v skratke (kontrola 16.10. ~04:50 UTC)

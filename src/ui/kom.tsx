@@ -49,15 +49,6 @@ export function Hviezdicky({ id }: { id: string }) {
   );
 }
 
-/** Recept s celozrnnou pšeničnou múkou, pečivom alebo cestovinami (nie je „rafinovaná“, ale nie je ani úplne bez múky). */
-export function celozrnnePsenicne(i: Info): boolean {
-  return i.r.suroviny.some((x) => {
-    if (x.volitelna && !x.nevyhnutna) return false;
-    const d = SUROVINA.get(x.id);
-    return !!d && d.priznaky.includes('lepok') && d.priznaky.includes('celozrnne') && /(muka|chlieb|rozok|cestovin|tortil|pecivo)/.test(x.id) && !/(ovsen|razn|pohank)/.test(x.id);
-  });
-}
-
 export function KartaReceptu({ i, dovod }: { i: Info; dovod?: string[] }) {
   const s = useStav();
   const fav = s.oblubene.includes(i.r.id);
@@ -72,7 +63,7 @@ export function KartaReceptu({ i, dovod }: { i: Info; dovod?: string[] }) {
         <div class="rozt">
           <h3 style="margin:0">{fav ? '★ ' : ''}{nazovPreDomacnost(i.r, s.nastavenia, SUROVINA, s.pridaneVolitelne[i.r.id])}</h3>
           <div class="maly">{TYP_NAZOV[i.r.typ]} · {i.cas} min · {'●'.repeat(i.r.narocnost)}{'○'.repeat(3 - i.r.narocnost)}</div>
-          {i.kat.muka ? <span class="tag war">s múkou</span> : celozrnnePsenicne(i) ? <span class="tag" title="Celozrnná pšeničná múka alebo pečivo: nie je rafinovaná, ale stále je to pšenica.">celozrnná múka/pečivo</span> : <span class="tag">bez múky</span>}
+          {i.kat.muka ? <span class="tag war">s múkou</span> : <span class="tag">bez múky</span>}
           {hv > 0 && <span class="tag" aria-label={`${hv} hviezdičiek`}>{'★'.repeat(hv)}</span>}
           {i.r.klasika && <span class="tag war">klasika</span>}
           {i.r.vlastny && <span class="tag">vlastný</span>}

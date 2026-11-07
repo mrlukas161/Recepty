@@ -11,12 +11,19 @@ export interface Info {
   cukorRaf: boolean;
 }
 
+/** Celozrnná pšeničná (a špaldová) múka, chlieb, pečivo a cestoviny: platia rovnako ako biele (rozhodnutie Lukáša, register #480). Výživový rozdiel ostáva v skóre. */
+export function jeCelozrnnaPsenica(id: string, x: Surovina | undefined): boolean {
+  if (!x || !x.priznaky.includes('lepok') || !x.priznaky.includes('celozrnne')) return false;
+  if (/(ovsen|pohank|ryz|bulgur|kuskus|razn)/.test(id) && !/(chlieb|rozok|pecivo)/.test(id)) return false;
+  return /(psenicn|spaldov|chlieb|rozok|cestovin|tortil|pecivo|baget)/.test(id);
+}
+
 export function kategorie(r: Recept, sk: Skore, db: Map<string, Surovina>): Record<Kategoria, boolean> {
   const res: Record<Kategoria, boolean> = { muka: false, cukor: false, udeniny: false, vyprazane: !!r.vyprazane, tazke: false };
   for (const s of r.suroviny) {
     const x = db.get(s.id);
     if (!x || (s.volitelna && !s.nevyhnutna)) continue;
-    if (x.priznaky.includes('rafinovana-muka')) res.muka = true;
+    if (x.priznaky.includes('rafinovana-muka') || jeCelozrnnaPsenica(s.id, x)) res.muka = true;
     if (x.priznaky.includes('spracovane-maso')) res.udeniny = true;
   }
   res.cukor = sk.na100porcia.pridanyCukor >= 8;
@@ -59,7 +66,7 @@ export function vhodnostDiet(i: Info, diety: string[], db: Map<string, Surovina>
       const lim = LIMIT_SACH[d];
       text = `čisté sacharidy ${cislo(sach)} g na porciu, limit ${lim} g – ${ok ? 'vhodné' : 'prekračuje limit'}`;
     } else if (d === 'menej-muky') {
-      text = ok ? 'bez rafinovanej múky – vhodné' : `obsahuje rafinovanú múku (~${Math.round(i.skore.na100porcia.mukaG)} g na porciu) – nevhodné`;
+      text = ok ? 'bez rafinovanej múky – vhodné' : (i.skore.na100porcia.mukaG >= 1 ? `obsahuje pšeničnú múku alebo pečivo (~${Math.round(i.skore.na100porcia.mukaG)} g na porciu) – nevhodné` : 'obsahuje celozrnnú pšeničnú múku alebo pečivo – nevhodné');
     } else {
       text = ok ? 'vyhovuje' : 'nevyhovuje (podľa príznakov surovín)';
     }
@@ -77,7 +84,7 @@ export function vyhovujeDiete(i: Info, dietaId: string, db: Map<string, Surovina
     case 'bezlepkova': return !has('lepok') && !i.alergeny.has('lepok');
     case 'bez-laktozy': return !has('laktoza') && !has('mliecne');
     case 'low-fodmap': return !has('vysoky-fodmap');
-    case 'menej-muky': return !has('rafinovana-muka');
+    case 'menej-muky': return !i.kat.muka;
     case 'nizkosacharidova': return i.skore.na100porcia.sach <= LIMIT_SACH.nizkosacharidova;
     case 'ketogenna': return i.skore.na100porcia.sach <= LIMIT_SACH.ketogenna;
     case 'flexitarianska': return true;

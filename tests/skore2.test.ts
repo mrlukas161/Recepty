@@ -50,7 +50,7 @@ describe('vhodnosť diét', () => {
     }
   });
   it('menej múky: nevhodné s múkou a uvedie gramy', () => {
-    const s = infos.find((x) => x.kat.muka)!;
+    const s = infos.find((x) => x.kat.muka && x.skore.na100porcia.mukaG >= 1)!;
     const [v] = vhodnostDiet(s, ['menej-muky'], SUROVINA);
     expect(v.ok).toBe(false); expect(v.text).toMatch(/\d+ g/);
   });
