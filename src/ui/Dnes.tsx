@@ -11,6 +11,7 @@ import { INFO } from '../ctx';
 import { tyzdenMuky } from '../engine/muka';
 import { tipDna } from '../data/tipy';
 import { navrhnutelny } from '../engine/navrh';
+import { Zdoma, NaDnes } from './Zdoma';
 import { dajHviezdy, nechutilo, bonusHviezd } from '../engine/hviezdy';
 
 export function Dnes() {
@@ -56,16 +57,17 @@ export function Dnes() {
       {bezMuky.length > 0 && (
         <section data-sekcia="bez-muky">
           <h2>Bez múky na {TYP_NAZOV[typ].toLowerCase()}</h2>
-          {bezMuky.map((i) => <KartaReceptu key={i.r.id} i={i} />)}
+          {bezMuky.map((i) => <div key={i.r.id}><KartaReceptu i={i} /><NaDnes i={i} typ={typ} /></div>)}
         </section>
       )}
       <h2>Ďalšie návrhy</h2>
-      {vyber.map((i) => <KartaReceptu key={i.r.id} i={i} dovod={dovody(i)} />)}
+      {vyber.map((i) => <div key={i.r.id}><KartaReceptu i={i} dovod={dovody(i)} /><NaDnes i={i} typ={typ} /></div>)}
       {!vyber.length && <p>Žiadne recepty nevyhovujú nastaveniam. Skús uvoľniť obmedzenia v Nastaveniach.</p>}
       <div class="rad">
         <button onClick={() => setStrana(strana + 1)}>🔄 Iné návrhy</button>
         <a class="tlacidlo hl" href="#/ruleta" style="text-decoration:none;display:inline-flex;align-items:center">🎰 Ruleta</a>
       </div>
+      <Zdoma kandidati={navrhy} />
       <h2 style="margin-top:20px">Tento týždeň</h2>
       {tyzden.pocetJedal === 0 ? <p class="maly">Jedálniček je prázdny. <a href="#/jedalnicek" style="display:inline-block;padding:12px 4px">Vygenerovať</a></p> : (
         <div class="karta">
@@ -85,14 +87,15 @@ export function Dnes() {
 export function MukaTyzden({ m }: { m: ReturnType<typeof tyzdenMuky> }) {
   const farba = m.stav === 'nad-limitom' ? 'minus' : m.stav === 'ok' ? 'plus' : '';
   const vyssie = Math.max(m.vareneSMukou, m.planovaneSMukou);
+  const bodky = m.limit && m.limit > 0 ? Array.from({ length: Math.max(m.limit, vyssie) }, (_, k) => (k < vyssie ? '●' : '○')).join(' ') : '';
   return (
     <div class="karta muka-tyzden" style="animation:none">
-      <h3 style="margin:0 0 4px">Pšeničná múka a pečivo tento týždeň</h3>
-      <div>Uvarené: <strong>{m.vareneSMukou}</strong> z {m.varene} jedál s múkou · Naplánované: <strong>{m.planovaneSMukou}</strong> z {m.planovane}</div>
+      <h3 style="margin:0 0 4px">Pšeničná múka a pečivo tento týždeň {bodky && <span class={`muka-bodky ${farba}`} aria-hidden="true">{bodky}</span>}</h3>
+      <div class="maly">Uvarené: <strong>{m.vareneSMukou}</strong> z {m.varene} jedál s múkou · Naplánované: <strong>{m.planovaneSMukou}</strong> z {m.planovane}</div>
       <div class={`maly ${farba}`} data-limit-muky>
         {m.limit === null ? 'Múku zatiaľ neobmedzuješ (Viac → Nastavenia → Čo obmedziť).' : m.vylucena ? 'Múku máš vylúčenú – jedlá s múkou sa nenavrhujú a nepatria do plánu.' : m.stav === 'nad-limitom' ? `Nad limitom ${m.limit}× za týždeň (máš ${vyssie}×) – ďalšie jedlo urob bez múky.` : `Limit ${m.limit}× za týždeň – vybrané ${vyssie}×, ostáva ${m.ostava}×.`}
       </div>
-      <div class="maly">Jedlá s múkou a pečivom ti appka sama nenavrhne – nájdeš ich len vyhľadaním v Receptoch, hneď s verziou bez múky.</div>
+      <details class="maly"><summary>Ako to funguje</summary>Jedlá s múkou a pečivom ti appka sama nenavrhne – nájdeš ich len vyhľadaním v Receptoch, hneď s verziou bez múky.</details>
       <a class="maly" href="#/nahrady">Čím nahradiť múku</a>
     </div>
   );

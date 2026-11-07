@@ -2,6 +2,13 @@
 
 **Appka:** https://mrlukas161.github.io/Recepty/ (verzia v Nastaveniach → „O appke“; `…/version.json` = posledný nasadený commit)
 
+## Novinky 07.11. (doladenie, 07.11.2026 10:42)
+- **Z toho, čo mám doma:** na Dnes pridaj suroviny ťuknutím a appka ukáže jedlá, kde chýba najmenej (bez múky a cukru ako doteraz).
+- **Do jedálnička na dnes** jedným ťuknutím pri každom návrhu; **Jedálniček → ↶ Späť** vráti týždeň po omylom Zamiešať; **Nákup:** „Kúpené X z Y“ a „Skryť kúpené“.
+- **Úvod:** pevné tlačidlo „Hotovo, ukáž návrhy“ vždy dole, bez dolnej navigácie. Čipy (Obmedziť/1×/2×, zoradenie) sa už nezlepujú do stĺpca; väčšie dotykové plochy odkazov; karta múky na Dnes je kompaktná (bodky limitu).
+- **Pozor, rozhodni:** celozrnné pšeničné cestoviny, chlieb a múka sa nerátajú ako „rafinovaná múka“, takže sa môžu objaviť v jedálničku; karta ich značí „celozrnná múka/pečivo“. Ak ich chceš tiež nenavrhovať, povedz (R-d1 v `docs/ROZHODNUTIA.md`).
+- **Overené:** QA na živej verzii (mobil 412×915, svetlý aj tmavý), 309 unit testov, build, 56 e2e. Neskúšané na reálnom telefóne.
+
 ## Stav v skratke (kontrola 16.10. ~04:50 UTC)
 - **Nové:** skener kozmetiky podľa INCI (Viac → Skener kozmetiky → „Ukáž príklad“), oprava skenera potravín: zložka s upresnením v zátvorke je jedna zložka („vegetable fat (palm)“ → Palmový tuk, „flavouring (vanillin)“ → jedna Aróma; Nutella cez Open Food Facts už nemá duplicity).
 - **Ako vyskúšať v mobile:** otvor adresu vyššie, Viac → Skener zloženia → vlož text „Ingredients: sugar, vegetable fat (palm), flavouring (vanillin)“; potom Viac → Skener kozmetiky.

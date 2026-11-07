@@ -168,3 +168,22 @@ ul.casovace li { border: 1px solid var(--ramik); }
 .pecat.velky .pec-kruh::before { inset: 9px; }
 .pecat.velky .pec-kruh b { font-size: 2rem; }
 .pecat.velky small { font-size: .82rem; }
+
+/* Doladenie 07.11.2026: čipy v riadku sa nezužujú do stĺpca, dotykové plochy, úvod, nákup */
+.cipy-vyber { display: flex; flex-wrap: wrap; gap: 6px; }
+.cipy-vyber .chip { padding: 4px 14px; }
+.rad > .cipy-vyber { flex: 1 1 100%; }
+.rad > button.male[aria-expanded] { flex: none; align-self: flex-start; }
+main a:not(.karta):not(.tlacidlo):not(p a):not(label a) { display: inline-flex; align-items: center; min-height: 44px; }
+main summary { min-height: 44px; display: flex; align-items: center; cursor: pointer; }
+.muka-tyzden h3 { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 12px; font-size: 1.05rem; }
+.muka-bodky { letter-spacing: .12em; color: var(--oliva); }
+.muka-bodky.minus { color: var(--zle); }
+.na-dnes { margin: -4px 0 12px; border-color: var(--ramik); border-width: 1px; font-size: .88rem; }
+.na-dnes[aria-pressed="true"] { background: var(--oliva); color: var(--papier); border-color: transparent; }
+.uvod-akcie { position: sticky; bottom: 0; background: var(--papier); padding: 10px 0 calc(10px + var(--safe-b)); margin: 12px 0 0; border-top: 1px solid var(--ciara); }
+.uvod-akcie .hl { flex: 1 1 auto; }
+.nakup-stav { display: grid; gap: 4px; margin: 6px 0 12px; font-size: .9rem; color: var(--tlmene); }
+.nakup-stav .lista { height: 8px; background: var(--ciara); border-radius: 4px; overflow: hidden; }
+.nakup-stav .lista i { display: block; height: 100%; background: var(--oliva); transition: width .2s ease-out; }
+@media (prefers-reduced-motion: reduce) { .nakup-stav .lista i { transition: none; } }

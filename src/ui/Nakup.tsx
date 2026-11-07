@@ -10,6 +10,7 @@ import { Hlavicka } from './kom';
 export function Nakup() {
   const s = useStav();
   const [nova, setNova] = useState('');
+  const [skryt, setSkryt] = useState(false);
   const recepty = zoskupRecepty(s.nakupRecepty, (id) => RECEPT.get(id));
   const volne = [...new Set(recepty.flatMap(({ r }) => r.volne ?? []))];
   const por = kolkoPorcii(s.nastavenia);
@@ -21,6 +22,8 @@ export function Nakup() {
     try { if (navigator.share) { await navigator.share({ title: 'Nákup', text: text() }); return; } } catch { /* zrušené */ }
     try { await navigator.clipboard.writeText(text()); alert('Skopírované'); } catch { alert(text()); }
   };
+  const vsetky = [...skupiny.flatMap(([, p]) => p.map((x) => x.id)), ...volne.map((x) => 'f:' + x), ...s.nakupVlastne.map((x) => 'v:' + x)];
+  const kupene = vsetky.filter((id) => s.nakupOdskrtnute.includes(id)).length;
   const tog = (k: string) => nastav((x) => { x.nakupOdskrtnute = x.nakupOdskrtnute.includes(k) ? x.nakupOdskrtnute.filter((y) => y !== k) : [...x.nakupOdskrtnute, k]; });
   return (
     <>
@@ -28,12 +31,13 @@ export function Nakup() {
       {recepty.length > 0 && <p class="maly">{recepty.reduce((a, x) => a + x.krat, 0)} jedál · prepočítané na {por} dospelých porcií · zásoby „mám doma“ (Nastavenia) sa odpočítavajú. Množstvá sú zaokrúhlené na bežné balenia. {POZNAMKA_BALENI} Voda sa nenakupuje.</p>}
       <div class="rad"><button onClick={zdielaj}>📤 Zdieľať / kopírovať</button><button onClick={() => nastav((x) => { x.nakupRecepty = []; x.nakupOdskrtnute = []; x.nakupVlastne = []; })}>Vyčistiť</button></div>
       {recepty.length > 0 && <details><summary style="min-height:44px;display:flex;align-items:center">Recepty v nákupe</summary>{recepty.map(({ r, krat }) => <div class="slot" key={r.id}><span class="rozt">{nazovPreDomacnost(r, s.nastavenia, SUROVINA, s.pridaneVolitelne[r.id])}{krat > 1 ? ` (${krat}×, varené naraz)` : ''}</span><button class="male" aria-label={`Odobrať ${r.nazov}`} onClick={() => nastav((x) => { x.nakupRecepty = x.nakupRecepty.filter((y) => y !== r.id); })}>✕</button></div>)}</details>}
+      {vsetky.length > 0 && <div class="nakup-stav" role="status"><div class="lista" aria-hidden="true"><i style={`width:${Math.round((kupene / vsetky.length) * 100)}%`} /></div><span>Kúpené {kupene} z {vsetky.length}</span><label class="pol"><input type="checkbox" checked={skryt} onChange={(e) => setSkryt((e.target as HTMLInputElement).checked)} /> Skryť kúpené</label></div>}
       {!recepty.length && !s.nakupVlastne.length && <p>Zoznam je prázdny. Pridaj recept tlačidlom „Do nákupu“ alebo vytvor <a href="#/jedalnicek">jedálniček</a>.</p>}
       {skupiny.map(([o, p]) => (
         <div class="karta" key={o}>
           <h3>{nazovO(o)}</h3>
           {o === SKONTROLUJ && <p class="maly" style="margin-top:0">Soľ, koreniny a drobnosti (pod ~10 g): zvyčajne ich máš. Zaškrtni, čo treba dokúpiť.</p>}
-          {p.map((x) => (
+          {p.filter((x) => !(skryt && s.nakupOdskrtnute.includes(x.id))).map((x) => (
             <div class={`nakup-pol ${s.nakupOdskrtnute.includes(x.id) ? 'hotovo' : ''}`} key={x.id}>
               <label><input type="checkbox" checked={s.nakupOdskrtnute.includes(x.id)} onChange={() => tog(x.id)} /><span>{x.nazov}{x.text && <> – <strong>{x.text}</strong></>}{x.potreba && <span class="maly"> ({x.potreba})</span>}</span></label>
             </div>

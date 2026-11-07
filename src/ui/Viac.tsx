@@ -239,7 +239,7 @@ export function Nastavenia({ uvod }: { uvod?: boolean }) {
           <Upozornenie />
         </>
       )}
-      {uvod && <div class="rad"><button class="hl" onClick={() => { nastavNastavenia({ hotovo: true }); location.hash = '#/'; }}>Hotovo, ukáž návrhy</button><button onClick={() => { nastavNastavenia({ hotovo: true }); location.hash = '#/'; }}>Preskočiť</button></div>}
+      {uvod && <div class="rad uvod-akcie"><button class="hl" onClick={() => { nastavNastavenia({ hotovo: true }); location.hash = '#/'; }}>Hotovo, ukáž návrhy</button><button onClick={() => { nastavNastavenia({ hotovo: true }); location.hash = '#/'; }}>Preskočiť</button></div>}
     </>
   );
 }

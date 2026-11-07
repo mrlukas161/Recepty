@@ -27,3 +27,8 @@
 | 2026-10-20 03:31 | cloud agent (ranný beh) | beží | Body 2, 3, 3b hotové: rafinovaný cukor nahradený medom/ovocím vo všetkých receptoch a z návrhov vylúčený; popisy „prečo škodí“ (10 tém, 5 častí, zdroje) pri skene, recepte, surovine aj vo Vedomostiach; skener odhalí skrytý zdroj dusičnanov/dusitanov (sk/cs/en/de, tagy, falošné poplachy testované). Zdroje: 19 nových záznamov (vyhladavanie). ☐ nepotvrdené: vitamín C a nitrozamíny v mäse, vplyv teploty – v appke ako prax. Testy 308+, e2e zelené. |
 | 2026-10-20 03:36 | cloud agent (ranný beh) | hotovo | Bod 4 hotový: 10 keto receptov (čisté sacharidy 3–14 g na porciu, bez múky a rafinovaného cukru), karty karfiol/kaleráb/zeler/cuketa a skupina náhrad v učení, RECEPTY_ZOZNAM aktualizovaný (207 receptov). 309 unit, build, 53 e2e zelené. RANNY_PREHLAD má „Novinky 20.10. ráno“. Ostáva overiť nasadenie. ☐ chuť pečiva s medom nevyskúšaná; ☐ vitamín C/teplota a nitrozamíny bez zdroja (v appke ako prax). |
 | 2026-10-20 03:37 | cloud agent (ranný beh) | hotovo | Nasadenie commitu 243170b úspešné (Actions beh 66). ☐ version.json na github.io sa zo sandboxu nedá načítať (000) – ráno over, že ukazuje sha 243170b…. |
+
+## 07.11.2026 10:42 – Doladenie funkčnosti (QA naživo + nápady)
+- QA živej 9a7a0eb Playwrightom (Chrome, 412×915, svetlý/tmavý): konzola čistá; nálezy a opravy v R-d1 (ROZHODNUTIA.md). Opravené: zlepené čipy, úvod bez pevného tlačidla, malé dotykové plochy, ťažká karta múky, lokálny build na Windows (`./Kod.tsx`).
+- Nové: Z toho, čo mám doma, Do jedálnička na dnes, Kúpené X z Y + Skryť kúpené, Späť po Zamiešať; štítok „celozrnná múka/pečivo“.
+- Testy: nový `e2e/doladenie.spec.ts`; 309 unit, 56 e2e zelené (lokálne s `PW_CHROMIUM`).

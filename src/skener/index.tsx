@@ -10,7 +10,7 @@ import { nacitajHistoriu, pridajDoHistorie, zmazZaznam, vymazHistoriu, prepniKup
 import { nastav } from '../store';
 import { Porovnanie } from './Porovnanie';
 import { Foto } from './Foto';
-import { Kod, type KodSken } from './Kod';
+import { Kod, type KodSken } from './Kod.tsx';
 import { VlastneSkenyZoznam } from './VlastneSkeny';
 import { vlastneSkenyPotravin, oznacenieVlastneho } from './vlastne-skeny';
 import { vlastnyNaVyrobok } from './off';

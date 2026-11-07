@@ -64,9 +64,9 @@ function App() {
   return (
     <>
       <main>{obsah}</main>
-      <nav class="spodna" aria-label="Hlavná navigácia">
+      {s.nastavenia.hotovo && <nav class="spodna" aria-label="Hlavná navigácia">
         {NAV.map(([href, ik, nz]) => <a href={href} key={href} aria-current={akt === href || (href === '#/viac' && ['#/nahrady', '#/suroviny', '#/surovina', '#/nechutilo', '#/diety', '#/vedomosti', '#/nastavenia', '#/ruleta', '#/skener', '#/kozmetika', '#/prenos'].includes(akt)) ? 'page' : undefined}><span class="ik" aria-hidden="true"><Ilustracia typ={ik} velkost={26} /></span>{nz}</a>)}
-      </nav>
+      </nav>}
     </>
   );
 }

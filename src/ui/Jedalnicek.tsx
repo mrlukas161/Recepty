@@ -16,11 +16,13 @@ export function Jedalnicek() {
   const s = useStav();
   const n = s.nastavenia;
   const [seed, setSeed] = useState(Date.now() % 100000);
+  const [predtym, setPredtym] = useState<Record<string, string | null> | null>(null);
   const [menit, setMenit] = useState<string | null>(null);
   const gen = () => {
     const sd = Math.floor(Math.random() * 1e6); setSeed(sd);
     const zam: Record<string, string | null> = {};
     for (const k of s.zamknute) zam[k] = s.jedalnicek[k] ?? null;
+    setPredtym({ ...s.jedalnicek });
     nastav((x) => { x.jedalnicek = generujJedalnicek({ infos: INFOS, n, db: SUROVINA, zamknute: zam, seed: sd, pridane: s.pridaneVolitelne, hodnotenia: s }); });
   };
   const sh = suhrn(s.jedalnicek, INFO, SUROVINA, s.pridaneVolitelne);
@@ -33,6 +35,7 @@ export function Jedalnicek() {
       <Hlavicka nazov="Jedálniček" />
       <div class="rad">
         <button class="hl" onClick={gen}>{Object.keys(s.jedalnicek).length ? '🔀 Zamiešať' : '✨ Vygenerovať týždeň'}</button>
+        {predtym && <button onClick={() => { nastav((x) => { x.jedalnicek = predtym; }); setPredtym(null); }}>↶ Späť</button>}
         <button onClick={() => { nastav((x) => { x.nakupRecepty = Object.values(x.jedalnicek).filter(Boolean) as string[]; }); location.hash = '#/nakup'; }}>🛒 Nákup z jedálnička</button>
         <button onClick={() => nastav((x) => { x.jedalnicek = {}; x.zamknute = []; })}>Vymazať</button>
       </div>
