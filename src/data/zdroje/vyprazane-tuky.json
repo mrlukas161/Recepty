@@ -5,10 +5,10 @@
     "doi": "10.1136/heartjnl-2020-317883",
     "url": "https://doi.org/10.1136/heartjnl-2020-317883",
     "uroven": "stredné",
-    "tvrdenie": "Metaanalýza observačných štúdií: najvyšší príjem vyprážaných jedál súvisel s vyšším rizikom veľkých kardiovaskulárnych príhod, ischemickej choroby srdca a srdcového zlyhania. Súvislosť s úmrtnosťou sa podľa dostupných správ nepotvrdila (presné čísla nečítané). Je to súvislosť z pamäťových dotazníkov, nie dôkaz príčinnosti.",
-    "cisla": "Najvyšší vs. najnižší príjem: veľké kardiovaskulárne príhody o 28 % vyššie riziko, ICHS o 22 %, srdcové zlyhanie o 37 %; každých 114 g týždenne: približne +3 %, +2 %, +12 %.",
-    "overene": "2026-10-15",
-    "overenie": "vyhladavanie",
+    "tvrdenie": "Metaanalýza observačných štúdií: najvyšší príjem vyprážaných jedál súvisel s vyšším rizikom veľkých kardiovaskulárnych príhod, ischemickej choroby srdca a srdcového zlyhania. Súvislosť s kardiovaskulárnou ani celkovou úmrtnosťou sa nepotvrdila. Je to súvislosť z pamäťových dotazníkov, nie dôkaz príčinnosti.",
+    "cisla": "Najvyšší vs. najnižší príjem: veľké kardiovaskulárne príhody RR 1,28 (1,15–1,43), ischemická choroba srdca 1,22 (1,07–1,40), srdcové zlyhanie 1,37 (1,07–1,75); mŕtvica 1,37 (0,97–1,94, nevýznamné); kardiovaskulárna úmrtnosť 1,02 (0,93–1,14) a celková úmrtnosť 1,03 (0,96–1,12) bez súvislosti. Veľká nejednotnosť (I² do 82 %).",
+    "overene": "2026-11-07",
+    "overenie": "original",
     "faktory": [
       "tuky",
       "zapal"
@@ -16,7 +16,8 @@
     "karty": [
       "vyprazane"
     ],
-    "diety": []
+    "diety": [],
+    "poznamka": "Čítaný abstrakt (PubMed/Europe PMC), plný text nečítaný."
   },
   {
     "id": "who-replace-2018",
@@ -34,6 +35,7 @@
     "karty": [
       "vyprazane"
     ],
-    "diety": []
+    "diety": [],
+    "poznamka": "Nedalo sa otvoriť: odkaz vracia 404, nový odkaz sa nenašiel."
   }
 ]

@@ -91,5 +91,7 @@ export interface Zdroj {
   uroven: 'silné' | 'stredné' | 'slabé' | 'prax';
   tvrdenie: string; cisla: string; overene: string;
   overenie: 'original' | 'vyhladavanie';
+  /** Krátka poznámka k overeniu (čo sa čítalo: abstrakt, stránka, plný text; alebo prečo sa zdroj nedal otvoriť). */
+  poznamka?: string;
   faktory?: string[]; karty?: string[]; diety?: string[];
 }

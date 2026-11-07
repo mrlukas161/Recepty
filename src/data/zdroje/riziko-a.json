@@ -5,15 +5,16 @@
     "doi": "10.2903/j.efsa.2017.4787",
     "url": "https://efsa.europa.eu/en/efsajournal/pub/4787",
     "uroven": "silné",
-    "tvrdenie": "Panel EFSA pri dusičnanoch použitých ako prídavná látka nenašiel genotoxický potenciál a štúdie karcinogenity na myšiach a potkanoch boli negatívne. Pôvodnú hodnotu ADI pre dusičnany stanovil už SCF (1997) a JECFA (2002); nový jednotný číselný ADI z dostupných údajov o premene dusičnanu na dusitan v slinách EFSA nevyvodila (zdroje vo výsledkoch vyhľadávania sa v tom, či EFSA starú hodnotu prevzala, nezhodujú, preto ju appka neuvádza ako záver EFSA). Samotný dusičnan teda nie je hlavným problémom; riziko súvisí s jeho premenou na dusitan a následne na nitrozamíny.",
-    "cisla": "",
-    "overene": "2026-10-20",
-    "overenie": "vyhladavanie",
+    "tvrdenie": "Panel EFSA pri dusičnanoch ako prídavnej látke nenašiel genotoxický potenciál a štúdie karcinogenity na myšiach a potkanoch boli negatívne. Jednotnú novú ADI odvodiť nešlo (príliš veľké rozdiely v premene dusičnanu na dusitan v slinách), preto EFSA zhodnotila, že nie je dosť dôkazov na stiahnutie doterajšej ADI 3,7 mg/kg denne. Dusičnan z aditív tvorí menej než 5 % celkového príjmu; keď sa započítajú všetky zdroje (aditíva, prirodzený výskyt, kontaminácia), ADI by sa u všetkých vekových skupín prekračovala. Riziko súvisí s premenou dusičnanu na dusitan a následne na nitrozamíny.",
+    "cisla": "ADI dusičnanu 3,7 mg/kg telesnej hmotnosti denne (SCF 1997, JECFA 2002; EFSA ju nestiahla)",
+    "overene": "2026-11-07",
+    "overenie": "original",
     "faktory": [],
     "karty": [
       "udeniny"
     ],
-    "diety": []
+    "diety": [],
+    "poznamka": "Čítaný abstrakt/zhrnutie na stránke EFSA, plný text opinion nečítaný."
   },
   {
     "id": "efsa-dusitany-nitrozaminy-2017",
@@ -21,15 +22,16 @@
     "doi": "10.2903/j.efsa.2017.4786",
     "url": "https://efsa.europa.eu/en/efsajournal/pub/4786",
     "uroven": "silné",
-    "tvrdenie": "EFSA stanovila ADI dusitanu podľa vzniku methemoglobínu (nie podľa rakoviny). Pri nitrozamínoch odhadla, že ich tvorba v tele z dusitanu na úrovni ADI dáva pre NDMA dostatočnú bezpečnostnú rezervu (MOE nad 10 000), ale pri nitrozamínoch už prítomných v mäsových výrobkoch bola rezerva pri vysokom príjme vo všetkých vekových skupinách pod 10 000. Nepodarilo sa jasne oddeliť nitrozamíny vzniknuté z pridaného dusitanu od tých, čo sú v potravine už inak. Epidemiológia: určitá súvislosť dusitanu so žalúdočnými a dusitanu s dusičnanom zo spracovaného mäsa s kolorektálnymi nádormi. Doplnok k existujúcemu záznamu efsa-2017-dusitany (ten pokrýva ADI a nariadenie 2023/2108).",
+    "tvrdenie": "EFSA stanovila ADI dusitanu podľa vzniku methemoglobínu (nie podľa rakoviny). Pri nitrozamínoch odhadla, že ich tvorba v tele z dusitanu na úrovni ADI dáva pre NDMA dostatočnú bezpečnostnú rezervu (MOE nad 10 000), ale pri nitrozamínoch už prítomných v mäsových výrobkoch bola rezerva pri vysokom príjme vo všetkých vekových skupinách pod 10 000. Nepodarilo sa jasne oddeliť nitrozamíny vzniknuté z pridaného dusitanu od tých, čo sú v potravine už inak. Epidemiológia: určitá súvislosť dusitanu so žalúdočnými a dusitanu s dusičnanom zo spracovaného mäsa s kolorektálnymi nádormi. Text opinion tiež uvádza, že pridanie antioxidantov (kyselina askorbová, askorbylpalmitát, erytorbová) do receptúry mäsových výrobkov môže znížiť množstvo nitrozamínov, okrem prchavých (NDMA, NSAR, NPYR, NPIP). Doplnok k existujúcemu záznamu efsa-2017-dusitany (ten pokrýva ADI a nariadenie 2023/2108).",
     "cisla": "ADI dusitanu 0,07 mg/kg telesnej hmotnosti denne; MOE pre nitrozamíny z mäsových výrobkov pri vysokom príjme < 10 000",
-    "overene": "2026-10-20",
-    "overenie": "vyhladavanie",
+    "overene": "2026-11-07",
+    "overenie": "original",
     "faktory": [],
     "karty": [
       "udeniny"
     ],
-    "diety": []
+    "diety": [],
+    "poznamka": "Čítaný abstrakt/zhrnutie na stránke EFSA, plný text opinion nečítaný."
   },
   {
     "id": "efsa-nitrozaminy-2023",
@@ -39,13 +41,14 @@
     "uroven": "silné",
     "tvrdenie": "EFSA posúdila 10 karcinogénnych N-nitrozamínov v potravinách (referenčný bod BMDL10 10 µg/kg telesnej hmotnosti denne z nádorov pečene potkanov; metóda MOE). Záver: pri vysokom príjme môžu byť MOE hodnoty výrazne pod 10 000, čo je signál zdravotného rizika vo všetkých vekových skupinách. Podľa nemeckého BfR ide o vysoký príjem určitých potravín. Hlavné zdroje podľa zhrnutí (spracované mäso a ďalšie potraviny) sme vo výsledkoch nemali doslova rozpísané, preto ich appka z tohto záznamu netvrdí.",
     "cisla": "BMDL10 10 µg/kg tel. hm. denne; MOE referenčná hranica 10 000; odhad expozície 0 až 208,9 ng/kg tel. hm. denne",
-    "overene": "2026-10-20",
-    "overenie": "vyhladavanie",
+    "overene": "2026-11-07",
+    "overenie": "original",
     "faktory": [],
     "karty": [
       "udeniny"
     ],
-    "diety": []
+    "diety": [],
+    "poznamka": "Čítaný abstrakt/zhrnutie na stránke EFSA, plný text opinion nečítaný."
   },
   {
     "id": "efsa-dusicnany-zelenina-2008",
@@ -59,7 +62,8 @@
     "overenie": "vyhladavanie",
     "faktory": [],
     "karty": [],
-    "diety": []
+    "diety": [],
+    "poznamka": "Nedalo sa otvoriť: stránka EFSA/Wiley ukáže len metadáta, abstrakt ani PDF neboli dostupné."
   },
   {
     "id": "sindelar-milkowski-2012",
@@ -69,11 +73,12 @@
     "uroven": "slabé",
     "tvrdenie": "Prehľadový článok: od 50.–60. rokov sa rieši tvorba nitrozamínov z dusitanu, debata sa sústredila na mäsové výrobky; autori argumentujú, že rastúci súbor dôkazov o chémii dusíkových oxidov v tele potvrdzuje celkovú bezpečnosť dusičnanu a dusitanu. Ide o názor časti odborníkov (blízkych mäsovému priemyslu, nepotvrdené), nie konsenzus; appka ho uvádza ako protipól k EFSA.",
     "cisla": "",
-    "overene": "2026-10-20",
-    "overenie": "vyhladavanie",
+    "overene": "2026-11-07",
+    "overenie": "original",
     "faktory": [],
     "karty": [],
-    "diety": []
+    "diety": [],
+    "poznamka": "Čítaný abstrakt (PubMed/Europe PMC), plný text nečítaný. Ide o názor autorov, nie konsenzus."
   },
   {
     "id": "prirodzene-kurenie-zelenina",
@@ -83,13 +88,14 @@
     "uroven": "stredné",
     "tvrdenie": "„Prirodzené“ kurovanie používa zdroj dusičnanu (najčastejšie zeleninový šťavový prášok, napr. zeler) a baktérie redukujúce dusičnan (Staphylococcus carnosus, S. xylosus). Baktérie premenia dusičnan na dusitan, ktorý robí kurovanie; samotný dusičnan je neúčinný. Chémia kurovania je teda rovnaká ako pri syntetickom dusitane. Vo výsledkoch vyhľadávania nebola doslovná štúdia, že aj nitrozamíny vznikajú rovnako; to appka netvrdí.",
     "cisla": "",
-    "overene": "2026-10-20",
-    "overenie": "vyhladavanie",
+    "overene": "2026-11-07",
+    "overenie": "original",
     "faktory": [],
     "karty": [
       "udeniny"
     ],
-    "diety": []
+    "diety": [],
+    "poznamka": "Čítaná oficiálna stránka zdroja, nie celá štúdia."
   },
   {
     "id": "fsis-uncured-oznacenie",
@@ -99,13 +105,14 @@
     "uroven": "stredné",
     "tvrdenie": "V USA FSIS nepovažuje „prirodzené“ zdroje dusitanu/dusičnanu (napr. zeler) za schválené kurovacie činidlá, preto sa takéto výrobky musia označiť „uncured“ a „no nitrates or nitrites added“ (pri slanine s dodatkom „okrem tých, ktoré sa prirodzene vyskytujú v...“). Podľa petície spotrebiteľských organizácií majú také výrobky podobné množstvá dusitanu ako bežne kurované; to je tvrdenie petentov, nie nález FSIS. Konečné rozhodnutie FSIS sme nenašli. Označenie „bez dusitanov“ na etikete preto neznamená, že výrobok dusitan neobsahuje.",
     "cisla": "",
-    "overene": "2026-10-20",
-    "overenie": "vyhladavanie",
+    "overene": "2026-11-07",
+    "overenie": "original",
     "faktory": [],
     "karty": [
       "udeniny"
     ],
-    "diety": []
+    "diety": [],
+    "poznamka": "Čítaný sekundárny prehľad petície (National Agricultural Law Center); rozhodnutie FSIS nečítané."
   },
   {
     "id": "anses-med-12-mesiacov",
@@ -115,14 +122,15 @@
     "uroven": "silné",
     "tvrdenie": "Med (akýkoľvek pôvod) sa nemá dávať dojčatám do 1 roka kvôli riziku botulizmu dojčiat. Všetky nájdené zdroje uvádzajú hranicu 12 mesiacov, nie 2 roky. Vek 2 roky v nich nie je; veková hranica pre med nie je dôvod, aby sa od 1 roka považoval za voľný od cukrového obmedzenia, lebo med je naďalej voľný cukor (pozri espghan-cukor-2017). Doplnok k existujúcemu záznamu cdc-med-botulizmus.",
     "cisla": "do 12 mesiacov",
-    "overene": "2026-10-20",
-    "overenie": "vyhladavanie",
+    "overene": "2026-11-07",
+    "overenie": "original",
     "faktory": [],
     "karty": [
       "cukor",
       "deti"
     ],
-    "diety": []
+    "diety": [],
+    "poznamka": "Čítaná oficiálna stránka zdroja, nie celá štúdia."
   },
   {
     "id": "espghan-cukor-2017",
@@ -132,13 +140,14 @@
     "uroven": "stredné",
     "tvrdenie": "ESPGHAN navrhuje u detí a mladistvých od 2 do 18 rokov držať voľné cukry pod 5 % energie; u detí do 2 rokov pravdepodobne ešte nižšie. Medzi voľné cukry počíta aj med, sirupy a nesladené ovocné šťavy či koncentráty (nie cukor v celom ovocí a laktózu z mlieka). Odporúča nahrádzať sladené nápoje vodou alebo nesladeným mliekom. Hranica 2 rokov sa teda týka cukrov, nie medu: med v 1.–2. roku nie je zakázaný, ale patrí medzi cukry, ktoré sa majú obmedzovať.",
     "cisla": "< 5 % energie pre deti 2–18 rokov",
-    "overene": "2026-10-20",
-    "overenie": "vyhladavanie",
+    "overene": "2026-11-07",
+    "overenie": "original",
     "faktory": [],
     "karty": [
       "cukor",
       "deti"
     ],
-    "diety": []
+    "diety": [],
+    "poznamka": "Čítaný abstrakt (PubMed/Europe PMC), plný text nečítaný."
   }
 ]

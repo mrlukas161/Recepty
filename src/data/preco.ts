@@ -63,8 +63,8 @@ export const PRECO: Record<PrecoId, PrecoSkodi> = {
     co: 'Konzervanty v údeninách: bránia množeniu baktérií (aj botulizmu) a dávajú mäsu ružovú farbu. Z dusitanu a bielkovín môžu vznikať nitrozamíny – niektoré z nich sú v pokusoch karcinogénne.',
     davka: 'EFSA (2017) stanovila prijateľný denný príjem dusitanu 0,07 mg/kg telesnej hmotnosti a pre nitrozamíny už prítomné v mäsových výrobkoch našla pri vysokom príjme malú bezpečnostnú rezervu. Bežná občasná porcia nie je dôvod na paniku; dôležité je, ako často a ako sa údenina upravuje.',
     komu: 'Deti, dojčatá a tehotné opatrnejšie – deti prijímajú viac na kilogram váhy. Dusičnany z celej zeleniny sú iná vec: zelenina je prospešná.',
-    namiesto: 'Čerstvé mäso namiesto údeniny. Údeninu neopekať do chrumkava ani pri vysokej teplote (zlatistá, nie hnedá; nižšia teplota) a jesť so zeleninou. Výrobcovia pridávajú vitamín C (E300/E301) aj na potlačenie vzniku nitrozamínov – toto tvrdenie sme zdrojom nepotvrdili, berte ho ako prax, nie dôkaz.',
-    dokaz: { uroven: 'silné', text: 'Hodnotenie rizika EFSA (2017, 2023). Vplyv teploty a vitamínu C na tvorbu nitrozamínov v domácej kuchyni sme v našich zdrojoch nepotvrdili – ide o prax.' },
+    namiesto: 'Čerstvé mäso namiesto údeniny. Údeninu neopekať do chrumkava ani pri vysokej teplote (zlatistá, nie hnedá; nižšia teplota) a jesť so zeleninou. Výrobcovia pridávajú vitamín C (E300/E301) aj na potlačenie vzniku nitrozamínov – EFSA (2017) uvádza, že kyselina askorbová alebo erytorbová v receptúre mäsového výrobku môže nitrozamíny znížiť, no nie prchavé (napr. NDMA). Že vitamín C zo zeleniny pri jedle pôsobí rovnako, zdroj nepotvrdil – berte to ako prax, nie dôkaz.',
+    dokaz: { uroven: 'silné', text: 'Hodnotenie rizika EFSA (2017, 2023). EFSA 2017 uvádza, že askorbát alebo erytorbát v receptúre výrobku môže nitrozamíny znížiť (nie prchavé, napr. NDMA); vplyv teploty a vitamínu C zo zeleniny pri jedle doma sme nepotvrdili – ide o prax.' },
     zdroje: ['efsa-dusitany-nitrozaminy-2017', 'efsa-nitrozaminy-2023', 'efsa-dusicnany-2017'],
   },
   'bez-e-zelenina': {

@@ -7,8 +7,8 @@
     "uroven": "prax",
     "tvrdenie": "Zdroj hodnôt GI a GL pre potraviny (viac ako 4000 položiek, rozdelených podľa kvality metódy merania). Mliečne výrobky, strukoviny, cestoviny a ovocie majú vo všeobecnosti nízky GI; pri pečive, raňajkových cereáliách a ryži sa hodnoty výrazne líšia podľa výrobku.",
     "cisla": "Viac ako 4000 položiek; približne 2100 hodnôt podľa normy ISO a približne 1900 z menej spoľahlivých metód.",
-    "overene": "2026-10-15",
-    "overenie": "vyhladavanie",
+    "overene": "2026-11-07",
+    "overenie": "original",
     "faktory": [
       "gl"
     ],
@@ -17,7 +17,8 @@
       "celozrnne",
       "strukoviny"
     ],
-    "diety": []
+    "diety": [],
+    "poznamka": "Čítaný abstrakt (PubMed/Europe PMC), plný text nečítaný."
   },
   {
     "id": "sievenpiper-2009",
@@ -27,8 +28,8 @@
     "uroven": "stredné",
     "tvrdenie": "Metaanalýza RCT: strukoviny (samotné aj v nízko-GI či vysokovláknitých stravovacích vzoroch) zlepšili ukazovatele glykemickej kontroly. Heterogenita výsledkov bola vysoká a nevysvetlená, preto ide o mierny a neistý efekt.",
     "cisla": "41 štúdií; samotné strukoviny znížili glukózu nalačno (−0,82; 95 % CI −1,36 až −0,27).",
-    "overene": "2026-10-15",
-    "overenie": "vyhladavanie",
+    "overene": "2026-11-07",
+    "overenie": "original",
     "faktory": [
       "gl",
       "vlaknina",
@@ -42,6 +43,7 @@
       "vegetarianska",
       "veganska",
       "flexitarianska"
-    ]
+    ],
+    "poznamka": "Čítaný abstrakt (PubMed/Europe PMC), plný text nečítaný."
   }
 ]

@@ -7,15 +7,16 @@
     "uroven": "prax",
     "tvrdenie": "Komentár definuje ultraspracované potraviny v systéme NOVA a ponúka praktický test: v zložení je aspoň jedna zložka typická pre túto skupinu (napr. glukózo-fruktózový sirup, hydrolyzované bielkoviny, arómy, emulgátory, sladidlá). Je to klasifikácia, nie dôkaz o účinku na zdravie.",
     "cisla": "",
-    "overene": "2026-10-15",
-    "overenie": "vyhladavanie",
+    "overene": "2026-11-07",
+    "overenie": "original",
     "faktory": [
       "nova"
     ],
     "karty": [
       "ultraspracovane"
     ],
-    "diety": []
+    "diety": [],
+    "poznamka": "Čítaný abstrakt (PubMed/Europe PMC), plný text nečítaný."
   },
   {
     "id": "hall-2019",
@@ -25,15 +26,16 @@
     "uroven": "silné",
     "tvrdenie": "Pobytový crossover RCT na 20 dospelých: pri ultraspracovanej strave ľudia zjedli viac kalórií a pribrali, hoci jedlá boli vyrovnané v prezentovaných kalóriách, energetickej hustote, makroživinách, cukre, sodíku a vláknine. Štúdia je malá a krátka (2 týždne na každú stravu) a nerozlíši, ktorá vlastnosť jedla za to môže. Autori priznávajú, že diéty neboli vyrovnané vo všetkom (napr. podiel pridaného cukru, nerozpustnej vlákniny, nasýtených tukov).",
     "cisla": "o 508 ± 106 kcal denne viac pri ultraspracovanej strave; 20 účastníkov, 2 + 2 týždne",
-    "overene": "2026-10-15",
-    "overenie": "vyhladavanie",
+    "overene": "2026-11-07",
+    "overenie": "original",
     "faktory": [
       "nova"
     ],
     "karty": [
       "ultraspracovane"
     ],
-    "diety": []
+    "diety": [],
+    "poznamka": "Čítaný abstrakt (PubMed/Europe PMC), plný text nečítaný."
   },
   {
     "id": "lane-2024",
@@ -43,14 +45,15 @@
     "uroven": "stredné",
     "tvrdenie": "Zastrešujúci prehľad metaanalýz observačných štúdií: vyšší príjem ultraspracovaných potravín súvisel s horšími výsledkami v mnohých ukazovateľoch (úmrtnosť, kardiometabolické a duševné problémy). Dôkazy mali rôznu silu (od presvedčivých po slabé), istota podľa GRADE bola väčšinou nízka. Ide o asociácie, nie preukázanú príčinnosť.",
     "cisla": "45 združených analýz zo 14 prehľadov, n = 9 888 373; priame asociácie s 32 (71 %) ukazovateľov.",
-    "overene": "2026-10-15",
-    "overenie": "vyhladavanie",
+    "overene": "2026-11-07",
+    "overenie": "original",
     "faktory": [
       "nova"
     ],
     "karty": [
       "ultraspracovane"
     ],
-    "diety": []
+    "diety": [],
+    "poznamka": "Čítaný abstrakt (PubMed/Europe PMC), plný text nečítaný."
   }
 ]

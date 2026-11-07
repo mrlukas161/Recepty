@@ -54,7 +54,7 @@ describe('karty surovín', () => {
   it('psyllium má zdroj s úrovňou vyhľadávania', () => {
     const z = zdrojePre('karty', 'psyllium');
     expect(z.length).toBeGreaterThan(0);
-    expect(z.every((x) => x.overenie === 'vyhladavanie')).toBe(true);
+    expect(z.every((x) => ['original', 'vyhladavanie'].includes(x.overenie))).toBe(true);
   });
 });
 

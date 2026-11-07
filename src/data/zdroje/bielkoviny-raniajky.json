@@ -7,13 +7,14 @@
     "uroven": "stredné",
     "tvrdenie": "Prehľad: vyššie bielkoviny pri redukčnej diéte pomáhajú udržať svalovú hmotu a mierne zvyšujú pocit sýtosti po jedle, ale nižší príjem pri ďalšom jedle sa nepreukázal. Dlhodobé výsledky sú nejednotné a závisia od dodržiavania.",
     "cisla": "",
-    "overene": "2026-10-15",
-    "overenie": "vyhladavanie",
+    "overene": "2026-11-07",
+    "overenie": "original",
     "faktory": [
       "bielkoviny"
     ],
     "karty": [],
-    "diety": []
+    "diety": [],
+    "poznamka": "Čítaný abstrakt (PubMed/Europe PMC), plný text nečítaný."
   },
   {
     "id": "sievert-2019",
@@ -23,10 +24,11 @@
     "uroven": "silné",
     "tvrdenie": "Metaanalýza RCT u dospelých: pridanie raňajok nepomohlo schudnúť, ba hmotnosť bola mierne vyššia a denný príjem energie väčší. Kvalita štúdií bola rôzna; netýka sa to nutričnej kvality raňajok ani detí.",
     "cisla": "13 štúdií; hmotnosť pri raňajkách o 0,44 kg vyššia (95 % CI 0,07 až 0,82); príjem energie o 259,79 kcal/deň vyšší (95 % CI 78,87 až 440,71).",
-    "overene": "2026-10-15",
-    "overenie": "vyhladavanie",
+    "overene": "2026-11-07",
+    "overenie": "original",
     "faktory": [],
     "karty": [],
-    "diety": []
+    "diety": [],
+    "poznamka": "Čítaný abstrakt (PubMed/Europe PMC), plný text nečítaný."
   }
 ]

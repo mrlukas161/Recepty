@@ -1,73 +1,77 @@
 [
- {
-  "id": "aap-dusenie-2010",
-  "citacia": "AAP Committee on Injury, Violence, and Poison Prevention (2010). Prevention of choking among children. Pediatrics, 125(3):601-607.",
-  "doi": "10.1542/peds.2009-2862",
-  "url": "https://publications.aap.org/pediatrics/article/125/3/601/72642/Prevention-of-Choking-Among-Children",
-  "uroven": "prax",
-  "tvrdenie": "Odborné stanovisko AAP: dusenie je hlavná príčina úrazov a úmrtí malých detí, najmä do 4 rokov; najrizikovejšie sú tvrdé, okrúhle jedlá (napr. párky, hrozno, orechy, popcorn), ktoré treba deťom nepodávať alebo pripraviť v malých kúskoch. Aktuálnosť: pôvodný rešeršista uvádzal stiahnutie stanoviska v 2026; overovanie vyhľadávaním to nepotvrdilo ani nevyvrátilo, treba skontrolovať stránku AAP. Zoznamy jedál pochádzajú zo sekundárnych zhrnutí.",
-  "cisla": "",
-  "overene": "2026-10-15",
-  "overenie": "vyhladavanie",
-  "faktory": [],
-  "karty": [
-   "deti"
-  ],
-  "diety": []
- },
- {
-  "id": "cdc-med-botulizmus",
-  "citacia": "CDC. Botulism prevention (webová stránka). Centers for Disease Control and Prevention.",
-  "doi": null,
-  "url": "https://www.cdc.gov/botulism/prevention/index.html",
-  "uroven": "prax",
-  "tvrdenie": "Med môže obsahovať spóry botulizmu; deťom do 1 roka sa nemá dávať (ani na cumlík). Dospelým a starším deťom spóry neškodia, lebo črevo ich už bráni klíčeniu. Potvrdzuje aj WHO a štátne zdravotné úrady v sekundárnych zhrnutiach.",
-  "cisla": "",
-  "overene": "2026-10-15",
-  "overenie": "vyhladavanie",
-  "faktory": [],
-  "karty": [
-   "deti",
-   "cukor"
-  ],
-  "diety": []
- },
- {
-  "id": "who-cukry-2015",
-  "citacia": "WHO (2015). Guideline: Sugars intake for adults and children. Geneva: World Health Organization.",
-  "doi": null,
-  "url": "https://www.ncbi.nlm.nih.gov/books/NBK285538/",
-  "uroven": "stredné",
-  "tvrdenie": "Voľné cukry (pridané, v mede, sirupoch, štavách) majú u dospelých aj detí tvoriť menej než 10 % energie (silné odporúčanie, opreté o dôkazy o zubnom kaze); ďalšie zníženie pod 5 % je podmienené odporúčanie. Neplatí pre cukry v celom ovocí a mlieku.",
-  "cisla": "Menej ako 10 % energie (silné), pod 5 % (podmienené), asi 25 g denne pri 5 %.",
-  "overene": "2026-10-15",
-  "overenie": "vyhladavanie",
-  "faktory": [
-   "cukor"
-  ],
-  "karty": [
-   "cukor",
-   "deti"
-  ],
-  "diety": []
- },
- {
-  "id": "who-sodik-2012",
-  "citacia": "WHO (2012). Guideline: Sodium intake for adults and children. Geneva: World Health Organization.",
-  "doi": null,
-  "url": "https://www.ncbi.nlm.nih.gov/books/NBK133290/",
-  "uroven": "stredné",
-  "tvrdenie": "Dospelí menej než 2 g sodíka denne (asi 5 g soli); u detí sa limit upravuje nadol podľa energetickej potreby oproti dospelým (vekové rozpätie 2–15 rokov z médií, nie z originálu). Presný prepočet pre deti sme nenašli.",
-  "cisla": "Menej ako 2 000 mg sodíka denne u dospelých (asi 5 g soli).",
-  "overene": "2026-10-15",
-  "overenie": "vyhladavanie",
-  "faktory": [
-   "sol"
-  ],
-  "karty": [
-   "sol",
-   "deti"
-  ],
-  "diety": []
- }
+  {
+    "id": "aap-dusenie-2010",
+    "citacia": "AAP Committee on Injury, Violence, and Poison Prevention (2010). Prevention of choking among children. Pediatrics, 125(3):601-607.",
+    "doi": "10.1542/peds.2009-2862",
+    "url": "https://publications.aap.org/pediatrics/article/125/3/601/72642/Prevention-of-Choking-Among-Children",
+    "uroven": "prax",
+    "tvrdenie": "Odborné stanovisko AAP: dusenie je hlavná príčina úrazov a úmrtí malých detí, najmä do 3 rokov; najrizikovejšie sú tvrdé, okrúhle jedlá (napr. párky, hrozno, orechy, popcorn), ktoré treba deťom nepodávať alebo pripraviť v malých kúskoch. Aktuálnosť stanoviska (stránka AAP bola blokovaná) sme nemohli overiť. Zoznamy jedál pochádzajú zo sekundárnych zhrnutí.",
+    "cisla": "",
+    "overene": "2026-11-07",
+    "overenie": "original",
+    "faktory": [],
+    "karty": [
+      "deti"
+    ],
+    "diety": [],
+    "poznamka": "Čítaný abstrakt (PubMed/Europe PMC), plný text nečítaný."
+  },
+  {
+    "id": "cdc-med-botulizmus",
+    "citacia": "CDC. Botulism prevention (webová stránka). Centers for Disease Control and Prevention.",
+    "doi": null,
+    "url": "https://www.cdc.gov/botulism/prevention/index.html",
+    "uroven": "prax",
+    "tvrdenie": "Med môže obsahovať spóry botulizmu; deťom do 1 roka sa nemá dávať. Dospelým a starším deťom spóry neškodia, lebo črevo ich už bráni klíčeniu.",
+    "cisla": "",
+    "overene": "2026-11-07",
+    "overenie": "original",
+    "faktory": [],
+    "karty": [
+      "deti",
+      "cukor"
+    ],
+    "diety": [],
+    "poznamka": "Čítaná oficiálna stránka zdroja, nie celá štúdia."
+  },
+  {
+    "id": "who-cukry-2015",
+    "citacia": "WHO (2015). Guideline: Sugars intake for adults and children. Geneva: World Health Organization.",
+    "doi": null,
+    "url": "https://www.ncbi.nlm.nih.gov/books/NBK285538/",
+    "uroven": "stredné",
+    "tvrdenie": "Voľné cukry (pridané, v mede, sirupoch, štavách) majú u dospelých aj detí tvoriť menej než 10 % energie (silné odporúčanie, opreté o dôkazy o zubnom kaze); ďalšie zníženie pod 5 % je podmienené odporúčanie. Neplatí pre cukry v celom ovocí a mlieku.",
+    "cisla": "Menej ako 10 % energie (silné), pod 5 % (podmienené), asi 25 g denne pri 5 %.",
+    "overene": "2026-11-07",
+    "overenie": "original",
+    "faktory": [
+      "cukor"
+    ],
+    "karty": [
+      "cukor",
+      "deti"
+    ],
+    "diety": [],
+    "poznamka": "Čítaná oficiálna stránka zdroja, nie celá štúdia."
+  },
+  {
+    "id": "who-sodik-2012",
+    "citacia": "WHO (2012). Guideline: Sodium intake for adults and children. Geneva: World Health Organization.",
+    "doi": null,
+    "url": "https://www.ncbi.nlm.nih.gov/books/NBK133290/",
+    "uroven": "stredné",
+    "tvrdenie": "Dospelí menej než 2 g sodíka denne (asi 5 g soli); u detí sa limit upravuje nadol podľa energetickej potreby oproti dospelým (pre deti vo veku 2–15 rokov). Presný prepočet pre deti sme nenašli.",
+    "cisla": "Menej ako 2 000 mg sodíka denne u dospelých (asi 5 g soli).",
+    "overene": "2026-11-07",
+    "overenie": "original",
+    "faktory": [
+      "sol"
+    ],
+    "karty": [
+      "sol",
+      "deti"
+    ],
+    "diety": [],
+    "poznamka": "Čítaná oficiálna stránka zdroja, nie celá štúdia."
+  }
 ]

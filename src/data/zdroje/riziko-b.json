@@ -5,13 +5,14 @@
     "doi": null,
     "url": "https://www.fda.gov/food/process-contaminants-food/questions-and-answers-occurrence-benzene-soft-drinks-and-other-beverages",
     "uroven": "stredné",
-    "tvrdenie": "Benzén môže v nápojoch vzniknúť reakciou benzoanu (konzervant) s kyselinou askorbovou (vitamín C); proces urýchľuje teplo, svetlo (UV) a ióny kovov. Prieskum FDA z roku 2006 (takmer 200 nápojov) našiel vo väčšine nápojov benzén nezistiteľný alebo pod hranicou 5 ppb platnou pre pitnú vodu v USA. Výrobcovia označených nápojov ich upravili (zmenili receptúru) a opakované testy boli pod 1,5 ppb. Úrady vtedy neoznačili riziko za vysoké. Ide o úradný prieskum výskytu, nie o štúdiu účinku na zdravie.",
-    "cisla": "takmer 200 nápojov, 10 nad 5 ppb; po úprave receptúry pod 1,5 ppb",
-    "overene": "2026-10-20",
-    "overenie": "vyhladavanie",
+    "tvrdenie": "Benzén môže vo veľmi nízkych množstvách (ppb) vznikať v nápojoch, ktoré obsahujú benzoany a kyselinu askorbovú (vitamín C) alebo erytorbovú; tvorbu podporuje teplo a svetlo. V prieskume FDA (2005 až máj 2007, takmer 200 vzoriek nápojov) malý počet výrobkov prekročil 5 ppb (hodnota platná pre pitnú vodu v USA); výrobcovia receptúry upravili a opakované testy boli pod 1,5 ppb. Ide o úradný prieskum výskytu, nie o štúdiu účinku na zdravie.",
+    "cisla": "takmer 200 vzoriek; po úprave receptúry pod 1,5 ppb; limit pre pitnú vodu 5 ppb",
+    "overene": "2026-11-07",
+    "overenie": "original",
     "faktory": [],
     "karty": [],
-    "diety": []
+    "diety": [],
+    "poznamka": "Čítaná oficiálna stránka zdroja, nie celá štúdia."
   },
   {
     "id": "healthcanada-benzen-napoje-2006",
@@ -19,19 +20,20 @@
     "doi": null,
     "url": "https://www.canada.ca/en/health-canada/services/food-nutrition/food-safety/chemical-contaminants/food-processing-induced-chemicals/benzene.html",
     "uroven": "stredné",
-    "tvrdenie": "Kanadské prieskumy potvrdili, že benzén vzniká z benzoanov a kyseliny askorbovej len za ďalších podmienok (teplo, UV svetlo, kovové ióny); sama prítomnosť oboch látok na vznik nestačí. Cukor a soli EDTA vznik brzdia. Kanada vyhodnotila riziko z nálezov ako nízke.",
+    "tvrdenie": "Health Canada vyšetrovala benzén v nápojoch po správach z USA: benzén vzniká z benzoanu sodného alebo draselného a kyseliny askorbovej (vitamín C). Následný prieskum 2007 zahŕňal 139 produktov (110 z nich bolo aj v prieskume 2006); po úprave receptúr Kanada usúdila, že nápoje v predaji sú bezpečné. Smerná hodnota pre pitnú vodu je 5 µg/l.",
     "cisla": "následný prieskum 2007: 139 produktov; kanadská smerná hodnota 5 µg/l (pre pitnú vodu)",
-    "overene": "2026-10-20",
-    "overenie": "vyhladavanie",
+    "overene": "2026-11-07",
+    "overenie": "original",
     "faktory": [],
     "karty": [],
-    "diety": []
+    "diety": [],
+    "poznamka": "Čítaná oficiálna stránka zdroja, nie celá štúdia."
   },
   {
     "id": "iarc-benzen-2012",
     "citacia": "IARC (2012). Benzene. In: IARC Monographs on the Evaluation of Carcinogenic Risks to Humans, Volume 100F: Chemical Agents and Related Occupations. Lyon: IARC. (Opätovné hodnotenie: Volume 120, 2018.)",
     "doi": null,
-    "url": "https://monographs.iarc.fr/ENG/Monographs/vol100F/mono100F22.pdf",
+    "url": "https://publications.iarc.who.int/123",
     "uroven": "silné",
     "tvrdenie": "IARC zaraďuje benzén medzi karcinogény pre človeka (skupina 1). Dôkaz pochádza hlavne z pracovnej expozície (vysoké dávky vdychované pri práci), nie z nápojov; potvrdená je súvislosť s akútnou myeloidnou leukémiou. Stopy benzénu v nápojoch sú úplne iná úroveň expozície, preto je praktický záver len opatrnostný: vyhnúť sa kombinácii benzoanu a vitamínu C v nápojoch, ktoré sa skladujú v teple a na svetle.",
     "cisla": "",
@@ -39,7 +41,8 @@
     "overenie": "vyhladavanie",
     "faktory": [],
     "karty": [],
-    "diety": []
+    "diety": [],
+    "poznamka": "Zdroj sa nedal otvoriť v plnom znení; pôvodný odkaz bol nefunkčný (404), nový vedie na zväzok 100F. Zaradenie benzénu medzi karcinogény pre človeka potvrdzuje aj stránka Health Canada."
   },
   {
     "id": "efsa-akrylamid-2015",
@@ -47,13 +50,14 @@
     "doi": "10.2903/j.efsa.2015.4104",
     "url": "https://doi.org/10.2903/j.efsa.2015.4104",
     "uroven": "stredné",
-    "tvrdenie": "Akrylamid vzniká v škrobových potravinách pri vysokej teplote (zvyčajne nad 120 °C) a nízkej vlhkosti, čiastočne Maillardovou reakciou asparagínu s redukujúcimi cukrami. Za karcinogénny účinok je pravdepodobne zodpovedný jeho metabolit glycidamid. EFSA hodnotí, že dnešná expozícia je z hľadiska rakoviny (podľa pokusov na zvieratách) obavou pre všetky vekové skupiny; najviac na kilogram váhy sú exponované deti. Epidemiologické štúdie na ľuďoch zatiaľ akrylamid ako ľudský karcinogén nepreukázali. Neonkologické účinky EFSA za problém nepovažuje.",
-    "cisla": "marža expozície (MOE) 50 až 425 podľa skupiny, pričom pri genotoxických karcinogénoch sa za nízku obavu berie 10 000 a viac; priemerný príjem detí 0,5–1,9 µg/kg váhy denne",
-    "overene": "2026-10-20",
-    "overenie": "vyhladavanie",
+    "tvrdenie": "Akrylamid vzniká v potravinách pri príprave nad 120 °C a pri nízkej vlhkosti, najmä z asparagínu a redukujúcich cukrov. Za genotoxicitu a karcinogenitu je zodpovedný metabolit glycidamid. Epidemiologické štúdie akrylamid ako ľudský karcinogén nepreukázali, ale podľa pokusov na zvieratách marže expozície (MOE) naznačujú obavu z nádorových účinkov. Súčasná expozícia nie je obavou z hľadiska nenádorových účinkov (napr. neurotoxicita). Najviac akrylamidu prispievajú vyprážané zemiakové výrobky; domáca príprava expozíciu výrazne ovplyvňuje.",
+    "cisla": "priemerná expozícia 0,4–1,9 µg/kg denne, 95. percentil 0,6–3,4 µg/kg denne (podľa skupín a prieskumov); BMDL10 0,17 mg/kg denne (nádory u myší) a 0,43 mg/kg denne (neuropatia u potkanov)",
+    "overene": "2026-11-07",
+    "overenie": "original",
     "faktory": [],
     "karty": [],
-    "diety": []
+    "diety": [],
+    "poznamka": "Čítaný abstrakt/zhrnutie na stránke EFSA, plný text opinion nečítaný."
   },
   {
     "id": "iarc-akrylamid-1994",
@@ -63,11 +67,12 @@
     "uroven": "slabé",
     "tvrdenie": "IARC zaradila akrylamid do skupiny 2A (pravdepodobne karcinogénny pre človeka). Základom boli dostatočné dôkazy z pokusov na zvieratách; dôkazy z ľudských štúdií boli nedostatočné. Ide teda o dôkaz karcinogenity u zvierat, u ľudí nepreukázanej.",
     "cisla": "",
-    "overene": "2026-10-20",
-    "overenie": "vyhladavanie",
+    "overene": "2026-11-07",
+    "overenie": "original",
     "faktory": [],
     "karty": [],
-    "diety": []
+    "diety": [],
+    "poznamka": "Čítaná oficiálna stránka zdroja, nie celá štúdia."
   },
   {
     "id": "eu-2017-2158-akrylamid",
@@ -77,11 +82,12 @@
     "uroven": "silné",
     "tvrdenie": "Predpis EÚ ukladá výrobcom a prevádzkam zmierňujúce opatrenia a referenčné úrovne akrylamidu (hranolky, zemiakové chipsy, pečivo a iné). Je to právny predpis o postupoch výrobcov, nie dôkaz o účinku na zdravie. Odkaz vedie na britskú kópiu textu (legislation.gov.uk); platné znenie pre EÚ je na EUR-Lex.",
     "cisla": "",
-    "overene": "2026-10-20",
-    "overenie": "vyhladavanie",
+    "overene": "2026-11-07",
+    "overenie": "original",
     "faktory": [],
     "karty": [],
-    "diety": []
+    "diety": [],
+    "poznamka": "Čítaný text predpisu."
   },
   {
     "id": "fda-akrylamid-varenie",
@@ -91,11 +97,12 @@
     "uroven": "prax",
     "tvrdenie": "Praktické rady úradu na zníženie akrylamidu doma: zemiaky neskladovať v chladničke (po uvarení z nich vzniká viac akrylamidu; vhodná je tmavá chladná špajza), hranolky a zemiakové plátky piecť do zlatožltej, nie hnedej farby (hnedé miesta ho obsahujú viac), tosty radšej svetlejšie, krájané zemiaky 15–30 minút namočiť pred pečením alebo vyprážaním. Varenie a mikrovlnka celých zemiakov akrylamid netvoria; najviac ho dáva vyprážanie a dlhšie či vyššie teploty. Ide o odporúčania úradu na zníženie expozície, nie o dôkaz zdravotného prínosu.",
     "cisla": "namáčanie 15–30 minút",
-    "overene": "2026-10-20",
-    "overenie": "vyhladavanie",
+    "overene": "2026-11-07",
+    "overenie": "original",
     "faktory": [],
     "karty": [],
-    "diety": []
+    "diety": [],
+    "poznamka": "Čítaná oficiálna stránka zdroja, nie celá štúdia."
   },
   {
     "id": "nci-hca-pah-maso",
@@ -105,11 +112,12 @@
     "uroven": "slabé",
     "tvrdenie": "Pri vysokoteplotnom varení svalového mäsa (grilovanie nad otvoreným ohňom, pečenie na panvici) vznikajú heterocyklické amíny (HCA; z aminokyselín, cukrov a kreatínu) a polycyklické aromatické uhľovodíky (PAH; z tuku kvapkajúceho na zdroj tepla, dymom). V laboratórnych pokusoch poškodzujú DNA (mutagénne) a vo zvieracích pokusoch sa používali dávky mnohonásobne vyššie než bežný príjem; ľudské dôkazy sú nepriame a príčinná súvislosť s rakovinou u ľudí nie je preukázaná. NCI nemá limity príjmu, odporúča sa vyhýbať priamemu kontaktu s plameňom či rozpálenými plochami a dlhému varenia pri vysokej teplote.",
     "cisla": "",
-    "overene": "2026-10-20",
-    "overenie": "vyhladavanie",
+    "overene": "2026-11-07",
+    "overenie": "original",
     "faktory": [],
     "karty": [],
-    "diety": []
+    "diety": [],
+    "poznamka": "Čítaná oficiálna stránka zdroja, nie celá štúdia."
   },
   {
     "id": "efsa-pah-2008",
@@ -123,7 +131,8 @@
     "overenie": "vyhladavanie",
     "faktory": [],
     "karty": [],
-    "diety": []
+    "diety": [],
+    "poznamka": "Nedalo sa otvoriť: stránka EFSA/Wiley ukáže len metadáta, abstrakt ani PDF neboli dostupné."
   },
   {
     "id": "salmon-1997-marinada",
@@ -137,6 +146,7 @@
     "overenie": "vyhladavanie",
     "faktory": [],
     "karty": [],
-    "diety": []
+    "diety": [],
+    "poznamka": "Nedalo sa otvoriť: len bibliografický záznam, abstrakt sa v PubMed nenašiel (príbuzná práca Knize 1997 potvrdzuje, že marinovanie znižuje PhIP, nie MeIQx)."
   }
 ]

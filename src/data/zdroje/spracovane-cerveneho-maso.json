@@ -7,8 +7,8 @@
     "uroven": "stredné",
     "tvrdenie": "IARC zaradila spracované mäso do skupiny 1 (karcinogénne pre ľudí; dostatočné dôkazy pre kolorektálny karcinóm) a červené mäso do skupiny 2A (pravdepodobne karcinogénne). Skupina vyjadruje silu dôkazov, nie veľkosť rizika; vychádza hlavne z veľkých prospektívnych kohort.",
     "cisla": "každých 50 g spracovaného mäsa denne: riziko kolorektálneho karcinómu o 18 % vyššie (podľa zhrnutia IARC)",
-    "overene": "2026-10-15",
-    "overenie": "vyhladavanie",
+    "overene": "2026-11-07",
+    "overenie": "original",
     "faktory": [
       "bielkoviny",
       "zapal"
@@ -16,7 +16,8 @@
     "karty": [
       "udeniny"
     ],
-    "diety": []
+    "diety": [],
+    "poznamka": "Čítaný oficiálny súhrn IARC (Q&A k monografii 114); samotný komentár v Lancet Oncology nemá abstrakt."
   },
   {
     "id": "johnston-2019",
@@ -26,15 +27,16 @@
     "uroven": "stredné",
     "tvrdenie": "Panel NutriRECS (14 členov zo 7 krajín, metóda GRADE, 5 nových systematických prehľadov) navrhol dospelým ponechať súčasný príjem červeného aj spracovaného mäsa; slabé odporúčanie založené na nízkej istote dôkazov. Ide o protichodný pohľad, ktorý appka uvádza ako kritiku, nie ako vyvrátenie IARC.",
     "cisla": "",
-    "overene": "2026-10-15",
-    "overenie": "vyhladavanie",
+    "overene": "2026-11-07",
+    "overenie": "original",
     "faktory": [
       "bielkoviny"
     ],
     "karty": [
       "udeniny"
     ],
-    "diety": []
+    "diety": [],
+    "poznamka": "Čítaný abstrakt (PubMed/Europe PMC), plný text nečítaný."
   },
   {
     "id": "qian-2020",
@@ -44,14 +46,15 @@
     "uroven": "stredné",
     "tvrdenie": "Kritika NutriRECS: GRADE je navrhnuté skôr pre klinické intervencie a na výživu sa nehodí, veľké dlhodobé RCT sú pri strave nerealizovateľné; pri hodnotení cez NutriGRADE vyšla súvislosť červeného mäsa s cukrovkou 2. typu ako vysoká a s úmrtnosťou ako stredná kvalita. Ďalej autori vytýkajú, že sa neriešilo, čím sa mäso nahrádza. Kritici sú zároveň názorovo na strane obmedzovania mäsa.",
     "cisla": "",
-    "overene": "2026-10-15",
-    "overenie": "vyhladavanie",
+    "overene": "2026-11-07",
+    "overenie": "original",
     "faktory": [
       "bielkoviny"
     ],
     "karty": [
       "udeniny"
     ],
-    "diety": []
+    "diety": [],
+    "poznamka": "Čítaný abstrakt (PubMed/Europe PMC), plný text nečítaný. Ide o komentár (kritiku), nie o pôvodnú štúdiu."
   }
 ]

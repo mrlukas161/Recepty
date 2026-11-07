@@ -152,7 +152,7 @@ describe('dáta skenera', () => {
   it('zdroje skenera majú URL, dátum a stupeň overenia', () => {
     const sk = [...ZDROJ.values()].filter((z) => z.karty?.includes('skener'));
     expect(sk.length).toBeGreaterThan(20);
-    for (const z of sk) { expect(z.url).toMatch(/^https:/); expect(z.overene).toMatch(/^2026-/); expect(z.overenie).toBe('vyhladavanie'); }
+    for (const z of sk) { expect(z.url).toMatch(/^https:/); expect(z.overene).toMatch(/^2026-/); expect(['original', 'vyhladavanie']).toContain(z.overenie); }
   });
   it('preventívne obavy nie sú označené ako silné dôkazy', () => {
     for (const h of vsetky) if (h.preventivne) expect(['slabé', 'prax', 'odhad']).toContain(h.uroven);

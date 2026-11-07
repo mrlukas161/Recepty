@@ -1,14 +1,18 @@
 [
   {
     "id": "gibb-2015-psyllium",
-    "citacia": "Gibb a kol. (2015). Metaanalýza o psylliu a glykemickej kontrole (názov nepreverený). Am J Clin Nutr, PubMed 26561625.",
+    "citacia": "Gibb R. D., McRorie J. W., Russell D. A. a kol. (2015). Psyllium fiber improves glycemic control proportional to loss of glycemic control: a meta-analysis of data in euglycemic subjects, patients at risk of type 2 diabetes mellitus, and patients being treated for type 2 diabetes mellitus. American Journal of Clinical Nutrition.",
     "doi": null,
     "url": "https://pubmed.ncbi.nlm.nih.gov/26561625/",
     "uroven": "stredné",
-    "tvrdenie": "Metaanalýza randomizovaných štúdií (35 RCT): psyllium užívané pred jedlom zlepšilo glykemickú kontrolu u ľudí s cukrovkou 2. typu, u ľudí s normálnou glykémiou nie. Autori sú spojení s výrobcom (P&G), staršia aj novšia metaanalýza (BMC Endocrine Disorders 2024, 19 RCT) potvrdzujú smer, ale s menším efektom. Ide o doplnok vlákniny v štúdiách, nie o jedlo; nie je to rada pri cukrovke – poraď sa s lekárom.",
-    "cisla": "",
-    "overene": "2026-10-19",
-    "overenie": "vyhladavanie",
-    "karty": ["psyllium", "vlaknina"]
+    "tvrdenie": "Metaanalýza randomizovaných štúdií (35 RCT): psyllium užívané pred jedlom zlepšilo glykemickú kontrolu u ľudí s cukrovkou 2. typu, u ľudí s normálnou glykémiou nie. Autori pracujú pre výrobcu (Procter & Gamble). Novšie metaanalýzy sme neoverili. Ide o doplnok vlákniny v štúdiách, nie o jedlo; nie je to rada pri cukrovke – poraď sa s lekárom.",
+    "cisla": "35 RCT; u pacientov s cukrovkou 2. typu glukóza nalačno −37,0 mg/dl (P < 0,001), HbA1c −0,97 % (P = 0,048)",
+    "overene": "2026-11-07",
+    "overenie": "original",
+    "karty": [
+      "psyllium",
+      "vlaknina"
+    ],
+    "poznamka": "Čítaný abstrakt (PubMed/Europe PMC), plný text nečítaný."
   }
 ]
